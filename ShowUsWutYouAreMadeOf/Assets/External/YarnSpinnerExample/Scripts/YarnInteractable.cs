@@ -35,17 +35,17 @@ public class YarnInteractable : MonoBehaviour {
     private void StartConversation() {
         Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
-        // if (lightIndicatorObject != null) {
-        //     lightIndicatorObject.intensity = defaultIndicatorIntensity;
-        // }
+         if (lightIndicatorObject != null) {
+             lightIndicatorObject.intensity = defaultIndicatorIntensity;
+         }
         dialogueRunner.StartDialogue(conversationStartNode);
     }
 
     private void EndConversation() {
         if (isCurrentConversation) {
-            // if (lightIndicatorObject != null) {
-            //     lightIndicatorObject.intensity = 0;
-            // }
+             if (lightIndicatorObject != null) {
+                 lightIndicatorObject.intensity = 0;
+            }
             isCurrentConversation = false;
             Debug.Log($"Started conversation with {name}.");
         }
