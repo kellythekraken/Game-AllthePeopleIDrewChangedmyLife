@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// YOU WILL NOT HAVE TO CHANGE THIS FILE
+// this file is attached to the FadeLayer in the Scene and its functions only
+// exist for functions in SceneDirector.cs to call them
+// fades CanvasGroup to transparency {alpha} over {time} seconds
+
+
 // A script that controls the alpha (transparency) of a CanvasGroup, and
 // can animate a fade in and fade out.
 [RequireComponent(typeof(CanvasGroup))]

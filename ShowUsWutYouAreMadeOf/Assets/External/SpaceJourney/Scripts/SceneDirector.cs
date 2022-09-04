@@ -15,9 +15,14 @@ public class SceneDirector : MonoBehaviour {
         dialogueRunner = FindObjectOfType<Yarn.Unity.DialogueRunner>();
         fadeLayer = FindObjectOfType<FadeLayer>();
 
-        // <<camera NAME_OF_LOCATION>>
+        //register the yarn commands
+        //<<camera NAME_OF_LOCATION>>
+        dialogueRunner.AddCommandHandler<Location>("camera", MoveCamera);
 
-        // <<fadeIn DURATION>> and <<fadeOut DURATION>>
+        //<< fadeIn DURATION>> and <<fadeOut DURATION>>
+        dialogueRunner.AddCommandHandler<float>("fadeIn", FadeIn);
+        dialogueRunner.AddCommandHandler<float>("fadeOut", FadeOut);
+
         Debug.Log("SceneConductor created.");
     }
 
@@ -27,19 +32,16 @@ public class SceneDirector : MonoBehaviour {
         if (destination != null) {
             Camera.main.transform.position = destination.position;
             Camera.main.transform.rotation = destination.rotation;
-            Debug.Log($"Main Camera moved to {location.name}>Camera.");
         }
     }
 
     // fades in from a black screen over {time} seconds
     private Coroutine FadeIn(float time = 1f) {
-        Debug.Log($"Fading in from black over {time} seconds.");
         return StartCoroutine(fadeLayer.ChangeAlphaOverTime(0, time));
     }
 
     // fades out to a black screen over {time} seconds
     private Coroutine FadeOut(float time = 1f) {
-        Debug.Log($"Fading out to black over {time} seconds.");
         return StartCoroutine(fadeLayer.ChangeAlphaOverTime(1, time));
     }
 }

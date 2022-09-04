@@ -1,5 +1,10 @@
 ﻿title: Start
 ---
+<<camera Title>>
+<<fadeOut 2>>
+<<camera Corridor>>
+<<fadeIn .5f>>
+
 Player: Another day in Space Fleet. Might go have a chat...
 // pick a person to speak to
 -> Go see the Engineer as per orders
@@ -11,16 +16,25 @@ Player: Another day in Space Fleet. Might go have a chat...
 ===
 title: TalkToEngineer
 ---
+<<fadeOut>>
+<<place Engineer Corridor Left>>
+<<fadeIn>>
 Engineer: Hello! I am the Engineer.
 <<jump BridgeEnding>>
 ===
 title: TalkToCrewmate
 ---
+<<fadeOut>>
+<<place Crewmate Corridor Center>>
+<<fadeIn>>
 Crewmate: Hello! I am your Crewmate.
 <<jump BridgeEnding>>
 ===
 title: TalkToCaptain
 ---
+<<fadeOut>>
+<<place Captain Corridor Right>>
+<<fadeIn>>
 Captain: Hello! I am the Captain.
 Player: I want to talk to go on more missions.
 Captain: Do you think you are ready?
@@ -37,6 +51,15 @@ Captain: Do you think you are ready?
 ===
 title: BridgeEnding
 ---
+<<fadeOut>>
+<<camera Bridge>>
+<<place Engineer Bridge Left>>
+<<place Crewmate Bridge Center>>
+<<place Captain Bridge Right>>
+
+<<pose Engineer hands-on-hips>>
+<<pose Captain hand-at-mouth>>
+<<fadeIn>>
 // everyone reports to the bridge
 Captain: Pirates!
 Player: Oh no!

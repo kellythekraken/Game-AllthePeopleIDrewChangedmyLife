@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
+// this file is attached to every Character in the scene and so will affect only
+// the targeted Character when functions are called
+
 public class Character : MonoBehaviour {
     [System.Serializable] // map of textures for facial expressions
     public class Expression {
@@ -31,6 +34,7 @@ public class Character : MonoBehaviour {
     }
 
     // moves character to location {location}>{markerName} in the scene
+    [YarnCommand("place")]
     public void Move(Location location, string markerName) {
         Transform destination = location.GetMarkerWithName(markerName);
         if (destination != null) {
@@ -41,12 +45,14 @@ public class Character : MonoBehaviour {
     }
 
     // tells the animator to jump to state {poseName} 
+    [YarnCommand("pose")]
     public void SetPose(string poseName) {
         animator.Play("Base Layer." + poseName, 0);
         Debug.Log($"{name} adopting {poseName} pose.");
     }
 
     // sets character expression texture to {expressionName} texture
+    [YarnCommand("expression")]
     public void SetExpression(string expressionName){
         // find the expression with the same name as we are looking for
         Expression expressionToUse = FindExpressionWithName(expressionName);
