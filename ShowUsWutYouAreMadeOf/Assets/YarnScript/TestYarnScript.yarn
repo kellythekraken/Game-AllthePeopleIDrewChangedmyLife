@@ -1,18 +1,18 @@
 ﻿title: Start
 ---
-<<set $spokenToLily to false>>
+<<set $LilyIntroduced to false>>
 Hello!
 ===
 title: Haircut
 ---
 //change camera angle
 
-<<if !$spokenToLily>>
+<<if !$LilyIntroduced>>
     Lily: Hello handsome! What's up?
     Lily: You are an artist? Cool.
     Lily: Sketch me!
     //open sketchbook
-    <<set $spokenToLily to true>>
+    <<set $LilyIntroduced to true>>
 <<else>>
     Lily: Hey again, little artist, anything new?
 <<endif>>

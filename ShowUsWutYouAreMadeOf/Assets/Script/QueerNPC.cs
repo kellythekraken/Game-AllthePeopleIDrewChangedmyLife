@@ -13,11 +13,15 @@ public class QueerNPC : MonoBehaviour
     private bool isCurrentConversation = false;
     private float defaultIndicatorIntensity;
 
+    DialogueRange range;
+
     public void Start()
     {
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         lightIndicatorObject = GetComponentInChildren<Light>();
+        range = GetComponentInChildren<DialogueRange>();
+
         // get starter intensity of light then
         // if we're using it as an indicator => hide it 
         if (lightIndicatorObject != null)
@@ -29,11 +33,13 @@ public class QueerNPC : MonoBehaviour
 
     public void OnMouseDown()
     {
-        //player should be in the zone
+        Debug.Log("mouse down!");
+        StartConversation();
 
-        if (interactable && !dialogueRunner.IsDialogueRunning)
+        //player should be in the zone
+        //interactable && !dialogueRunner.IsDialogueRunning && 
+        if (range.PlayerInRange())
         {
-            StartConversation();
         }
     }
 
@@ -61,7 +67,7 @@ public class QueerNPC : MonoBehaviour
         }
     }
 
-    [YarnCommand("disable")]
+    //[YarnCommand("disable")]
     public void DisableConversation()
     {
         interactable = false;
