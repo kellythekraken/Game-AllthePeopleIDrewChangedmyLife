@@ -1,11 +1,19 @@
 ﻿title: Start
 ---
-Wow!
-My first ever Yarn script in Unity!
+<<set $spokenToLily to false>>
+Hello!
+===
+title: Haircut
+---
+//change camera angle
 
--> Gosh!
--> Incredible!
--> I'm amazed!
-
-Anyway, time to get writing!
+<<if !$spokenToLily>>
+    Lily: Hello handsome! What's up?
+    Lily: You are an artist? Cool.
+    Lily: Sketch me!
+    //open sketchbook
+    <<set $spokenToLily to true>>
+<<else>>
+    Lily: Hey again, little artist, anything new?
+<<endif>>
 ===
