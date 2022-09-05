@@ -6,6 +6,7 @@ Hello!
 title: Haircut
 ---
 //change camera angle
+<<camera LilyCam>>
 
 <<if !$LilyIntroduced>>
     Lily: Hello handsome! What's up?
@@ -16,4 +17,6 @@ title: Haircut
 <<else>>
     Lily: Hey again, little artist, anything new?
 <<endif>>
+
+<<camera PlayerCam>>
 ===

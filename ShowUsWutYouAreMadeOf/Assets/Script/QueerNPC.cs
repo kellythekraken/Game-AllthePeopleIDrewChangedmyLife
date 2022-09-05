@@ -38,9 +38,9 @@ public class QueerNPC : MonoBehaviour
 
         //player should be in the zone
         //interactable && !dialogueRunner.IsDialogueRunning && 
-        if (range.PlayerInRange())
+/*        if (range.PlayerInRange())
         {
-        }
+        }*/
     }
 
     private void StartConversation()
@@ -63,7 +63,6 @@ public class QueerNPC : MonoBehaviour
                 lightIndicatorObject.intensity = 0;
             }
             isCurrentConversation = false;
-            Debug.Log($"Started conversation with {name}.");
         }
     }
 

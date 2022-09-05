@@ -1,18 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class CameraDirector : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private DialogueRunner dialogueRunner;
+    private Animator _animator;
+
+    private void Awake()
     {
-        
+        dialogueRunner = FindObjectOfType<DialogueRunner>();
+
+        dialogueRunner.AddCommandHandler<string>("camera", SwitchCamera);
+    }
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SwitchCamera(string animName)
     {
-        
+        Debug.Log("switch cam to " + animName);
+        _animator.Play(animName);
     }
 }

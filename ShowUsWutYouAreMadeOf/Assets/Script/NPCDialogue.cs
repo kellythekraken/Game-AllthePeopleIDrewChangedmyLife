@@ -25,13 +25,13 @@ public class NPCDialogue : MonoBehaviour
     protected bool _available = true;
     protected WaitForSeconds _transitionTimeWFS;
 
-    DialogueManager dManager;
+    ////DialogueManager dManager;
     BoxCollider _collider;
     bool inDialogueRange = false;
 
     private void OnEnable()
     {
-        dManager = FindObjectOfType<DialogueManager>();
+        //dManager = FindObjectOfType<DialogueManager>();
         _currentIndex = 0;
         _transitionTimeWFS = new WaitForSeconds(TransitionTime);
 
@@ -75,11 +75,11 @@ public class NPCDialogue : MonoBehaviour
         if (!_talking)
         {
             //_dialogueBox = Instantiate(DialogueBoxPrefab);
-            dManager.DisplayDialogue(true);
+            //dManager.DisplayDialogue(true);
             _talking = true;
         }
         // we start the next dialogue
-        dManager.ChangeDialogueName(npcName, nameTag);
+        //dManager.ChangeDialogueName(npcName, nameTag);
         StartCoroutine(PlayNextDialogue());
     }
 
@@ -96,7 +96,7 @@ public class NPCDialogue : MonoBehaviour
             _talking = false;
             yield break;
         }
-        dManager.ChangeDialogueText(Dialogues[_currentIndex].DialogueLine);
+        //dManager.ChangeDialogueText(Dialogues[_currentIndex].DialogueLine);
 
         _currentIndex++;
     }
