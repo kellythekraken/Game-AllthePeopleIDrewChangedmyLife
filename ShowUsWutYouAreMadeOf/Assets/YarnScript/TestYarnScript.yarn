@@ -1,6 +1,9 @@
 ﻿title: Start
 ---
 <<set $LilyIntroduced to false>>
+<<set $LilySketched to false>>
+<<set $Stroke to 0>>
+
 Hello!
 ===
 title: Haircut
@@ -12,11 +15,40 @@ title: Haircut
     Lily: Hello handsome! What's up?
     Lily: You are an artist? Cool.
     Lily: Sketch me!
-    //open sketchbook
     <<set $LilyIntroduced to true>>
+    <<sketch true>>
+    <<jump LilySketch>>
+<<elseif !$LilySketched>>
+    <<jump LilySketch>>
 <<else>>
     Lily: Hey again, little artist, anything new?
+    <<camera PlayerCam>>
 <<endif>>
 
+===
+
+title: LilySketch
+---
+<<if $Stroke == 0>>
+    Lily: Introduction before you sketch.
+<<elseif $Stroke == 1>>
+    Lily: Blabla
+<<elseif $Stroke == 2>>
+    Lily: Blablabla
+<<elseif $Stroke == 3>>
+    Lily: Blablablabla
+<<else>>
+    <<jump LilySketchFin>>
+<<endif>>
+<<set $Stroke +=1>>
+===
+
+title: LilySketchFin
+---
+<<sketch false>>
 <<camera PlayerCam>>
+Lily: Thank you! Here is my gift for you.
+
+<<gift Lily "a very cool haircut">>
+<<set $LilySketched to true>>
 ===
