@@ -38,6 +38,8 @@ public class WardrobeButton : MonoBehaviour
 
     public void ReiceivedItem(string text)
     {
+        //here goes the logic for loading item images?
+
         DisplayWindow(true);
         popupWindow.GetComponentInChildren<TextMeshProUGUI>().text = text;
         newIndicator.enabled = true;
