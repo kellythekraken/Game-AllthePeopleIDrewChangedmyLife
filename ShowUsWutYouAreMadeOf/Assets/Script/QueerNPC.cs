@@ -33,7 +33,6 @@ public class QueerNPC : MonoBehaviour
 
     public void OnMouseDown()
     {
-        Debug.Log("mouse down!");
         StartConversation();
 
         //player should be in the zone
