@@ -8,6 +8,9 @@ public class WardrobeButton : MonoBehaviour
     public Button closeBtn;
     public Image newIndicator;
     Button openBtn, closePopup;
+    
+    TextMeshProUGUI itemText;
+    Image itemIcon;
 
     bool newItem = false;
     private void Start()
@@ -17,6 +20,8 @@ public class WardrobeButton : MonoBehaviour
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
         closePopup = popupWindow.GetComponentInChildren<Button>();
+        itemText = popupWindow.GetComponentInChildren<TextMeshProUGUI>();
+        itemIcon = popupWindow.transform.Find("Icon").GetComponent<Image>();
 
         openBtn.onClick.AddListener(() => OpenCloseWardrobe(true));
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe(false));
@@ -28,7 +33,6 @@ public class WardrobeButton : MonoBehaviour
     void OpenCloseWardrobe(bool open)
     {
         wardrobeUI.SetActive(open);
-        Debug.Log("set wardrobe" + open);
         if(open && newItem)
         {
             newItem = false;
@@ -36,12 +40,14 @@ public class WardrobeButton : MonoBehaviour
         }
     }
 
-    public void ReiceivedItem(string text)
+    public void DisplayReceivedItem(string text, Sprite image)
     {
         //here goes the logic for loading item images?
 
         DisplayWindow(true);
-        popupWindow.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        itemText.text = text;
+        itemIcon.sprite = image;
+
         newIndicator.enabled = true;
         newItem = true;
     }

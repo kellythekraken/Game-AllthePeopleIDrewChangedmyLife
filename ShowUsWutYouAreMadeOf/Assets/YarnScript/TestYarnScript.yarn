@@ -46,6 +46,6 @@ title: LilySketchFin
 <<sketch false>>
 <<camera PlayerCam>>
 Lily: Thank you! Here is my gift for you.
-<<gift Lily>>
+<<gift>>
 <<set $LilySketched to true>>
 ===

@@ -76,15 +76,6 @@ public class QueerNPC : MonoBehaviour
         interactable = false;
     }
 
-    [YarnCommand("gift")]
-    public void GiveItem()
-    {
-        //loop through all items gifted
-        string text = string.Format("You received {1} from {0}!", queerID.npcName);//queerID.itemName
-        Debug.Log(text);
-        GameManager.Instance.ReceivedNewItem(text);
-    }
-
     [YarnCommand("enter")]
     public void OnStage()
     {

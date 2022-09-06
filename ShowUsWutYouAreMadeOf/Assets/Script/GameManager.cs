@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
         dialogueUI.SetActive(true);
         dialogueRunner = dialogueUI.GetComponent<DialogueRunner>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
+        dialogueRunner.AddCommandHandler("gift", GiveItem);
+
     }
     private void Start()
     {
@@ -44,9 +46,23 @@ public class GameManager : MonoBehaviour
     }
 
     //should be called from the queer npc, to access item name and image
-    public void ReceivedNewItem(string text)
+    public void GiveItem()
     {
-        wardrobeBtn.ReiceivedItem(text);
+        var queer = sketchSubject.queerID;
+        string text = string.Format("You received {0} from {1}!", queer.items[0].name, queer.npcName);
+        Sprite image = queer.items[0].icon;
+        Debug.Log(text);
+        wardrobeBtn.DisplayReceivedItem(text, image);
+
+        //for multiple items
+/*        for (int i =0 ; i < queer.items.Length ; i++)
+        {
+            string text = string.Format("You received {0} from {1}!", queer.items[i].name, queer.npcName);
+            Sprite image = queer.items[i].icon;
+            Debug.Log(text);
+            wardrobeBtn.DisplayReceivedItem(text,image);
+        }*/
+
     }
 
 }

@@ -76,7 +76,6 @@ public class SketchingSystem : MonoBehaviour
     }
     private void Sketch()
     {
-        Debug.Log(chosenArea);
         if (chosenArea == null || chosenColor == null)
         {
             Debug.Log("Should choose both choices before clicking sketchbook!");

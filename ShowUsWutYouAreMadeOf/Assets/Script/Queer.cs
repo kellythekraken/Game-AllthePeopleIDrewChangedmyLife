@@ -6,7 +6,6 @@ using UnityEngine;
 public class DrawableAreas
 {
     public string label;
-    public int repetition;
     public Sprite[] targetDrawings;
 }
 
@@ -24,11 +23,11 @@ public enum ItemTag { Accessories, Outfit, Face, Hair}
 public class Queer : ScriptableObject   
 {
     public string npcName;
+    public string[] pronouns;
 
     //3d wearable item
 
     public GiftItem[] items;
     public DrawableAreas[] drawableAreas;
     public int dialogueLength; //number of strokes before conversation end
-
 }
