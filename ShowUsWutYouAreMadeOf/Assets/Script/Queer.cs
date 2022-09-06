@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class DrawableAreas
+public class DrawableArea
 {
     public string label;
-    public Sprite[] targetDrawings;
+    public List<Sprite> targetDrawings;
 }
 
 [System.Serializable]
@@ -28,6 +28,6 @@ public class Queer : ScriptableObject
     //3d wearable item
 
     public GiftItem[] items;
-    public DrawableAreas[] drawableAreas;
+    public DrawableArea[] drawableAreas;
     public int dialogueLength; //number of strokes before conversation end
 }

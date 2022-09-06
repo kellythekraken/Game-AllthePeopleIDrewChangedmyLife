@@ -5,16 +5,6 @@ using UnityEngine.UI;
 using System.Linq;
 public class SketchingSystem : MonoBehaviour
 {
-    //sketch: combine area of focus + color + click the sketchbook? test this idea out.
-
-    //make the characters into scriptable obj? include info of their drawable area, art, and help with the spawn randomization
-
-    //first try clicking the area of focus and image appear on sketchbook accordingly.
-
-    //the focus will be generated for each individual?
-
-    //do you continually click the same area until it's done? or it auto complete everything of that one area?
-
     //what if, say it's pencil layer, each detail layer is colored in the chosen color. but you only have limited choices
     //e.g. 4 strokes before it's done. then you end up with different sketches.
 
@@ -26,11 +16,11 @@ public class SketchingSystem : MonoBehaviour
     [SerializeField] private Image drawPrefab;
 
     //load the choices, color remain the same
-    List<DrawableAreas> areaChoices;
+    List<DrawableArea> areaChoices;
     List<Button> colorChoices;
     List<Image> drawings;
 
-    DrawableAreas chosenArea;
+    DrawableArea chosenArea;
     Button chosenColor;
     Transform areaButtonParent, drawingParent;
 
@@ -46,6 +36,7 @@ public class SketchingSystem : MonoBehaviour
     {
         ClearChild(drawingParent);
         ClearChild(areaButtonParent);
+        chosenArea = null; chosenColor = null;
     }
 
     void InitList()
@@ -64,25 +55,26 @@ public class SketchingSystem : MonoBehaviour
     }
 
     //the chosen one should have a visual indication that they're being selected
-    private void RegisterAreaChoice(DrawableAreas areaInfo) => chosenArea = areaInfo; 
+    private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
     private void RegisterColorChoice(Button btn) => chosenColor = btn;
 
     public void PrepareToSketch(Queer queer)
     {
-        areaChoices = new List<DrawableAreas>();
+        areaChoices = new List<DrawableArea>();
 
         areaChoices = queer.drawableAreas.ToList();
 
-        foreach (var i in areaChoices)
+        for(int i=0; i < areaChoices.Count(); i++)
         {
-            if (i.targetDrawings.Count() < 1)
+            DrawableArea choice = areaChoices[i];
+            if (choice.targetDrawings.Count() < 1)
             {
-                areaChoices.Remove(i);
+                areaChoices.Remove(choice);
                 continue;
             }
             Button btn = Instantiate(areaBtnPrefab, areaButtonParent);
-            btn.name = i.label;
-            btn.onClick.AddListener(() => RegisterAreaChoice(i));
+            btn.name = choice.label;
+            btn.onClick.AddListener(() => RegisterAreaChoice(choice));
         }
     }
 
@@ -100,7 +92,7 @@ public class SketchingSystem : MonoBehaviour
 
     void MakeADrawing()
     {
-        Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
+        //Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
 
         var stroke = Instantiate(drawPrefab, drawingParent);
 
@@ -108,9 +100,15 @@ public class SketchingSystem : MonoBehaviour
         Sprite drawing = chosenArea.targetDrawings[0];
         stroke.sprite = drawing;
 
-        //remove the button from the list if exhaust the repetition
+        chosenArea.targetDrawings.Remove(drawing);
+        Debug.Log("drawn with " + chosenArea.label + " | remaining drawings: " + chosenArea.targetDrawings.Count);
+        if (chosenArea.targetDrawings.Count < 1)
+        {
+            areaChoices.Remove(chosenArea);
 
-        // chosenArea.gameObject.SetActive(false);
+            GameObject btn = areaButtonParent.Find(chosenArea.label).gameObject;
+            if (btn != null) Destroy(btn);
+        }
 
         //advance the conversation
         GameManager.Instance.ContinueSketchChat();
