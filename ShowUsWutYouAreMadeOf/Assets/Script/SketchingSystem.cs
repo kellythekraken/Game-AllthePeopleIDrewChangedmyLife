@@ -60,6 +60,10 @@ public class SketchingSystem : MonoBehaviour
     private void RegisterAreaChoice(Button btn) => chosenArea = btn;
     private void RegisterColorChoice(Button btn) => chosenColor = btn;
 
+    public void PrepareToSketch(Queer queer)
+    {
+
+    }
     void InstantiateDrawableAreas()
     {
         //take the scriptable obj and instantiate buttons 
@@ -89,7 +93,6 @@ public class SketchingSystem : MonoBehaviour
         Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
         Image targetDrawing = drawings.Find(x => x.name == chosenArea.name);
         targetDrawing.enabled = true;
-
         //advance the conversation
     }
 }

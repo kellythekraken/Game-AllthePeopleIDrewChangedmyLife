@@ -73,7 +73,8 @@ public class QueerNPC : MonoBehaviour
     [YarnCommand("gift")]
     public void GiveItem()
     {
-        string text = string.Format("You received {1} from {0}!", queerID.npcName, queerID.itemName);
+        //loop through all items gifted
+        string text = string.Format("You received {1} from {0}!", queerID.npcName);//queerID.itemName
         Debug.Log(text);
         GameManager.Instance.ReceivedNewItem(text);
     }

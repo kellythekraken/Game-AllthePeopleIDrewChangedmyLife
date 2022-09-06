@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         sketchbookUI.SetActive(open);
         mainUI.SetActive(!open);
+        //find out the person we're sketching, and send the info the sketching system script.
     }
 
     //should be called from the queer npc, to access item name and image

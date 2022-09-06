@@ -13,5 +13,11 @@ MonoBehaviour:
   m_Name: Lily
   m_EditorClassIdentifier: 
   npcName: Lily
-  itemName: a cool haircut
-  itemIcon: {fileID: 21300004, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
+  items:
+  - name: a cool haircut
+    icon: {fileID: 21300004, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
+    tag: 3
+  drawableAreas:
+  - label: 
+  - label: 
+  - label: 
