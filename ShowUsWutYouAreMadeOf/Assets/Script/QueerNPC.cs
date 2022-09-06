@@ -5,7 +5,7 @@ using Yarn.Unity;
 
 public class QueerNPC : MonoBehaviour
 {
-    [SerializeField] private string conversationStartNode;
+    [SerializeField] private Queer queerID;
 
     private DialogueRunner dialogueRunner;
     private Light lightIndicatorObject = null;
@@ -44,13 +44,12 @@ public class QueerNPC : MonoBehaviour
 
     private void StartConversation()
     {
-        Debug.Log($"Started conversation with {name}.");
         isCurrentConversation = true;
         if (lightIndicatorObject != null)
         {
             lightIndicatorObject.intensity = defaultIndicatorIntensity;
         }
-        dialogueRunner.StartDialogue(conversationStartNode);
+        dialogueRunner.StartDialogue(queerID.npcName + "Start");
     }
 
     private void EndConversation()

@@ -21,11 +21,12 @@ public class SketchingSystem : MonoBehaviour
     //what does this do to the gameplay? except making it less boring.
     //would it clash with reading the dialogue?
 
-
     public Button sketchbook;
+    public Button areaBtnPrefab;
 
     //load the choices, color remain the same
     List<Button> areaChoices, colorChoices;
+    List<Image> drawings;
 
     //saved variable
     Button chosenArea, chosenColor;
@@ -42,16 +43,31 @@ public class SketchingSystem : MonoBehaviour
     {
         var colors = transform.Find("PaletteButton").GetComponentsInChildren<Button>();
         var areas = transform.Find("FocusButton").GetComponentsInChildren<Button>();
+        var strokes = transform.Find("Drawings").GetComponentsInChildren<Image>();
+
         colorChoices = new List<Button>();
         areaChoices = new List<Button>();
+        drawings = new List<Image>();
+
         foreach (Button i in colors) { colorChoices.Add(i); i.onClick.AddListener(()=>RegisterColorChoice(i)); }
         foreach (Button i in areas) { areaChoices.Add(i); i.onClick.AddListener(()=>RegisterAreaChoice(i)); }
+        foreach (Image i in strokes) { drawings.Add(i); i.enabled = false; }
+
         Debug.Log("color size " + colorChoices.Count + " | area size: " + areaChoices.Count);
     }
 
+    //the chosen one should have a visual indication that they're being selected
     private void RegisterAreaChoice(Button btn) => chosenArea = btn;
     private void RegisterColorChoice(Button btn) => chosenColor = btn;
 
+    void InstantiateDrawableAreas()
+    {
+        //take the scriptable obj and instantiate buttons 
+        foreach(Button i in areaChoices)
+        {
+           Button btn = Instantiate(areaBtnPrefab);
+        }
+    }
 
     private void Sketch()
     {
@@ -60,10 +76,20 @@ public class SketchingSystem : MonoBehaviour
             Debug.Log("Should choose both choices before clicking sketchbook!");
             return;
         }
-        Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
+        MakeADrawing();
+
+        chosenArea.gameObject.SetActive(false);
+        areaChoices.Remove(chosenArea);
+
         chosenArea = chosenColor = null;
-        //chosenArea.gameObject.SetActive(false);
     }
 
+    void MakeADrawing()
+    {
+        Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
+        Image targetDrawing = drawings.Find(x => x.name == chosenArea.name);
+        targetDrawing.enabled = true;
 
+        //advance the conversation
+    }
 }

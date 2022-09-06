@@ -147,8 +147,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11079703}
-  m_LocalRotation: {x: 0.2599566, y: 0.000000071850344, z: -0.000000019342975, w: 0.96562034}
-  m_LocalPosition: {x: 0, y: 0.12034607, z: 0.4046898}
+  m_LocalRotation: {x: 0.23709856, y: 0.000000088503285, z: -0.00000002159991, w: 0.9714856}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337698961}
@@ -1927,7 +1927,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334250529}
-  m_LocalRotation: {x: 0.20165293, y: 0.00000007742264, z: -0.000000015939957, w: 0.9794571}
+  m_LocalRotation: {x: 0.20165291, y: 0.00000008080302, z: -0.000000016635918, w: 0.9794571}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2776,6 +2776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sketchbook: {fileID: 414514209}
+  areaBtnPrefab: {fileID: 0}
 --- !u!1 &574898222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4798,7 +4799,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188810223}
   m_Layer: 5
-  m_Name: Drawing
+  m_Name: Drawings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4821,10 +4822,10 @@ RectTransform:
   m_Father: {fileID: 542770385}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1215636307
 GameObject:
@@ -5911,7 +5912,7 @@ GameObject:
   - component: {fileID: 1382399315}
   - component: {fileID: 1382399314}
   m_Layer: 5
-  m_Name: Image2
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5933,7 +5934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -34, y: 95}
+  m_AnchoredPosition: {x: 209, y: 113.999954}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382399314
@@ -6469,7 +6470,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527161740}
-  m_LocalRotation: {x: 0.21938853, y: 0.000000098911094, z: -0.000000022241824, w: 0.9756376}
+  m_LocalRotation: {x: 0.21938853, y: 0.00000010422861, z: -0.000000023437558, w: 0.9756376}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7112,7 +7113,7 @@ GameObject:
   - component: {fileID: 1791237425}
   - component: {fileID: 1791237424}
   m_Layer: 5
-  m_Name: Image3
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7134,7 +7135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 447, y: 83}
+  m_AnchoredPosition: {x: 206, y: -119.000046}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791237424
@@ -7230,6 +7231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationStartNode: Bartender
+  queerID: {fileID: 0}
 --- !u!114 &1851129616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8229,6 +8231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conversationStartNode: Haircut
+  queerID: {fileID: 11400000, guid: 6827b6f996ad22a4abb3582ddda39cab, type: 2}
 --- !u!1 &1978939389
 GameObject:
   m_ObjectHideFlags: 0
@@ -8241,7 +8244,7 @@ GameObject:
   - component: {fileID: 1978939392}
   - component: {fileID: 1978939391}
   m_Layer: 5
-  m_Name: Image1
+  m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8263,7 +8266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209, y: 333}
+  m_AnchoredPosition: {x: 209, y: 352}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978939391
@@ -9374,7 +9377,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: 0.21938856, y: 0.00000011490946, z: -0.00000002583933, w: 0.97563756}
+  m_LocalRotation: {x: 0.21938856, y: 0.00000011802523, z: -0.000000026539965, w: 0.97563756}
   m_LocalPosition: {x: -3.7200012, y: -0.2800002, z: -21.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12797,7 +12800,7 @@ GameObject:
   - component: {fileID: 5255488597003691829}
   - component: {fileID: 1976010201}
   m_Layer: 0
-  m_Name: Haircut Char
+  m_Name: Lily
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

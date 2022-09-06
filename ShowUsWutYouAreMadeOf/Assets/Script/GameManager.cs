@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         mainUI.SetActive(!open);
     }
 
+    //should be called from the queer npc, to access item name and image
     public void ReceivedNewItem(string name, string item)
     {
         string text = string.Format("You received {1} from {0}!", name, item);
