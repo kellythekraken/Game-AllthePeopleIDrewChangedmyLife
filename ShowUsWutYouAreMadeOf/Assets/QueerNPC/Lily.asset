@@ -31,6 +31,4 @@ MonoBehaviour:
   - label: Body
     targetDrawings:
     - {fileID: 21300006, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
-  - label: Body
-    targetDrawings: []
   dialogueLength: 0

@@ -35,7 +35,8 @@ title: LilySketch
     Lily: Blablabla
 <<elseif $Stroke == 3>>
     Lily: Blablablabla
-<<else>>
+<<elseif $Stroke == 4>>
+    Lily: Blablablabla
     <<jump LilySketchFin>>
 <<endif>>
 <<set $Stroke +=1>>
