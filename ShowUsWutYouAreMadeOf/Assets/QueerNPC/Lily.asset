@@ -18,6 +18,13 @@ MonoBehaviour:
     icon: {fileID: 21300004, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
     tag: 3
   drawableAreas:
-  - label: 
-  - label: 
-  - label: 
+  - label: Hair
+    repetition: 0
+    targetDrawings: []
+  - label: Head
+    repetition: 0
+    targetDrawings: []
+  - label: Body
+    repetition: 0
+    targetDrawings: []
+  dialogueLength: 0

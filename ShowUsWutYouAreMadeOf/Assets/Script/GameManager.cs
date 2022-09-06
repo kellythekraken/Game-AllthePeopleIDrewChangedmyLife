@@ -10,10 +10,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject mainUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
 
+    private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
 
-    public QueerNPC conversationTarget;
+    internal QueerNPC sketchSubject;
 
     private void Awake()
     {
@@ -26,19 +27,20 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
-
+        sketchManager = FindObjectOfType<SketchingSystem>();
         OpenCloseSketchbook(false);
     }
 
     public void ContinueSketchChat()
     {
-        conversationTarget.ContinueConversation();
+        sketchSubject.ContinueConversation();
     }
     public void OpenCloseSketchbook(bool open)
     {
         sketchbookUI.SetActive(open);
         mainUI.SetActive(!open);
-        //find out the person we're sketching, and send the info the sketching system script.
+
+        if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
     }
 
     //should be called from the queer npc, to access item name and image

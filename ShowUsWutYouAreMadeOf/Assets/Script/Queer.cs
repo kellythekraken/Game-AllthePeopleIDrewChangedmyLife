@@ -6,6 +6,8 @@ using UnityEngine;
 public class DrawableAreas
 {
     public string label;
+    public int repetition;
+    public Sprite[] targetDrawings;
 }
 
 [System.Serializable]

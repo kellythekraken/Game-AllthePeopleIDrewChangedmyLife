@@ -5,7 +5,7 @@ using Yarn.Unity;
 
 public class QueerNPC : MonoBehaviour
 {
-    [SerializeField] private Queer queerID;
+    public Queer queerID;
 
     private DialogueRunner dialogueRunner;
     private Light lightIndicatorObject = null;
@@ -13,7 +13,7 @@ public class QueerNPC : MonoBehaviour
     private bool isCurrentConversation = false;
     private float defaultIndicatorIntensity;
 
-    DialogueRange range;
+    private DialogueRange range;
 
     public void Start()
     {
@@ -45,7 +45,7 @@ public class QueerNPC : MonoBehaviour
     private void StartConversation()
     {
         isCurrentConversation = true;
-        GameManager.Instance.conversationTarget = this;
+        GameManager.Instance.sketchSubject = this;
 
         if (lightIndicatorObject != null)
         {

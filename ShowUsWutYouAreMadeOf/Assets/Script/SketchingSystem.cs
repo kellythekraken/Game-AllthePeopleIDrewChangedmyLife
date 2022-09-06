@@ -28,8 +28,8 @@ public class SketchingSystem : MonoBehaviour
     List<Button> areaChoices, colorChoices;
     List<Image> drawings;
 
-    //saved variable
     Button chosenArea, chosenColor;
+    Transform areaButtonParent;
 
     private void Start()
     {
@@ -38,11 +38,10 @@ public class SketchingSystem : MonoBehaviour
         sketchbook.onClick.AddListener(Sketch);
         chosenArea = chosenColor = null;
     }
-
+    
     void InitList()
     {
-        var colors = transform.Find("PaletteButton").GetComponentsInChildren<Button>();
-        var areas = transform.Find("FocusButton").GetComponentsInChildren<Button>();
+        var colors = transform.Find("PaletteButtons").GetComponentsInChildren<Button>();
         var strokes = transform.Find("Drawings").GetComponentsInChildren<Image>();
 
         colorChoices = new List<Button>();
@@ -50,31 +49,34 @@ public class SketchingSystem : MonoBehaviour
         drawings = new List<Image>();
 
         foreach (Button i in colors) { colorChoices.Add(i); i.onClick.AddListener(()=>RegisterColorChoice(i)); }
-        foreach (Button i in areas) { areaChoices.Add(i); i.onClick.AddListener(()=>RegisterAreaChoice(i)); }
         foreach (Image i in strokes) { drawings.Add(i); i.enabled = false; }
 
         Debug.Log("color size " + colorChoices.Count + " | area size: " + areaChoices.Count);
+
+        areaButtonParent = transform.Find("FocusButtons");
     }
 
     //the chosen one should have a visual indication that they're being selected
-    private void RegisterAreaChoice(Button btn) => chosenArea = btn;
+    private void RegisterAreaChoice(Button btn) => chosenArea = btn; 
     private void RegisterColorChoice(Button btn) => chosenColor = btn;
 
     public void PrepareToSketch(Queer queer)
     {
-
-    }
-    void InstantiateDrawableAreas()
-    {
         //take the scriptable obj and instantiate buttons 
-        foreach(Button i in areaChoices)
+        foreach (Transform child in areaButtonParent) Destroy(child.gameObject);
+
+        var areaLabels = queer.drawableAreas;
+        foreach (var i in areaLabels)
         {
-           Button btn = Instantiate(areaBtnPrefab);
+            Button btn = Instantiate(areaBtnPrefab, areaButtonParent);
+            btn.name = i.label;
+            areaChoices.Add(btn);
+            btn.onClick.AddListener(() => RegisterAreaChoice(btn));
         }
     }
-
     private void Sketch()
     {
+        Debug.Log(chosenArea);
         if (chosenArea == null || chosenColor == null)
         {
             Debug.Log("Should choose both choices before clicking sketchbook!");
