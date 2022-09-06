@@ -10,7 +10,6 @@ title: LilyStart
 ---
 //change camera angle
 <<camera LilyCam>>
-
 <<if !$LilyIntroduced>>
     Lily: Hello handsome! What's up?
     Lily: You are an artist? Cool.
@@ -21,7 +20,8 @@ title: LilyStart
 <<elseif !$LilySketched>>
     <<jump LilySketch>>
 <<else>>
-    Lily: Hey again, little artist, anything new?
+    Lily: Hey again, little artist, I'm about to leave.
+    <<leave Lily>>
     <<camera PlayerCam>>
 <<endif>>
 
@@ -48,7 +48,6 @@ title: LilySketchFin
 <<sketch false>>
 <<camera PlayerCam>>
 Lily: Thank you! Here is my gift for you.
-
-<<gift Lily "a very cool haircut">>
+<<gift Lily>>
 <<set $LilySketched to true>>
 ===

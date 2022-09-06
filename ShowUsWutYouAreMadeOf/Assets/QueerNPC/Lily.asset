@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Lily
   itemName: a cool haircut
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300004, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
