@@ -45,6 +45,8 @@ public class QueerNPC : MonoBehaviour
     private void StartConversation()
     {
         isCurrentConversation = true;
+        GameManager.Instance.conversationTarget = this;
+
         if (lightIndicatorObject != null)
         {
             lightIndicatorObject.intensity = defaultIndicatorIntensity;
@@ -52,6 +54,10 @@ public class QueerNPC : MonoBehaviour
         dialogueRunner.StartDialogue(queerID.npcName + "Start");
     }
 
+    public void ContinueConversation()
+    {
+        dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
+    }
     private void EndConversation()
     {
         if (isCurrentConversation)

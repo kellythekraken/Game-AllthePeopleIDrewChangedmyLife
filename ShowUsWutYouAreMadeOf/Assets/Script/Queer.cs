@@ -22,10 +22,11 @@ public enum ItemTag { Accessories, Outfit, Face, Hair}
 public class Queer : ScriptableObject   
 {
     public string npcName;
-    
+
     //3d wearable item
 
     public GiftItem[] items;
     public DrawableAreas[] drawableAreas;
+    public int dialogueLength; //number of strokes before conversation end
 
 }

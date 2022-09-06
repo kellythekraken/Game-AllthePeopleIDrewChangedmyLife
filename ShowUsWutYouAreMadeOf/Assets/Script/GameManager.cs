@@ -8,16 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public GameObject mainUI, wardrobeUI, sketchbookUI, newItemWindow;
+    public GameObject mainUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
 
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
+
+    public QueerNPC conversationTarget;
 
     private void Awake()
     {
         Instance = this;
 
-        dialogueRunner = FindObjectOfType<DialogueRunner>();
+        dialogueUI.SetActive(true);
+        dialogueRunner = dialogueUI.GetComponent<DialogueRunner>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
     }
     private void Start()
@@ -27,6 +30,10 @@ public class GameManager : MonoBehaviour
         OpenCloseSketchbook(false);
     }
 
+    public void ContinueSketchChat()
+    {
+        conversationTarget.ContinueConversation();
+    }
     public void OpenCloseSketchbook(bool open)
     {
         sketchbookUI.SetActive(open);

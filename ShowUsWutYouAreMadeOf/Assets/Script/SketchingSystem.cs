@@ -93,6 +93,8 @@ public class SketchingSystem : MonoBehaviour
         Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
         Image targetDrawing = drawings.Find(x => x.name == chosenArea.name);
         targetDrawing.enabled = true;
+
         //advance the conversation
+        GameManager.Instance.ContinueSketchChat();
     }
 }

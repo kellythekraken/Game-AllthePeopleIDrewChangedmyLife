@@ -17,9 +17,7 @@ title: LilyStart
     <<set $LilyIntroduced to true>>
     <<sketch true>>
     <<jump LilySketch>>
-//<<elseif !$LilySketched>>
-//    <<jump LilySketch>>
-<<else>>
+<<elseif $LilySketched>>
     Lily: Hey again, little artist, I'm about to leave.
     <<leave Lily>>
     <<camera PlayerCam>>
