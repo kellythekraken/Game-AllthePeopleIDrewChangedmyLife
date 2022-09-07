@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
-        sketchManager = FindObjectOfType<SketchingSystem>();
+        sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
         OpenCloseSketchbook(false);
         pronounTag.SetActive(false);
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();

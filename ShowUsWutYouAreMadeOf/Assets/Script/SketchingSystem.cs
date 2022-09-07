@@ -24,20 +24,24 @@ public class SketchingSystem : MonoBehaviour
     Button chosenColor;
     Transform areaButtonParent, drawingParent;
 
-    private void Start()
-    {
-        InitList();
+    List<Sprite> storedSketches;
 
-        sketchbook.onClick.AddListener(Sketch);
-        chosenArea = null; chosenColor = null;
-    }
-
-    void OnDisable()
+    bool initialized = false;
+    private void OnEnable()
     {
+        if(!initialized)
+        {
+            InitList();
+            initialized = true;
+        }
         ClearChild(drawingParent);
         ClearChild(areaButtonParent);
+    }
+    void OnDisable()
+    {
         chosenArea = null; chosenColor = null;
         Destroy(instantiatedCopy);
+        //save the sketch to a storage
     }
 
     Queer instantiatedCopy;
@@ -54,6 +58,9 @@ public class SketchingSystem : MonoBehaviour
 
         areaButtonParent = transform.Find("FocusButtons");
         drawingParent = transform.Find("Drawings");
+
+        sketchbook.onClick.AddListener(Sketch);
+        chosenArea = null; chosenColor = null;
     }
     public void PrepareToSketch(Queer queer)
     {
