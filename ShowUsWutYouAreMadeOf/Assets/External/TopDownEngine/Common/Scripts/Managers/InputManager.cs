@@ -104,7 +104,8 @@ namespace MoreMountains.TopDownEngine
         public Vector2 LastNonNullPrimaryMovement { get; set; }
         /// the secondary movement (usually the right stick on a gamepad), used to aim
         public Vector2 LastNonNullSecondaryMovement { get; set; }
-        /// the camera rotation axis input value
+		/// the camera rotation axis input value
+		/// 
         public float CameraRotationInput { get { return _cameraRotationInput; } }
 
         protected Camera _targetCamera;
@@ -139,7 +140,7 @@ namespace MoreMountains.TopDownEngine
             ControlsModeDetection();
             InitializeButtons();
             InitializeAxis();
-        }
+		}
 
 		/// <summary>
 		/// Turns mobile controls on or off depending on what's been defined in the inspector, and what target device we're on
@@ -452,6 +453,7 @@ namespace MoreMountains.TopDownEngine
                 if (_camera3D)
                 {
                     _cameraAngle = _targetCamera.transform.localEulerAngles.y;
+					Debug.Log(_targetCamera);
                     return MMMaths.RotateVector2(input, -_cameraAngle);
                 }
                 else
