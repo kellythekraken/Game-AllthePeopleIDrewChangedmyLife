@@ -25,6 +25,7 @@ MonoBehaviour:
   - label: Head
     targetDrawings:
     - {fileID: 21300030, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
+    - {fileID: 21300010, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}
   - label: Body
     targetDrawings:
     - {fileID: 21300012, guid: acc0224da40bd614eaa39fa27daa0b19, type: 3}

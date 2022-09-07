@@ -65,7 +65,7 @@ public class WardrobeButton : MonoBehaviour
         newIndicator.enabled = true;
         newItem = true;
         
-        AddItemToWardrobe(gift.tag.ToString());
+        AddItemToWardrobe(gift);
     }
 
     public void DisplayWindow(bool open)
@@ -73,12 +73,13 @@ public class WardrobeButton : MonoBehaviour
         popupWindow.SetActive(open);
     }
 
-    public void AddItemToWardrobe(string giftTag)
+    public void AddItemToWardrobe(GiftItem gift)
     {
-        Debug.Log("Finding place to put " + giftTag);
-        Transform parent = wardrobeSections.Find(x => x.name == giftTag);
+        Transform parent = wardrobeSections.Find(x => x.name == gift.tag.ToString());
         var item = Instantiate(itemPrefab, parent);
         //change text and image
+        item.GetComponent<Image>().sprite = gift.icon;
+        item.name = gift.name;
     }
     void ClearChild(Transform parent)
     {
