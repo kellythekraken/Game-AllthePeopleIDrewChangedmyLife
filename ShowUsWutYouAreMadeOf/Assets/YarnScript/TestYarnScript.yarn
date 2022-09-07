@@ -31,12 +31,13 @@ title: LilySketch
     Lily: Introduction before you sketch.
 <<elseif $Stroke == 1>>
     Lily: Blabla
+    <<pronoun>>
 <<elseif $Stroke == 2>>
     Lily: Blablabla
 <<elseif $Stroke == 3>>
     Lily: Blablablabla
 <<elseif $Stroke == 4>>
-    Lily: Blablablabla
+    Lily: Last line before finish sketching.
     <<jump LilySketchFin>>
 <<endif>>
 <<set $Stroke +=1>>

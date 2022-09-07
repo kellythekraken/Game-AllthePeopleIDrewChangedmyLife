@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public GameObject mainUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
+    [SerializeField] private GameObject pronounTag;
 
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
+    private TextMeshProUGUI pronounText;
 
     internal QueerNPC sketchSubject;
 
@@ -24,13 +27,15 @@ public class GameManager : MonoBehaviour
         dialogueRunner = dialogueUI.GetComponent<DialogueRunner>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         dialogueRunner.AddCommandHandler("gift", GiveItem);
-
+        dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
     }
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
         sketchManager = FindObjectOfType<SketchingSystem>();
         OpenCloseSketchbook(false);
+        pronounTag.SetActive(false);
+        pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void ContinueSketchChat()
@@ -48,11 +53,8 @@ public class GameManager : MonoBehaviour
     //should be called from the queer npc, to access item name and image
     public void GiveItem()
     {
-        var queer = sketchSubject.queerID;
-        string text = string.Format("You received {0} from {1}!", queer.items[0].name, queer.npcName);
-        Sprite image = queer.items[0].icon;
-        Debug.Log(text);
-        wardrobeBtn.DisplayReceivedItem(text, image);
+        Queer queer = sketchSubject.queerID;
+        wardrobeBtn.DisplayReceivedItem(queer.name, queer.items[0]);
 
         //for multiple items
 /*        for (int i =0 ; i < queer.items.Length ; i++)
@@ -62,7 +64,16 @@ public class GameManager : MonoBehaviour
             Debug.Log(text);
             wardrobeBtn.DisplayReceivedItem(text,image);
         }*/
-
     }
 
+    public void ShowPronoun()
+    {
+        pronounTag.SetActive(true);
+        pronounText.text = sketchSubject.queerID.pronouns;
+    }
+
+    public void HidePronoun()
+    {
+        pronounTag.SetActive(false);
+    }
 }

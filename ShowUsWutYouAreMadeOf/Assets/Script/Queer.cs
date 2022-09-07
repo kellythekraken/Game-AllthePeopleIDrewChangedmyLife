@@ -17,13 +17,13 @@ public class GiftItem
     public ItemTag tag;
 }
 
-public enum ItemTag { Accessories, Outfit, Face, Hair}
+public enum ItemTag { Accessories, Outfit, Face, Hair, Shoes}
 
 [CreateAssetMenu(fileName = "Queer")]
 public class Queer : ScriptableObject   
 {
     public string npcName;
-    public string[] pronouns;
+    public string pronouns;
 
     //3d wearable item
 

@@ -75,7 +75,11 @@ public class QueerNPC : MonoBehaviour
     {
         interactable = false;
     }
-
+    
+    public void AddPronoun()
+    {
+    }
+    
     [YarnCommand("enter")]
     public void OnStage()
     {
