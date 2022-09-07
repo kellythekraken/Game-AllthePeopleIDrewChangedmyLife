@@ -77,10 +77,22 @@ public class WardrobeButton : MonoBehaviour
     {
         Transform parent = wardrobeSections.Find(x => x.name == gift.tag.ToString());
         var item = Instantiate(itemPrefab, parent);
-        //change text and image
         item.GetComponent<Image>().sprite = gift.icon;
         item.name = gift.name;
+
+        Button btn = item.GetComponent<Button>();
+        btn.onClick.AddListener(() => WearableItemClicked(gift));
+
+        item.transform.Find("newIndicator").GetComponent<Image>().enabled = true;
     }
+    void WearableItemClicked(GiftItem item)
+    {
+        if (!item.clicked)
+        {
+            item.clicked = true;
+        }
+    }
+
     void ClearChild(Transform parent)
     {
         foreach (Transform child in parent) Destroy(child.gameObject);

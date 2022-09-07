@@ -1,14 +1,31 @@
 ﻿title: Start
 ---
-<<set $LilyIntroduced to false>>
-<<set $LilySketched to false>>
+//GENERAL
 <<set $Stroke to 0>>
 
-Hello!
+//BARTENDER
+<<set $BartenderIntroduced to false>>
+
+//LILY
+<<set $LilyIntroduced to false>>
+<<set $LilySketched to false>>
+
+
+
+===
+title: BartenderLeon
+---
+<<if !$BartenderIntroduced>>
+    Leon: Hey, you look new. 
+    Leon: Welcome! 
+    Leon: People are quite friendly here. 
+    <<set $BartenderIntroduced to true>>
+<<else>>
+    Leon: Want a drink?
+<<endif>>
 ===
 title: LilyStart
 ---
-//change camera angle
 <<camera LilyCam>>
 <<if !$LilyIntroduced>>
     Lily: Hello handsome! What's up?
@@ -22,7 +39,6 @@ title: LilyStart
     <<leave Lily>>
     <<camera PlayerCam>>
 <<endif>>
-
 ===
 
 title: LilySketch

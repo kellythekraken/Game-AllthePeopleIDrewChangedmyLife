@@ -15,6 +15,7 @@ public class GiftItem
     public string name;
     public Sprite icon;
     public ItemTag tag;
+    internal bool clicked;
 }
 
 public enum ItemTag { Accessories, Outfit, Face, Hair, Shoes}
