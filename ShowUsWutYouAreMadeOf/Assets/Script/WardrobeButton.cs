@@ -78,6 +78,7 @@ public class WardrobeButton : MonoBehaviour
         Debug.Log("Finding place to put " + giftTag);
         Transform parent = wardrobeSections.Find(x => x.name == giftTag);
         var item = Instantiate(itemPrefab, parent);
+        //change text and image
     }
     void ClearChild(Transform parent)
     {

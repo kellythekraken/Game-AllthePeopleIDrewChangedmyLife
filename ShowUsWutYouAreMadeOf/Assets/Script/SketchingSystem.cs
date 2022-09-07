@@ -16,7 +16,7 @@ public class SketchingSystem : MonoBehaviour
     [SerializeField] private Image drawPrefab;
 
     //load the choices, color remain the same
-    List<DrawableArea> areaChoices;
+    public List<DrawableArea> areaChoices;
     List<Button> colorChoices;
     List<Image> drawings;
 
@@ -37,8 +37,10 @@ public class SketchingSystem : MonoBehaviour
         ClearChild(drawingParent);
         ClearChild(areaButtonParent);
         chosenArea = null; chosenColor = null;
+        Destroy(instantiatedCopy);
     }
 
+    Queer instantiatedCopy;
     void InitList()
     {
         var colors = transform.Find("PaletteButtons").GetComponentsInChildren<Button>();
@@ -53,18 +55,12 @@ public class SketchingSystem : MonoBehaviour
         areaButtonParent = transform.Find("FocusButtons");
         drawingParent = transform.Find("Drawings");
     }
-
-    //the chosen one should have a visual indication that they're being selected
-    private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
-    private void RegisterColorChoice(Button btn) => chosenColor = btn;
-
     public void PrepareToSketch(Queer queer)
     {
-        areaChoices = new List<DrawableArea>();
+        instantiatedCopy = Instantiate(queer);
+        areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
 
-        areaChoices = queer.drawableAreas.ToList();
-
-        for(int i=0; i < areaChoices.Count(); i++)
+        for (int i=0; i < areaChoices.Count(); i++)
         {
             DrawableArea choice = areaChoices[i];
             if (choice.targetDrawings.Count() < 1)
@@ -77,6 +73,11 @@ public class SketchingSystem : MonoBehaviour
             btn.onClick.AddListener(() => RegisterAreaChoice(choice));
         }
     }
+
+    //the chosen one should have a visual indication that they're being selected
+    private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
+    private void RegisterColorChoice(Button btn) => chosenColor = btn;
+
 
     private void Sketch()
     {
@@ -101,6 +102,7 @@ public class SketchingSystem : MonoBehaviour
         stroke.sprite = drawing;
 
         chosenArea.targetDrawings.Remove(drawing);
+
         Debug.Log("drawn with " + chosenArea.label + " | remaining drawings: " + chosenArea.targetDrawings.Count);
         if (chosenArea.targetDrawings.Count < 1)
         {
