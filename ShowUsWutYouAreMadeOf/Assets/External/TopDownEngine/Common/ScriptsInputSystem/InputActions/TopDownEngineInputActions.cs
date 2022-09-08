@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/TopDownEngine/Common/ScriptsInputSystem/InputActions/TopDownEngineInputActions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/External/TopDownEngine/Common/ScriptsInputSystem/InputActions/TopDownEngineInputActions.inputactions'
 
 using System;
 using System.Collections;
