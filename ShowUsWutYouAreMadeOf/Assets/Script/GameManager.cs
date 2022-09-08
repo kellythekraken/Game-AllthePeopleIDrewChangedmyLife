@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
         OpenCloseSketchbook(false);
         pronounTag.SetActive(false);
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
+
+        LockCursor(true);
     }
 
     public void ContinueSketchChat()
@@ -76,4 +78,10 @@ public class GameManager : MonoBehaviour
     {
         pronounTag.SetActive(false);
     }
+
+    public void LockCursor(bool lockCursor)
+    {
+        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+    }
+
 }
