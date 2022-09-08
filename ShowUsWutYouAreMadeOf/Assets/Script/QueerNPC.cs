@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.InputSystem;
 
 public class QueerNPC : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class QueerNPC : MonoBehaviour
     private float defaultIndicatorIntensity;
 
     private DialogueRange range;
+
+    InputAction interactBtn;
 
     public void Start()
     {
@@ -29,19 +32,17 @@ public class QueerNPC : MonoBehaviour
             defaultIndicatorIntensity = lightIndicatorObject.intensity;
             lightIndicatorObject.intensity = 0;
         }
+
+        //interactBtn = InputAction()
     }
 
-    public void OnMouseDown()
+    private void Update()
     {
-        StartConversation();
-
-        //player should be in the zone
-        //interactable && !dialogueRunner.IsDialogueRunning && 
-/*        if (range.PlayerInRange())
+        if(Input.GetKey(KeyCode.E))
         {
-        }*/
+            if(range.InRange) StartConversation();
+        }
     }
-
     private void StartConversation()
     {
         isCurrentConversation = true;
@@ -74,10 +75,6 @@ public class QueerNPC : MonoBehaviour
     public void DisableConversation()
     {
         interactable = false;
-    }
-    
-    public void AddPronoun()
-    {
     }
     
     [YarnCommand("enter")]

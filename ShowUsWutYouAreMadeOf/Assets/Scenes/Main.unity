@@ -3549,13 +3549,14 @@ GameObject:
   m_Component:
   - component: {fileID: 598249348}
   - component: {fileID: 598249350}
+  - component: {fileID: 598249349}
   m_Layer: 0
   m_Name: DialogueRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &598249348
 Transform:
   m_ObjectHideFlags: 0
@@ -3570,6 +3571,19 @@ Transform:
   m_Father: {fileID: 5252835231037374880}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &598249349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598249347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd1d45a04cf9a34186f9a8d7afc5e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InRange: 0
 --- !u!135 &598249350
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3578,8 +3592,8 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 598249347}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.6482793
   m_Center: {x: 0, y: 0, z: 0}
