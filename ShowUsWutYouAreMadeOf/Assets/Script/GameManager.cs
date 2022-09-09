@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         switch (mode)
         {
             case CurrentMode.Nothing:
-                LockCursor(true);
+                LockCursor(false);
                 inputManager.EnableInteractBtn(true);
                 inputManager.EnableDialogueBtn(false);
                 return;
@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
                 inputManager.EnableDialogueBtn(true);
                 return;
             case CurrentMode.Sketching:
+                LockCursor(false);
                 inputManager.EnableInteractBtn(false);
                 inputManager.EnableDialogueBtn(true);
                 return;
@@ -93,7 +94,6 @@ public class GameManager : MonoBehaviour
     public void OpenCloseSketchbook(bool open)
     {
         sketchbookUI.SetActive(open);
-        LockCursor(!open);
         mainUI.SetActive(!open);
 
         if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
@@ -127,8 +127,11 @@ public class GameManager : MonoBehaviour
 
     public void LockCursor(bool lockCursor)
     {
-        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !lockCursor;
+        Debug.Log("set cursor to " + lockCursor);
+        Cursor.lockState = CursorLockMode.None;
+
+//        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+//        Cursor.visible = !lockCursor;
     }
 
 }

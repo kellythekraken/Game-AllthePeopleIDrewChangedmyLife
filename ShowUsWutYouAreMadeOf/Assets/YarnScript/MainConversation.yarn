@@ -31,7 +31,7 @@ title: LilyStart
     Lily: Sketch me!
     <<set $LilyIntroduced to true>>
     <<sketch true>>
-//    <<jump LilySketch>>
+    <<jump LilySketch>>
 <<elseif $LilySketched>>
     Lily: Hey again, little artist, I'm about to leave.
     <<leave Lily>>
@@ -39,12 +39,12 @@ title: LilyStart
 <<endif>>
 ===
 
-title: LilySketch
+title: LilySketchSave
 ---
 Lily: A line appears when you sketch.
 Lily: ANOTHER line appears when you sketch
 ===
-title: LilySketchSave
+title: LilySketch
 ---
 <<if $Stroke == 0>>
     Lily: Introduction before you sketch.
