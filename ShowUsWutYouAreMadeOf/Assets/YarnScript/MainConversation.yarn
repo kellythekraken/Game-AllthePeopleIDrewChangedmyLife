@@ -43,11 +43,14 @@ title: LilyStart
 
 title: LilySketch
 ---
+<<<<<<< Updated upstream
 Lily: A line appears when you sketch.
 Lily: ANOTHER line appears when you sketch
 ===
 title: LilySketchSave
 ---
+=======
+>>>>>>> Stashed changes
 <<if $Stroke == 0>>
     Lily: Introduction before you sketch.
 <<elseif $Stroke == 1>>
@@ -63,6 +66,10 @@ title: LilySketchSave
 <<endif>>
 <<set $Stroke +=1>>
 ===
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 title: LilySketchFin
 ---
 <<sketch false>>

@@ -38,7 +38,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Conversation",
+                    "name": "Dialogue",
                     "type": "Button",
                     "id": "d6c7b78b-8f3a-4532-b041-92a0ea30c847",
                     "expectedControlType": "Button",
@@ -227,18 +227,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Conversation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "397604ce-54f4-4cfe-8394-52001201ce4a",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Conversation",
+                    "action": "Dialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

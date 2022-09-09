@@ -5,19 +5,32 @@ using UnityEngine.UI;
 using Yarn.Unity;
 using TMPro;
 
+public enum CurrentMode { Nothing, Conversation, Sketching}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public GameObject mainUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
+    private CurrentMode _currMode;
+    public CurrentMode currMode
+    {
+        get { return _currMode; }
+        set
+        {
+            _currMode = value;
+            //OnModeChanged(value);
+        }
+    }
+
+    public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
     [SerializeField] private GameObject pronounTag;
 
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
     private TextMeshProUGUI pronounText;
-
     internal QueerNPC sketchSubject;
+    private InputManager inputManager;
 
     private void Awake()
     {
@@ -29,24 +42,56 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
     }
+
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
+        inputManager = FindObjectOfType<InputManager>();
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
-        OpenCloseSketchbook(false);
-        pronounTag.SetActive(false);
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
 
+        OpenCloseSketchbook(false);
+        pronounTag.SetActive(false);
+        settingsUI.SetActive(false);
+
         LockCursor(true);
+    }
+/*    void OnModeChanged(CurrentMode mode)
+    {
+        switch(mode)
+        {
+            case CurrentMode.Nothing:
+                inputManager.EnableInteractBtn(true);
+                inputManager.EnableDialogueBtn(false);
+                return;
+            case CurrentMode.Conversation:
+                inputManager.EnableInteractBtn(false);
+                inputManager.EnableDialogueBtn(true);
+                return;
+            case CurrentMode.Sketching:
+                inputManager.EnableInteractBtn(false);
+                inputManager.EnableDialogueBtn(true);
+                return;
+        }
+    }*/
+
+    bool inSetting = false;
+    public void ToggleSettingScreen()
+    {
+        inSetting = !inSetting;
+        settingsUI.SetActive(inSetting);
+        LockCursor(!inSetting);
     }
 
     public void ContinueSketchChat()
     {
-        sketchSubject.ContinueConversation();
+        currMode = CurrentMode.Sketching;
+        sketchSubject.StartSketchConversation();
     }
     public void OpenCloseSketchbook(bool open)
     {
         sketchbookUI.SetActive(open);
+        LockCursor(!open);
         mainUI.SetActive(!open);
 
         if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
@@ -67,7 +112,6 @@ public class GameManager : MonoBehaviour
             wardrobeBtn.DisplayReceivedItem(text,image);
         }*/
     }
-
     public void ShowPronoun()
     {
         pronounTag.SetActive(true);
@@ -82,6 +126,7 @@ public class GameManager : MonoBehaviour
     public void LockCursor(bool lockCursor)
     {
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !lockCursor;
     }
 
 }

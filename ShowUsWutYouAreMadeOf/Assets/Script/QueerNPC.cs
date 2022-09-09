@@ -11,7 +11,8 @@ public class QueerNPC : MonoBehaviour
     private DialogueRunner dialogueRunner;
     private Light lightIndicatorObject = null;
     private bool interactable = true;
-    private bool isCurrentConversation = false;
+
+    private bool inConversation = false;
     private float defaultIndicatorIntensity;
 
     private DialogueRange range;
@@ -33,12 +34,15 @@ public class QueerNPC : MonoBehaviour
             defaultIndicatorIntensity = lightIndicatorObject.intensity;
             lightIndicatorObject.intensity = 0;
         }
-        inputManager.interactAction.performed += ctx => { if (range.InRange) StartConversation(); };
+        inputManager.interactAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
+        //error was caused by multiple interactable in the scene!!!
     }
+
     private void StartConversation()
     {
-        isCurrentConversation = true;
+        inConversation = true;
         GameManager.Instance.sketchSubject = this;
+        GameManager.Instance.currMode = CurrentMode.Conversation;
 
         if (lightIndicatorObject != null)
         {
@@ -47,19 +51,20 @@ public class QueerNPC : MonoBehaviour
         dialogueRunner.StartDialogue(queerID.npcName + "Start");
     }
 
-    public void ContinueConversation()
+    public void StartSketchConversation()
     {
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
     }
     private void EndConversation()
     {
-        if (isCurrentConversation)
+        if (inConversation)
         {
             if (lightIndicatorObject != null)
             {
                 lightIndicatorObject.intensity = 0;
             }
-            isCurrentConversation = false;
+            inConversation = false;
+            GameManager.Instance.currMode = CurrentMode.Nothing;
         }
     }
 
