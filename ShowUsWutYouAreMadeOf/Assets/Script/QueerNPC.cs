@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class QueerNPC : MonoBehaviour
 {
     public Queer queerID;
-
+    
     private DialogueRunner dialogueRunner;
     private Light lightIndicatorObject = null;
     private bool interactable = true;
@@ -18,6 +18,7 @@ public class QueerNPC : MonoBehaviour
     private DialogueRange range;
 
     InputManager inputManager;
+    Transform player;
 
     public void Start()
     {
@@ -38,6 +39,14 @@ public class QueerNPC : MonoBehaviour
         //error was caused by multiple interactable in the scene!!!
     }
 
+    void CheckPlayerDirection()
+    {
+        Vector3 dir = (transform.position - player.position).normalized;
+        float delta = Vector3.Dot(dir, transform.forward);
+
+        // If delta is 1, it's looking directly at the object, -1 is looking directly away
+        // A good tolerance would be >= 0.8, then you can interact with the object
+    }
     private void StartConversation()
     {
         inConversation = true;

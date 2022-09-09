@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         set
         {
             _currMode = value;
-            //OnModeChanged(value);
+            OnModeChanged(value);
         }
     }
 
@@ -56,15 +56,17 @@ public class GameManager : MonoBehaviour
 
         LockCursor(true);
     }
-/*    void OnModeChanged(CurrentMode mode)
+    void OnModeChanged(CurrentMode mode)
     {
-        switch(mode)
+        switch (mode)
         {
             case CurrentMode.Nothing:
+                LockCursor(true);
                 inputManager.EnableInteractBtn(true);
                 inputManager.EnableDialogueBtn(false);
                 return;
             case CurrentMode.Conversation:
+                LockCursor(false);
                 inputManager.EnableInteractBtn(false);
                 inputManager.EnableDialogueBtn(true);
                 return;
@@ -73,7 +75,7 @@ public class GameManager : MonoBehaviour
                 inputManager.EnableDialogueBtn(true);
                 return;
         }
-    }*/
+    }
 
     bool inSetting = false;
     public void ToggleSettingScreen()

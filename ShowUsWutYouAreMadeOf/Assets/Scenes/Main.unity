@@ -3362,7 +3362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currMode: 0
   mainUI: {fileID: 1182067920000691}
   settingsUI: {fileID: 1253938074506939}
   wardrobeUI: {fileID: 2081855434}
@@ -3370,7 +3369,6 @@ MonoBehaviour:
   dialogueUI: {fileID: 2753718018694078752}
   newItemWindow: {fileID: 2030396566}
   pronounTag: {fileID: 1359851887}
-  currentlyInConversation: 0
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0
@@ -10946,7 +10944,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
   ButtonReleased:
     m_PersistentCalls:
       m_Calls:
@@ -15776,7 +15774,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
 --- !u!224 &7778558436113867052
 RectTransform:
   m_ObjectHideFlags: 0
