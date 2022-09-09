@@ -5,34 +5,32 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
-    public PlayerInput playerInput;
+    PlayerInput playerInput;
+    InputActionMap mainAcionMap;
 
-    InputAction interactAction;
-    InputActionAsset savedInputAsset;
-
-    InputActionMap gameplayActions;
+    public InputAction interactAction;
 
     void Awake()
     {
-        savedInputAsset = playerInput.actions;
+        playerInput = GetComponent<PlayerInput>();
+
+        mainAcionMap = playerInput.actions.FindActionMap("Player");
+
         playerInput.onActionTriggered += OnFire;
-        gameplayActions = savedInputAsset.FindActionMap("Player");
 
-        interactAction = savedInputAsset.FindAction("Interact");
+        interactAction = mainAcionMap.FindAction("Interact");
+        //interactAction.performed += ctx => Interact();
 
-        interactAction.performed += ctx => Interact();
-
-        //gameplayActions["fire"].performed += ctx=> NormalMethod();
+        //mainAcionMap["Interact"].performed += ctx => Interact(); 
     }
 
     void OnEnable()
     {
-        gameplayActions.Enable();
-        //interactAction.Enable();
+        mainAcionMap.Enable();
     }
     void OnDisable()
     {
-        gameplayActions.Disable();
+        mainAcionMap.Disable();
     }
 /*
     private void Update()
@@ -42,7 +40,7 @@ public class InputManager : MonoBehaviour
 
     void OnFire(InputAction.CallbackContext ctx)
     {
-        Debug.Log(ctx + " action is pressed");
+        Debug.Log(ctx);
     }
     void Interact()
     {

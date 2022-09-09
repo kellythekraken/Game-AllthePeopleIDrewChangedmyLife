@@ -16,7 +16,7 @@ public class QueerNPC : MonoBehaviour
 
     private DialogueRange range;
 
-    InputAction interactBtn;
+    InputManager inputManager;
 
     public void Start()
     {
@@ -24,6 +24,7 @@ public class QueerNPC : MonoBehaviour
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         lightIndicatorObject = GetComponentInChildren<Light>();
         range = GetComponentInChildren<DialogueRange>();
+        inputManager = FindObjectOfType<InputManager>();
 
         // get starter intensity of light then
         // if we're using it as an indicator => hide it 
@@ -32,17 +33,8 @@ public class QueerNPC : MonoBehaviour
             defaultIndicatorIntensity = lightIndicatorObject.intensity;
             lightIndicatorObject.intensity = 0;
         }
-
-        //interactBtn = InputAction()
+        inputManager.interactAction.performed += ctx => { if (range.InRange) StartConversation(); };
     }
-
-/*    private void Update()
-    {
-        if(Input.GetKey(KeyCode.E))
-        {
-            if(range.InRange) StartConversation();
-        }
-    }*/
     private void StartConversation()
     {
         isCurrentConversation = true;
