@@ -19,7 +19,7 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = FindObjectOfType<PlayerInput>();
 
         mainAcionMap = playerInput.actions.FindActionMap("Player");
 
