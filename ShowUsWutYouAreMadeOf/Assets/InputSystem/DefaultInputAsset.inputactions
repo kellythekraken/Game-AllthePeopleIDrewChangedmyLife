@@ -1,5 +1,5 @@
 {
-    "name": "StarterAssets",
+    "name": "DefaultInputAsset",
     "maps": [
         {
             "name": "Player",
@@ -224,6 +224,17 @@
                     "name": "",
                     "id": "375499f3-3e8d-43c8-919c-93b8ff229904",
                     "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c57b9382-3ccc-4934-a8b0-b875088dd16a",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

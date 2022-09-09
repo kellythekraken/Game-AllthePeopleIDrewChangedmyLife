@@ -8,8 +8,8 @@ public class QueerNPC : MonoBehaviour
 {
     public Queer queerID;
     
+    private GameManager gm;
     private DialogueRunner dialogueRunner;
-    private Light lightIndicatorObject = null;
     private bool interactable = true;
 
     private bool inConversation = false;
@@ -22,19 +22,12 @@ public class QueerNPC : MonoBehaviour
 
     public void Start()
     {
+        gm = GameManager.Instance.GetComponent<GameManager>();
         dialogueRunner = FindObjectOfType<DialogueRunner>();
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
-        lightIndicatorObject = GetComponentInChildren<Light>();
         range = GetComponentInChildren<DialogueRange>();
         inputManager = FindObjectOfType<InputManager>();
 
-        // get starter intensity of light then
-        // if we're using it as an indicator => hide it 
-        if (lightIndicatorObject != null)
-        {
-            defaultIndicatorIntensity = lightIndicatorObject.intensity;
-            lightIndicatorObject.intensity = 0;
-        }
         inputManager.interactAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
         //error was caused by multiple interactable in the scene!!!
     }
@@ -50,30 +43,25 @@ public class QueerNPC : MonoBehaviour
     private void StartConversation()
     {
         inConversation = true;
-        GameManager.Instance.sketchSubject = this;
-        GameManager.Instance.currMode = CurrentMode.Conversation;
+        gm.sketchSubject = this;
+        gm.currMode = CurrentMode.Conversation;
 
-        if (lightIndicatorObject != null)
-        {
-            lightIndicatorObject.intensity = defaultIndicatorIntensity;
-        }
         dialogueRunner.StartDialogue(queerID.npcName + "Start");
     }
 
     public void StartSketchConversation()
     {
+        gm.currMode = CurrentMode.Conversation;
+        inConversation = true;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
     }
     private void EndConversation()
     {
         if (inConversation)
         {
-            if (lightIndicatorObject != null)
-            {
-                lightIndicatorObject.intensity = 0;
-            }
             inConversation = false;
-            GameManager.Instance.currMode = CurrentMode.Nothing;
+            if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
+            else gm.currMode = CurrentMode.Nothing;
         }
     }
 

@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
         get { return _currMode; }
         set
         {
+            Debug.Log("change mode to " + value);
             _currMode = value;
             OnModeChanged(value);
         }
@@ -29,8 +30,9 @@ public class GameManager : MonoBehaviour
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
     private TextMeshProUGUI pronounText;
-    internal QueerNPC sketchSubject;
     private InputManager inputManager;
+    internal QueerNPC sketchSubject;
+    internal bool sketchbookOpen;
 
     private void Awake()
     {
@@ -61,19 +63,16 @@ public class GameManager : MonoBehaviour
         switch (mode)
         {
             case CurrentMode.Nothing:
-                LockCursor(false);
+                LockCursor(true);
                 inputManager.EnableInteractBtn(true);
-                inputManager.EnableDialogueBtn(false);
                 return;
             case CurrentMode.Conversation:
-                LockCursor(false);
+                LockCursor(true);
                 inputManager.EnableInteractBtn(false);
-                inputManager.EnableDialogueBtn(true);
                 return;
             case CurrentMode.Sketching:
                 LockCursor(false);
                 inputManager.EnableInteractBtn(false);
-                inputManager.EnableDialogueBtn(true);
                 return;
         }
     }
@@ -88,11 +87,12 @@ public class GameManager : MonoBehaviour
 
     public void ContinueSketchChat()
     {
-        currMode = CurrentMode.Sketching;
+        //currMode = CurrentMode.Sketching;
         sketchSubject.StartSketchConversation();
     }
     public void OpenCloseSketchbook(bool open)
     {
+        sketchbookOpen = open;
         sketchbookUI.SetActive(open);
         mainUI.SetActive(!open);
 
@@ -127,11 +127,8 @@ public class GameManager : MonoBehaviour
 
     public void LockCursor(bool lockCursor)
     {
-        Debug.Log("set cursor to " + lockCursor);
-        Cursor.lockState = CursorLockMode.None;
-
-//        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
-//        Cursor.visible = !lockCursor;
+        Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !lockCursor;
     }
 
 }
