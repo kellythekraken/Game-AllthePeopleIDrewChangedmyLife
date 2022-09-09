@@ -10,8 +10,7 @@ public enum CurrentMode { Nothing, Conversation, Sketching, Changing}
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    private CurrentMode _currMode = CurrentMode.Nothing;
+    private CurrentMode _currMode;
     public CurrentMode currMode
     {
         get { return _currMode; }
@@ -25,21 +24,21 @@ public class GameManager : MonoBehaviour
     
     public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
     [SerializeField] private GameObject pronounTag;
-
+    [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
-    private TextMeshProUGUI pronounText;
     private InputManager inputManager;
+    private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
 
     private void Awake()
     {
         Instance = this;
-
         dialogueUI.SetActive(true);
         dialogueRunner = dialogueUI.GetComponent<DialogueRunner>();
+        inputManager = FindObjectOfType<InputManager>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
@@ -48,7 +47,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
-        inputManager = FindObjectOfType<InputManager>();
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -62,7 +60,6 @@ public class GameManager : MonoBehaviour
     {
         lastMode = currMode;
         _currMode = mode;
-        Debug.Log("last mode: " + lastMode + " new mode: " + mode);
         switch (mode)
         {
             case CurrentMode.Nothing:
@@ -87,6 +84,25 @@ public class GameManager : MonoBehaviour
     {
         currMode = lastMode;
     }
+
+    public void ToggleCameraMode(int mode)
+    {
+        Debug.Log("switch camera mode: " + mode);
+        switch(mode)
+        {
+            case 0: //normal scene
+                mainCamera.enabled = true;
+                uiCamera.enabled = true;
+                wardrobeCamera.enabled = false; 
+                return;
+            case 1: //wardrobe cam
+                mainCamera.enabled = false;
+                uiCamera.enabled = false;
+                wardrobeCamera.enabled = true;
+                return;
+        }
+    }
+
     bool inSetting = false;
     public void ToggleSettingScreen()
     {
