@@ -28,7 +28,7 @@ public class QueerNPC : MonoBehaviour
         range = GetComponentInChildren<DialogueRange>();
         inputManager = FindObjectOfType<InputManager>();
 
-        inputManager.interactAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
+        inputManager.chatAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
         //error was caused by multiple interactable in the scene!!!
     }
 

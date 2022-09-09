@@ -35,27 +35,37 @@ public class WardrobeButton : MonoBehaviour
             ClearChild(i);
         }
 
-        openBtn.onClick.AddListener(() => OpenCloseWardrobe(true));
-        closeBtn.onClick.AddListener(() => OpenCloseWardrobe(false));
-        closePopup.onClick.AddListener(() => DisplayWindow(false));
+        InputManager.Instance.interactAction.performed += ctx => { if(popupDisplayOn) DisplayWindow(false); };
+        InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
 
-        OpenCloseWardrobe(false);
+        closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
+        closePopup.onClick.AddListener(() => DisplayWindow(false));
+        wardrobeUI.SetActive(false);
     }
 
-    void OpenCloseWardrobe(bool open)
+    bool wardrobeOpen = false;
+    void OpenCloseWardrobe()
     {
-        wardrobeUI.SetActive(open);
-        if(open && newItem)
+        wardrobeOpen = !wardrobeOpen;
+
+        wardrobeUI.SetActive(wardrobeOpen);
+        if(wardrobeOpen)
         {
-            newItem = false;
-            newIndicator.enabled = newItem;
+            GameManager.Instance.currMode = CurrentMode.Changing;
+            if(newItem)
+            {
+                newItem = false;
+                newIndicator.enabled = newItem;
+            }
+        }
+        else{
+            GameManager.Instance.BackToLastMode();
         }
     }
 
     public void DisplayReceivedItem(string npcName, GiftItem gift)
     {
-        //here goes the logic for loading item images?
-
+        InputManager.Instance.EnableChatMoveBtn(false);
         DisplayWindow(true);
         string text = string.Format("You received {0} from {1}!", gift.name, npcName);
 
@@ -67,9 +77,11 @@ public class WardrobeButton : MonoBehaviour
         
         AddItemToWardrobe(gift);
     }
-
+    bool popupDisplayOn;
     public void DisplayWindow(bool open)
     {
+        if(!open) InputManager.Instance.EnableChatMoveBtn(true);
+        popupDisplayOn = open;
         popupWindow.SetActive(open);
     }
 

@@ -5,24 +5,24 @@ using UnityEngine.UI;
 using Yarn.Unity;
 using TMPro;
 
-public enum CurrentMode { Nothing, Conversation, Sketching}
+public enum CurrentMode { Nothing, Conversation, Sketching, Changing}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    private CurrentMode _currMode;
+    private CurrentMode _currMode = CurrentMode.Nothing;
     public CurrentMode currMode
     {
         get { return _currMode; }
         set
         {
             Debug.Log("change mode to " + value);
-            _currMode = value;
             OnModeChanged(value);
         }
     }
-
+    private CurrentMode lastMode;
+    
     public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
     [SerializeField] private GameObject pronounTag;
 
@@ -60,23 +60,33 @@ public class GameManager : MonoBehaviour
     }
     void OnModeChanged(CurrentMode mode)
     {
+        lastMode = currMode;
+        _currMode = mode;
+        Debug.Log("last mode: " + lastMode + " new mode: " + mode);
         switch (mode)
         {
             case CurrentMode.Nothing:
                 LockCursor(true);
-                inputManager.EnableInteractBtn(true);
+                inputManager.EnableChatMoveBtn(true);
                 return;
             case CurrentMode.Conversation:
                 LockCursor(true);
-                inputManager.EnableInteractBtn(false);
+                inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
                 LockCursor(false);
-                inputManager.EnableInteractBtn(false);
+                inputManager.EnableChatMoveBtn(false);
+                return;
+            case CurrentMode.Changing:
+                LockCursor(false);
+                inputManager.EnableChatMoveBtn(false);
                 return;
         }
     }
-
+    public void BackToLastMode()
+    {
+        currMode = lastMode;
+    }
     bool inSetting = false;
     public void ToggleSettingScreen()
     {
@@ -119,7 +129,6 @@ public class GameManager : MonoBehaviour
         pronounTag.SetActive(true);
         pronounText.text = sketchSubject.queerID.pronouns;
     }
-
     public void HidePronoun()
     {
         pronounTag.SetActive(false);

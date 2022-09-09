@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance;
     [SerializeField] GameObject continueBtn;
 
-    internal InputAction interactAction;
+    internal InputAction interactAction, chatAction, wardrobeAction;
     InputAction moveAction;
 
     PlayerInput playerInput;
@@ -28,7 +28,9 @@ public class InputManager : MonoBehaviour
         //dialogueAction = mainAcionMap.FindAction("Dialogue");
         //interactAction.performed += ctx => Interact();
         interactAction = mainAcionMap["Interact"];
+        chatAction = mainAcionMap["Chat"];
         moveAction = mainAcionMap["Move"];
+        wardrobeAction = mainAcionMap["Wardrobe"];
         mainAcionMap["Setting"].performed += ctx => SwitchSettingScreen(); 
     }
 
@@ -45,24 +47,17 @@ public class InputManager : MonoBehaviour
     {
         if (interactAction.triggered) Interact(); // alternative method
     }*/
-    
-    public void EnablePlayerInput(bool enable)
-    {
-        if(enable) 
-        {
-        }
-    }
-    public void EnableInteractBtn(bool enable)
+    public void EnableChatMoveBtn(bool enable)
     {
         if (enable) 
         {
-            interactAction.Enable();
-            //moveAction.Enable();
+            chatAction.Enable();
+            moveAction.Enable();
         }
         else 
         {
-            interactAction.Disable();
-            //moveAction.Disable();
+            chatAction.Disable();
+            moveAction.Disable();
         }
     }
 

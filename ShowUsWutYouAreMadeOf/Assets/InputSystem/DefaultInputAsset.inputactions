@@ -30,7 +30,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Interact",
+                    "name": "Chat",
                     "type": "Button",
                     "id": "8e2d316b-5ffc-4a93-9536-c4c752ea34e6",
                     "expectedControlType": "Button",
@@ -38,9 +38,17 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Dialogue",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "d6c7b78b-8f3a-4532-b041-92a0ea30c847",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "Wardrobe",
+                    "type": "Button",
+                    "id": "1238e8c9-0b8d-438a-8146-6d740253a41f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press"
@@ -216,7 +224,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Interact",
+                    "action": "Chat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -227,7 +235,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dialogue",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -238,7 +246,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Dialogue",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -255,12 +263,12 @@
                 },
                 {
                     "name": "",
-                    "id": "078edff1-b560-482b-9392-0df9518b1c01",
+                    "id": "bc673f74-67ee-442f-9c11-604873d11686",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Setting",
+                    "action": "Wardrobe",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
