@@ -39,7 +39,6 @@ public class WardrobeButton : MonoBehaviour
         InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
 
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
-        closePopup.onClick.AddListener(() => DisplayWindow(false));
         wardrobeUI.SetActive(false);
     }
 
@@ -65,7 +64,6 @@ public class WardrobeButton : MonoBehaviour
 
     public void DisplayReceivedItem(string npcName, GiftItem gift)
     {
-        InputManager.Instance.EnableChatMoveBtn(false);
         DisplayWindow(true);
         string text = string.Format("You received {0} from {1}!", gift.name, npcName);
 
@@ -80,7 +78,6 @@ public class WardrobeButton : MonoBehaviour
     bool popupDisplayOn;
     public void DisplayWindow(bool open)
     {
-        if(!open) InputManager.Instance.EnableChatMoveBtn(true);
         popupDisplayOn = open;
         popupWindow.SetActive(open);
     }
