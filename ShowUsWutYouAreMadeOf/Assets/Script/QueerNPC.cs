@@ -36,13 +36,13 @@ public class QueerNPC : MonoBehaviour
         //interactBtn = InputAction()
     }
 
-    private void Update()
+/*    private void Update()
     {
         if(Input.GetKey(KeyCode.E))
         {
             if(range.InRange) StartConversation();
         }
-    }
+    }*/
     private void StartConversation()
     {
         isCurrentConversation = true;
