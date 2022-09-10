@@ -3,25 +3,32 @@
 //GENERAL
 <<set $Stroke to 0>>
 
-//BARTENDER
-<<set $BartenderIntroduced to false>>
+//Bartender
+<<set $LeonIntroduced to false>>
 
 //LILY
 <<set $LilyIntroduced to false>>
 <<set $LilySketched to false>>
 
-<<randomEnter>>
 ===
-title: BartenderLeon
+title: LeonStart
 ---
-<<if !$BartenderIntroduced>>
+<<camera LeonCam>>
+<<if !$LeonIntroduced>>
     Leon: Hey, you look new. 
     Leon: Welcome! 
     Leon: People are quite friendly here. 
-    <<set $BartenderIntroduced to true>>
+    <<set $LeonIntroduced to true>>
 <<else>>
     Leon: Want a drink?
 <<endif>>
+<<camera PlayerCam>>
+===
+title: DisplayBox
+---
+<<camera LeonCam>>
+Leon: Interested?
+<<camera PlayerCam>>
 ===
 title: LilyStart
 ---

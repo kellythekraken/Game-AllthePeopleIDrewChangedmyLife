@@ -42,6 +42,7 @@ public class QueerNPC : MonoBehaviour
     }
     private void StartConversation()
     {
+        //make sure only one script get executed, not all of them.
         if(!interactable) return;
         inConversation = true;
         gm.sketchSubject = this;
