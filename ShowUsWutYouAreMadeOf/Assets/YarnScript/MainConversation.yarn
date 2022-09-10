@@ -10,6 +10,7 @@
 <<set $LilyIntroduced to false>>
 <<set $LilySketched to false>>
 
+<<randomEnter>>
 ===
 title: BartenderLeon
 ---
@@ -35,6 +36,8 @@ title: LilyStart
 <<elseif $LilySketched>>
     Lily: Hey again, little artist, I'm about to leave.
     <<leave Lily>>
+    <<silence Lily>>
+    <<randomEnter>>
     <<camera PlayerCam>>
 <<endif>>
 ===
@@ -43,7 +46,7 @@ title: LilySketch
 <<if $Stroke == 0>>
     Lily: Introduction before you sketch.
 <<else>> 
-    <<wait .5>>
+    //<<wait .5>>
 <<endif>>
 
 <<if $Stroke == 1>>

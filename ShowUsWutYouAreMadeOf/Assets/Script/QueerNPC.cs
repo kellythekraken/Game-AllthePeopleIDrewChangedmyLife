@@ -42,6 +42,7 @@ public class QueerNPC : MonoBehaviour
     }
     private void StartConversation()
     {
+        if(!interactable) return;
         inConversation = true;
         gm.sketchSubject = this;
         gm.currMode = CurrentMode.Conversation;
@@ -65,21 +66,9 @@ public class QueerNPC : MonoBehaviour
         }
     }
 
-    //[YarnCommand("disable")]
+    [YarnCommand("silence")]
     public void DisableConversation()
     {
         interactable = false;
-    }
-    
-    [YarnCommand("enter")]
-    public void OnStage()
-    {
-        gameObject.SetActive(true);
-    }
-
-    [YarnCommand("leave")]
-    public void LeaveStage()
-    {
-        gameObject.SetActive(false);
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Yarn.Unity;
 using TMPro;
 
@@ -23,6 +22,7 @@ public class GameManager : MonoBehaviour
     private CurrentMode lastMode;
     
     public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
+    [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
@@ -42,6 +42,9 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
+        dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
+        dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
+        dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
     }
 
     private void Start()
