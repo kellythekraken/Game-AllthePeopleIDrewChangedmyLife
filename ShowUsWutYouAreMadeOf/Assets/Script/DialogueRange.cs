@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DialogueRange : MonoBehaviour
 {
-    public bool InRange = false;
+    internal bool InRange = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,10 +17,5 @@ public class DialogueRange : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player")) InRange = false;
-    }
-
-    public bool PlayerInRange()
-    {
-        return InRange;
     }
 }

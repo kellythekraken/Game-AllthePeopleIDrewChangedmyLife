@@ -11,23 +11,20 @@ public class QueerNPC : MonoBehaviour
     private GameManager gm;
     private DialogueRunner dialogueRunner;
     private bool interactable = true;
-
     private bool inConversation = false;
     private float defaultIndicatorIntensity;
-
     private DialogueRange range;
-
-    InputManager inputManager;
-    Transform player;
+    private InputManager inputManager;
+    private Transform player;
 
     public void Start()
     {
-        gm = GameManager.Instance.GetComponent<GameManager>();
-        dialogueRunner = FindObjectOfType<DialogueRunner>();
-        dialogueRunner.onDialogueComplete.AddListener(EndConversation);
+        gm = GameManager.Instance;
+        dialogueRunner = gm.dialogueRunner;
         range = GetComponentInChildren<DialogueRange>();
         inputManager = FindObjectOfType<InputManager>();
 
+        dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         inputManager.chatAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
         //error was caused by multiple interactable in the scene!!!
     }

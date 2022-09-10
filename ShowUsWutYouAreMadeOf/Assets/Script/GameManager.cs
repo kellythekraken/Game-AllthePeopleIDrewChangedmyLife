@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     private CurrentMode lastMode;
     
     public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
+    public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
-    private DialogueRunner dialogueRunner;
     private InputManager inputManager;
     private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         dialogueUI.SetActive(true);
-        dialogueRunner = dialogueUI.GetComponent<DialogueRunner>();
         inputManager = FindObjectOfType<InputManager>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         dialogueRunner.AddCommandHandler("gift", GiveItem);
