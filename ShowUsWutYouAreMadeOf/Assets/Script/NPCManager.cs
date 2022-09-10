@@ -4,17 +4,17 @@ using System.Linq;
 
 public class NPCManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] NPCFullList;//add in the editor
-    internal List<GameObject> NPCToSpawn;
-    List<GameObject> activeNPC; //currently in scene
-    internal List<GameObject> completedNPC; //finished sketching and chatting
+    [SerializeField] private QueerNPC[] NPCFullList;//add in the editor
+    internal List<QueerNPC> NPCToSpawn;
+    internal List<QueerNPC> completedNPC; //finished sketching and chatting
+    private List<QueerNPC> activeNPC; //currently in scene
     //would there be one npc to stay until the end???
 
     void Start()
     {
-        activeNPC = new List<GameObject>();
-        completedNPC = new List<GameObject>();
-        NPCToSpawn = new List<GameObject>(NPCFullList.ToList());
+        activeNPC = new List<QueerNPC>();
+        completedNPC = new List<QueerNPC>();
+        NPCToSpawn = new List<QueerNPC>(NPCFullList.ToList());
     }
     //command: enter random
     public void OnStageRandom()
@@ -27,16 +27,16 @@ public class NPCManager : MonoBehaviour
     public void OnStage(string npcName)
     {
         Debug.LogWarning(npcName + " enters the scene!");
-        GameObject npc = NPCToSpawn.Find(x => x.name == npcName);
-        npc.SetActive(true);
+        QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
+        npc.gameObject.SetActive(true);
         activeNPC.Add(npc);
         NPCToSpawn.Remove(npc);
     }
     //command: leave
     public void OffStage(string npcName)
     {
-        GameObject npc = NPCToSpawn.Find(x => x.name == npcName);
-        Destroy(npc);
+        QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
+        Destroy(npc.gameObject);
         completedNPC.Add(npc);
         activeNPC.Remove(npc);
     }

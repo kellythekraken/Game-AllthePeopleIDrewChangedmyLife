@@ -132,7 +132,7 @@ public class GameManager : MonoBehaviour
     public void GiveItem()
     {
         Queer queer = sketchSubject.queerID;
-        wardrobeBtn.DisplayReceivedItem(queer.name, queer.items[0]);
+        wardrobeBtn.DisplayReceivedItem(queer.npcName, queer.items[0]);
 
         //for multiple items
 /*        for (int i =0 ; i < queer.items.Length ; i++)

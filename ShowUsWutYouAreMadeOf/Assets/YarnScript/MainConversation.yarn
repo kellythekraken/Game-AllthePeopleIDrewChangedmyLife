@@ -6,10 +6,16 @@
 //Bartender
 <<set $LeonIntroduced to false>>
 
-//LILY
-<<set $LilyIntroduced to false>>
-<<set $LilySketched to false>>
+//Ali
+<<set $AliIntroduced to false>>
+<<set $AliSketched to false>>
 
+//Toni
+<<set $ToniIntroduced to false>>
+<<set $ToniSketched to false>>
+
+<<enter Leon>>
+<<enter Ali>>
 ===
 title: LeonStart
 ---
@@ -30,50 +36,94 @@ title: DisplayBox
 Leon: Interested?
 <<camera PlayerCam>>
 ===
-title: LilyStart
+title: AliStart
 ---
-<<camera LilyCam>>
-<<if !$LilyIntroduced>>
-    Lily: Hello handsome! What's up?
-    Lily: You are an artist? Cool.
-    Lily: Sketch me!
-    <<set $LilyIntroduced to true>>
+<<camera AliCam>>
+<<if !$AliIntroduced>>
+    Ali: Hello handsome! What's up?
+    Ali: You are an artist? Cool.
+    Ali: Sketch me!
+    <<set $AliIntroduced to true>>
     <<sketch true>>
-    <<jump LilySketch>>
-<<elseif $LilySketched>>
-    Lily: Hey again, little artist, I'm about to leave.
-    <<leave Lily>>
-    <<silence Lily>>
-    <<randomEnter>>
+    <<jump AliSketch>>
+<<elseif $AliSketched>>
+    Ali: Hey again, little artist, I'm about to leave.
+    <<leave Ali>>
+    <<silence Ali>>
+    <<enter Toni>>
     <<camera PlayerCam>>
 <<endif>>
 ===
-title: LilySketch
+title: AliSketch
 ---
 <<if $Stroke == 0>>
-    Lily: Introduction before you sketch.
+    Ali: Introduction before you sketch.
 <<else>> 
     //<<wait .5>>
 <<endif>>
 
 <<if $Stroke == 1>>
-    Lily: Blabla
+    Ali: Blabla
     <<pronoun>>
 <<elseif $Stroke == 2>>
-    Lily: Blablabla
+    Ali: Blablabla
 <<elseif $Stroke == 3>>
-    Lily: Blablablabla
+    Ali: Blablablabla
 <<elseif $Stroke == 4>>
-    Lily: Last line before finish sketching.
-    <<jump LilySketchFin>>
+    Ali: Last line before finish sketching.
+    <<set $Stroke to 0>>
+    <<jump AliSketchFin>>
 <<endif>>
 <<set $Stroke +=1>>
 ===
-title: LilySketchFin
+title: AliSketchFin
 ---
 <<sketch false>>
 <<camera PlayerCam>>
-Lily: Thank you! Here is my gift for you.
+Ali: Thank you! Here is my gift for you.
 <<gift>>
-<<set $LilySketched to true>>
+<<set $AliSketched to true>>
+===
+
+title: ToniStart
+---
+<<camera ToniCam>>
+<<if !$ToniIntroduced>>
+    Toni: Hey, I'm Toni. You new here?
+    Toni: First time? Ha, I come here all the time.
+    <<set $ToniIntroduced to true>>
+    <<sketch true>>
+    <<jump ToniSketch>>
+<<elseif $AliSketched>>
+    Toni: I'm going to get some drink.
+    <<silence Toni>>
+    <<camera PlayerCam>>
+<<endif>>
+===
+title: ToniSketch
+---
+<<if $Stroke == 0>>
+    Toni: Aha, I was never drawn before.
+<<else>> 
+    //<<wait .5>>
+<<endif>>
+
+<<if $Stroke == 1>>
+    Toni: Blabla
+<<elseif $Stroke == 2>>
+    Toni: Blablabla
+<<elseif $Stroke == 3>>
+    Toni: Last line before finish sketching.
+    <<set $Stroke to 0>>
+    <<jump ToniSketchFin>>
+<<endif>>
+<<set $Stroke +=1>>
+===
+title: ToniSketchFin
+---
+<<sketch false>>
+<<camera PlayerCam>>
+Toni: Thanks! Take this.
+<<gift>>
+<<set $ToniSketched to true>>
 ===
