@@ -19874,17 +19874,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 320645613}
     m_Modifications:
-    - target: {fileID: 730370351, guid: 5a413dcf3462fa144b9c0e26b5b77a0b, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 9034462996214054778, guid: 5a413dcf3462fa144b9c0e26b5b77a0b, type: 3}
       propertyPath: m_Name
       value: WardrobeItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 9034462996214054778, guid: 5a413dcf3462fa144b9c0e26b5b77a0b, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9034462996214054779, guid: 5a413dcf3462fa144b9c0e26b5b77a0b, type: 3}
       propertyPath: m_Pivot.x
