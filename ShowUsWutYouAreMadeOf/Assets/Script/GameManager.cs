@@ -89,7 +89,6 @@ public class GameManager : MonoBehaviour
 
     public void ToggleCameraMode(int mode)
     {
-        Debug.Log("switch camera mode: " + mode);
         switch(mode)
         {
             case 0: //normal scene

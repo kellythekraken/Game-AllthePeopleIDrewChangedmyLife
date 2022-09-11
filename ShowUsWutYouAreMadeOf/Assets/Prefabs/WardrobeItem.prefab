@@ -286,3 +286,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newIndicator: {fileID: 730370351}
+  selectedIndicator: {fileID: 6044275177863717862}

@@ -21,7 +21,7 @@ public class WearableItem : MonoBehaviour
     public void InitItem(GiftItem incomingItem)
     {
         item = incomingItem;
-        newItem = false;
+        newItem = isWearing = selectedIndicator.enabled = false;
         newIndicator.SetActive(true);
     }
 
@@ -34,7 +34,7 @@ public class WearableItem : MonoBehaviour
         }
         //put on/off the item
         isWearing = !isWearing;
-        selectedIndicator.enabled = isWearing;
+        selectedIndicator.enabled = isWearing;  
         
     }
 }
