@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
+
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;

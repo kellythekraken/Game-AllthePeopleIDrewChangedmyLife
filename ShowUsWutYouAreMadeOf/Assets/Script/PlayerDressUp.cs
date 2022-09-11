@@ -13,6 +13,8 @@ public class PlayerDressUp : MonoBehaviour
 
     //method to add item to the wardrobe list
     
+    //change mesh, change materials, make visible of accessories gameobj 
+
     // available colors
     public List<Customization> Customizations;
     int _currentCustomizationIndex;
@@ -27,6 +29,7 @@ public class PlayerDressUp : MonoBehaviour
         }
     }
 
+    /*
     void Update()
     {
         SelectCustomizationWithUpDownArrows();
@@ -37,6 +40,7 @@ public class PlayerDressUp : MonoBehaviour
             CurrentCustomization.NextSubObject();
         }
     }
+    */
 
     void SelectCustomizationWithUpDownArrows()
     {
@@ -59,7 +63,7 @@ public class Customization
     
     public List<Renderer> Renderers;    //mesh and submesh
     public List<Material> Materials;    //material, texture, color
-    public List<GameObject> SubObjects;
+    public List<GameObject> SubObjects; //gameobjects addon
     int _materialIndex;
     int _subObjectIndex;
 
