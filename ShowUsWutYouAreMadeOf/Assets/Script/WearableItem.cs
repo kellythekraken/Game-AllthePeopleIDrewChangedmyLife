@@ -29,6 +29,7 @@ public class WearableItem : MonoBehaviour
         newItem = isWearing = selectedIndicator.enabled = false;
         newIndicator.SetActive(true);
     }
+    //the on indicator should only be active one at a time! with mesh types!
 
     void WearItem()
     {

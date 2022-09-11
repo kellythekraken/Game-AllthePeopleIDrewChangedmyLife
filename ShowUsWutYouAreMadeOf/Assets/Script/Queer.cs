@@ -9,15 +9,8 @@ public class DrawableArea
     public List<Sprite> targetDrawings;
 }
 
-[System.Serializable]
-public class GiftItem
-{
-    public string name;
-    public Sprite icon;
-    public ItemTag tag;
-}
-
-public enum ItemTag { Accessories, Outfit, Face, Hair, Shoes}
+public enum ItemSection { Accessories, Outfit, Face, Hair, Shoes}
+public enum ItemType {Mesh,Material,Gameobject}
 
 [CreateAssetMenu(fileName = "Queer")]
 public class Queer : ScriptableObject   

@@ -5,6 +5,10 @@ using System.Collections.Generic;
 
 public class WardrobeButton : MonoBehaviour
 {
+    //attached to the ui wardrobe button. 
+    //control the wardrobe open/close outside of the canvas
+    //also control the popup ui to display received item
+
     public GameObject popupWindow, wardrobeUI;
     public Button closeBtn;
     public Image newIndicator;
@@ -26,14 +30,6 @@ public class WardrobeButton : MonoBehaviour
         closePopup = popupWindow.GetComponentInChildren<Button>();
         itemText = popupWindow.GetComponentInChildren<TextMeshProUGUI>();
         itemIcon = popupWindow.transform.Find("Icon").GetComponent<Image>();
-
-        wardrobeSections = new List<Transform>();
-
-        foreach(Transform i in wardrobeParent)
-        {
-            wardrobeSections.Add(i);
-            ClearChild(i);
-        }
 
         InputManager.Instance.interactAction.performed += ctx => { if(popupDisplayOn) DisplayWindow(false); };
         InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
@@ -73,7 +69,7 @@ public class WardrobeButton : MonoBehaviour
         newIndicator.enabled = true;
         newItem = true;
         
-        AddItemToWardrobe(gift);
+        //AddItemToWardrobe(gift);
     }
     bool popupDisplayOn;
     public void DisplayWindow(bool open)
@@ -81,20 +77,5 @@ public class WardrobeButton : MonoBehaviour
         if(!open) GameManager.Instance.currMode = CurrentMode.Nothing;
         popupDisplayOn = open;
         popupWindow.SetActive(open);
-    }
-
-    public void AddItemToWardrobe(GiftItem gift)
-    {
-        Transform parent = wardrobeSections.Find(x => x.name == gift.tag.ToString());
-        GameObject obj = Instantiate(itemPrefab, parent);
-        obj.GetComponent<Image>().sprite = gift.icon;
-        obj.name = gift.name;
-
-        WearableItem item = obj.GetComponent<WearableItem>();
-        item.InitItem(gift);
-    }
-    void ClearChild(Transform parent)
-    {
-        foreach (Transform child in parent) Destroy(child.gameObject);
     }
 }

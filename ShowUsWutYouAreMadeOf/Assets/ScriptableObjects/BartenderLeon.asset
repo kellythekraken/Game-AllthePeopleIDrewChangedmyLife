@@ -15,9 +15,7 @@ MonoBehaviour:
   npcName: Leon
   pronouns: They/Them
   items:
-  - name: duck
-    icon: {fileID: 21300000, guid: cf2dd08176b863c4ca7f2aa05e121a0a, type: 3}
-    tag: 0
+  - {fileID: 11400000, guid: f6836ba2262e87a44bd72f0ac42f828e, type: 2}
   drawableAreas:
   - label: Top
     targetDrawings:

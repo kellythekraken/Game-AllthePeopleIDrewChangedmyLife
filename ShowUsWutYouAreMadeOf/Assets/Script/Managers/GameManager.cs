@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
         dialogueUI.SetActive(true);
         inputManager = FindObjectOfType<InputManager>();
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
-        dialogueRunner.AddCommandHandler("gift", GiveItem);
+        //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
@@ -110,21 +110,21 @@ public class GameManager : MonoBehaviour
         if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
     }
 
-    //should be called from the queer npc, to access item name and image
-    public void GiveItem()
+   /* public void GiveItem()
     {
         Queer queer = sketchSubject.queerID;
         wardrobeBtn.DisplayReceivedItem(queer.npcName, queer.items[0]);
 
         //for multiple items
-/*        for (int i =0 ; i < queer.items.Length ; i++)
+        for (int i =0 ; i < queer.items.Length ; i++)
         {
             string text = string.Format("You received {0} from {1}!", queer.items[i].name, queer.npcName);
             Sprite image = queer.items[i].icon;
             Debug.Log(text);
             wardrobeBtn.DisplayReceivedItem(text,image);
-        }*/
-    }
+        }
+    }*/
+
     public void ShowPronoun()
     {
         pronounTag.SetActive(true);

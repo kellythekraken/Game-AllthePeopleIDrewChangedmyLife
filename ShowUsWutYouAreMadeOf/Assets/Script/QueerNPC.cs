@@ -9,6 +9,7 @@ public class QueerNPC : MonoBehaviour
     public Queer queerID;
     
     private GameManager gm;
+    private WardrobeButton wardrobeBtn;
     private DialogueRunner dialogueRunner;
     private bool interactable = true;
     private bool inConversation = false;
@@ -62,6 +63,21 @@ public class QueerNPC : MonoBehaviour
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
             else gm.currMode = CurrentMode.Nothing;
         }
+    }
+
+    [YarnCommand("gift")]
+    public void GiveItem()
+    {
+        WardrobeManager.Instance.AddItemToWardrobe(queerID.items[0]);
+        wardrobeBtn.DisplayReceivedItem(queerID.npcName, queerID.items[0]);
+        //for multiple items
+/*        for (int i =0 ; i < queer.items.Length ; i++)
+        {
+            string text = string.Format("You received {0} from {1}!", queer.items[i].name, queer.npcName);
+            Sprite image = queer.items[i].icon;
+            Debug.Log(text);
+            wardrobeBtn.DisplayReceivedItem(text,image);
+        }*/
     }
 
     [YarnCommand("silence")]
