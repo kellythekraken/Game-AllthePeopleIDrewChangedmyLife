@@ -6,6 +6,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class WearableItem : MonoBehaviour
 {
+    //attached to the wardrobe item buttons. Store the infomation of each item and will respond to user clicking.
+
+    //could only have one hairstyle, but outfit you can put on as many as possible? 
+    //also as many accessories as possible
+
     [SerializeField] private GameObject newIndicator;
     [SerializeField] private Image selectedIndicator;
     bool newItem; 

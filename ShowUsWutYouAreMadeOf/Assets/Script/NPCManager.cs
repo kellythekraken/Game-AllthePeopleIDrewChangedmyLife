@@ -4,6 +4,10 @@ using System.Linq;
 
 public class NPCManager : MonoBehaviour
 {
+    //Control the onstage and offstage of npc, keep track of the active and completed character,
+    //and provide method to spawn random available npc.
+
+
     [SerializeField] private QueerNPC[] NPCFullList;//add in the editor
     internal List<QueerNPC> NPCToSpawn;
     internal List<QueerNPC> completedNPC; //finished sketching and chatting
