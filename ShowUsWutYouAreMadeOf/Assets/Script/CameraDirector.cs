@@ -19,7 +19,6 @@ public class CameraDirector : MonoBehaviour
 
     public void SwitchCamera(string animName)
     {
-        Debug.Log("switch cam to " + animName);
         _animator.Play(animName);
     }
 }

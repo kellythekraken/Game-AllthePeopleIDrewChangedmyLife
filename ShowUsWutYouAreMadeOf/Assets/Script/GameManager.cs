@@ -95,12 +95,10 @@ public class GameManager : MonoBehaviour
             case 0: //normal scene
                 mainCamera.enabled = true;
                 uiCamera.enabled = true;
-                wardrobeCamera.enabled = false; 
                 return;
             case 1: //wardrobe cam
-                mainCamera.enabled = false;
+                mainCamera.enabled = true;
                 uiCamera.enabled = false;
-                wardrobeCamera.enabled = true;
                 return;
         }
     }
