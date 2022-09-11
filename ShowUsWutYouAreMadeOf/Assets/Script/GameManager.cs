@@ -88,21 +88,6 @@ public class GameManager : MonoBehaviour
         currMode = lastMode;
     }
 
-    public void ToggleCameraMode(int mode)
-    {
-        switch(mode)
-        {
-            case 0: //normal scene
-                mainCamera.enabled = true;
-                uiCamera.enabled = true;
-                return;
-            case 1: //wardrobe cam
-                mainCamera.enabled = true;
-                uiCamera.enabled = false;
-                return;
-        }
-    }
-
     bool inSetting = false;
     public void ToggleSettingScreen()
     {

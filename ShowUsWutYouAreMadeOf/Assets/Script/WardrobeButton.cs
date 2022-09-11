@@ -51,7 +51,6 @@ public class WardrobeButton : MonoBehaviour
         if(wardrobeOpen)
         {
             GameManager.Instance.currMode = CurrentMode.Changing;
-            GameManager.Instance.ToggleCameraMode(1);
             if(newItem)
             {
                 newItem = false;
@@ -59,7 +58,6 @@ public class WardrobeButton : MonoBehaviour
             }
         }
         else{
-            GameManager.Instance.ToggleCameraMode(0);
             GameManager.Instance.BackToLastMode();
         }
     }

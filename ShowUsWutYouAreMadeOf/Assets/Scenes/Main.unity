@@ -2856,6 +2856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateTarget: {fileID: 2722001489276367796}
+  lookCamera: {fileID: 1897373170}
 --- !u!114 &325654482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4778,7 +4779,7 @@ MonoBehaviour:
   pronounTag: {fileID: 1752515339}
   mainCamera: {fileID: 20515230140964947}
   uiCamera: {fileID: 20646996888046739}
-  wardrobeCamera: {fileID: 64550152}
+  wardrobeCamera: {fileID: 0}
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0
@@ -13331,7 +13332,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.0003429741, y: 0.9990485, z: -0.04287452, w: 0.0079918755}
+  m_LocalRotation: {x: 0.000342974, y: 0.9990485, z: -0.042874523, w: 0.007991872}
   m_LocalPosition: {x: -9.81, y: -2.19, z: -18.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15097,7 +15098,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 64550152}
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

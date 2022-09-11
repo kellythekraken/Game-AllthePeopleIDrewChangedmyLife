@@ -5,30 +5,35 @@ using UnityEngine.UI;
 
 public class AvatarRotate : MonoBehaviour
 {
-    [SerializeField] Transform rotateTarget;
+    [SerializeField] Transform rotateTarget, lookCamera;
+
     internal bool wardrobeMode = false;
     Slider _slider;
     Vector3 newRotation;
+    float startingRotation = 0f;
 
-    void Start()
+    void Awake()
     {
         _slider = GetComponent<Slider>();
-        _slider.minValue = 0;
-        _slider.maxValue = 360;
         _slider.onValueChanged.AddListener(RotateAvatar);
-        newRotation = rotateTarget.eulerAngles;
     }
     void OnEnable()
     {
         ResetAvatar();
-        _slider.value = 0;
+        _slider.value = _slider.minValue = startingRotation;
+        _slider.maxValue = startingRotation + 360;
     }
     void ResetAvatar()
     {
-        rotateTarget.eulerAngles = Vector3.zero;
+        rotateTarget.LookAt(lookCamera);
+        startingRotation = rotateTarget.eulerAngles.y;
+        newRotation = rotateTarget.eulerAngles;
+        newRotation.x = newRotation.z = 0;
+        rotateTarget.eulerAngles = newRotation;
     }
     void RotateAvatar(float value)
     {
+        newRotation = rotateTarget.eulerAngles;
         newRotation.y = value;
         rotateTarget.eulerAngles = newRotation;
     }
