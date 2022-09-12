@@ -9,6 +9,7 @@ public class WardrobeButton : MonoBehaviour
     //control the wardrobe open/close outside of the canvas
     //also control the popup ui to display received item
 
+    public static WardrobeButton Instance;
     public GameObject popupWindow, wardrobeUI;
     public Button closeBtn;
     public Image newIndicator;
@@ -22,6 +23,7 @@ public class WardrobeButton : MonoBehaviour
     Image itemIcon;
 
     bool newItem = false;
+    void Awake() => Instance = this;
     private void Start()
     {
         DisplayWindow(false);

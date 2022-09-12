@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class QueerNPC : Interactable
 {
     public Queer queerID;
-    private WardrobeButton wardrobeBtn;
     private bool interactable = true;
     protected override void StartInteraction()
     {
@@ -25,7 +24,7 @@ public class QueerNPC : Interactable
     public void GiveItem()
     {
         WardrobeManager.Instance.AddItemToWardrobe(queerID.items[0]);
-        wardrobeBtn.DisplayReceivedItem(queerID.npcName, queerID.items[0]);
+        gm.wardrobeBtn.DisplayReceivedItem(queerID.npcName, queerID.items[0]);
         //for multiple items
 /*        for (int i =0 ; i < queer.items.Length ; i++)
         {

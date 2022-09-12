@@ -2,6 +2,7 @@
 ---
 //GENERAL
 <<set $Stroke to 0>>
+<<set $ChatCount to 0>>
 
 //Bartender
 <<set $LeonIntroduced to false>>
@@ -24,7 +25,12 @@ title: LeonStart
     Leon: Hey, you look new. 
     Leon: Welcome! 
     Leon: People are quite friendly here. 
+    <<gift Leon>>
     <<set $LeonIntroduced to true>>
+<<elseif $ChatCount > 0>>
+    Leon: Already getting to know people? 
+    Leon: We have an event coming in a few days, come again!
+    Leon: I'd love to see you here again. 
 <<else>>
     Leon: Want a drink?
 <<endif>>
@@ -41,6 +47,7 @@ title: AliStart
 ---
 <<camera AliCam>>
 <<if !$AliIntroduced>>
+    <<set $ChatCount +=1>>
     Ali: Hello handsome! What's up?
     Ali: You are an artist? Cool.
     Ali: Sketch me!
@@ -82,7 +89,7 @@ title: AliSketchFin
 <<sketch false>>
 <<camera PlayerCam>>
 Ali: Thank you! Here is my gift for you.
-<<gift>>
+<<gift Lily>>
 <<set $AliSketched to true>>
 ===
 
@@ -90,6 +97,7 @@ title: ToniStart
 ---
 <<camera ToniCam>>
 <<if !$ToniIntroduced>>
+     <<set $ChatCount +=1>>
     Toni: Hey, I'm Toni. You new here?
     Toni: First time? Ha, I come here all the time.
     <<set $ToniIntroduced to true>>

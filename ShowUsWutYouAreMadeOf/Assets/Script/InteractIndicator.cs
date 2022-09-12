@@ -25,7 +25,11 @@ public class InteractIndicator : MonoBehaviour
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target)
     {
-        if(gm.inConversation) return;
+        if(gm.inConversation) 
+        {
+            DisplayIndicator(false);
+            return;
+        }
         //should disable in conversation
         //change the target transform?
         //called in the interactive

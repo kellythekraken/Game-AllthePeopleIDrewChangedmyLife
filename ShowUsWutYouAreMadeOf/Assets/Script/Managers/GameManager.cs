@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pronounTag;
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
-    private WardrobeButton wardrobeBtn;
+    internal WardrobeButton wardrobeBtn;
     internal InputManager inputManager;
     private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        wardrobeBtn = FindObjectOfType<WardrobeButton>();
+        wardrobeBtn = WardrobeButton.Instance;
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
 
