@@ -4,63 +4,31 @@ using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.InputSystem;
 
-public class QueerNPC : MonoBehaviour
+public class QueerNPC : Interactable
 {
     public Queer queerID;
-    
-    private GameManager gm;
     private WardrobeButton wardrobeBtn;
-    private DialogueRunner dialogueRunner;
     private bool interactable = true;
-    private bool inConversation = false;
-    private float defaultIndicatorIntensity;
-    private DialogueRange range;
-    private InputManager inputManager;
-    private Transform player;
-
-    public void Start()
+    protected override void Start()
     {
-        gm = GameManager.Instance;
-        dialogueRunner = gm.dialogueRunner;
-        inputManager = gm.inputManager;
-        range = GetComponentInChildren<DialogueRange>();
-
-        dialogueRunner.onDialogueComplete.AddListener(EndConversation);
-        inputManager.chatAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
+        base.Start();
     }
-
-    void CheckPlayerDirection()
-    {
-        Vector3 dir = (transform.position - player.position).normalized;
-        float delta = Vector3.Dot(dir, transform.forward);
-
-        // If delta is 1, it's looking directly at the object, -1 is looking directly away
-        // A good tolerance would be >= 0.8, then you can interact with the object
-    }
-    private void StartConversation()
+    protected override void StartInteraction()
     {
         if(!interactable) return;
-        inConversation = true;
+        base.StartInteraction();
         gm.sketchSubject = this;
-        gm.currMode = CurrentMode.Conversation;
-
-        dialogueRunner.StartDialogue(queerID.npcName + "Start");
     }
 
     public void StartSketchConversation()
     {
         gm.currMode = CurrentMode.Conversation;
-        inConversation = true;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
     }
-    private void EndConversation()
+    protected override void EndInteraction()
     {
-        if (inConversation)
-        {
-            inConversation = false;
-            if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
-            else gm.currMode = CurrentMode.Nothing;
-        }
+        if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
+        else gm.currMode = CurrentMode.Nothing;
     }
 
     [YarnCommand("gift")]

@@ -9,19 +9,21 @@ public class Interactable : MonoBehaviour
     enum InteractType {Dialogue,Notification};
     [SerializeField] private InteractType type;
     [SerializeField] private string dialogueTitle;
-    
-    DialogueRunner dialogueRunner;
+    protected DialogueRunner dialogueRunner;
+    protected GameManager gm;
     Collider _collider;
-    bool InRange = false;
+    [SerializeField] bool InRange = false;
+    private Transform playerTransform;
 
-    void Start()
+    protected virtual void Start()
     {
-        dialogueRunner = GameManager.Instance.dialogueRunner;
+        gm = GameManager.Instance;
+        dialogueRunner = gm.dialogueRunner;
         _collider = GetComponent<Collider>();
         _collider.isTrigger = true;
-        InputManager.Instance.chatAction.performed += ctx => { if (InRange && GameManager.Instance.currMode == CurrentMode.Nothing) 
-        TriggerInteraction(); };
-        dialogueRunner.onDialogueComplete.AddListener(FinishedInteraction);
+        InputManager.Instance.chatAction.performed += ctx => { if (InRange && gm.currMode == CurrentMode.Nothing) 
+        StartInteraction(); };
+        dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,8 +40,15 @@ public class Interactable : MonoBehaviour
     }
     
     //check player face direction 
+    void CheckPlayerDirection()
+    {
+        Vector3 dir = (transform.position - playerTransform.position).normalized;
+        float delta = Vector3.Dot(dir, transform.forward);
 
-    void TriggerInteraction()
+        // If delta is 1, it's looking directly at the object, -1 is looking directly away
+        // A good tolerance would be >= 0.8, then you can interact with the object
+    }
+    protected virtual void StartInteraction()
     {
         switch(type)
         {
@@ -50,11 +59,11 @@ public class Interactable : MonoBehaviour
             Debug.Log("show notice window!");
             break;
         }
-        GameManager.Instance.currMode = CurrentMode.Conversation;
+        gm.currMode = CurrentMode.Conversation;
     }
 
-    void FinishedInteraction()
+    protected virtual void EndInteraction()
     {
-        GameManager.Instance.currMode = CurrentMode.Nothing;
+        gm.currMode = CurrentMode.Nothing;
     }
 }

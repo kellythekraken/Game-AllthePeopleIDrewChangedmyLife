@@ -1828,6 +1828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   dialogueTitle: DisplayBox
+  InRange: 0
 --- !u!135 &199619487
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5604,8 +5605,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3316006942b1db4eb10781d82f10af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   dialogueTitle: 
+  InRange: 0
 --- !u!135 &610133932
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5630,13 +5632,14 @@ GameObject:
   - component: {fileID: 613048513}
   - component: {fileID: 613048515}
   - component: {fileID: 613048514}
+  - component: {fileID: 613048516}
   m_Layer: 0
   m_Name: Toni
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &613048513
 Transform:
   m_ObjectHideFlags: 0
@@ -5665,6 +5668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  dialogueTitle: ToniStart
+  InRange: 0
   queerID: {fileID: 11400000, guid: 91f614f1d57c13d48b9a7cfdea40b4da, type: 2}
 --- !u!136 &613048515
 CapsuleCollider:
@@ -5680,6 +5686,19 @@ CapsuleCollider:
   m_Height: 1.326944
   m_Direction: 1
   m_Center: {x: 0.0056453347, y: 0.35011894, z: 1.00165015e-11}
+--- !u!135 &613048516
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613048512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &619392063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6443,7 +6462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: f657c58adb4c219419ae056411d88e27, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 466016, guid: f657c58adb4c219419ae056411d88e27, type: 3}
       propertyPath: m_LocalScale.x
@@ -8879,63 +8898,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1036585396
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1036585397}
-  - component: {fileID: 1036585398}
-  - component: {fileID: 1036585399}
-  m_Layer: 0
-  m_Name: DialogueRange
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1036585397
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036585396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 5.1640635, y: 5.1640635, z: 5.1640635}
-  m_Children: []
-  m_Father: {fileID: 1851129614}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &1036585398
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036585396}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.32135543
-  m_Center: {x: 0, y: -0.29560086, z: 0.031322893}
---- !u!114 &1036585399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1036585396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd1d45a04cf9a34186f9a8d7afc5e70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1040173365 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1056120982340450, guid: 6d6b709c20acb1840a72d83aba78580e, type: 3}
@@ -9634,6 +9596,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108242884}
   m_CullTransparentMesh: 1
+--- !u!1 &1118500357 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166016, guid: f657c58adb4c219419ae056411d88e27, type: 3}
+  m_PrefabInstance: {fileID: 870278038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &1118500359
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118500357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.2176723
+  m_Height: 17.063057
+  m_Direction: 1
+  m_Center: {x: 0, y: 5, z: 0}
 --- !u!1 &1154354372
 GameObject:
   m_ObjectHideFlags: 0
@@ -19737,8 +19718,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1851129614}
-  - component: {fileID: 1851129623}
   - component: {fileID: 1851129615}
+  - component: {fileID: 1851129616}
   m_Layer: 0
   m_Name: Leon
   m_TagString: Untagged
@@ -19757,7 +19738,6 @@ Transform:
   m_LocalPosition: {x: 1.19, y: 1.089, z: -7.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1036585397}
   - {fileID: 870278039}
   m_Father: {fileID: 2102689990}
   m_RootOrder: 0
@@ -19774,21 +19754,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  dialogueTitle: LeonStart
+  InRange: 0
   queerID: {fileID: 11400000, guid: 030b89e4acb56214fa7f828664cb4d64, type: 2}
---- !u!136 &1851129623
-CapsuleCollider:
+--- !u!135 &1851129616
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851129613}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.663472
-  m_Height: 1.3896985
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.3814962, z: 0}
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1854521251
 GameObject:
   m_ObjectHideFlags: 0
@@ -20089,7 +20071,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.00034297386, y: 0.9990485, z: -0.042874523, w: 0.00799187}
+  m_LocalRotation: {x: 0.0003429741, y: 0.9990485, z: -0.04287452, w: 0.0079918755}
   m_LocalPosition: {x: -9.81, y: -2.19, z: -18.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -20867,6 +20849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  dialogueTitle: AliStart
+  InRange: 0
   queerID: {fileID: 11400000, guid: 6827b6f996ad22a4abb3582ddda39cab, type: 2}
 --- !u!1 &1978939389
 GameObject:
@@ -32850,13 +32835,27 @@ GameObject:
   - component: {fileID: 5252835231037374880}
   - component: {fileID: 5255488597003691828}
   - component: {fileID: 1976010201}
+  - component: {fileID: 5255488597003691827}
   m_Layer: 0
   m_Name: Ali
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
+--- !u!135 &5255488597003691827
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255488597003691826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &5255488597003691828
 CapsuleCollider:
   m_ObjectHideFlags: 0
