@@ -12,6 +12,7 @@ public class WardrobeButton : MonoBehaviour
     public GameObject popupWindow, wardrobeUI;
     public Button closeBtn;
     public Image newIndicator;
+    [SerializeField] private WardrobeManager wardrobeManager;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
 
@@ -24,7 +25,6 @@ public class WardrobeButton : MonoBehaviour
     private void Start()
     {
         DisplayWindow(false);
-
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
         closePopup = popupWindow.GetComponentInChildren<Button>();
@@ -35,6 +35,7 @@ public class WardrobeButton : MonoBehaviour
         InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
 
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
+        wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
     }
 

@@ -22,12 +22,11 @@ public class QueerNPC : MonoBehaviour
     {
         gm = GameManager.Instance;
         dialogueRunner = gm.dialogueRunner;
+        inputManager = gm.inputManager;
         range = GetComponentInChildren<DialogueRange>();
-        inputManager = FindObjectOfType<InputManager>();
 
         dialogueRunner.onDialogueComplete.AddListener(EndConversation);
         inputManager.chatAction.performed += ctx => { if (range.InRange && !inConversation) StartConversation(); };
-        //error was caused by multiple interactable in the scene!!!
     }
 
     void CheckPlayerDirection()
@@ -40,7 +39,6 @@ public class QueerNPC : MonoBehaviour
     }
     private void StartConversation()
     {
-        //make sure only one script get executed, not all of them.
         if(!interactable) return;
         inConversation = true;
         gm.sketchSubject = this;

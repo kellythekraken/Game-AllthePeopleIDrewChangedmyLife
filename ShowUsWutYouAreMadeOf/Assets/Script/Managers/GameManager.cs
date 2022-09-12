@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     }
     private CurrentMode lastMode;
     
-    public GameObject mainUI, settingsUI, wardrobeUI, sketchbookUI, dialogueUI, newItemWindow;
+    public GameObject mainUI, settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
-    private InputManager inputManager;
+    internal InputManager inputManager;
     private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;

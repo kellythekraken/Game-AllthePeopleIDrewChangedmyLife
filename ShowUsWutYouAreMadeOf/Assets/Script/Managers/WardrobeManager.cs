@@ -8,8 +8,6 @@ public class WardrobeManager : MonoBehaviour
 {
     //keep track of the item that player is wearing
 
-    //current 
-
     //store all of the found items
 
     //method to add item to the wardrobe list
@@ -28,13 +26,10 @@ public class WardrobeManager : MonoBehaviour
     List<Transform> wardrobeSectionList;
     List<Mesh> currentMeshInWear;
 
-    void Awake()
+    //called by wardrobebutton at start
+    public void WardrobeInit()
     {
         Instance = this;
-    }
-
-    void Start()
-    {
         accessoryList = new List<GameObject>();
         wardrobeSectionList = new List<Transform>();
         foreach(Transform i in wardrobeParent.transform)

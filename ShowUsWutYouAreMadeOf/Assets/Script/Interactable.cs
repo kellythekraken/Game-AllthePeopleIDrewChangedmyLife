@@ -36,6 +36,8 @@ public class Interactable : MonoBehaviour
     {
         if (other.CompareTag("Player")) InRange = false;
     }
+    
+    //check player face direction 
 
     void TriggerInteraction()
     {
@@ -45,6 +47,7 @@ public class Interactable : MonoBehaviour
             dialogueRunner.StartDialogue(dialogueTitle);
             break;
             case InteractType.Notification:
+            Debug.Log("show notice window!");
             break;
         }
         GameManager.Instance.currMode = CurrentMode.Conversation;
