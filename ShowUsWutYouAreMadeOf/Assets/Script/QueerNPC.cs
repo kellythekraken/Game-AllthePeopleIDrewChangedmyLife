@@ -8,11 +8,21 @@ public class QueerNPC : Interactable
 {
     public Queer queerID;
     private bool interactable = true;
+    bool introduced = false;
     protected override void StartInteraction()
     {
         if(!interactable) return;
         base.StartInteraction();
+        introduced = true;
         gm.sketchSubject = this;
+    }
+
+    protected override void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        InRange = true;
+        var displayTxt = introduced? queerID.npcName : "Chat"; 
+        indicator.ChangeText(displayTxt); 
     }
     public void StartSketchConversation()
     {

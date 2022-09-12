@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class WardrobeManager : MonoBehaviour
 {
-    //keep track of the item that player is wearing
-
-    //store all of the found items
-
-    //method to add item to the wardrobe list
+    //only manage things within the wardrobe!
     
-    //change mesh, change materials, make visible of accessories gameobj 
+    //store all of the found items
 
     // available colors
     [SerializeField] GameObject btnPrefab;
@@ -112,12 +108,10 @@ public class WardrobeManager : MonoBehaviour
         Mesh myMesh = section.renderer.sharedMesh;
         if(myMesh == meshToChange)
         {
-            Debug.Log("true!");
             section.renderer.sharedMesh = section.defaultMesh;
         }
         else
         {
-            Debug.Log("false!");
             section.renderer.sharedMesh = meshToChange;
         }
     }

@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     protected GameManager gm;
     protected InteractIndicator indicator;
     private Collider _collider;
-    private bool InRange = false;
+    protected bool InRange = false;
     private Transform playerTransform;
     private Interactable currentInteract = null;
 
@@ -31,11 +31,11 @@ public class Interactable : MonoBehaviour
 
     //if in range, communicate with the interactindicator, change the text
     //if face the object, the indicator will show up, and then the condition to interact should THEN be satisfied.
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
         InRange = true;
-        indicator.ChangeText(name); //if the npc name is unknown, change to 'chat'
+        indicator.ChangeText(name); 
     }
     private void OnTriggerStay(Collider other)
     {

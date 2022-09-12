@@ -89,7 +89,7 @@ title: AliSketchFin
 <<sketch false>>
 <<camera PlayerCam>>
 Ali: Thank you! Here is my gift for you.
-<<gift Lily>>
+<<gift Ali>>
 <<set $AliSketched to true>>
 ===
 

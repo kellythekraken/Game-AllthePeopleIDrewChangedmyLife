@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class WardrobeButton : MonoBehaviour
 {
     //attached to the ui wardrobe button. 
-    //control the wardrobe open/close outside of the canvas
+    //control everything wardrobe outside of the wardrobe canvas
     //also control the popup ui to display received item
 
     public static WardrobeButton Instance;
@@ -16,7 +16,7 @@ public class WardrobeButton : MonoBehaviour
     [SerializeField] private WardrobeManager wardrobeManager;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
-
+    [SerializeField] GameObject changingLight;
     List<Transform> wardrobeSections;
     Button openBtn, closePopup;
     TextMeshProUGUI itemText;
@@ -39,14 +39,15 @@ public class WardrobeButton : MonoBehaviour
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
+        changingLight.SetActive(false);
     }
 
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()
     {
         wardrobeOpen = !wardrobeOpen;
-
         wardrobeUI.SetActive(wardrobeOpen);
+        changingLight.SetActive(wardrobeOpen);
         if(wardrobeOpen)
         {
             GameManager.Instance.currMode = CurrentMode.Changing;

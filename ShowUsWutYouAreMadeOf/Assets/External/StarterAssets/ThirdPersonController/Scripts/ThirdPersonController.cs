@@ -32,9 +32,9 @@ namespace StarterAssets
         public AudioClip[] FootstepAudioClips;
         [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
 
-/*        [Space(10)]
+        [Space(10)]
         [Tooltip("The height the player can jump")]
-        public float JumpHeight = 1.2f;*/
+        public float JumpHeight = 1.2f;
 
         [Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
         public float Gravity = -15.0f;
@@ -156,6 +156,8 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
+            JumpAndGravity();
+            GroundedCheck();
             Move();
         }
 
@@ -171,6 +173,21 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+        }
+
+        private void GroundedCheck()
+        {
+            // set sphere position, with offset
+            Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset,
+                transform.position.z);
+            Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
+                QueryTriggerInteraction.Ignore);
+
+            // update animator if using character
+            if (_hasAnimator)
+            {
+                _animator.SetBool(_animIDGrounded, Grounded);
+            }
         }
 
         private void CameraRotation()
@@ -262,7 +279,7 @@ namespace StarterAssets
             }
         }
 
-/*        private void JumpAndGravity()
+        private void JumpAndGravity()
         {
             if (Grounded)
             {
@@ -330,7 +347,7 @@ namespace StarterAssets
                 _verticalVelocity += Gravity * Time.deltaTime;
             }
         }
-*/
+
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
             if (lfAngle < -360f) lfAngle += 360f;

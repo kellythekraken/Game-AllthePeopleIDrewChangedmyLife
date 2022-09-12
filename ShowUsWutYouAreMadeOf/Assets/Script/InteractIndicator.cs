@@ -35,7 +35,6 @@ public class InteractIndicator : MonoBehaviour
         //called in the interactive
         //change the child text
         var viewportPoint = mainCam.WorldToViewportPoint(target.position);
-        viewportPoint.z = 0f;
         var distanceFromCenter = Vector2.Distance(viewportPoint,Vector2.one * .5f);
         var show = distanceFromCenter < 0.3f;
         DisplayIndicator(show);
