@@ -11,7 +11,7 @@ public class WorldCanvasManager : MonoBehaviour
         mainCamera = Camera.main;
     }
     
-    void AppearOnCanvas()
+    void DisplayOnCanvas()
     {
 
     }

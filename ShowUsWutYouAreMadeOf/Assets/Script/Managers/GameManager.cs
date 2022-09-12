@@ -20,12 +20,10 @@ public class GameManager : MonoBehaviour
         }
     }
     private CurrentMode lastMode;
-    
     public GameObject mainUI, settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
-
     [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
     private SketchingSystem sketchManager;
     private WardrobeButton wardrobeBtn;
@@ -33,7 +31,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
-
+    internal bool inConversation;
     private void Awake()
     {
         Instance = this;
@@ -45,8 +43,12 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
         dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
+        dialogueRunner.onDialogueComplete.AddListener(Complete);
     }
-
+    void Complete()
+    {
+        Debug.Log("dialogue complete");
+    }
     private void Start()
     {
         wardrobeBtn = FindObjectOfType<WardrobeButton>();
@@ -68,17 +70,21 @@ public class GameManager : MonoBehaviour
             case CurrentMode.Nothing:
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(true);
+                inConversation = false;
                 return;
             case CurrentMode.Conversation:
                 LockCursor(true);
+                inConversation = true;
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
                 LockCursor(false);
+                inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
+                inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 return;
         }

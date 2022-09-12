@@ -9,26 +9,16 @@ public class QueerNPC : Interactable
     public Queer queerID;
     private WardrobeButton wardrobeBtn;
     private bool interactable = true;
-    protected override void Start()
-    {
-        base.Start();
-    }
     protected override void StartInteraction()
     {
         if(!interactable) return;
         base.StartInteraction();
         gm.sketchSubject = this;
     }
-
     public void StartSketchConversation()
     {
         gm.currMode = CurrentMode.Conversation;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
-    }
-    protected override void EndInteraction()
-    {
-        if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
-        else gm.currMode = CurrentMode.Nothing;
     }
 
     [YarnCommand("gift")]
