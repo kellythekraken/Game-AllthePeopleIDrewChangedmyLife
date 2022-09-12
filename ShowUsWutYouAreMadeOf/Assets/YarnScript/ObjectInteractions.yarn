@@ -1,0 +1,16 @@
+﻿title: DisplayBox
+---
+<<camera LeonCam>>
+Leon: Interested?
+Leon: They're made by local artists.
+<<camera PlayerCam>>
+===
+
+title: DoorExit
+---
+Wanna leave?
+-> yes
+    bye!
+-> no!
+    stay for a bit longer!
+===

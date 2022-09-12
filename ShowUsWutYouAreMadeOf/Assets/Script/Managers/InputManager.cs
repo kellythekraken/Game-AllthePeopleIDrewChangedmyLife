@@ -12,7 +12,6 @@ public class InputManager : MonoBehaviour
 
     internal InputAction interactAction, chatAction, lookAction, wardrobeAction;
     InputAction moveAction;
-
     PlayerInput playerInput;
     InputActionMap mainAcionMap;
 
@@ -43,11 +42,6 @@ public class InputManager : MonoBehaviour
     {
         mainAcionMap.Disable();
     }
-/*
-    private void Update()
-    {
-        if (interactAction.triggered) Interact(); // alternative method
-    }*/
     public void EnableChatMoveBtn(bool enable)
     {
         if (enable) 
@@ -64,6 +58,16 @@ public class InputManager : MonoBehaviour
         }
     }
 
+    public void LockInputOnDialogueStart()
+    {
+        StartCoroutine(LockInputCoroutine());
+    }
+    IEnumerator LockInputCoroutine()    //lock the input on dialogue start, to avoid instant skip of first line
+    {
+        mainAcionMap.Disable();
+        yield return new WaitForSeconds(.7f);
+        mainAcionMap.Enable();
+    }
     void SwitchSettingScreen()
     {
         GameManager.Instance.ToggleSettingScreen();

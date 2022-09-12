@@ -8,6 +8,10 @@ public enum CurrentMode { Nothing, Conversation, Sketching, Changing}
 
 public class GameManager : MonoBehaviour
 {
+    //access current mode
+    //controls the change of modes
+    //saves all the important reference
+    
     public static GameManager Instance;
     private CurrentMode _currMode;
     public CurrentMode currMode
@@ -116,20 +120,10 @@ public class GameManager : MonoBehaviour
         if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
     }
 
-   /* public void GiveItem()
+    public void TriggerEndGameEvent()
     {
-        Queer queer = sketchSubject.queerID;
-        wardrobeBtn.DisplayReceivedItem(queer.npcName, queer.items[0]);
-
-        //for multiple items
-        for (int i =0 ; i < queer.items.Length ; i++)
-        {
-            string text = string.Format("You received {0} from {1}!", queer.items[i].name, queer.npcName);
-            Sprite image = queer.items[i].icon;
-            Debug.Log(text);
-            wardrobeBtn.DisplayReceivedItem(text,image);
-        }
-    }*/
+        Debug.Log("end game!");
+    }
 
     public void ShowPronoun()
     {

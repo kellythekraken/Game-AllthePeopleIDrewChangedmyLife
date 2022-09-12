@@ -36,13 +36,6 @@ title: LeonStart
 <<endif>>
 <<camera PlayerCam>>
 ===
-title: DisplayBox
----
-<<camera LeonCam>>
-Leon: Interested?
-Leon: They're made by local artists.
-<<camera PlayerCam>>
-===
 title: AliStart
 ---
 <<camera AliCam>>

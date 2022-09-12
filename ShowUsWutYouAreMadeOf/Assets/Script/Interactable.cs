@@ -9,14 +9,13 @@ public class Interactable : MonoBehaviour
     enum InteractType {Dialogue,Notification};
     [SerializeField] private InteractType type;
     [SerializeField] private string dialogueTitle;
+    [TextArea(1,3)][SerializeField] private string notification;
     protected DialogueRunner dialogueRunner;
     protected GameManager gm;
     protected InteractIndicator indicator;
     private Collider _collider;
     protected bool InRange = false;
     private Transform playerTransform;
-    private Interactable currentInteract = null;
-
     protected virtual void Start()
     {
         gm = GameManager.Instance;
@@ -49,34 +48,25 @@ public class Interactable : MonoBehaviour
         InRange = false;
         indicator.DisplayIndicator(false);
     }
-    
-    //check player face direction 
-    void CheckPlayerDirection()
-    {
-        Vector3 dir = (transform.position - playerTransform.position).normalized;
-        float delta = Vector3.Dot(dir, transform.forward);
-
-        // If delta is 1, it's looking directly at the object, -1 is looking directly away
-        // A good tolerance would be >= 0.8, then you can interact with the object
-    }
     protected virtual void StartInteraction()
     {
-        currentInteract = this;
+        InputManager.Instance.LockInputOnDialogueStart();
+        indicator.currentInteract = this;
         switch(type)
         {
             case InteractType.Dialogue:
             dialogueRunner.StartDialogue(dialogueTitle);
+            gm.currMode = CurrentMode.Conversation;
             break;
             case InteractType.Notification:
-            Debug.Log(name + " want to show notice window!");
+            UIManager.Instance.DisplayNotification(notification);
             break;
         }
-        gm.currMode = CurrentMode.Conversation;
     }
 
     protected virtual void EndInteraction()
     {
-        if(currentInteract == this)
+        if(indicator.currentInteract == this)
         {
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
             else gm.currMode = CurrentMode.Nothing;

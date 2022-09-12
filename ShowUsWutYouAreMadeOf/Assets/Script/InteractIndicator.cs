@@ -11,6 +11,8 @@ public class InteractIndicator : MonoBehaviour
     Camera mainCam;
     Image myImage;
     TextMeshProUGUI myText;
+    internal Interactable currentInteract = null;
+
     void Awake() => Instance = this; 
     void Start()
     {

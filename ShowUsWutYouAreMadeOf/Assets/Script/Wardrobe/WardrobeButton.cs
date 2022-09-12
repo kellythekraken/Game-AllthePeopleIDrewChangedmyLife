@@ -10,30 +10,22 @@ public class WardrobeButton : MonoBehaviour
     //also control the popup ui to display received item
 
     public static WardrobeButton Instance;
-    public GameObject popupWindow, wardrobeUI;
+    public GameObject wardrobeUI;
     public Button closeBtn;
     public Image newIndicator;
     [SerializeField] private WardrobeManager wardrobeManager;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
-    [SerializeField] GameObject changingLight;
-    List<Transform> wardrobeSections;
-    Button openBtn, closePopup;
-    TextMeshProUGUI itemText;
-    Image itemIcon;
+    [SerializeField] private GameObject changingLight;
+    private List<Transform> wardrobeSections;
+    private Button openBtn;
 
     bool newItem = false;
     void Awake() => Instance = this;
     private void Start()
     {
-        DisplayWindow(false);
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
-        closePopup = popupWindow.GetComponentInChildren<Button>();
-        itemText = popupWindow.GetComponentInChildren<TextMeshProUGUI>();
-        itemIcon = popupWindow.transform.Find("Icon").GetComponent<Image>();
-
-        InputManager.Instance.interactAction.performed += ctx => { if(popupDisplayOn) DisplayWindow(false); };
         InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
 
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
@@ -61,25 +53,12 @@ public class WardrobeButton : MonoBehaviour
             GameManager.Instance.BackToLastMode();
         }
     }
-
-    public void DisplayReceivedItem(string npcName, GiftItem gift)
+    public void DisplayReceivedItem(string npcName, GiftItem gift) //load a list of gift?
     {
-        DisplayWindow(true);
-        string text = string.Format("You received {0} from {1}!", gift.name, npcName);
-
-        itemText.text = text;
-        itemIcon.sprite = gift.icon;
-
         newIndicator.enabled = true;
         newItem = true;
-        
-        //AddItemToWardrobe(gift);
+        string text = string.Format("You received {0} from {1}!", gift.name, npcName);
+        UIManager.Instance.DisplayItem(text,gift.icon);
     }
-    bool popupDisplayOn;
-    public void DisplayWindow(bool open)
-    {
-        if(!open) GameManager.Instance.currMode = CurrentMode.Nothing;
-        popupDisplayOn = open;
-        popupWindow.SetActive(open);
-    }
+
 }
