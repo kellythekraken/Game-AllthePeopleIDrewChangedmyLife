@@ -7,14 +7,17 @@ ModelImporter:
       74: -4945419952810917544
     second: Base_Idle
   - first:
-      74: 7571183903700067488
-    second: Base_Walk
+      74: 1544954474653006690
+    second: Ali_Sit
+  - first:
+      74: -2882141099964128302
+    second: Ali_Sit_Look
   externalObjects: {}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
