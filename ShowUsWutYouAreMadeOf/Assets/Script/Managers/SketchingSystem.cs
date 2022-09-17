@@ -5,18 +5,12 @@ using UnityEngine.UI;
 using System.Linq;
 public class SketchingSystem : MonoBehaviour
 {
-    //what if, say it's pencil layer, each detail layer is colored in the chosen color. but you only have limited choices
-    //e.g. 4 strokes before it's done. then you end up with different sketches.
-
-    //what does this do to the gameplay? except making it less boring.
-    //would it clash with reading the dialogue?
-
     public Button sketchbook;
     [SerializeField] private Button areaBtnPrefab;
     [SerializeField] private Image drawPrefab;
-
-    //load the choices, color remain the same
-    public List<DrawableArea> areaChoices;
+    [SerializeField] PointerFollower[] crayonPointers;
+    List<DrawableArea> areaChoices;
+    InputManager inputManager;
     List<Button> colorChoices;
     List<Image> drawings;
 
@@ -24,7 +18,6 @@ public class SketchingSystem : MonoBehaviour
     Button chosenColor;
     Transform areaButtonParent, drawingParent;
     List<Sprite> storedSketches;
-
     bool initialized = false;
     private void OnEnable()
     {
@@ -42,7 +35,10 @@ public class SketchingSystem : MonoBehaviour
         //save the sketch to a storage, then delete the sketches in scene
         Destroy(instantiatedCopy);
     }
-
+    void Start()
+    {
+        inputManager = GameManager.Instance.inputManager;
+    }
     Queer instantiatedCopy;
     void InitList()
     {
@@ -80,10 +76,19 @@ public class SketchingSystem : MonoBehaviour
         }
     }
 
+    GameObject lastCrayon = null;
     //the chosen one should have a visual indication that they're being selected
     private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
-    private void RegisterColorChoice(Button btn) => chosenColor = btn;
-
+    private void RegisterColorChoice(Button btn) 
+    {
+        chosenColor = btn;
+        GameObject obj = btn.gameObject;
+        if(lastCrayon!= null) lastCrayon.SetActive(true);
+        obj.SetActive(false);
+        lastCrayon = obj;
+        //disable the last crayon follow cursor
+        //enable the correct crayon to follow cursor
+    }
 
     private void Sketch()
     {
@@ -92,6 +97,7 @@ public class SketchingSystem : MonoBehaviour
             Debug.Log("Should choose both choices before clicking sketchbook!");
             return;
         }
+        //disable the crayon follow cursor
         MakeADrawing();
 
         chosenArea = null; chosenColor = null;

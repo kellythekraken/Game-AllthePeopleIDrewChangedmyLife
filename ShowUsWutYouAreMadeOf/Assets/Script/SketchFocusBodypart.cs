@@ -1,20 +1,45 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-[RequireComponent(typeof(Collider))]
-public class SketchFocusBodypart : MonoBehaviour
+public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    //attached to each part of mesh that could be sketched
-    //should be loaded into each npc data, and unlock when you can sketch each body part, and if there are any more stroke left.
+    Material parentMaterial;
+    public bool selected = false; // there should only be one selected!
 
-    void OnMouseOver()
-    {
-        Debug.Log("mouse enter");
+    void Start()
+    {   
+        parentMaterial = GetComponentInParent<SkinnedMeshRenderer>().material;
     }
-     void OnMouseExit()
-     {
-        Debug.Log("mouse exit");
-     }
+
+    public void OnPointerEnter(PointerEventData pointerEventData)
+    {
+        HighlightMaterial();
+    }
+
+    public void OnPointerExit(PointerEventData pointerEventData)
+    {
+        if(!selected) UnlightMaterial();
+    }
+
+    public void OnPointerDown(PointerEventData pointerEventData)
+    {
+        Debug.Log(name + "is selected!");
+        selected = true;
+    }
      
+     public void HighlightMaterial()
+     {
+        parentMaterial.color = Color.black;
+
+     }
+     public void UnlightMaterial()
+     {
+        parentMaterial.color = Color.white;
+
+     }
+     public void Selected()
+     {
+
+     }
 }

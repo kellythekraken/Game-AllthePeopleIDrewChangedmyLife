@@ -29,7 +29,6 @@ public class InputManager : MonoBehaviour
         lookAction = mainAcionMap["Look"];
         wardrobeAction = mainAcionMap["Wardrobe"];
         mainAcionMap["Setting"].performed += ctx => SwitchSettingScreen(); 
-        
     }
 
     void OnEnable()
@@ -41,20 +40,6 @@ public class InputManager : MonoBehaviour
         mainAcionMap.Disable();
     }
 
-    Ray ray;
-    RaycastHit hit;
-    [SerializeField] LayerMask raycastHit;
-     void Update()
-     {
-        //Vector3 mousePos = Mouse.current.position.ReadValue();   
-        //mousePos.z=Camera.main.nearClipPlane;
-        //Vector3 Worldpos=Camera.main.ScreenToWorldPoint(mousePos);  
-         ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-         if(Physics.Raycast(ray, out hit, 100f, raycastHit))
-         {
-             Debug.Log(hit.collider.name);
-         }
-     }
     public void EnableChatMoveBtn(bool enable)
     {
         if (enable) 
