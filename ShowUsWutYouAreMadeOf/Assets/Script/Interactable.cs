@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] private InteractType type;
     [SerializeField] private string dialogueTitle;
     [TextArea(1,3)][SerializeField] private string notification;
+    [SerializeField]float centerFacingBias = 0.3f;
     protected DialogueRunner dialogueRunner;
     protected GameManager gm;
     protected InteractIndicator indicator;
@@ -40,7 +41,7 @@ public class Interactable : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         InRange = true;
-        indicator.CheckFaceDir(transform);
+        indicator.CheckFaceDir(transform,centerFacingBias);
     }
     private void OnTriggerExit(Collider other)
     {

@@ -5,6 +5,8 @@ using TMPro;
 public class InteractIndicator : MonoBehaviour
 {
     //to be displayed on world canvas
+    //take info from interactables, check facing direction
+    
     public static InteractIndicator Instance;
     internal bool facingSubject;
     GameManager gm;
@@ -25,7 +27,7 @@ public class InteractIndicator : MonoBehaviour
     }
 
     //display when the player is facing this ui element
-    public void CheckFaceDir(Transform target)
+    public void CheckFaceDir(Transform target, float biasValue)
     {
         if(gm.inConversation) 
         {
@@ -38,7 +40,7 @@ public class InteractIndicator : MonoBehaviour
         //change the child text
         var viewportPoint = mainCam.WorldToViewportPoint(target.position);
         var distanceFromCenter = Vector2.Distance(viewportPoint,Vector2.one * .5f);
-        var show = distanceFromCenter < 0.3f;
+        var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
     }
 

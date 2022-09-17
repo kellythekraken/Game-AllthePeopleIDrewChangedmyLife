@@ -47,7 +47,7 @@ public class SketchingSystem : MonoBehaviour
     Queer instantiatedCopy;
     void InitList()
     {
-        var colors = transform.Find("PaletteButtons").GetComponentsInChildren<Button>();
+        var colors = transform.Find("CrayonBtns").GetComponentsInChildren<Button>();
         var strokes = transform.Find("Drawings").GetComponentsInChildren<Image>();
 
         colorChoices = new List<Button>();

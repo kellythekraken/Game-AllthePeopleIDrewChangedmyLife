@@ -38,7 +38,7 @@ title: LeonStart
 ===
 title: AliStart
 ---
-<<camera AliCam>>
+<<camera AliChat>>
 <<if !$AliIntroduced>>
     <<set $ChatCount +=1>>
     Ali: Hello handsome! What's up?
@@ -46,6 +46,7 @@ title: AliStart
     Ali: Sketch me!
     <<set $AliIntroduced to true>>
     <<sketch true>>
+    <<camera AliSketch>>
     <<jump AliSketch>>
 <<elseif $AliSketched>>
     Ali: Hey again, little artist, I'm about to leave.

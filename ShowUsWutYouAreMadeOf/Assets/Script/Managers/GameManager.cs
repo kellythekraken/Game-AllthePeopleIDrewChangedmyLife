@@ -113,11 +113,20 @@ public class GameManager : MonoBehaviour
     }
     public void OpenCloseSketchbook(bool open)
     {
-        sketchbookOpen = open;
-        sketchbookUI.SetActive(open);
-        mainUI.SetActive(!open);
+        if(open) 
+        {
+            sketchManager.PrepareToSketch(sketchSubject.queerID);
+            StartCoroutine(OpenSketchbook());
+        }
+        else sketchbookUI.SetActive(false);
 
-        if(open) sketchManager.PrepareToSketch(sketchSubject.queerID);
+        sketchbookOpen = open;
+        mainUI.SetActive(!open);
+    }
+    IEnumerator OpenSketchbook()
+    {
+        yield return new WaitForSeconds(.8f);  //delay shortly before opening sketchbook
+        sketchbookUI.SetActive(true);
     }
 
     public void TriggerEndGameEvent()
