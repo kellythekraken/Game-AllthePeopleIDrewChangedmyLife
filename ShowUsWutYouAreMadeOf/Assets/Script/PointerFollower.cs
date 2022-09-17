@@ -5,14 +5,11 @@ using UnityEngine.InputSystem;
 public class PointerFollower : MonoBehaviour
 {
     Camera mainCamera;
-    void Start()
-    {
-        mainCamera = Camera.main;
-    }
-
+    Vector2 offset = new Vector2(50f,45f);
     void OnEnable()
     {
-        Cursor.visible = false;
+        mainCamera = Camera.main;
+        //Cursor.visible = false;
     }
     void OnDisable()
     {
@@ -20,7 +17,6 @@ public class PointerFollower : MonoBehaviour
     }
     void Update()
     {   
-       Vector2 mousePosition = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-       transform.position = mousePosition;
+       transform.position = Mouse.current.position.ReadValue() + offset;
     }
 }

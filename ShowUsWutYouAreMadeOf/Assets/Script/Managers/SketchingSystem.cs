@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +7,7 @@ public class SketchingSystem : MonoBehaviour
     public Button sketchbook;
     [SerializeField] private Button areaBtnPrefab;
     [SerializeField] private Image drawPrefab;
-    [SerializeField] PointerFollower[] crayonPointers;
+    [SerializeField] List<PointerFollower> crayonPointers;
     List<DrawableArea> areaChoices;
     InputManager inputManager;
     List<Button> colorChoices;
@@ -38,6 +37,7 @@ public class SketchingSystem : MonoBehaviour
     void Start()
     {
         inputManager = GameManager.Instance.inputManager;
+        DisableAllFollower();
     }
     Queer instantiatedCopy;
     void InitList()
@@ -76,6 +76,7 @@ public class SketchingSystem : MonoBehaviour
         }
     }
 
+
     GameObject lastCrayon = null;
     //the chosen one should have a visual indication that they're being selected
     private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
@@ -83,11 +84,27 @@ public class SketchingSystem : MonoBehaviour
     {
         chosenColor = btn;
         GameObject obj = btn.gameObject;
-        if(lastCrayon!= null) lastCrayon.SetActive(true);
+        if(lastCrayon!= null) 
+        {
+            lastCrayon.SetActive(true);
+            StartCrayonFollow(false);
+        }
         obj.SetActive(false);
         lastCrayon = obj;
+        StartCrayonFollow(true);
         //disable the last crayon follow cursor
         //enable the correct crayon to follow cursor
+    }
+
+    private void StartCrayonFollow(bool start)
+    {
+       var follower = crayonPointers.Find(x => x.name == lastCrayon.name);
+       follower.gameObject.SetActive(start);
+    }
+
+    private void DisableAllFollower()
+    {
+        foreach(var i in crayonPointers) i.gameObject.SetActive(false);
     }
 
     private void Sketch()
