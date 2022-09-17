@@ -8,14 +8,15 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Ali
-  m_Shader: {fileID: 4800000, guid: 098d4ffc7d7b82d4db28426a03a46477, type: 3}
+  m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
+  disabledShaderPasses:
+  - ALWAYS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -47,7 +48,9 @@ Material:
     - _DstBlend: 0
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
+    - _Glossiness: 0.5
     - _LightingEnabled: 0
+    - _Metallic: 0
     - _Mode: 0
     - _SoftParticlesEnabled: 0
     - _SoftParticlesFarFadeDistance: 1
