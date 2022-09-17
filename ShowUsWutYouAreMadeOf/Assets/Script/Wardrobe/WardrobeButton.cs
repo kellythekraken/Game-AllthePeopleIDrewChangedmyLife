@@ -16,7 +16,6 @@ public class WardrobeButton : MonoBehaviour
     [SerializeField] private WardrobeManager wardrobeManager;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
-    [SerializeField] private GameObject changingLight;
     private List<Transform> wardrobeSections;
     private Button openBtn;
 
@@ -31,7 +30,6 @@ public class WardrobeButton : MonoBehaviour
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
-        changingLight.SetActive(false);
     }
 
     bool wardrobeOpen = false;
@@ -39,7 +37,6 @@ public class WardrobeButton : MonoBehaviour
     {
         wardrobeOpen = !wardrobeOpen;
         wardrobeUI.SetActive(wardrobeOpen);
-        changingLight.SetActive(wardrobeOpen);
         if(wardrobeOpen)
         {
             GameManager.Instance.currMode = CurrentMode.Changing;

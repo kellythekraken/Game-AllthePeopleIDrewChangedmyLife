@@ -39,6 +39,7 @@ title: LeonStart
 title: AliStart
 ---
 <<camera AliChat>>
+<<pose Ali SitLook>>
 <<if !$AliIntroduced>>
     <<set $ChatCount +=1>>
     Ali: Hello handsome! What's up?
@@ -54,6 +55,7 @@ title: AliStart
     <<silence Ali>>
     <<enter Toni>>
     <<camera PlayerCam>>
+    <<pose Ali Sit>>
 <<endif>>
 ===
 title: AliSketch
@@ -84,6 +86,7 @@ title: AliSketchFin
 <<camera PlayerCam>>
 Ali: Thank you! Here is my gift for you.
 <<gift Ali>>
+<<pose Ali Sit>>
 <<set $AliSketched to true>>
 ===
 

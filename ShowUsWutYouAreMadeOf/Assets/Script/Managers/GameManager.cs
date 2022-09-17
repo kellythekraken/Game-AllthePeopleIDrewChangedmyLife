@@ -24,11 +24,11 @@ public class GameManager : MonoBehaviour
         }
     }
     private CurrentMode lastMode;
-    public GameObject mainUI, settingsUI, sketchbookUI, dialogueUI, newItemWindow;
+    public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
-    [SerializeField] private Camera mainCamera, uiCamera, wardrobeCamera;
+    [SerializeField] private GameObject playerObject;
     private SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
     internal InputManager inputManager;
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
     internal bool inConversation;
+    private Camera mainCam;
     private void Awake()
     {
         Instance = this;
@@ -47,24 +48,20 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
         dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
-        dialogueRunner.onDialogueComplete.AddListener(Complete);
-    }
-    void Complete()
-    {
-        Debug.Log("dialogue complete");
     }
     private void Start()
     {
         wardrobeBtn = WardrobeButton.Instance;
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
-
+        mainCam = Camera.main;
         OpenCloseSketchbook(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
 
         LockCursor(true);
     }
+
     void OnModeChanged(CurrentMode mode)
     {
         lastMode = currMode;
@@ -98,21 +95,14 @@ public class GameManager : MonoBehaviour
         currMode = lastMode;
     }
 
-    bool inSetting = false;
-    public void ToggleSettingScreen()
-    {
-        inSetting = !inSetting;
-        settingsUI.SetActive(inSetting);
-        LockCursor(!inSetting);
-    }
-
+    #region SKETCHING PHASE
     public void ContinueSketchChat()
     {
-        //currMode = CurrentMode.Sketching;
         sketchSubject.StartSketchConversation();
     }
     public void OpenCloseSketchbook(bool open)
     {
+        ShowPlayer(!open);
         if(open) 
         {
             sketchManager.PrepareToSketch(sketchSubject.queerID);
@@ -121,19 +111,16 @@ public class GameManager : MonoBehaviour
         else sketchbookUI.SetActive(false);
 
         sketchbookOpen = open;
-        mainUI.SetActive(!open);
+        wardrobeBtn.gameObject.SetActive(!open);
     }
     IEnumerator OpenSketchbook()
     {
         yield return new WaitForSeconds(.8f);  //delay shortly before opening sketchbook
         sketchbookUI.SetActive(true);
     }
+#endregion
 
-    public void TriggerEndGameEvent()
-    {
-        Debug.Log("end game!");
-    }
-
+    #region CONVERSATION PHASE
     public void ShowPronoun()
     {
         pronounTag.SetActive(true);
@@ -143,7 +130,24 @@ public class GameManager : MonoBehaviour
     {
         pronounTag.SetActive(false);
     }
+#endregion
 
+    public void ShowPlayer(bool show)
+    {
+        playerObject.SetActive(show);
+    }
+    bool inSetting = false;
+    public void ToggleSettingScreen()
+    {
+        inSetting = !inSetting;
+        settingsUI.SetActive(inSetting);
+        if(inSetting) currMode = CurrentMode.Changing;
+        else BackToLastMode();
+    }
+    public void TriggerEndGameEvent()
+    {
+        Debug.Log("end game!");
+    }
     public void LockCursor(bool lockCursor)
     {
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;

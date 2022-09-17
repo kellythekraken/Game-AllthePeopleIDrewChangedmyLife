@@ -45,7 +45,7 @@ public class Character : MonoBehaviour {
     }
 
     // tells the animator to jump to state {poseName} 
-    [YarnCommand("pose")]
+    //[YarnCommand("pose")]
     public void SetPose(string poseName) {
         animator.Play("Base Layer." + poseName, 0);
         Debug.Log($"{name} adopting {poseName} pose.");

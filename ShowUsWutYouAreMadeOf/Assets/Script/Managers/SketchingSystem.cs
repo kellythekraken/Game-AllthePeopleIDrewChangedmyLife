@@ -23,7 +23,6 @@ public class SketchingSystem : MonoBehaviour
     DrawableArea chosenArea;
     Button chosenColor;
     Transform areaButtonParent, drawingParent;
-
     List<Sprite> storedSketches;
 
     bool initialized = false;
@@ -40,8 +39,8 @@ public class SketchingSystem : MonoBehaviour
     void OnDisable()
     {
         chosenArea = null; chosenColor = null;
+        //save the sketch to a storage, then delete the sketches in scene
         Destroy(instantiatedCopy);
-        //save the sketch to a storage
     }
 
     Queer instantiatedCopy;

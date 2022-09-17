@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
-using UnityEngine.InputSystem;
 
 public class QueerNPC : Interactable
 {
     public Queer queerID;
     private bool interactable = true;
-    bool introduced = false;
+    private bool introduced = false;
+    private Animator _animator;
+
+    protected override void Start()
+    {
+        base.Start();
+        _animator = GetComponent<Animator>();
+    }
     protected override void StartInteraction()
     {
         if(!interactable) return;
@@ -28,6 +32,12 @@ public class QueerNPC : Interactable
     {
         gm.currMode = CurrentMode.Conversation;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
+    }
+    [YarnCommand("pose")]
+    void ChangePose(string anim)
+    {
+        Debug.Log(name + " change pose to" + anim);
+        _animator.CrossFade(anim,12f,0);
     }
 
     [YarnCommand("gift")]

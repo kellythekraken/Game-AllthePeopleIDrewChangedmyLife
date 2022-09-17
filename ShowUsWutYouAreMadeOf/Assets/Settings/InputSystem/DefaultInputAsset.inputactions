@@ -6,6 +6,14 @@
             "id": "f62a4b92-ef5e-4175-8f4c-c9075429d32c",
             "actions": [
                 {
+                    "name": "MousePos",
+                    "type": "Value",
+                    "id": "04fb9212-60b6-44c9-a6e3-c3009b2e08ab",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
                     "name": "Move",
                     "type": "Value",
                     "id": "6bc1aaf4-b110-4ff7-891e-5b9fe6f32c4d",
@@ -230,6 +238,17 @@
                 },
                 {
                     "name": "",
+                    "id": "974ce52a-da7f-4da6-b68c-2b1c97ff5862",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Chat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "375499f3-3e8d-43c8-919c-93b8ff229904",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -269,6 +288,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Wardrobe",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff0b89b6-a4d3-4e6b-979c-78aaf5fd701a",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09b50b00-bcb2-48d6-85cf-b9bf490fd5a4",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "MousePos",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
