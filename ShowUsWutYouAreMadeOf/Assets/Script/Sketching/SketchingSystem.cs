@@ -2,8 +2,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.Events;
+
 public class SketchingSystem : MonoBehaviour
 {
+    public static SketchingSystem Instance;
+    internal UnityEvent BodypartSelectEvent = new UnityEvent();
+    public GameObject chosenBody
+    {
+        get { return _chosenBody; } 
+        set { RegisterBodyChoice(value); BodypartSelectEvent.Invoke(); }
+    }
+
+    private GameObject _chosenBody;
     public Button sketchbook;
     [SerializeField] private Button areaBtnPrefab;
     [SerializeField] private Image drawPrefab;
@@ -12,7 +23,6 @@ public class SketchingSystem : MonoBehaviour
     InputManager inputManager;
     List<Button> colorChoices;
     List<Image> drawings;
-
     DrawableArea chosenArea;
     Button chosenColor;
     Transform areaButtonParent, drawingParent;
@@ -30,9 +40,14 @@ public class SketchingSystem : MonoBehaviour
     }
     void OnDisable()
     {
-        chosenArea = null; chosenColor = null;
+        chosenArea = null; chosenColor = null; lastCrayon = null;
         //save the sketch to a storage, then delete the sketches in scene
         Destroy(instantiatedCopy);
+    }
+
+    void Awake() 
+    {
+        Instance = this;
     }
     void Start()
     {
@@ -92,10 +107,13 @@ public class SketchingSystem : MonoBehaviour
         obj.SetActive(false);
         lastCrayon = obj;
         StartCrayonFollow(true);
-        //disable the last crayon follow cursor
-        //enable the correct crayon to follow cursor
     }
 
+    private void RegisterBodyChoice(GameObject target)
+    {
+        _chosenBody = target;
+        Debug.Log(target + "is selected!");
+    }
     private void StartCrayonFollow(bool start)
     {
        var follower = crayonPointers.Find(x => x.name == lastCrayon.name);
@@ -114,7 +132,7 @@ public class SketchingSystem : MonoBehaviour
             Debug.Log("Should choose both choices before clicking sketchbook!");
             return;
         }
-        //disable the crayon follow cursor
+        StartCrayonFollow(false);
         MakeADrawing();
 
         chosenArea = null; chosenColor = null;

@@ -9,7 +9,7 @@ public class PointerFollower : MonoBehaviour
     void OnEnable()
     {
         mainCamera = Camera.main;
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
     void OnDisable()
     {
