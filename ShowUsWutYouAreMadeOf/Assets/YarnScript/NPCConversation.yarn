@@ -74,6 +74,16 @@ title: AliSketch
 <<elseif $Stroke == 3>>
     Ali: Blablablabla
 <<elseif $Stroke == 4>>
+    Ali: Blablablabla
+<<elseif $Stroke == 5>>
+    Ali: 5
+<<elseif $Stroke == 6>>
+    Ali: 6
+<<elseif $Stroke == 7>>
+    Ali: 7
+<<elseif $Stroke == 8>>
+    Ali: 8
+<<elseif $Stroke == 9>>
     Ali: Last line before finish sketching.
     <<set $Stroke to 0>>
     <<jump AliSketchFin>>

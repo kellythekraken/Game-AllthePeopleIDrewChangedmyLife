@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    internal bool focusable = false;
     Material parentMaterial;
     GameObject parentObj;
     internal bool selected = false; // there should only be one selected!
@@ -16,7 +17,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        HighlightMaterial();
+        if(focusable)HighlightMaterial();
     }
 
     public void OnPointerExit(PointerEventData pointerEventData)
@@ -26,17 +27,19 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
+        if(!focusable) return;
         selected = true;
         SketchingSystem.Instance.ChosenBody = parentObj;
     }
      
      public void HighlightMaterial()
      {
-        parentMaterial.color = Color.black;
+        parentMaterial.SetColor("_EMISSION", new Color(0.0927F, 0.4852F, 0.2416F, 0.42F));
+        parentMaterial.EnableKeyword("_EMISSION");
      }
      public void UnlightMaterial()
      {
-        parentMaterial.color = Color.white;
+        parentMaterial.DisableKeyword("_EMISSION");
      }
      void OnSelect()
      {

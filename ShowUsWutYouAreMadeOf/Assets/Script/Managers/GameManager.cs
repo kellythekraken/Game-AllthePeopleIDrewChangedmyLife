@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         ShowPlayer(!open);
         if(open) 
         {
-            sketchManager.PrepareToSketch(sketchSubject.queerID);
+            sketchManager.PrepareToSketch(sketchSubject);
             StartCoroutine(OpenSketchbook());
         }
         else sketchbookUI.SetActive(false);

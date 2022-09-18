@@ -4,10 +4,11 @@ using Yarn.Unity;
 public class QueerNPC : Interactable
 {
     public Queer queerID;
+    public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
     private bool interactable = true;
     private bool introduced = false;
     private Animator _animator;
-
+    
     protected override void Start()
     {
         base.Start();
