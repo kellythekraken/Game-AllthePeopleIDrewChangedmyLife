@@ -37,7 +37,6 @@ public class QueerNPC : Interactable
     [YarnCommand("pose")]
     void ChangePose(string anim)
     {
-        Debug.Log(name + " change pose to" + anim);
         _animator.CrossFade(anim,12f,0);
     }
 
