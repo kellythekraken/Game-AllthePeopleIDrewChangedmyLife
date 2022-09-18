@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class DrawableArea
 {
-    public string label;
+    public string objName;
     public List<Sprite> targetDrawings;
 }
 
@@ -22,5 +22,6 @@ public class Queer : ScriptableObject
 
     public GiftItem[] items;
     public DrawableArea[] drawableAreas;
+    public Sprite backgroundDrawing;
     public int dialogueLength; //number of strokes before conversation end
 }

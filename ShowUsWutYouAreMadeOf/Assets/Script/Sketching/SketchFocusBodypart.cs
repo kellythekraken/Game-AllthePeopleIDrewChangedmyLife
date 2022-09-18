@@ -27,7 +27,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         selected = true;
-        SketchingSystem.Instance.chosenBody = parentObj;
+        SketchingSystem.Instance.ChosenBody = parentObj;
     }
      
      public void HighlightMaterial()
@@ -40,7 +40,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
      }
      void OnSelect()
      {
-        if(SketchingSystem.Instance.chosenBody != parentObj) 
+        if(SketchingSystem.Instance.ChosenBody != parentObj) 
         {
             UnlightMaterial();
             selected = false;

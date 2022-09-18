@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using TMPro;
-using UnityEngine.Events;
 
 public enum CurrentMode { Nothing, Conversation, Sketching, Changing}
 
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
     private CurrentMode lastMode;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
-    internal UnityEvent BodypartSelectEvent = new UnityEvent();
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
     [SerializeField] private GameObject playerObject;

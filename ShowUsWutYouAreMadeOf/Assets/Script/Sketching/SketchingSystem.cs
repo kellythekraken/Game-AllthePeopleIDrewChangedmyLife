@@ -8,24 +8,24 @@ public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
     internal UnityEvent BodypartSelectEvent = new UnityEvent();
-    public GameObject chosenBody
+    public GameObject ChosenBody
     {
-        get { return _chosenBody; } 
+        get { return chosenBody; } 
         set { RegisterBodyChoice(value); BodypartSelectEvent.Invoke(); }
     }
-
-    private GameObject _chosenBody;
+    private GameObject chosenBody;
+    Button chosenColor;
+    DrawableArea chosenArea;
     public Button sketchbook;
-    [SerializeField] private Button areaBtnPrefab;
+    //[SerializeField] private Button areaBtnPrefab;
     [SerializeField] private Image drawPrefab;
     [SerializeField] List<PointerFollower> crayonPointers;
+    [SerializeField] List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
     List<DrawableArea> areaChoices;
     InputManager inputManager;
     List<Button> colorChoices;
     List<Image> drawings;
-    DrawableArea chosenArea;
-    Button chosenColor;
-    Transform areaButtonParent, drawingParent;
+    Transform drawingParent;   //where drawing strokes will be instantiated
     List<Sprite> storedSketches;
     bool initialized = false;
     private void OnEnable()
@@ -36,11 +36,10 @@ public class SketchingSystem : MonoBehaviour
             initialized = true;
         }
         ClearChild(drawingParent);
-        ClearChild(areaButtonParent);
     }
     void OnDisable()
     {
-        chosenArea = null; chosenColor = null; lastCrayon = null;
+        ChosenBody = null; chosenColor = null; lastCrayon = null;
         //save the sketch to a storage, then delete the sketches in scene
         Destroy(instantiatedCopy);
     }
@@ -66,17 +65,18 @@ public class SketchingSystem : MonoBehaviour
         foreach (Button i in colors) { colorChoices.Add(i); i.onClick.AddListener(()=>RegisterColorChoice(i)); }
         foreach (Image i in strokes) { drawings.Add(i); i.enabled = false; }
 
-        areaButtonParent = transform.Find("FocusButtons");
+        //areaButtonParent = transform.Find("FocusButtons");
         drawingParent = transform.Find("Drawings");
 
         sketchbook.onClick.AddListener(Sketch);
-        chosenArea = null; chosenColor = null;
+        //chosenBody = null; 
+        chosenColor = null;
     }
     public void PrepareToSketch(Queer queer)
     {
         instantiatedCopy = Instantiate(queer);
+        
         areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
-
         for (int i=0; i < areaChoices.Count(); i++)
         {
             DrawableArea choice = areaChoices[i];
@@ -85,16 +85,15 @@ public class SketchingSystem : MonoBehaviour
                 areaChoices.Remove(choice);
                 continue;
             }
-            Button btn = Instantiate(areaBtnPrefab, areaButtonParent);
-            btn.name = choice.label;
-            btn.onClick.AddListener(() => RegisterAreaChoice(choice));
+            /*Button btn = Instantiate(areaBtnPrefab, areaButtonParent);
+            btn.name = choice.objName;
+            btn.onClick.AddListener(() => RegisterAreaChoice(choice));*/
         }
+        
     }
 
-
+    //private void RegisterAreaChoice(DrawableArea areaInfo) => chosenBody = areaInfo; 
     GameObject lastCrayon = null;
-    //the chosen one should have a visual indication that they're being selected
-    private void RegisterAreaChoice(DrawableArea areaInfo) => chosenArea = areaInfo; 
     private void RegisterColorChoice(Button btn) 
     {
         chosenColor = btn;
@@ -108,59 +107,56 @@ public class SketchingSystem : MonoBehaviour
         lastCrayon = obj;
         StartCrayonFollow(true);
     }
-
     private void RegisterBodyChoice(GameObject target)
     {
-        _chosenBody = target;
-        Debug.Log(target + "is selected!");
+        chosenBody = target;
+        if(target!= null) chosenArea = areaChoices.Find(x=> x.objName == chosenBody.name);
     }
+    //called when sketchbook is clicked
+    private void Sketch()
+    {
+        if (chosenBody == null || chosenColor == null)
+        {
+            //display a notice on the ui!
+            Debug.Log("Should choose both choices before clicking sketchbook!");
+            return;
+        }
+        MakeADrawing();
+        StartCrayonFollow(false);
+        ChosenBody = null; chosenColor = null;
+    }
+
+    void MakeADrawing()
+    {
+        //instantiate the corresponding drawing
+        Image stroke = Instantiate(drawPrefab, drawingParent);
+        //go to the next drawing!!! remove the current one
+        Sprite drawing = chosenArea.targetDrawings[0]; 
+        stroke.sprite = drawing;
+
+        Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
+        if (chosenArea.targetDrawings.Count < 1)
+        {
+            areaChoices.Remove(chosenArea);
+
+            //disable the clickable area from being clickable!!! the drawing has been exhausted
+
+            //GameObject btn = areaButtonParent.Find(chosenBody.objName).gameObject;
+            //if (btn != null) Destroy(btn);
+        }
+        chosenBody = null;
+        //advance the conversation
+        GameManager.Instance.ContinueSketchChat();
+    }
+
     private void StartCrayonFollow(bool start)
     {
        var follower = crayonPointers.Find(x => x.name == lastCrayon.name);
        follower.gameObject.SetActive(start);
     }
-
     private void DisableAllFollower()
     {
         foreach(var i in crayonPointers) i.gameObject.SetActive(false);
-    }
-
-    private void Sketch()
-    {
-        if (chosenArea == null || chosenColor == null)
-        {
-            Debug.Log("Should choose both choices before clicking sketchbook!");
-            return;
-        }
-        StartCrayonFollow(false);
-        MakeADrawing();
-
-        chosenArea = null; chosenColor = null;
-    }
-
-    void MakeADrawing()
-    {
-        //Debug.LogFormat("sketch using {0} drawing {1}", chosenColor, chosenArea);
-
-        var stroke = Instantiate(drawPrefab, drawingParent);
-
-        //instantiate the corresponding drawing
-        Sprite drawing = chosenArea.targetDrawings[0];
-        stroke.sprite = drawing;
-
-        chosenArea.targetDrawings.Remove(drawing);
-
-        Debug.Log("drawn with " + chosenArea.label + " | remaining drawings: " + chosenArea.targetDrawings.Count);
-        if (chosenArea.targetDrawings.Count < 1)
-        {
-            areaChoices.Remove(chosenArea);
-
-            GameObject btn = areaButtonParent.Find(chosenArea.label).gameObject;
-            if (btn != null) Destroy(btn);
-        }
-
-        //advance the conversation
-        GameManager.Instance.ContinueSketchChat();
     }
 
     void ClearChild(Transform parent)
