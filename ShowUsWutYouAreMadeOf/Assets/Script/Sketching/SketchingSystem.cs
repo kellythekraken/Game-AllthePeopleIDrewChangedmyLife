@@ -127,13 +127,20 @@ public class SketchingSystem : MonoBehaviour
 
     void MakeADrawing()
     {
+        Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
+
         //instantiate the corresponding drawing
         Image stroke = Instantiate(drawPrefab, drawingParent);
         //go to the next drawing!!! remove the current one
         Sprite drawing = chosenArea.targetDrawings[0]; 
         stroke.sprite = drawing;
+
+        //set the color of the drawing
+        int currCrayonIndex = crayonPointers.IndexOf(currentCrayonFollower);
+        stroke.color = crayonColors[currCrayonIndex];
+
+        //remove the drawing from lists
         chosenArea.targetDrawings.Remove(drawing);
-        Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
         if (chosenArea.targetDrawings.Count < 1)
         {
             areaChoices.Remove(chosenArea);
@@ -143,11 +150,12 @@ public class SketchingSystem : MonoBehaviour
             foreach(var i in completedBody) { i.focusable = false; bodypartLists.Remove(i);}
         }
     }
-
+    PointerFollower currentCrayonFollower;
     private void StartCrayonFollow(bool start)
     {
        var follower = crayonPointers.Find(x => x.name == lastCrayon.name);
        follower.gameObject.SetActive(start);
+       if(start)currentCrayonFollower = follower;
     }
     private void DisableAllFollower()
     {
