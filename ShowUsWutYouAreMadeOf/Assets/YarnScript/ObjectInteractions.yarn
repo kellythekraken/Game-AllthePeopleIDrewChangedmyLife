@@ -10,7 +10,12 @@ title: DoorExit
 ---
 Wanna leave?
 -> yes
-    bye!
--> no!
-    stay for a bit longer!
+    <<jump EndOfDemo>>
+-> not yet
+    Not too tired yet, could stay for a bit longer.
+===
+
+title: EndOfDemo
+---
+
 ===

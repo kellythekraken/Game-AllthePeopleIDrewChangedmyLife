@@ -88,9 +88,9 @@ title: AliSketch
     <<lastdraw>>
     Ali: That's all.
     <<set $Stroke to 0>>
-    <<jump AliSketchFin>>
+    <<sketchfin>>
 <<endif>>
-<<set $Stroke +=1>>
+<<set $Stroke +=1>> 
 ===
 title: AliSketchFin
 ---

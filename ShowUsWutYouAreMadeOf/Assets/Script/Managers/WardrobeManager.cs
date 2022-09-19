@@ -63,7 +63,7 @@ public class WardrobeManager : MonoBehaviour
             //create button for the default items
             foreach(GiftItem i in section.defaultItems)
             {
-                CreateItemBtn(i);
+                CreateItemBtn(i,false);
             }
         }
     }
@@ -74,7 +74,7 @@ public class WardrobeManager : MonoBehaviour
     }
 
     //take care of mesh/gameobject/ type of wearable item
-    void CreateItemBtn(GiftItem item)
+    void CreateItemBtn(GiftItem item, bool isNew = true)
     {
         Transform parent = wardrobeSectionList.Find(x => x.name == item.section.ToString());
 
@@ -103,7 +103,7 @@ public class WardrobeManager : MonoBehaviour
         }
 
         WearableItem itemComponent = obj.GetComponent<WearableItem>();
-        itemComponent.InitItem(item);
+        itemComponent.InitItem(item, isNew);
     }
 
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)

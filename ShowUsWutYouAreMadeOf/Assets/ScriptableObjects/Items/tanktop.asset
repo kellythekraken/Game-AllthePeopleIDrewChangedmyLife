@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
   m_Name: tanktop
   m_EditorClassIdentifier: 
-  itemName: tank top
-  icon: {fileID: 21300000, guid: 94ebcf3b6c7c0344fbf52395b1f1f675, type: 3}
+  icon: {fileID: 21300000, guid: 5d61498c553114b4d9f29f38865e863d, type: 3}
   section: 0
   type: 0
   mesh: {fileID: 7690173156520557084, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}

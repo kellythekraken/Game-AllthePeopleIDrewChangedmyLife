@@ -16,7 +16,7 @@ public class WearableItem : MonoBehaviour
     
     Image iconImage;
     Transform parentWardrobeSection;
-    bool newItem; 
+    bool newItem = true;
     bool isWearing;
     GiftItem item;
     Button btn;
@@ -27,20 +27,23 @@ public class WearableItem : MonoBehaviour
         iconImage = GetComponent<Image>();
         btn.onClick.AddListener(WearItem);
     }
-    public void InitItem(GiftItem incomingItem)
+    public void InitItem(GiftItem incomingItem, bool isNew)
     {
         item = incomingItem;
-        newItem = isWearing = selectedIndicator.enabled = false;
+        isWearing = selectedIndicator.enabled = false;
         newIndicator.SetActive(true);
         parentWardrobeSection = transform.parent;
+        if(!isNew) //default item shouldn't have new indicator
+        {
+            newItem = false; 
+            newIndicator.SetActive(false);
+        }
     }
-    //the on indicator should only be active one at a time! with mesh types!
-
     void WearItem()
     {
-        if(!newItem) 
+        if(newItem) 
         {
-            newItem = true;
+            newItem = false;
             newIndicator.SetActive(false);
         }
         //put on/off the item
@@ -58,7 +61,7 @@ public class WearableItem : MonoBehaviour
                 //component.selectedIndicator.enabled = false;
             }
         }
-        iconImage.color = isWearing? Color.cyan : Color.white;
+        iconImage.color = isWearing? Color.black : Color.white;
 
         //selectedIndicator.enabled = isWearing;  
     }

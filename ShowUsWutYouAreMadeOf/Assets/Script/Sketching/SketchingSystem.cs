@@ -3,24 +3,24 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.Events;
-using Yarn.Unity;
 public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
     internal UnityEvent BodypartSelectEvent = new UnityEvent();
-    public GameObject ChosenBody
+    private GameObject chosenBody;
+    internal GameObject ChosenBody
     {
         get { return chosenBody; } 
         set { RegisterBodyChoice(value); BodypartSelectEvent.Invoke(); }
     }
-    private GameObject chosenBody;
     Button chosenColor;
     DrawableArea chosenArea;
     public Button sketchbook;
     //[SerializeField] private Button areaBtnPrefab;
+    [SerializeField] private Button doneBtn;
     [SerializeField] private Image drawPrefab;
-    [SerializeField] List<PointerFollower> crayonPointers;
-    [SerializeField] List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
+    [SerializeField] private List<PointerFollower> crayonPointers;
+    [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
     List<DrawableArea> areaChoices; //copy of the SO data with sketches
     List<Button> colorChoices;  //crayon buttons
     List<Image> drawings;
@@ -53,6 +53,9 @@ public class SketchingSystem : MonoBehaviour
     {
         DisableAllFollower();
         GameManager.Instance.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
+        GameManager.Instance.dialogueRunner.AddCommandHandler("sketchfin", SketchCompleted);
+        doneBtn.onClick.AddListener(PlayAfterSketchDialogue);
+        doneBtn.gameObject.SetActive(false);
     }
     
     void InitList()
@@ -71,6 +74,7 @@ public class SketchingSystem : MonoBehaviour
         sketchbook.onClick.AddListener(Sketch);
         chosenBody = null; chosenColor = null;
     }
+    //start a new sketch
     public void PrepareToSketch(QueerNPC queer)
     {
         instantiatedCopy = Instantiate(queer.queerID);
@@ -88,6 +92,7 @@ public class SketchingSystem : MonoBehaviour
                 continue;
             }
         }
+        foreach(Button i in colorChoices) {i.enabled = true; }        
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
@@ -123,13 +128,14 @@ public class SketchingSystem : MonoBehaviour
         MakeADrawing();
         StartCrayonFollow(false);
         ChosenBody = null; chosenColor = null;
+        lastCrayon.SetActive(true);
         //advance the conversation
         GameManager.Instance.ContinueSketchChat();
     }
 
     void MakeADrawing()
     {
-        Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
+        //Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
 
         //instantiate the corresponding drawing
         Image stroke = Instantiate(drawPrefab, drawingParent);
@@ -153,11 +159,28 @@ public class SketchingSystem : MonoBehaviour
         }
     }
 
+    //command: lastdraw
     void LastStroke()
     {
         Image stroke = Instantiate(drawPrefab, drawingParent); 
         stroke.sprite = instantiatedCopy.backgroundDrawing;
         stroke.color = Color.black;
+    }
+    //command: sketchfin
+    void SketchCompleted()
+    {
+        //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
+        doneBtn.gameObject.SetActive(true);
+        GameManager.Instance.LockCursor(false);
+        foreach(var i in bodypartLists) { i.focusable = false;}
+        foreach(Button i in colorChoices) {i.enabled = false; }        
+    }
+    //called by pressing done button
+    void PlayAfterSketchDialogue()
+    {
+        //give logic to back button at start: trigger the fin dialogue.
+        string dialogueTitle = instantiatedCopy.npcName + "SketchFin";
+        GameManager.Instance.dialogueRunner.StartDialogue(dialogueTitle);
     }
 
     PointerFollower currentCrayonFollower;

@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
   m_Name: jeans
   m_EditorClassIdentifier: 
-  itemName: jeans
-  icon: {fileID: 21300000, guid: 0a55df6dfd953544d909310bb304c0ab, type: 3}
+  icon: {fileID: 21300000, guid: 881218b5716446f438624c3144346cf1, type: 3}
   section: 1
   type: 0
   mesh: {fileID: 3104891278472020524, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
