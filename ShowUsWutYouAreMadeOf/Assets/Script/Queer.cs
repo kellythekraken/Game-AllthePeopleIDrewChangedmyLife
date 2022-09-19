@@ -9,7 +9,7 @@ public class DrawableArea
     public List<Sprite> targetDrawings;
 }
 
-public enum ItemSection { Accessories, Outfit, Face, Hair, Shoes}
+public enum ItemSection { Top, Bottom, Face, Hair, Shoes}
 public enum ItemType {Mesh,Material,Gameobject}
 
 [CreateAssetMenu(fileName = "Queer")]

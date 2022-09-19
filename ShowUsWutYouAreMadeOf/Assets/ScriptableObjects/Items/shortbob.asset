@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
-  m_Name: NormalHair
+  m_Name: shortbob
   m_EditorClassIdentifier: 
-  itemName: 
-  icon: {fileID: 21300000, guid: 5740f0213c489dc43a5b919c31a37059, type: 3}
+  itemName: short bob
+  icon: {fileID: 21300000, guid: a44d7e6618020b2489a1a56ccae28478, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: 4300000, guid: 344061dde90b2c64ea11647bbeb14678, type: 3}
+  mesh: {fileID: 5253820040516000392, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
   material: {fileID: 0}

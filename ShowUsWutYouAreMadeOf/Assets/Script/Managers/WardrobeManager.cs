@@ -4,6 +4,18 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
+[Serializable]
+public class WardrobeSection
+{
+    public string DisplayName;
+    public ItemSection sectionName;
+    public SkinnedMeshRenderer renderer;   //renderer to replace the materials, maybe a list if there're more renderer?
+    public Mesh defaultMesh;
+    public List<GiftItem> defaultItems;
+    int _materialIndex;
+    int _subObjectIndex;
+}
+
 public class WardrobeManager : MonoBehaviour
 {
     //only manage things within the wardrobe!
@@ -129,28 +141,4 @@ public class WardrobeManager : MonoBehaviour
     }
 }
 
-[Serializable]
-public class WardrobeSection
-{
-    public string DisplayName;
-    public ItemSection sectionName;
-    public SkinnedMeshRenderer renderer;   //renderer to replace the materials, maybe a list if there're more renderer?
-    public Mesh defaultMesh;
-    public List<GiftItem> defaultItems;
-    int _materialIndex;
-    int _subObjectIndex;
 
-   /* public void NextMaterial()  //only change material for all the renderer mesh
-    {
-        _materialIndex++;
-        if (_materialIndex >= Materials.Count)
-            _materialIndex = 0;
-
-        UpdateRenderers();
-    }
-    public void UpdateRenderers()
-    {
-            renderer.material = Materials[_materialIndex];
-    }
-    */
-}

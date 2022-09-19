@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
-  m_Name: TiedHair
+  m_Name: shorts
   m_EditorClassIdentifier: 
-  itemName: 
-  icon: {fileID: 21300000, guid: 31a8fa7f1089d8e4d9367a7b72fd542c, type: 3}
-  section: 3
+  itemName: shorts
+  icon: {fileID: 21300000, guid: 7304070ac334d0140a8711f1e7bfa2a2, type: 3}
+  section: 1
   type: 0
-  mesh: {fileID: 4300000, guid: 149cc7509b1e17e438e8dd16f5f48cfa, type: 3}
+  mesh: {fileID: -8429018785055073106, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}

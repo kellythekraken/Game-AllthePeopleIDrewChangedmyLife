@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
-  m_Name: skirt
+  m_Name: undercut
   m_EditorClassIdentifier: 
-  itemName: skirt
-  icon: {fileID: 21300000, guid: a44d7e6618020b2489a1a56ccae28478, type: 3}
-  section: 1
+  itemName: undercut
+  icon: {fileID: 21300000, guid: 31a8fa7f1089d8e4d9367a7b72fd542c, type: 3}
+  section: 3
   type: 0
-  mesh: {fileID: 4300004, guid: 79f5bc60c46f4fd4b92199a19076315c, type: 3}
+  mesh: {fileID: -5218699684766651714, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
   material: {fileID: 0}

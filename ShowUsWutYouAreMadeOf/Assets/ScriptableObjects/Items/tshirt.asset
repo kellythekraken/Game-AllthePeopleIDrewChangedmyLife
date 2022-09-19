@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
-  m_Name: sheep
+  m_Name: tshirt
   m_EditorClassIdentifier: 
-  itemName: sheep
-  icon: {fileID: 21300000, guid: 0bd2ee4293bb6934f93f75052784b75c, type: 3}
+  itemName: tshirt
+  icon: {fileID: 21300000, guid: ae99675b5e1176749b8550ab5198ed01, type: 3}
   section: 0
-  type: 2
-  mesh: {fileID: 0}
+  type: 1
+  mesh: {fileID: -696477583789092321, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
   material: {fileID: 0}
