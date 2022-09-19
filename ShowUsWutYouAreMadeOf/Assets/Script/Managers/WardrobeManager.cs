@@ -98,7 +98,7 @@ public class WardrobeManager : MonoBehaviour
 
             break;
             case ItemType.Gameobject:
-            btn.onClick.AddListener(() => DisplayGameobject(item.itemName));
+            btn.onClick.AddListener(() => DisplayGameobject(item.name));
             break;
         }
 
