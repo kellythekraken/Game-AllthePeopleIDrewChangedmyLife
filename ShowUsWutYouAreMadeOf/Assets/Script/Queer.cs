@@ -19,7 +19,7 @@ public class Queer : ScriptableObject
     public string pronouns;
 
     //3d wearable item
-
+    public string giftLine;
     public GiftItem[] items;
     public DrawableArea[] drawableAreas;
     public Sprite backgroundDrawing;

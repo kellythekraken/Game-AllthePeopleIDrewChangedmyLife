@@ -43,7 +43,7 @@ public class QueerNPC : Interactable
     [YarnCommand("gift")]
     public void GiveItem()
     {
-        gm.wardrobeBtn.DisplayReceivedItem(queerID.npcName, queerID.items);
+        gm.wardrobeBtn.DisplayReceivedItem(queerID.giftLine, queerID.items);
     }
 
     [YarnCommand("silence")]

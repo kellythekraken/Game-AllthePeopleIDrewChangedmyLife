@@ -58,11 +58,11 @@ public class WardrobeButton : MonoBehaviour
             GameManager.Instance.BackToLastMode();
         }
     }
-    public void DisplayReceivedItem(string npcName, GiftItem[] gifts) //load a list of gift?
+    public void DisplayReceivedItem(string giftLine, GiftItem[] gifts) //load a list of gift?
     {
         newIndicator.enabled = true;
         newItem = true;
-        string text = string.Format("You received {0} from {1}!",  gifts[0].name, npcName);
+        string text = giftLine;
         //for multiple items
        for (int i =0 ; i < gifts.Length ; i++)
         {

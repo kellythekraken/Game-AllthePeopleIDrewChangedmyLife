@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcName: Ali
   pronouns: She/They
+  giftLine: Ali offered you some cool haircut!
   items:
   - {fileID: 11400000, guid: 102aa244712ab5d4881e54102ffcd068, type: 2}
   - {fileID: 11400000, guid: 0b4ea4611ebe9a84697276b6ee61ee30, type: 2}
