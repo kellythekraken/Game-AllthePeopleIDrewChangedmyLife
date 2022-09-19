@@ -11,7 +11,6 @@ public class InteractIndicator : MonoBehaviour
     internal bool facingSubject;
     GameManager gm;
     Camera mainCam;
-    Image myImage;
     TextMeshProUGUI myText;
     internal Interactable currentInteract = null;
 
@@ -20,9 +19,7 @@ public class InteractIndicator : MonoBehaviour
     {
         gm = GameManager.Instance;
         mainCam = Camera.main;
-        myImage = GetComponent<Image>();
-        myText = GetComponentInChildren<TextMeshProUGUI>();
-        myImage.enabled = false;
+        myText = GetComponent<TextMeshProUGUI>();
         myText.enabled = false;
     }
 
@@ -44,8 +41,7 @@ public class InteractIndicator : MonoBehaviour
 
     public void DisplayIndicator(bool display)
     {
-        myImage.enabled = myText.enabled = facingSubject = display;
-
+        myText.enabled = facingSubject = display;
     }
     public void ChangeText(string text)
     {
