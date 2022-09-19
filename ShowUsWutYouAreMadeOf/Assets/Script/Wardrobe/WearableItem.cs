@@ -13,6 +13,8 @@ public class WearableItem : MonoBehaviour
 
     [SerializeField] private GameObject newIndicator;
     [SerializeField] private Image selectedIndicator;
+    
+    Transform parentWardrobeSection;
     bool newItem; 
     bool isWearing;
     GiftItem item;
@@ -28,6 +30,7 @@ public class WearableItem : MonoBehaviour
         item = incomingItem;
         newItem = isWearing = selectedIndicator.enabled = false;
         newIndicator.SetActive(true);
+        parentWardrobeSection = transform.parent;
     }
     //the on indicator should only be active one at a time! with mesh types!
 
@@ -38,9 +41,18 @@ public class WearableItem : MonoBehaviour
             newItem = true;
             newIndicator.SetActive(false);
         }
+        //make all other wearable item of the same parenthood !ISWEARING and deselected!
+        foreach(Transform i in parentWardrobeSection)
+        {
+            if(i.name != this.name) 
+            {
+                var component = i.GetComponent<WearableItem>();
+                component.isWearing = false; 
+                component.selectedIndicator.enabled = false;
+            }
+        }
         //put on/off the item
         isWearing = !isWearing;
         selectedIndicator.enabled = isWearing;  
-        
     }
 }

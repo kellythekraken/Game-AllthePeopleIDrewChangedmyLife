@@ -34,6 +34,11 @@ public class WardrobeManager : MonoBehaviour
     List<Transform> wardrobeSectionList;
     List<Mesh> currentMeshInWear;
 
+    void OnDestroy()
+    {
+        foreach(var i in WardrobeSections)i.renderer.sharedMesh = i.defaultMesh;
+    }
+
     //called by wardrobebutton at start
     public void WardrobeInit()
     {

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: asymetricalhair
   m_EditorClassIdentifier: 
   itemName: asymetricalhair
-  icon: {fileID: 21300000, guid: 01edceda9dffa484ca429b4c250fbd9e, type: 3}
+  icon: {fileID: 21300000, guid: e5936c5bfa3be2140832a08fd543607c, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: -5118629703391064535, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  mesh: {fileID: -5118629703391064535, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}
