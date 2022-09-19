@@ -8,8 +8,8 @@ public class UIManager : MonoBehaviour
 {
     //controls the popup ui and main interface
     public static UIManager Instance;
-
     public GameObject receivedItemWindow, noticeWindow;
+    [SerializeField] TextMeshProUGUI instructionText;
     TextMeshProUGUI itemText, noticeText;
     bool popupOn;
     
@@ -18,14 +18,13 @@ public class UIManager : MonoBehaviour
     {
         itemText = receivedItemWindow.GetComponentInChildren<TextMeshProUGUI>();
         noticeText = noticeWindow.GetComponentInChildren<TextMeshProUGUI>();
-
         InputManager.Instance.interactAction.performed += ctx => { if(popupOn) DisplayItemWindow(false); };
-
 
         DisplayItemWindow(false);
         DisplayNoticeWindow(false);
         receivedItemWindow.SetActive(false);
         noticeWindow.SetActive(false);
+        instructionText.enabled = false;
     }
         public void DisplayItem(string textToDisplay)
     {
@@ -34,18 +33,31 @@ public class UIManager : MonoBehaviour
     }
     public void DisplayNotification(string textToDisplay)
     {
-        Debug.Log("display notification");
         noticeText.text = textToDisplay;
         DisplayNoticeWindow(true);
     }
+    bool currentlyDisplayingInstruction = false;
 
+    public void DisplayInstruction(string textToDisplay, float displayTime)
+    {
+        StartCoroutine(DisplayInstruction(displayTime));
+        instructionText.text = textToDisplay;
+    }
+
+    IEnumerator DisplayInstruction(float timer)
+    {
+        instructionText.enabled = true;
+        currentlyDisplayingInstruction = true;
+        yield return new WaitForSeconds(timer);
+        instructionText.enabled = false;
+        currentlyDisplayingInstruction = false;
+    }
     public void DisplayItemWindow(bool open)
     {
         if(!open) GameManager.Instance.currMode = CurrentMode.Nothing;
         popupOn = open;
         receivedItemWindow.SetActive(open);
     }
-    
 
     void DisplayNoticeWindow(bool open)
     {

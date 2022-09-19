@@ -77,7 +77,6 @@ public class SketchingSystem : MonoBehaviour
         bodypartLists = new List<SketchFocusBodypart>();
 
         foreach(var i in queer.sketchableAreas) { bodypartLists.Add(i); i.focusable = true; }
-        Debug.Log(bodypartLists.Count());
         areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
         for (int i=0; i < areaChoices.Count(); i++)
         {
@@ -112,10 +111,12 @@ public class SketchingSystem : MonoBehaviour
     //called when sketchbook is clicked
     private void Sketch()
     {
-        if (chosenBody == null || chosenColor == null)
-        {
-            //display a notice on the ui!
-            Debug.Log("Should choose both choices before clicking sketchbook!");
+        if (chosenBody == null) {
+            UIManager.Instance.DisplayInstruction("Which area of their body could I focus on?",3f);
+            return;
+        }
+        else if(chosenColor == null){
+            UIManager.Instance.DisplayInstruction("Which color shall I use this time?", 3f);
             return;
         }
         MakeADrawing();

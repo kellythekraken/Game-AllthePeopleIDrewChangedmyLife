@@ -71,21 +71,14 @@ public class WardrobeButton : MonoBehaviour
             iconImage.sprite = gifts[i].icon;
             wardrobeManager.AddItemToWardrobe(gifts[i]);
         }
-
+        
+        //manipulate the item icon scales based on numbers
         iconGridCellCount = iconLayoutParent.GetComponentsInChildren<Image>().Length;
         if(iconGridCellCount> 4) iconGridCellCount = 4; else if(iconGridCellCount < 2) iconGridCellCount = 2;
         var cellSize = iconLayoutrect.rect.width / iconGridCellCount; 
         iconLayoutParent.cellSize = new Vector2 (cellSize, cellSize);
         UIManager.Instance.DisplayItem(text);
     }
-
-    void OnRectTransformDimensionsChange()
-	{
-        Debug.Log("change dimension");
-			if (iconLayoutParent != null && iconLayoutrect != null)
-			if ((iconLayoutrect.rect.height + (iconLayoutParent.padding.horizontal * 2)) * iconGridCellCount < iconLayoutrect.rect.width)
-					iconLayoutParent.cellSize = new Vector2 (iconLayoutrect.rect.height, iconLayoutrect.rect.height);
-	}
 
     void ClearIconGridLayout()
     {

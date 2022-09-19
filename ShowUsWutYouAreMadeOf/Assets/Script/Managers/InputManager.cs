@@ -7,7 +7,6 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     [SerializeField] GameObject continueBtn;
-
     internal InputAction interactAction, chatAction, lookAction, wardrobeAction, mousePosAction;
     InputAction moveAction;
     PlayerInput playerInput;
