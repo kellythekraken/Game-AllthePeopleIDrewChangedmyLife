@@ -34,8 +34,6 @@ public class InteractIndicator : MonoBehaviour
             DisplayIndicator(false);
             return;
         }
-        //should disable in conversation
-        //change the target transform?
         //called in the interactive
         //change the child text
         var viewportPoint = mainCam.WorldToViewportPoint(target.position);

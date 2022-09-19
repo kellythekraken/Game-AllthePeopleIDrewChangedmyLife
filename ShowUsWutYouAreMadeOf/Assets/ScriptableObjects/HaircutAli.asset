@@ -15,7 +15,10 @@ MonoBehaviour:
   npcName: Ali
   pronouns: She/They
   items:
-  - {fileID: 11400000, guid: 9695dbf1aba64b6409374f6738daa030, type: 2}
+  - {fileID: 11400000, guid: 102aa244712ab5d4881e54102ffcd068, type: 2}
+  - {fileID: 11400000, guid: 0b4ea4611ebe9a84697276b6ee61ee30, type: 2}
+  - {fileID: 11400000, guid: 3b9765fee7f5f7745878ebb854878090, type: 2}
+  - {fileID: 11400000, guid: 7cdc5e63351a28747973f1a6ea2c0be6, type: 2}
   drawableAreas:
   - objName: Hair
     targetDrawings:

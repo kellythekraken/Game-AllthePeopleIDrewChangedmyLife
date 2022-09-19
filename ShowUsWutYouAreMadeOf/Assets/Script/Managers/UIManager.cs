@@ -11,14 +11,12 @@ public class UIManager : MonoBehaviour
 
     public GameObject receivedItemWindow, noticeWindow;
     TextMeshProUGUI itemText, noticeText;
-    Image itemIcon;
     bool popupOn;
     
     void Awake() => Instance = this;
     void Start()
     {
         itemText = receivedItemWindow.GetComponentInChildren<TextMeshProUGUI>();
-        itemIcon = receivedItemWindow.transform.Find("Icon").GetComponent<Image>();
         noticeText = noticeWindow.GetComponentInChildren<TextMeshProUGUI>();
 
         InputManager.Instance.interactAction.performed += ctx => { if(popupOn) DisplayItemWindow(false); };
@@ -27,11 +25,11 @@ public class UIManager : MonoBehaviour
         DisplayItemWindow(false);
         DisplayNoticeWindow(false);
         receivedItemWindow.SetActive(false);
+        noticeWindow.SetActive(false);
     }
-        public void DisplayItem(string textToDisplay, Sprite icon)
+        public void DisplayItem(string textToDisplay)
     {
         itemText.text = textToDisplay;
-        itemIcon.sprite = icon;
         DisplayItemWindow(true);
     }
     public void DisplayNotification(string textToDisplay)

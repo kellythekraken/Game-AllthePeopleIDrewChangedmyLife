@@ -18,8 +18,12 @@ public class WardrobeButton : MonoBehaviour
     [SerializeField] private GameObject itemPrefab;
     private List<Transform> wardrobeSections;
     private Button openBtn;
-
     bool newItem = false;
+    [SerializeField] private GameObject itemIconPrefab;
+	[SerializeField] private GridLayoutGroup iconLayoutParent;
+	RectTransform iconLayoutrect;
+	public float iconGridHeight;
+	public int iconGridCellCount = 2;
     void Awake() => Instance = this;
     private void Start()
     {
@@ -30,6 +34,10 @@ public class WardrobeButton : MonoBehaviour
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
+
+        //set up the image layout
+        iconLayoutrect = iconLayoutParent.GetComponent<RectTransform> ();
+        ClearIconGridLayout();
     }
 
     bool wardrobeOpen = false;
@@ -50,12 +58,38 @@ public class WardrobeButton : MonoBehaviour
             GameManager.Instance.BackToLastMode();
         }
     }
-    public void DisplayReceivedItem(string npcName, GiftItem gift) //load a list of gift?
+    public void DisplayReceivedItem(string npcName, GiftItem[] gifts) //load a list of gift?
     {
         newIndicator.enabled = true;
         newItem = true;
-        string text = string.Format("You received {0} from {1}!", gift.name, npcName);
-        UIManager.Instance.DisplayItem(text,gift.icon);
+        string text = string.Format("You received {0} from {1}!",  gifts[0].name, npcName);
+        //for multiple items
+       for (int i =0 ; i < gifts.Length ; i++)
+        {
+            GameObject icon = Instantiate(itemIconPrefab, iconLayoutParent.transform);
+            Image iconImage = icon.GetComponent<Image>();
+            iconImage.sprite = gifts[i].icon;
+            wardrobeManager.AddItemToWardrobe(gifts[i]);
+        }
+
+        iconGridCellCount = iconLayoutParent.GetComponentsInChildren<Image>().Length;
+        if(iconGridCellCount> 4) iconGridCellCount = 4; else if(iconGridCellCount < 2) iconGridCellCount = 2;
+        var cellSize = iconLayoutrect.rect.width / iconGridCellCount; 
+        iconLayoutParent.cellSize = new Vector2 (cellSize, cellSize);
+        UIManager.Instance.DisplayItem(text);
+    }
+
+    void OnRectTransformDimensionsChange()
+	{
+        Debug.Log("change dimension");
+			if (iconLayoutParent != null && iconLayoutrect != null)
+			if ((iconLayoutrect.rect.height + (iconLayoutParent.padding.horizontal * 2)) * iconGridCellCount < iconLayoutrect.rect.width)
+					iconLayoutParent.cellSize = new Vector2 (iconLayoutrect.rect.height, iconLayoutrect.rect.height);
+	}
+
+    void ClearIconGridLayout()
+    {
+        foreach(Transform i in iconLayoutParent.transform) Destroy(i.gameObject); 
     }
 
 }

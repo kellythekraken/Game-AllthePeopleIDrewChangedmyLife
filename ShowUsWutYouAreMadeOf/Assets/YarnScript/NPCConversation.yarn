@@ -46,9 +46,12 @@ title: AliStart
     Ali: You are an artist? Cool.
     Ali: Sketch me!
     <<set $AliIntroduced to true>>
-    <<sketch true>>
-    <<camera AliSketch>>
-    <<jump AliSketch>>
+    <<gift Ali>>
+    <<camera PlayerCam>>
+
+    //<<sketch true>>
+    //<<camera AliSketch>>
+    //<<jump AliSketch>>
 <<elseif $AliSketched>>
     Ali: Hey again, little artist, I'm about to leave.
     <<leave Ali>>

@@ -67,20 +67,13 @@ public class WardrobeManager : MonoBehaviour
             }
         }
     }
-    
     public void AddItemToWardrobe(GiftItem item)
     {
         Debug.Log("adding item" + item.name + " to " + item.section);
-        //var btn = CreateItemBtn(i);
-
-        //instantiate and bind to a button
-        //add to default list
-        //should share some same functions with the InitDefaultItems
-
-        //if it's a gameobject, bind it to the existing gameobject from the list, by name
-        
+        CreateItemBtn(item);
     }
 
+    //take care of mesh/gameobject/ type of wearable item
     void CreateItemBtn(GiftItem item)
     {
         Transform parent = wardrobeSectionList.Find(x => x.name == item.section.ToString());
