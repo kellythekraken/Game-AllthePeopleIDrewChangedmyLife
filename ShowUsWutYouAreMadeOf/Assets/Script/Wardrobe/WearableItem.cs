@@ -14,6 +14,7 @@ public class WearableItem : MonoBehaviour
     [SerializeField] private GameObject newIndicator;
     [SerializeField] private Image selectedIndicator;
     
+    Image iconImage;
     Transform parentWardrobeSection;
     bool newItem; 
     bool isWearing;
@@ -23,6 +24,7 @@ public class WearableItem : MonoBehaviour
     void Start()
     {
         btn = GetComponent<Button>();
+        iconImage = GetComponent<Image>();
         btn.onClick.AddListener(WearItem);
     }
     public void InitItem(GiftItem incomingItem)
@@ -41,18 +43,24 @@ public class WearableItem : MonoBehaviour
             newItem = true;
             newIndicator.SetActive(false);
         }
+        //put on/off the item
+        isWearing = !isWearing;
+        
         //make all other wearable item of the same parenthood !ISWEARING and deselected!
+
         foreach(Transform i in parentWardrobeSection)
         {
             if(i.name != this.name) 
             {
                 var component = i.GetComponent<WearableItem>();
                 component.isWearing = false; 
-                component.selectedIndicator.enabled = false;
+                component.iconImage.color = Color.white;
+                //component.selectedIndicator.enabled = false;
             }
         }
-        //put on/off the item
-        isWearing = !isWearing;
-        selectedIndicator.enabled = isWearing;  
+        iconImage.color = isWearing? Color.cyan : Color.white;
+
+        //selectedIndicator.enabled = isWearing;  
     }
+
 }

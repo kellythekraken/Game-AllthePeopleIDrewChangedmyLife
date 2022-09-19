@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: mullet2
   m_EditorClassIdentifier: 
   itemName: mullet1
-  icon: {fileID: 21300000, guid: 01edceda9dffa484ca429b4c250fbd9e, type: 3}
+  icon: {fileID: 21300000, guid: b2a36ae46a09dc046b43639985555f97, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: -8200587152628736398, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  mesh: {fileID: -8200587152628736398, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}

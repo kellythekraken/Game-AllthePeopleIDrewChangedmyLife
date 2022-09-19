@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: shortbob
   m_EditorClassIdentifier: 
   itemName: short bob
-  icon: {fileID: 21300000, guid: a44d7e6618020b2489a1a56ccae28478, type: 3}
+  icon: {fileID: 21300000, guid: 3ea1502e214178343876d088342379f3, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: 5253820040516000392, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  mesh: {fileID: 5253820040516000392, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}

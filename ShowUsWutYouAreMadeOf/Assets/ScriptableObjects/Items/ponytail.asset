@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ponytail
   m_EditorClassIdentifier: 
   itemName: ponytail
-  icon: {fileID: 21300000, guid: 0bd2ee4293bb6934f93f75052784b75c, type: 3}
+  icon: {fileID: 21300000, guid: bcbd774839f604f42acda61849b6bd27, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: 7066253115105230413, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  mesh: {fileID: 7066253115105230413, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}

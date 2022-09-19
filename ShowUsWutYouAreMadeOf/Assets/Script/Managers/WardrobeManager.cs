@@ -19,20 +19,15 @@ public class WardrobeSection
 public class WardrobeManager : MonoBehaviour
 {
     //only manage things within the wardrobe!
-    
     //store all of the found items
 
     // available colors
-    [SerializeField] GameObject btnPrefab;
-    public List<WardrobeSection> WardrobeSections;
-    public WardrobeSection CurrentWardrobeSection { get; private set; }
     public static WardrobeManager Instance;
-
-    [SerializeField] Transform wardrobeParent;
+    [SerializeField] GameObject btnPrefab;
     [SerializeField] Transform accessoryParent;
-    List<GameObject> accessoryList;
-    List<Transform> wardrobeSectionList;
-    List<Mesh> currentMeshInWear;
+    public List<WardrobeSection> WardrobeSections;
+    List<GameObject> accessoryList; //reference to all the hidden accessory gameobjects
+    List<Transform> wardrobeSectionList;    //transforms of all the wardrobe section parents
 
     void OnDestroy()
     {
@@ -45,15 +40,15 @@ public class WardrobeManager : MonoBehaviour
         Instance = this;
         accessoryList = new List<GameObject>();
         wardrobeSectionList = new List<Transform>();
-        foreach(Transform i in wardrobeParent.transform)
+        foreach(Transform i in transform)
         {
             wardrobeSectionList.Add(i);
             foreach (Transform child in i) Destroy(child.gameObject);//clear child
         }
-        InitDefaultList();
+        InitDefaultItems();
     }
     //loop through the default list set in the editor, and load them into the wardrobe
-    void InitDefaultList()
+    void InitDefaultItems()
     {
         //create the list of accessory gameobject reference
         foreach(Transform i in accessoryParent)
@@ -65,10 +60,7 @@ public class WardrobeManager : MonoBehaviour
 
         foreach(WardrobeSection section in WardrobeSections)
         {
-            //add the button to the local parent
-
-            string sectionName = section.DisplayName;
-            //button for the meshes
+            //create button for the default items
             foreach(GiftItem i in section.defaultItems)
             {
                 CreateItemBtn(i);
@@ -83,7 +75,7 @@ public class WardrobeManager : MonoBehaviour
 
         //instantiate and bind to a button
         //add to default list
-        //should share some same functions with the initdefaultlist
+        //should share some same functions with the InitDefaultItems
 
         //if it's a gameobject, bind it to the existing gameobject from the list, by name
         
@@ -107,6 +99,7 @@ public class WardrobeManager : MonoBehaviour
             //if(section.renderer == null) Debug.LogWarning("Warning! " + section.DisplayName + " does not have a renderer but has meshes");
             btn.onClick.AddListener( () => ChangeMesh(section, item.mesh));
             break;
+
             case ItemType.Material:
             btn.onClick.AddListener(ChangeMaterial);
 
@@ -123,8 +116,10 @@ public class WardrobeManager : MonoBehaviour
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)
     {
         Mesh myMesh = section.renderer.sharedMesh;
-        if(myMesh == meshToChange)
+
+        if(myMesh == meshToChange)  //if the item is clicked twice, set it back to default.
         {
+            Debug.Log("set" + section.renderer + "mesh to default");
             section.renderer.sharedMesh = section.defaultMesh;
         }
         else

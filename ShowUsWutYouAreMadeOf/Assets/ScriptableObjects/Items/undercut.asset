@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: undercut
   m_EditorClassIdentifier: 
   itemName: undercut
-  icon: {fileID: 21300000, guid: 31a8fa7f1089d8e4d9367a7b72fd542c, type: 3}
+  icon: {fileID: 21300000, guid: 1ea06072a316eab40b65d726387b97ae, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: -5218699684766651714, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  mesh: {fileID: -5218699684766651714, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: tshirt
   m_EditorClassIdentifier: 
   itemName: tshirt
-  icon: {fileID: 21300000, guid: ae99675b5e1176749b8550ab5198ed01, type: 3}
+  icon: {fileID: 21300000, guid: 46c377f9e2c1cba48b215f1a10487314, type: 3}
   section: 0
-  type: 1
-  mesh: {fileID: -696477583789092321, guid: 239caac8181387841986e2e6bd1708fa, type: 3}
+  type: 0
+  mesh: {fileID: -696477583789092321, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   material: {fileID: 0}
