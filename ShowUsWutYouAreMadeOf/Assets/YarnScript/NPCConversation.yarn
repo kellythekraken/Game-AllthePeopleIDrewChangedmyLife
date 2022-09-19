@@ -62,7 +62,6 @@ title: AliSketch
 ---
 <<if $Stroke == 0>>
     Ali: Introduction before you sketch.
-    Ali: Second line
 <<else>> 
     //<<wait .5>>
 <<endif>>
@@ -86,6 +85,8 @@ title: AliSketch
     Ali: 8
 <<elseif $Stroke == 9>>
     Ali: Last line before finish sketching.
+    <<lastdraw>>
+    Ali: That's all.
     <<set $Stroke to 0>>
     <<jump AliSketchFin>>
 <<endif>>

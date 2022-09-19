@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.Events;
-
+using Yarn.Unity;
 public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
@@ -52,6 +52,7 @@ public class SketchingSystem : MonoBehaviour
     void Start()
     {
         DisableAllFollower();
+        GameManager.Instance.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
     }
     
     void InitList()
@@ -151,6 +152,14 @@ public class SketchingSystem : MonoBehaviour
             foreach(var i in completedBody) { i.focusable = false; bodypartLists.Remove(i);}
         }
     }
+
+    void LastStroke()
+    {
+        Image stroke = Instantiate(drawPrefab, drawingParent); 
+        stroke.sprite = instantiatedCopy.backgroundDrawing;
+        stroke.color = Color.black;
+    }
+
     PointerFollower currentCrayonFollower;
     private void StartCrayonFollow(bool start)
     {

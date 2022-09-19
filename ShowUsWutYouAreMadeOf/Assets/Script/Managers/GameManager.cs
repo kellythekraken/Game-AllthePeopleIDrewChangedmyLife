@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     //access current mode
     //controls the change of modes
     //saves all the important reference
-    
     public static GameManager Instance;
     private CurrentMode _currMode;
     public CurrentMode currMode
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
     public DialogueRunner dialogueRunner;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
-    [SerializeField] private GameObject playerObject;
+    [SerializeField] private GameObject playerObject;   //dont reference the actual player with important scripts!
     private SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
     internal InputManager inputManager;
