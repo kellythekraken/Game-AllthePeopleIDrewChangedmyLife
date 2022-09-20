@@ -2520,7 +2520,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3316006942b1db4eb10781d82f10af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: DisplayBox
   notification: 
   centerFacingBias: 0.3
@@ -3207,7 +3206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: AliStart
   notification: 
   centerFacingBias: 0.4
@@ -6072,10 +6070,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610133929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9613507, y: 2.622417, z: -22.470737}
+  m_LocalPosition: {x: 5.19, y: 2.622417, z: -4.84}
   m_LocalScale: {x: 1, y: 1.9673655, z: 0.38979194}
-  m_Children:
-  - {fileID: 1530208597}
+  m_Children: []
   m_Father: {fileID: 1336766317}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6091,7 +6088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3316006942b1db4eb10781d82f10af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: DoorExit
   notification: Are you ready to leave?
   centerFacingBias: 0.3
@@ -6154,7 +6150,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: ToniStart
   notification: 
   centerFacingBias: 0.3
@@ -17510,101 +17505,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526550497}
   m_Mesh: {fileID: 4300000, guid: 1dc7e78a40d0761449f3573eb2e3acd5, type: 3}
---- !u!1 &1530208596
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1530208597}
-  - component: {fileID: 1530208600}
-  - component: {fileID: 1530208599}
-  - component: {fileID: 1530208598}
-  m_Layer: 9
-  m_Name: mesh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1530208597
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530208596}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 610133930}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1530208598
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530208596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1530208599
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530208596}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 7ab977a21c92388468ee65ad1c0e5a78, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1530208600
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1530208596}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1540971722
 GameObject:
   m_ObjectHideFlags: 0
@@ -21160,7 +21060,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: LeonStart
   notification: 
   centerFacingBias: 0.3
@@ -21857,7 +21756,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.020916376, y: 0.0016606378, z: -0.000034742174, w: 0.9997799}
+  m_LocalRotation: {x: 0.020916378, y: 0.0016606378, z: -0.000034742177, w: 0.9997799}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -24805,7 +24704,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
   dialogueTitle: AliStart
   notification: 
   centerFacingBias: 0.3
@@ -26970,8 +26868,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0, y: -0.15453206, z: -0, w: 0.98798776}
-  m_LocalPosition: {x: -8.358147, y: -2.206, z: -12.317888}
+  m_LocalRotation: {x: -0, y: -0.99988776, z: -0, w: 0.014985152}
+  m_LocalPosition: {x: -9.917642, y: -2.206, z: -6.820567}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -28548,7 +28446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116004488851913433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -249.58813, y: -138.926, z: -0.81788826}
+  m_LocalPosition: {x: -251.14763, y: -138.926, z: 4.679433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1116004488226458338}
@@ -28754,6 +28652,7 @@ GameObject:
   - component: {fileID: 2071647993902829302}
   - component: {fileID: 2071647993902829289}
   - component: {fileID: 2071647993902829303}
+  - component: {fileID: 2071647993902829292}
   m_Layer: 5
   m_Name: Options List View
   m_TagString: Untagged
@@ -28761,6 +28660,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2071647993902829292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071647993902829291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueView: {fileID: 2071647993902829300}
+  continueActionType: 3
+  continueActionKeyCode: 32
+  continueActionReference: {fileID: -2496619515453375896, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  continueAction:
+    m_Name: Skip
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: ffc22eaf-c018-417c-93e8-8bc4b17c8345
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1c27d28f-afb0-4fd6-b1dd-5c1a5992ce4d
+      m_Path: Submit
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip
+      m_Flags: 0
+  enableActionOnStart: 1
 --- !u!114 &2071647993902829300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28837,7 +28769,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354527797997906190}
-  m_LocalRotation: {x: -0, y: -0.15453206, z: -0, w: 0.98798776}
+  m_LocalRotation: {x: -0, y: -0.9998877, z: -0, w: 0.014985151}
   m_LocalPosition: {x: 0, y: 0.423, z: 2.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -28846,7 +28778,7 @@ Transform:
   - {fileID: 1111358187}
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: -17.779, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -178.283, z: 0}
 --- !u!114 &3354527797997906178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29166,7 +29098,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 813, y: -96}
-  m_SizeDelta: {x: 63, y: 37}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4495344655510333595
 GameObject:
@@ -29341,6 +29273,7 @@ GameObject:
   - component: {fileID: 4495344655914505402}
   - component: {fileID: 4495344655914505407}
   - component: {fileID: 4495344655914505406}
+  - component: {fileID: 4495344655914505404}
   m_Layer: 5
   m_Name: Dialogue LineView
   m_TagString: Untagged
@@ -29348,6 +29281,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4495344655914505404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495344655914505403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueView: {fileID: 4495344655914505407}
+  continueActionType: 3
+  continueActionKeyCode: 32
+  continueActionReference: {fileID: -2496619515453375896, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
+  continueAction:
+    m_Name: Skip
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: ffc22eaf-c018-417c-93e8-8bc4b17c8345
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1c27d28f-afb0-4fd6-b1dd-5c1a5992ce4d
+      m_Path: Submit
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skip
+      m_Flags: 0
+  enableActionOnStart: 1
 --- !u!225 &4495344655914505406
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -29967,47 +29933,13 @@ GameObject:
   - component: {fileID: 8772288491807890152}
   - component: {fileID: 7223145771018723563}
   - component: {fileID: 6970033078280331516}
-  - component: {fileID: 8333764292567492759}
   m_Layer: 0
   m_Name: Dialogue System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &8333764292567492759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8333764292567492758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogueView: {fileID: 4495344655914505407}
-  continueActionType: 3
-  continueActionKeyCode: 32
-  continueActionReference: {fileID: -2496619515453375896, guid: 4419d82f33d36e848b3ed5af4c8da37e, type: 3}
-  continueAction:
-    m_Name: Skip
-    m_Type: 1
-    m_ExpectedControlType: 
-    m_Id: ffc22eaf-c018-417c-93e8-8bc4b17c8345
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 1c27d28f-afb0-4fd6-b1dd-5c1a5992ce4d
-      m_Path: Submit
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Skip
-      m_Flags: 0
-  enableActionOnStart: 1
+  m_IsActive: 1
 --- !u!4 &8772288491807890152
 Transform:
   m_ObjectHideFlags: 0

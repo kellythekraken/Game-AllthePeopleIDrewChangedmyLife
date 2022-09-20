@@ -54,6 +54,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "Options",
+                    "type": "Button",
+                    "id": "3eb70192-196f-4926-9362-65fceb53329a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
                     "name": "Wardrobe",
                     "type": "Button",
                     "id": "1238e8c9-0b8d-438a-8146-6d740253a41f",
@@ -310,6 +318,28 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "MousePos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec30a394-906f-4176-ab93-5423ecd00aa1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86badad3-7969-4495-8ee5-81ea58ccf699",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Options",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

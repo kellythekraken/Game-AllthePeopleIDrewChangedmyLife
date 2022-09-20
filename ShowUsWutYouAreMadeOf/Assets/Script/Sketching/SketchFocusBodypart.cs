@@ -13,7 +13,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     {   
         parentMaterial = GetComponentInParent<SkinnedMeshRenderer>().material;
         parentObj = transform.parent.gameObject;
-        SketchingSystem.Instance.BodypartSelectEvent.AddListener(() => OnSelect());
+        GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {

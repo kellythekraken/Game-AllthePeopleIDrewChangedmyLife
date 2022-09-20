@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NPCManager npcManager;
     [SerializeField] private GameObject pronounTag;
     [SerializeField] private GameObject playerObject;   //dont reference the actual player with important scripts!
-    private SketchingSystem sketchManager;
+    internal SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
     internal InputManager inputManager;
     private TextMeshProUGUI pronounText;
@@ -41,23 +41,25 @@ public class GameManager : MonoBehaviour
         Instance = this;
         dialogueUI.SetActive(true);
         inputManager = FindObjectOfType<InputManager>();
+        wardrobeBtn = WardrobeButton.Instance;
+        sketchManager = SketchingSystem.Instance;
+        mainCam = Camera.main;
+
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
         dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
+        dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
+        dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
     }
     private void Start()
     {
-        wardrobeBtn = WardrobeButton.Instance;
-        sketchManager = SketchingSystem.Instance;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
-        mainCam = Camera.main;
         OpenCloseSketchbook(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
-
         LockCursor(true);
     }
 
@@ -143,9 +145,17 @@ public class GameManager : MonoBehaviour
         if(inSetting) currMode = CurrentMode.Changing;
         else BackToLastMode();
     }
+    //command:the_end
     public void TriggerEndGameEvent()
     {
         Debug.Log("end game!");
+        //show ending screen or start screen
+        LockCursor(true);
+    }
+    void InOptionView(bool inView)
+    {
+        LockCursor(!inView);
+        inputManager.EnableChatMoveBtn(!inView);
     }
     public void LockCursor(bool lockCursor)
     {

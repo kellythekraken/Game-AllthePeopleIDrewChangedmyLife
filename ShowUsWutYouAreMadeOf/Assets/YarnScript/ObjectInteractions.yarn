@@ -9,13 +9,18 @@ Leon: They're made by local artists.
 title: DoorExit
 ---
 Wanna leave?
+<<option true>>
 -> yes
     <<jump EndOfDemo>>
 -> not yet
     Not too tired yet, could stay for a bit longer.
+    <<option false>>
 ===
 
 title: EndOfDemo
 ---
-
+<<option false>>
+Thank you for playing the demo!
+Have a great day!
+<<the_end>>
 ===

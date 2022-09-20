@@ -6,11 +6,9 @@ using Yarn.Unity;
 [RequireComponent(typeof(SphereCollider))]
 public class Interactable : MonoBehaviour
 {
-    enum InteractType {Dialogue,Notification};
-    [SerializeField] private InteractType type;
     [SerializeField] private string dialogueTitle;
     [TextArea(1,3)][SerializeField] private string notification;
-    [SerializeField]float centerFacingBias = 0.3f;
+    [SerializeField] private float centerFacingBias = 0.3f;
     protected DialogueRunner dialogueRunner;
     protected GameManager gm;
     protected InteractIndicator indicator;
@@ -53,16 +51,8 @@ public class Interactable : MonoBehaviour
     {
         InputManager.Instance.LockInputOnDialogueStart();
         indicator.currentInteract = this;
-        switch(type)
-        {
-            case InteractType.Dialogue:
-            dialogueRunner.StartDialogue(dialogueTitle);
-            gm.currMode = CurrentMode.Conversation;
-            break;
-            case InteractType.Notification:
-            UIManager.Instance.DisplayNotification(notification);
-            break;
-        }
+        dialogueRunner.StartDialogue(dialogueTitle);
+        gm.currMode = CurrentMode.Conversation;
     }
 
     protected virtual void EndInteraction()
