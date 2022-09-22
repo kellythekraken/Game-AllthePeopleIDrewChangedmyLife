@@ -25,7 +25,6 @@ title: LeonStart
     Leon: Hey, you look new. 
     Leon: Welcome! 
     Leon: People are quite friendly here. 
-    <<gift Leon>>
     <<set $LeonIntroduced to true>>
 <<elseif $ChatCount > 0>>
     Leon: Already getting to know people? 
@@ -42,9 +41,21 @@ title: AliStart
 <<pose Ali SitLook>>
 <<if !$AliIntroduced>>
     <<set $ChatCount +=1>>
-    Ali: Hello handsome! What's up?
-    Ali: You are an artist? Cool.
-    Ali: Sketch me!
+    Ali: Hey!
+    Ali: Enjoying the night?
+    Ali: Haven’t seen you around before. I’m Ali. 
+    Ali: You alone tonight? 
+    Ali: I’m waiting for some friends to come.
+    Ali: No, nothing special. Just chilling after work.
+    Ali: My salon is down the road. So I come here pretty often. Most of the people recognize me here.
+    Ali: But I bet my hair also helped a lot with that. It may strike as unusual, but in queer places you don’t stand out as much. 
+    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
+    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+    Ali: Saw you sketching earlier. You an artist?
+    Ali: Ah awesome. Yeah, I’ve encountered queer artists here and there.
+    Ali: Artists and queer kids, the two groups with the highest concentration of colorful hair. 
+    Ali: You want to sketch me? 
+    Ali: Oh, of course, would be my honour. 
     <<set $AliIntroduced to true>>
     <<sketch true>>
     <<camera AliSketch>>
@@ -53,7 +64,7 @@ title: AliStart
     Ali: Hey again, little artist, I'm about to leave.
     <<leave Ali>>
     <<silence Ali>>
-    <<enter Toni>>
+    //<<enter Toni>>
     <<camera PlayerCam>>
     <<pose Ali Sit>>
 <<endif>>
@@ -61,32 +72,55 @@ title: AliStart
 title: AliSketch
 ---
 <<if $Stroke == 0>>
-    Ali: Introduction before you sketch.
+    Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
 <<else>> 
-    //<<wait .5>>
+    <<wait .5>>
 <<endif>>
 
 <<if $Stroke == 1>>
-    Ali: Blabla
-    <<pronoun>>
+    Ali: What's in your mind when you’re drawing your subject?
+    Ali: When I give haircuts, I usually talk to my client. Getting to know who they are, why they want that hairstyle…
+    Ali: Then I have a better understanding of what represents them the best, and how they want to be seen.
 <<elseif $Stroke == 2>>
-    Ali: Blablabla
+    Ali: Is it the same for you? Studying a person's features closely. Isn’t that quite personal and intimate? 
+    Ali: The only thing is that you’re not drawing directly on your subject and altering their look. Like haircuts, or tattoos.
 <<elseif $Stroke == 3>>
-    Ali: Blablablabla
+    Ali: I always disliked boundaries or restrictions. 
+    Ali: Being outside of the norm, outside of gender and relationship boundaries. 
+    Ali: Rid of all those expectations. When there are no rules, you could start making your own.
 <<elseif $Stroke == 4>>
-    Ali: Blablablabla
+    Ali: I don't see myself fitting in the binary anymore. 
+    Ali: But I'm comfortable for presenting myself feminine sometimes. So I use she/they pronouns.
+    <<pronoun>>
+    Ali: It shouldn't be so black and white, anyways.
 <<elseif $Stroke == 5>>
-    Ali: 5
+    Ali: The first time I shaved my head I felt so liberated. 
+    Ali: I always wanted to do that but never had the need, or reason to. 
+    Ali: Until we had this game, and someone dared me to shave it all off.
+    Ali: I did. And I looked at myself in the mirror. It was someone new, someone different. 
+    Ali: Someone hiding inside of me that wanted to be seen for a long time.
 <<elseif $Stroke == 6>>
-    Ali: 6
+    Ali: For me it's a form of rebellion.
+    Ali: I felt brave for looking different. 
+    Ali: The best thing about it? I am acting myself this time. For once I could abandon the fear of not fitting in. I was comfortable in my skin.
+    Ali: People started to recognizing me as queer. And especially queer people, too.
+    Ali: I felt so visible. I never looked back.
 <<elseif $Stroke == 7>>
-    Ali: 7
+    Ali: There’s a reason why hair is so important for many queer folks.
+    Ali: It’s very fulfilling to be in a hair space, where queer visibility is fostered to flourish.
+    Ali: It's always delightful to see people leave with a look that they relate themselves more than the one they came in with. 
 <<elseif $Stroke == 8>>
-    Ali: 8
+    Ali: But on a negative note, I was quite obsessed with altering my look to be more queer. 
+    Ali: I thought I'm not queer enough for a long time.
+    Ali: But I tell you, looking queer is a scam! 
+    Ali: Pretty sure everyone felt that way. 
+    Ali: With so much assumptions around 'straight-passing', even within our community.
 <<elseif $Stroke == 9>>
-    Ali: Last line before finish sketching.
+    Ali: There's no rulebook of what queerness look like.
+    Ali: By defining a queer look, you’re putting yourself into box again!
+    Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
     <<lastdraw>>
-    Ali: That's all.
+    Ali: I'd love to invite you to pop by my salon one day, to continue this conversation.
     <<set $Stroke to 0>>
     <<sketchfin>>
 <<endif>>
@@ -96,9 +130,13 @@ title: AliSketchFin
 ---
 <<sketch false>>
 <<camera PlayerCam>>
-Ali: Thank you! Here is my gift for you.
+Ali: Seems like my friends are also arriving. I’m going to say hi. 
+Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
+Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
+<<silence Ali>>
+<<camera PlayerCam>>
 <<set $AliSketched to true>>
 ===
 
