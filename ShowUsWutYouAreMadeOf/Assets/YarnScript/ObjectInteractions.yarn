@@ -8,9 +8,11 @@ Leon: They're made by local artists.
 
 title: DoorExit
 ---
-Wanna leave?
+The door leading outside.
+Is it time to leave?
 <<option true>>
 -> yes
+    <<option false>>
     <<jump EndOfDemo>>
 -> not yet
     Not too tired yet, could stay for a bit longer.

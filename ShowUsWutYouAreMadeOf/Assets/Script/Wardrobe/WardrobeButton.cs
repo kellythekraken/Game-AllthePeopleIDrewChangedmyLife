@@ -29,8 +29,6 @@ public class WardrobeButton : MonoBehaviour
     {
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
-        InputManager.Instance.wardrobeAction.performed += ctx => { OpenCloseWardrobe();};
-
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
@@ -40,6 +38,10 @@ public class WardrobeButton : MonoBehaviour
         ClearIconGridLayout();
     }
 
+    public void WardrobeAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        OpenCloseWardrobe();
+    }
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()
     {

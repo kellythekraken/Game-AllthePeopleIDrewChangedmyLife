@@ -9,7 +9,8 @@ public class UIManager : MonoBehaviour
     //controls the popup ui and main interface
     public static UIManager Instance;
     public GameObject receivedItemWindow, noticeWindow;
-    [SerializeField] TextMeshProUGUI instructionText;
+    [SerializeField] private TextMeshProUGUI instructionText;
+    [SerializeField] private Button backToStartBtn;
     TextMeshProUGUI itemText, noticeText;
     bool popupOn;
     
@@ -18,15 +19,22 @@ public class UIManager : MonoBehaviour
     {
         itemText = receivedItemWindow.GetComponentInChildren<TextMeshProUGUI>();
         noticeText = noticeWindow.GetComponentInChildren<TextMeshProUGUI>();
-        InputManager.Instance.interactAction.performed += ctx => { if(popupOn) DisplayItemWindow(false); };
-
-        DisplayItemWindow(false);
-        DisplayNoticeWindow(false);
+        backToStartBtn.onClick.AddListener(BackToStartBtnClicked);
         receivedItemWindow.SetActive(false);
         noticeWindow.SetActive(false);
-        instructionText.enabled = false;
     }
-        public void DisplayItem(string textToDisplay)
+    void OnEnable() => InputManager.Instance.interactAction.performed += InteractAction;
+    void OnDisable()=> InputManager.Instance.interactAction.performed -= InteractAction;
+
+    public void InteractAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        if(popupOn) 
+        {
+            DisplayItemWindow(false);
+            DisplayInstruction("Press TAB to change outfit", 3f);
+        }
+    }
+    public void DisplayItem(string textToDisplay)
     {
         itemText.text = textToDisplay;
         DisplayItemWindow(true);
@@ -38,10 +46,22 @@ public class UIManager : MonoBehaviour
     }
     bool currentlyDisplayingInstruction = false;
 
+    public void ShowInstruction(string textToDisplay)
+    {
+        instructionText.text = textToDisplay;
+        instructionText.enabled = true;
+    }
+
+    public void HideInstruction()
+    {
+        if(currentlyDisplayingInstruction) return;
+        instructionText.enabled = false;
+    }
+
     public void DisplayInstruction(string textToDisplay, float displayTime)
     {
-        StartCoroutine(DisplayInstruction(displayTime));
         instructionText.text = textToDisplay;
+        StartCoroutine(DisplayInstruction(displayTime));
     }
 
     IEnumerator DisplayInstruction(float timer)
@@ -54,7 +74,12 @@ public class UIManager : MonoBehaviour
     }
     public void DisplayItemWindow(bool open)
     {
-        if(!open) GameManager.Instance.currMode = CurrentMode.Nothing;
+        if(!open) 
+        {
+            GameManager.Instance.currMode = CurrentMode.Nothing;
+            InputManager.Instance.EnableChatMoveBtn(true);
+        }
+        else{ InputManager.Instance.EnableChatMoveBtn(false);}
         popupOn = open;
         receivedItemWindow.SetActive(open);
     }
@@ -63,5 +88,12 @@ public class UIManager : MonoBehaviour
     {
         noticeWindow.SetActive(open);
         GameManager.Instance.LockCursor(!open);
+    }
+
+    void BackToStartBtnClicked()
+    {
+        GameManager.Instance.ToggleSettingScreen();
+        SceneManager m = FindObjectOfType<SceneManager>();
+        m.ActivateStartMenu();
     }
 }

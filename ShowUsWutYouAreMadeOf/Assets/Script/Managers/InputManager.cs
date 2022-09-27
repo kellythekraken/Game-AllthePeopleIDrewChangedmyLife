@@ -7,70 +7,76 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     [SerializeField] GameObject continueBtn;
-    internal InputAction interactAction, chatAction, lookAction, wardrobeAction, mousePosAction;
+    internal InputAction continueAction, interactAction, lookAction, wardrobeAction, settingsAction;
     InputAction moveAction;
-    PlayerInput playerInput;
+    [SerializeField] PlayerInput playerInput;
     InputActionMap mainAcionMap;
+    GameManager gm;
+    
     void Awake()
     {
         Instance = this;
-        playerInput = FindObjectOfType<PlayerInput>();
-
+    }
+    
+    void OnEnable()
+    {
         mainAcionMap = playerInput.actions.FindActionMap("Player");
-
-        playerInput.onActionTriggered += OnFire;
-
-        //dialogueAction = mainAcionMap.FindAction("Dialogue");
-        //interactAction.performed += ctx => Interact();
+        continueAction = mainAcionMap["ContinueDialogue"];
         interactAction = mainAcionMap["Interact"];
-        chatAction = mainAcionMap["Chat"];
         moveAction = mainAcionMap["Move"];
         lookAction = mainAcionMap["Look"];
         wardrobeAction = mainAcionMap["Wardrobe"];
-        mainAcionMap["Setting"].performed += ctx => SwitchSettingScreen(); 
-    }
+        settingsAction = mainAcionMap["Setting"];
 
-    void OnEnable()
-    {
+        settingsAction.performed += SwitchSettingScreen; 
+        wardrobeAction.performed += WardrobeButton.Instance.WardrobeAction;
         mainAcionMap.Enable();
+        gm = GameManager.Instance;
     }
     void OnDisable()
     {
+        settingsAction.performed -= SwitchSettingScreen; 
+        wardrobeAction.performed -= WardrobeButton.Instance.WardrobeAction;
         mainAcionMap.Disable();
     }
-
+    public void EnableAllInput(bool enable)   //when in start screen
+    {
+        if(enable) mainAcionMap.Enable();
+        else mainAcionMap.Disable();
+    }
+    
+    public void EnableWardrobeAction(bool enable)
+    {
+        if(enable) wardrobeAction.Enable();
+        else {wardrobeAction.Disable();}
+    }
     public void EnableChatMoveBtn(bool enable)
     {
         if (enable) 
         {
-            chatAction.Enable();
-            moveAction.Enable();
+            interactAction.Enable();
             lookAction.Enable();
+            moveAction.Enable();
         }
         else 
         {
-            chatAction.Disable();
-            moveAction.Disable();
+            interactAction.Disable();
             lookAction.Disable();
+            moveAction.Disable();
         }
     }
-
-    public void LockInputOnDialogueStart()
+    public void LockInputOnDialogueStart() 
     {
         StartCoroutine(LockInputCoroutine());
     }
     IEnumerator LockInputCoroutine()    //lock the input on dialogue start, to avoid instant skip of first line
     {
-        mainAcionMap.Disable();
+        continueAction.Disable();
         yield return new WaitForSeconds(.7f);
-        mainAcionMap.Enable();
+        continueAction.Enable();
     }
-    void SwitchSettingScreen()
+    void SwitchSettingScreen(InputAction.CallbackContext ctx)
     {
-        GameManager.Instance.ToggleSettingScreen();
-    }
-    void OnFire(InputAction.CallbackContext ctx)
-    {
-        Debug.Log(ctx);
+        gm.ToggleSettingScreen();
     }
 }

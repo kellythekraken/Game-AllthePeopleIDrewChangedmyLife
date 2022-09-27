@@ -27,6 +27,7 @@ public class SketchingSystem : MonoBehaviour
     List<SketchFocusBodypart> bodypartLists; //reference of the list of sketchable area component
     Transform drawingParent;   //where drawing strokes will be instantiated
     List<Sprite> storedSketches;
+    GameManager gm;
     Queer instantiatedCopy; //instantiated copy of queer SO so delete doesn't affect the actual SO
     bool initialized = false;
     private void OnEnable()
@@ -51,9 +52,10 @@ public class SketchingSystem : MonoBehaviour
     }
     void Start()
     {
+        gm = GameManager.Instance;
         DisableAllFollower();
-        GameManager.Instance.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
-        GameManager.Instance.dialogueRunner.AddCommandHandler("sketchfin", SketchCompleted);
+        gm.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
+        gm.dialogueRunner.AddCommandHandler("sketchfin", SketchCompleted);
         doneBtn.onClick.AddListener(PlayAfterSketchDialogue);
         doneBtn.gameObject.SetActive(false);
     }
@@ -81,7 +83,7 @@ public class SketchingSystem : MonoBehaviour
         
         bodypartLists = new List<SketchFocusBodypart>();
 
-        foreach(var i in queer.sketchableAreas) { bodypartLists.Add(i); i.focusable = true; }
+        foreach(var i in queer.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
         areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
         for (int i=0; i < areaChoices.Count(); i++)
         {
@@ -92,7 +94,10 @@ public class SketchingSystem : MonoBehaviour
                 continue;
             }
         }
-        foreach(Button i in colorChoices) {i.enabled = true; }        
+        foreach(Button i in colorChoices) {i.enabled = true; }
+        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
+        InputManager.Instance.EnableWardrobeAction(false);
+        sketchbook.enabled = true;
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
@@ -130,7 +135,7 @@ public class SketchingSystem : MonoBehaviour
         ChosenBody = null; chosenColor = null;
         lastCrayon.SetActive(true);
         //advance the conversation
-        GameManager.Instance.ContinueSketchChat();
+        gm.ContinueSketchChat();
     }
 
     void MakeADrawing()
@@ -164,14 +169,15 @@ public class SketchingSystem : MonoBehaviour
     {
         Image stroke = Instantiate(drawPrefab, drawingParent); 
         stroke.sprite = instantiatedCopy.backgroundDrawing;
-        stroke.color = Color.black;
+        sketchbook.enabled = false;
     }
     //command: sketchfin
     void SketchCompleted()
     {
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
         doneBtn.gameObject.SetActive(true);
-        GameManager.Instance.LockCursor(false);
+        gm.LockCursor(false);
+        InputManager.Instance.EnableWardrobeAction(true);
         foreach(var i in bodypartLists) { i.focusable = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
     }
@@ -180,7 +186,8 @@ public class SketchingSystem : MonoBehaviour
     {
         //give logic to back button at start: trigger the fin dialogue.
         string dialogueTitle = instantiatedCopy.npcName + "SketchFin";
-        GameManager.Instance.dialogueRunner.StartDialogue(dialogueTitle);
+        gm.dialogueRunner.StartDialogue(dialogueTitle);
+        gm.currMode = CurrentMode.Conversation;
     }
 
     PointerFollower currentCrayonFollower;

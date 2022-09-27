@@ -18,6 +18,12 @@
 <<enter Leon>>
 <<enter Ali>>
 ===
+title: TestConversastion
+---
+Ako: Hi!
+Ako: Over!
+<<gift Ali>>
+===
 title: LeonStart
 ---
 <<camera LeonCam>>
@@ -44,16 +50,14 @@ title: AliStart
     Ali: Hey!
     Ali: Enjoying the night?
     Ali: Haven’t seen you around before. I’m Ali. 
-    Ali: You alone tonight? 
-    Ali: I’m waiting for some friends to come.
-    Ali: No, nothing special. Just chilling after work.
-    Ali: My salon is down the road. So I come here pretty often. Most of the people recognize me here.
-    Ali: But I bet my hair also helped a lot with that. It may strike as unusual, but in queer places you don’t stand out as much. 
-    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
-    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+    Ali: My salon is down the road. So I come here pretty often. 
+    //Most of the people recognize me here.
+//    Ali: But I bet my hair also helped a lot with that. It may strike as unusual, but in queer places you don’t stand out as much. 
+//    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
+//    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
     Ali: Saw you sketching earlier. You an artist?
-    Ali: Ah awesome. Yeah, I’ve encountered queer artists here and there.
-    Ali: Artists and queer kids, the two groups with the highest concentration of colorful hair. 
+    Ali: Ah awesome. I’ve encountered queer artists here and there.
+//    Ali: Artists and queer kids, the two groups with the highest concentration of colorful hair. 
     Ali: You want to sketch me? 
     Ali: Oh, of course, would be my honour. 
     <<set $AliIntroduced to true>>
@@ -61,8 +65,8 @@ title: AliStart
     <<camera AliSketch>>
     <<jump AliSketch>>
 <<elseif $AliSketched>>
-    Ali: Hey again, little artist, I'm about to leave.
-    <<leave Ali>>
+    Ali: Hey! Thank you for the drawing earlier.
+    //<<leave Ali>>
     <<silence Ali>>
     //<<enter Toni>>
     <<camera PlayerCam>>
@@ -71,23 +75,21 @@ title: AliStart
 ===
 title: AliSketch
 ---
-<<if $Stroke == 0>>
-    Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
-<<else>> 
-    <<wait .5>>
-<<endif>>
+<<wait .5>>
 
 <<if $Stroke == 1>>
+    Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
+<<elseif $Stroke == 2>>
     Ali: What's in your mind when you’re drawing your subject?
     Ali: When I give haircuts, I usually talk to my client. Getting to know who they are, why they want that hairstyle…
     Ali: Then I have a better understanding of what represents them the best, and how they want to be seen.
-<<elseif $Stroke == 2>>
+<<elseif $Stroke == 3>>
     Ali: Is it the same for you? Studying a person's features closely. Isn’t that quite personal and intimate? 
     Ali: The only thing is that you’re not drawing directly on your subject and altering their look. Like haircuts, or tattoos.
-<<elseif $Stroke == 3>>
-    Ali: I always disliked boundaries or restrictions. 
-    Ali: Being outside of the norm, outside of gender and relationship boundaries. 
-    Ali: Rid of all those expectations. When there are no rules, you could start making your own.
+//<<elseif $Stroke == 3>>
+    //Ali: I always disliked boundaries or restrictions. 
+    //Ali: Being outside of the norm, outside of gender and relationship boundaries. 
+    //Ali: Rid of all those expectations. When there are no rules, you could start making your own.
 <<elseif $Stroke == 4>>
     Ali: I don't see myself fitting in the binary anymore. 
     Ali: But I'm comfortable for presenting myself feminine sometimes. So I use she/they pronouns.
@@ -130,12 +132,11 @@ title: AliSketchFin
 ---
 <<sketch false>>
 <<camera PlayerCam>>
-Ali: Seems like my friends are also arriving. I’m going to say hi. 
+Ali: Seems like my friends are arriving. I’m going to say hi. 
 Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
 Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
-<<silence Ali>>
 <<camera PlayerCam>>
 <<set $AliSketched to true>>
 ===

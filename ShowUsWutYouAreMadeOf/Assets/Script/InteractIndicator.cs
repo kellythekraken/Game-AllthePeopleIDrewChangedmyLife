@@ -42,6 +42,8 @@ public class InteractIndicator : MonoBehaviour
     public void DisplayIndicator(bool display)
     {
         myText.enabled = facingSubject = display;
+        if(myText.enabled) UIManager.Instance.ShowInstruction("E / Left Mouse to interact");
+        else if(!myText.enabled || gm.inConversation){ UIManager.Instance.HideInstruction();}
     }
     public void ChangeText(string text)
     {

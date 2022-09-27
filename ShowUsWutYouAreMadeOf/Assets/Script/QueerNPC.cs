@@ -1,14 +1,15 @@
 using UnityEngine;
 using Yarn.Unity;
+using System.Collections;
 
 public class QueerNPC : Interactable
 {
     public Queer queerID;
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
-    private bool interactable = true;
     private bool introduced = false;
     private Animator _animator;
     
+    void OnEnable() => introduced = false;
     protected override void Start()
     {
         base.Start();
@@ -21,14 +22,14 @@ public class QueerNPC : Interactable
         introduced = true;
         gm.sketchSubject = this;
     }
-
     protected override void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !interactable) return;
         InRange = true;
         var displayTxt = introduced? queerID.npcName : "Chat"; 
         indicator.ChangeText(displayTxt); 
     }
+
     public void StartSketchConversation()
     {
         gm.currMode = CurrentMode.Conversation;

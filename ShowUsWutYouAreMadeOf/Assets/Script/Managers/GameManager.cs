@@ -1,10 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 using TMPro;
 
-public enum CurrentMode { Nothing, Conversation, Sketching, Changing}
+public enum CurrentMode { Nothing, Conversation, Sketching, Changing, StartMenu}
 
 public class GameManager : MonoBehaviour
 {
@@ -30,6 +29,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerObject;   //dont reference the actual player with important scripts!
     internal SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
+    internal SceneManager sceneManager;
     internal InputManager inputManager;
     private TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
@@ -40,11 +40,11 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         dialogueUI.SetActive(true);
+        mainCam = Camera.main;
         inputManager = FindObjectOfType<InputManager>();
         wardrobeBtn = WardrobeButton.Instance;
         sketchManager = SketchingSystem.Instance;
-        mainCam = Camera.main;
-
+        sceneManager = SceneManager.Instance;
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
@@ -56,13 +56,14 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
         OpenCloseSketchbook(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
-        LockCursor(true);
+        DisplayControlInstruction();
     }
-
+    void OnDisable()=> currMode = CurrentMode.StartMenu;
     void OnModeChanged(CurrentMode mode)
     {
         lastMode = currMode;
@@ -80,14 +81,19 @@ public class GameManager : MonoBehaviour
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
-                LockCursor(false);
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
+                StartCoroutine(WaitBeforeSketch());
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
+                return;
+            case CurrentMode.StartMenu:
+                LockCursor(false);
+                inConversation = false;
+                inputManager.EnableAllInput(false);
                 return;
         }
     }
@@ -109,7 +115,7 @@ public class GameManager : MonoBehaviour
             sketchManager.PrepareToSketch(sketchSubject);
             StartCoroutine(OpenSketchbook());
         }
-        else sketchbookUI.SetActive(false);
+        else {sketchbookUI.SetActive(false);}
 
         sketchbookOpen = open;
         wardrobeBtn.gameObject.SetActive(!open);
@@ -133,6 +139,21 @@ public class GameManager : MonoBehaviour
     }
 #endregion
 
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1;
+    }
+    //command:the_end
+    public void TriggerEndGameEvent()
+    {
+        //show ending screen or start screen
+        sceneManager.StartOver();
+    }
     public void ShowPlayer(bool show)
     {
         playerObject.SetActive(show);
@@ -145,13 +166,6 @@ public class GameManager : MonoBehaviour
         if(inSetting) currMode = CurrentMode.Changing;
         else BackToLastMode();
     }
-    //command:the_end
-    public void TriggerEndGameEvent()
-    {
-        Debug.Log("end game!");
-        //show ending screen or start screen
-        LockCursor(true);
-    }
     void InOptionView(bool inView)
     {
         LockCursor(!inView);
@@ -162,5 +176,13 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !lockCursor;
     }
-
+    IEnumerator WaitBeforeSketch(float seconds = .5f)
+    {
+        yield return new WaitForSeconds(seconds);
+        LockCursor(false);
+    }
+    void DisplayControlInstruction()
+    {
+        UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Mouse to look around.", 4f);
+    }
 }

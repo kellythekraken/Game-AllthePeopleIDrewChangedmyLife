@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Chat",
+                    "name": "Interact",
                     "type": "Button",
                     "id": "8e2d316b-5ffc-4a93-9536-c4c752ea34e6",
                     "expectedControlType": "Button",
@@ -46,7 +46,7 @@
                     "interactions": "Press"
                 },
                 {
-                    "name": "Interact",
+                    "name": "ContinueDialogue",
                     "type": "Button",
                     "id": "d6c7b78b-8f3a-4532-b041-92a0ea30c847",
                     "expectedControlType": "Button",
@@ -240,7 +240,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Chat",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -251,7 +251,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Chat",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -262,7 +262,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "ContinueDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -273,7 +273,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "ContinueDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -306,7 +306,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
-                    "action": "Interact",
+                    "action": "ContinueDialogue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

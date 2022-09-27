@@ -15,6 +15,8 @@ public class Interactable : MonoBehaviour
     private Collider _collider;
     protected bool InRange = false;
     private Transform playerTransform;
+    protected bool interactable = true;
+
     protected virtual void Start()
     {
         gm = GameManager.Instance;
@@ -22,22 +24,26 @@ public class Interactable : MonoBehaviour
         dialogueRunner = gm.dialogueRunner;
         _collider = GetComponent<Collider>();
         _collider.isTrigger = true;
-        InputManager.Instance.chatAction.performed += ctx => { if (indicator.facingSubject && InRange) 
-        StartInteraction(); };
+        InputManager.Instance.interactAction.performed += InteractionAction;
         dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
+    }
+
+    void OnDisable()
+    {
+        InputManager.Instance.interactAction.performed -= InteractionAction;
     }
 
     //if in range, communicate with the interactindicator, change the text
     //if face the object, the indicator will show up, and then the condition to interact should THEN be satisfied.
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !interactable) return;
         InRange = true;
         indicator.ChangeText(name); 
     }
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (!other.CompareTag("Player")) return;
+        if (!other.CompareTag("Player") || !interactable) return;
         InRange = true;
         indicator.CheckFaceDir(transform,centerFacingBias);
     }
@@ -47,20 +53,33 @@ public class Interactable : MonoBehaviour
         InRange = false;
         indicator.DisplayIndicator(false);
     }
+    public void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        StartInteraction();
+    }
     protected virtual void StartInteraction()
     {
-        InputManager.Instance.LockInputOnDialogueStart();
-        indicator.currentInteract = this;
-        dialogueRunner.StartDialogue(dialogueTitle);
-        gm.currMode = CurrentMode.Conversation;
+        if (indicator.facingSubject && InRange) 
+        {
+            gm.currMode = CurrentMode.Conversation;
+            indicator.currentInteract = this;
+            dialogueRunner.StartDialogue(dialogueTitle);
+            InputManager.Instance.LockInputOnDialogueStart();
+        }
     }
-
-    protected virtual void EndInteraction()
+    private void EndInteraction()
     {
         if(indicator.currentInteract == this)
         {
+            StartCoroutine(TimerBeforeNextInteraction());
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
-            else gm.currMode = CurrentMode.Nothing;
+            else {gm.currMode = CurrentMode.Nothing;}
         }
+    }
+    IEnumerator TimerBeforeNextInteraction()
+    {
+        interactable = false;
+        yield return new WaitForSeconds(5f);
+        interactable = true;
     }
 }
