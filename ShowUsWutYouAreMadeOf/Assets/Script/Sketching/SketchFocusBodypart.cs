@@ -7,6 +7,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     internal bool focusable = false;
     Material parentMaterial;
     GameObject parentObj;
+    Color highlightColor;
     internal bool selected = false; // there should only be one selected!
 
     void Start()
@@ -14,6 +15,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
         parentMaterial = GetComponentInParent<SkinnedMeshRenderer>().material;
         parentObj = transform.parent.gameObject;
         GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
+        highlightColor = SketchingSystem.Instance.materialHighlightColor;
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
@@ -34,12 +36,11 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
      
      public void HighlightMaterial()
      {
-        parentMaterial.SetColor("_EMISSION", new Color(0.0927F, 0.4852F, 0.2416F, 0.42F));
-        parentMaterial.EnableKeyword("_EMISSION");
+        parentMaterial.SetColor("_EmissionColor", highlightColor);
      }
      public void UnlightMaterial()
      {
-        parentMaterial.DisableKeyword("_EMISSION");
+        parentMaterial.SetColor("_EmissionColor", Color.black);
      }
      void OnSelect()
      {

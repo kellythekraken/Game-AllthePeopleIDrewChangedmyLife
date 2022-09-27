@@ -21,6 +21,7 @@ public class SketchingSystem : MonoBehaviour
     [SerializeField] private Image drawPrefab;
     [SerializeField] private List<PointerFollower> crayonPointers;
     [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
+    public Color materialHighlightColor;
     List<DrawableArea> areaChoices; //copy of the SO data with sketches
     List<Button> colorChoices;  //crayon buttons
     List<Image> drawings;

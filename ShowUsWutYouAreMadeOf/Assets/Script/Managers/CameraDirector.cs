@@ -1,8 +1,10 @@
 using UnityEngine;
 using Yarn.Unity;
 
+
 public class CameraDirector : MonoBehaviour
 {
+    public Camera playerCam, stateCam;
     private DialogueRunner dialogueRunner;
     private Animator _animator;
 
@@ -17,6 +19,15 @@ public class CameraDirector : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    public void PlayerCam()
+    {
+
+    }
+
+    public void RestCam()
+    {
+        
+    }
     public void SwitchCamera(string animName)
     {
         _animator.Play(animName);
