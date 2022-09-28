@@ -34,11 +34,7 @@ public class UIManager : MonoBehaviour
             DisplayInstruction("Press TAB to change outfit", 3f);
         }
     }
-    public void DisplayItem(string textToDisplay)
-    {
-        itemText.text = textToDisplay;
-        DisplayItemWindow(true);
-    }
+
     public void DisplayNotification(string textToDisplay)
     {
         noticeText.text = textToDisplay;
@@ -72,14 +68,22 @@ public class UIManager : MonoBehaviour
         instructionText.enabled = false;
         currentlyDisplayingInstruction = false;
     }
+    QueerNPC itemGifter;
+    public void DisplayItem(QueerNPC npc)
+    {
+        itemText.text = npc.queerID.giftLine;
+        itemGifter = npc;
+        DisplayItemWindow(true);
+    }
     public void DisplayItemWindow(bool open)
     {
         if(!open) 
         {
             GameManager.Instance.currMode = CurrentMode.Nothing;
-            InputManager.Instance.EnableChatMoveBtn(true);
+            itemGifter.alreadyGifted = true;
         }
-        else{ InputManager.Instance.EnableChatMoveBtn(false);}
+        else {InputManager.Instance.EnableInteractBtn(true);}
+    
         popupOn = open;
         receivedItemWindow.SetActive(open);
     }

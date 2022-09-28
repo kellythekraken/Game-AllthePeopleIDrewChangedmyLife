@@ -80,6 +80,7 @@ public class SketchingSystem : MonoBehaviour
     //start a new sketch
     public void PrepareToSketch(QueerNPC queer)
     {
+        queer.alreadySketched = true;
         instantiatedCopy = Instantiate(queer.queerID);
         
         bodypartLists = new List<SketchFocusBodypart>();

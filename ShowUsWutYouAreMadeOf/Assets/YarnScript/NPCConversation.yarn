@@ -2,18 +2,17 @@
 ---
 //GENERAL
 <<set $Stroke to 0>>
-<<set $ChatCount to 0>>
+<<set $ChatCount to 0>> //how many people you have met
 
 //Bartender
 <<set $LeonIntroduced to false>>
 
 //Ali
 <<set $AliIntroduced to false>>
-<<set $AliSketched to false>>
+<<set $AliChat to 0>>
 
 //Toni
 <<set $ToniIntroduced to false>>
-<<set $ToniSketched to false>>
 
 <<enter Leon>>
 <<enter Ali>>
@@ -39,14 +38,16 @@ title: LeonStart
 <<else>>
     Leon: Want a drink?
 <<endif>>
-<<camera PlayerCam>>
+<<playercam>>
 ===
 title: AliStart
 ---
+//<<jump TestConversastion>>
 <<camera AliChat>>
 <<pose Ali SitLook>>
 <<if !$AliIntroduced>>
     <<set $ChatCount +=1>>
+    <<wait .5>>
     Ali: Hey!
     Ali: Enjoying the night?
     Ali: Haven’t seen you around before. I’m Ali. 
@@ -54,23 +55,39 @@ title: AliStart
     //Most of the people recognize me here.
 //    Ali: But I bet my hair also helped a lot with that. It may strike as unusual, but in queer places you don’t stand out as much. 
 //    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
-//    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
     Ali: Saw you sketching earlier. You an artist?
     Ali: Ah awesome. I’ve encountered queer artists here and there.
-//    Ali: Artists and queer kids, the two groups with the highest concentration of colorful hair. 
+//    
     Ali: You want to sketch me? 
     Ali: Oh, of course, would be my honour. 
     <<set $AliIntroduced to true>>
     <<sketch true>>
     <<camera AliSketch>>
     <<jump AliSketch>>
-<<elseif $AliSketched>>
-    Ali: Hey! Thank you for the drawing earlier.
-    //<<leave Ali>>
-    <<silence Ali>>
-    //<<enter Toni>>
-    <<camera PlayerCam>>
+<<else>>
+//special conditioned text should come before the count, and doesn't go into the chat count.
+    <<if $AliChat == 0>>
+        Ali: Hey! Thank you for the drawing earlier.
+    <<elseif $AliChat == 1>>
+        Ali: We were discussing about the benefit of having colorful hair.
+        Ali: Once I met this person who used their blue hair to help people memorize her in a networking event.
+        Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+        Ali: Artists and queer kids, the two groups with the highest concentration of colorful hair. 
+    <<elseif $AliChat == 2>>
+        Ali: Have you ever dyed your hair?
+        Ali: I know a person who come here often, they are specialized in hairdyes, especially on shaved heads.
+        Ali: Will give you a shout know if I spot them tonight!
+    <<elseif $AliChat == 3>>
+        Ali: Was talking with my friends about your drawing. 
+        Ali: One suggested you should use it as an icebreaker, getting to know people a bit.
+        Ali: Even flirt a bit, maybe.
+        <<silence Ali>>
+        //<<leave Ali>>
+        //<<enter Toni>>
+    <<endif>>
+    <<playercam>>
     <<pose Ali Sit>>
+    <<set $AliChat +=1>>
 <<endif>>
 ===
 title: AliSketch
@@ -86,10 +103,6 @@ title: AliSketch
 <<elseif $Stroke == 3>>
     Ali: Is it the same for you? Studying a person's features closely. Isn’t that quite personal and intimate? 
     Ali: The only thing is that you’re not drawing directly on your subject and altering their look. Like haircuts, or tattoos.
-//<<elseif $Stroke == 3>>
-    //Ali: I always disliked boundaries or restrictions. 
-    //Ali: Being outside of the norm, outside of gender and relationship boundaries. 
-    //Ali: Rid of all those expectations. When there are no rules, you could start making your own.
 <<elseif $Stroke == 4>>
     Ali: I don't see myself fitting in the binary anymore. 
     Ali: But I'm comfortable for presenting myself feminine sometimes. So I use she/they pronouns.
@@ -131,14 +144,13 @@ title: AliSketch
 title: AliSketchFin
 ---
 <<sketch false>>
-<<camera PlayerCam>>
+<<playercam>>
 Ali: Seems like my friends are arriving. I’m going to say hi. 
 Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
 Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
-<<camera PlayerCam>>
-<<set $AliSketched to true>>
+<<playercam>>
 ===
 
 title: ToniStart
@@ -154,7 +166,7 @@ title: ToniStart
 <<elseif $AliSketched>>
     Toni: I'm going to get some drink.
     <<silence Toni>>
-    <<camera PlayerCam>>
+    <<playercam>>
 <<endif>>
 ===
 title: ToniSketch
@@ -179,7 +191,7 @@ title: ToniSketch
 title: ToniSketchFin
 ---
 <<sketch false>>
-<<camera PlayerCam>>
+<<playercam>>
 Toni: Thanks! Take this.
 <<gift>>
 <<set $ToniSketched to true>>

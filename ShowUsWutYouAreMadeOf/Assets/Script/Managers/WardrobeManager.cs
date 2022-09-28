@@ -69,7 +69,6 @@ public class WardrobeManager : MonoBehaviour
     }
     public void AddItemToWardrobe(GiftItem item)
     {
-        Debug.Log("adding item" + item.name + " to " + item.section);
         CreateItemBtn(item);
     }
 

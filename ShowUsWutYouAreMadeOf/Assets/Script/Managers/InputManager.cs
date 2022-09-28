@@ -65,6 +65,14 @@ public class InputManager : MonoBehaviour
             moveAction.Disable();
         }
     }
+
+    public void EnableInteractBtn(bool enable)
+    {
+        if (enable) 
+            interactAction.Enable();
+        else 
+            interactAction.Disable();
+    }
     public void LockInputOnDialogueStart() 
     {
         StartCoroutine(LockInputCoroutine());

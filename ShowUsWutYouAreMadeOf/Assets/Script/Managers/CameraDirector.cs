@@ -1,10 +1,11 @@
 using UnityEngine;
 using Yarn.Unity;
-
+using Cinemachine;
 
 public class CameraDirector : MonoBehaviour
 {
-    public Camera playerCam, stateCam;
+    [SerializeField] private CinemachineVirtualCamera playerCam;
+    [SerializeField] private CinemachineStateDrivenCamera stateCam;
     private DialogueRunner dialogueRunner;
     private Animator _animator;
 
@@ -13,23 +14,22 @@ public class CameraDirector : MonoBehaviour
         dialogueRunner = FindObjectOfType<DialogueRunner>();
 
         dialogueRunner.AddCommandHandler<string>("camera", SwitchCamera);
+        dialogueRunner.AddCommandHandler("playercam", SwitchToPlayerCam);
+
     }
     private void Start()
     {
         _animator = GetComponent<Animator>();
     }
 
-    public void PlayerCam()
+    public void SwitchToPlayerCam()
     {
-
+        playerCam.Priority = 10; stateCam.Priority = 8;
     }
 
-    public void RestCam()
-    {
-        
-    }
     public void SwitchCamera(string animName)
     {
+        playerCam.Priority = 8; stateCam.Priority = 10;
         _animator.Play(animName);
     }
 }

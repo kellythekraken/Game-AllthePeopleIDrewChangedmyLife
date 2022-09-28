@@ -8,12 +8,13 @@ public class QueerNPC : Interactable
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
     private bool introduced = false;
     private Animator _animator;
-    
-    void OnEnable() => introduced = false;
+    internal bool alreadySketched, alreadyGifted;
+
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
+        alreadyGifted = alreadySketched = false;
     }
     protected override void StartInteraction()
     {
@@ -35,6 +36,20 @@ public class QueerNPC : Interactable
         gm.currMode = CurrentMode.Conversation;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
     }
+
+    protected override void EndInteraction()
+    {
+        if(indicator.currentInteract == this)
+        {
+            StartCoroutine(TimerBeforeNextInteraction());
+            if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
+            else if (!alreadySketched) { Debug.Log("not sketched, change mode"); gm.currMode = CurrentMode.Nothing;} 
+            else if (alreadyGifted){ Debug.Log("gifted, change mode"); gm.currMode = CurrentMode.Nothing;} 
+            //if the sketch has been initiated, then they will give an item after sketching. 
+            //so we do nothing and wait for the wardrobe btn to change mode.
+        }
+    }
+
     [YarnCommand("pose")]
     void ChangePose(string anim)
     {
@@ -44,7 +59,7 @@ public class QueerNPC : Interactable
     [YarnCommand("gift")]
     public void GiveItem()
     {
-        gm.wardrobeBtn.DisplayReceivedItem(queerID.giftLine, queerID.items);
+        gm.wardrobeBtn.DisplayReceivedItem(this);
     }
 
     [YarnCommand("silence")]

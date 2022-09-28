@@ -67,16 +67,15 @@ public class Interactable : MonoBehaviour
             InputManager.Instance.LockInputOnDialogueStart();
         }
     }
-    private void EndInteraction()
+    protected virtual void EndInteraction()
     {
         if(indicator.currentInteract == this)
         {
             StartCoroutine(TimerBeforeNextInteraction());
-            if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
-            else {gm.currMode = CurrentMode.Nothing;}
+            gm.currMode = CurrentMode.Nothing;
         }
     }
-    IEnumerator TimerBeforeNextInteraction()
+    protected IEnumerator TimerBeforeNextInteraction()
     {
         interactable = false;
         yield return new WaitForSeconds(5f);

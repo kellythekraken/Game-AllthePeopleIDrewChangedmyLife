@@ -60,11 +60,16 @@ public class WardrobeButton : MonoBehaviour
             GameManager.Instance.BackToLastMode();
         }
     }
-    public void DisplayReceivedItem(string giftLine, GiftItem[] gifts) //load a list of gift?
+    //load a list of gift
+    public void DisplayReceivedItem(QueerNPC npc) 
     {
+        //clear child
+        foreach(Transform i in iconLayoutParent.transform) Destroy(i.gameObject);
+
         newIndicator.enabled = true;
         newItem = true;
-        string text = giftLine;
+        GiftItem[] gifts = npc.queerID.items;
+        
         //for multiple items
        for (int i =0 ; i < gifts.Length ; i++)
         {
@@ -79,7 +84,7 @@ public class WardrobeButton : MonoBehaviour
         if(iconGridCellCount> 4) iconGridCellCount = 4; else if(iconGridCellCount < 2) iconGridCellCount = 2;
         var cellSize = iconLayoutrect.rect.width / iconGridCellCount; 
         iconLayoutParent.cellSize = new Vector2 (cellSize, cellSize);
-        UIManager.Instance.DisplayItem(text);
+        UIManager.Instance.DisplayItem(npc);
     }
 
     void ClearIconGridLayout()
