@@ -41,7 +41,7 @@ public class QueerNPC : Interactable
     {
         if(indicator.currentInteract == this)
         {
-            StartCoroutine(TimerBeforeNextInteraction());
+            if(!silence) {StartCoroutine(TimerBeforeNextInteraction());}
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
             else if (!alreadySketched) { Debug.Log("not sketched, change mode"); gm.currMode = CurrentMode.Nothing;} 
             else if (alreadyGifted){ Debug.Log("gifted, change mode"); gm.currMode = CurrentMode.Nothing;} 
@@ -61,10 +61,10 @@ public class QueerNPC : Interactable
     {
         gm.wardrobeBtn.DisplayReceivedItem(this);
     }
-
+    bool silence = false;
     [YarnCommand("silence")]
     public void DisableConversation()
     {
-        interactable = false;
+        silence = true;
     }
 }

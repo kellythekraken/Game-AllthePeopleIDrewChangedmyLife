@@ -38,7 +38,7 @@ title: LeonStart
 <<else>>
     Leon: Want a drink?
 <<endif>>
-<<playercam>>
+<<camera Player>>
 ===
 title: AliStart
 ---
@@ -85,7 +85,7 @@ title: AliStart
         //<<leave Ali>>
         //<<enter Toni>>
     <<endif>>
-    <<playercam>>
+    <<camera Player>>
     <<pose Ali Sit>>
     <<set $AliChat +=1>>
 <<endif>>
@@ -144,13 +144,13 @@ title: AliSketch
 title: AliSketchFin
 ---
 <<sketch false>>
-<<playercam>>
+<<camera Player>>
 Ali: Seems like my friends are arriving. I’m going to say hi. 
 Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
 Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
-<<playercam>>
+<<camera Player>>
 ===
 
 title: ToniStart
@@ -166,7 +166,7 @@ title: ToniStart
 <<elseif $AliSketched>>
     Toni: I'm going to get some drink.
     <<silence Toni>>
-    <<playercam>>
+    <<camera Player>>
 <<endif>>
 ===
 title: ToniSketch
@@ -191,7 +191,7 @@ title: ToniSketch
 title: ToniSketchFin
 ---
 <<sketch false>>
-<<playercam>>
+<<camera Player>>
 Toni: Thanks! Take this.
 <<gift>>
 <<set $ToniSketched to true>>
