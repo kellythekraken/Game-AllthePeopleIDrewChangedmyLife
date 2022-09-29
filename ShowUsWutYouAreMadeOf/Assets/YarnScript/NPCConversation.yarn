@@ -52,11 +52,11 @@ title: AliStart
     Ali: Enjoying the night?
     Ali: Haven’t seen you around before. I’m Ali. 
     Ali: My salon is down the road. So I come here pretty often. 
-    //Most of the people recognize me here.
 //    Ali: But I bet my hair also helped a lot with that. It may strike as unusual, but in queer places you don’t stand out as much. 
 //    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
     Ali: Saw you sketching earlier. You an artist?
-    Ali: Ah awesome. I’ve encountered queer artists here and there.
+    Ali: 
+//    Ali: Ah awesome. I’ve encountered queer artists here and there.
     Ali: You want to sketch me? 
     Ali: Oh, of course, would be my honour. 
     <<set $AliIntroduced to true>>

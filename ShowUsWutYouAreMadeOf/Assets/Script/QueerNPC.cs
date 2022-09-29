@@ -6,7 +6,7 @@ public class QueerNPC : Interactable
 {
     public Queer queerID;
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
-    private bool introduced = false;
+    public bool introduced = false;
     private Animator _animator;
     internal bool alreadySketched, alreadyGifted;
 
@@ -18,10 +18,12 @@ public class QueerNPC : Interactable
     }
     protected override void StartInteraction()
     {
-        if(!interactable) return;
         base.StartInteraction();
-        introduced = true;
-        gm.sketchSubject = this;
+        if(indicator.currentInteract == this)
+        {
+            introduced = true;
+            gm.sketchSubject = this;
+        }
     }
     protected override void OnTriggerEnter(Collider other)
     {
