@@ -6,7 +6,7 @@ public class InteractIndicator : MonoBehaviour
 {
     //to be displayed on world canvas
     //take info from interactables, check facing direction
-    
+    //attached to the gameobject under interface canvas
     public static InteractIndicator Instance;
     internal bool facingSubject;
     GameManager gm;

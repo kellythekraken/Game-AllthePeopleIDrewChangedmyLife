@@ -57,7 +57,6 @@ title: AliStart
 //    Ali: Not complaining at all! I love seeing people with different, colourful hair. 
     Ali: Saw you sketching earlier. You an artist?
     Ali: Ah awesome. I’ve encountered queer artists here and there.
-//    
     Ali: You want to sketch me? 
     Ali: Oh, of course, would be my honour. 
     <<set $AliIntroduced to true>>
@@ -81,7 +80,6 @@ title: AliStart
         Ali: Was talking with my friends about your drawing. 
         Ali: One suggested you should use it as an icebreaker, getting to know people a bit.
         Ali: Even flirt a bit, maybe.
-        <<silence Ali>>
         //<<leave Ali>>
         //<<enter Toni>>
     <<endif>>

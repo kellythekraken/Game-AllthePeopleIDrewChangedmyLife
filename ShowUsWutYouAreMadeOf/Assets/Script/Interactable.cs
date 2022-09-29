@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
 
@@ -15,7 +14,13 @@ public class Interactable : MonoBehaviour
     private Collider _collider;
     protected bool InRange = false;
     private Transform playerTransform;
-    protected bool interactable = true;
+    protected bool interactable 
+    {
+        get { return _interactable;}
+        set { if(!silence) _interactable = value; }
+    }
+    bool _interactable = true;
+    bool silence = false;
 
     protected virtual void Start()
     {
@@ -80,5 +85,12 @@ public class Interactable : MonoBehaviour
         interactable = false;
         yield return new WaitForSeconds(5f);
         interactable = true;
+    }
+
+    [YarnCommand("silence")]
+    public void DisableConversation()
+    {
+        interactable = false;
+        silence = true;
     }
 }

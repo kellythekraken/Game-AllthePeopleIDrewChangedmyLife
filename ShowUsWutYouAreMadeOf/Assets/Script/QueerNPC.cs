@@ -30,7 +30,6 @@ public class QueerNPC : Interactable
         var displayTxt = introduced? queerID.npcName : "Chat"; 
         indicator.ChangeText(displayTxt); 
     }
-
     public void StartSketchConversation()
     {
         gm.currMode = CurrentMode.Conversation;
@@ -41,10 +40,10 @@ public class QueerNPC : Interactable
     {
         if(indicator.currentInteract == this)
         {
-            if(!silence) {StartCoroutine(TimerBeforeNextInteraction());}
+            StartCoroutine(TimerBeforeNextInteraction());
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
-            else if (!alreadySketched) { Debug.Log("not sketched, change mode"); gm.currMode = CurrentMode.Nothing;} 
-            else if (alreadyGifted){ Debug.Log("gifted, change mode"); gm.currMode = CurrentMode.Nothing;} 
+            else if (!alreadySketched) { gm.currMode = CurrentMode.Nothing;} 
+            else if (alreadyGifted){ gm.currMode = CurrentMode.Nothing;} 
             //if the sketch has been initiated, then they will give an item after sketching. 
             //so we do nothing and wait for the wardrobe btn to change mode.
         }
@@ -61,10 +60,5 @@ public class QueerNPC : Interactable
     {
         gm.wardrobeBtn.DisplayReceivedItem(this);
     }
-    bool silence = false;
-    [YarnCommand("silence")]
-    public void DisableConversation()
-    {
-        silence = true;
-    }
+
 }
