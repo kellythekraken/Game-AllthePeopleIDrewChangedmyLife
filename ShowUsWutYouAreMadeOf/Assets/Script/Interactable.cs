@@ -64,12 +64,14 @@ public class Interactable : MonoBehaviour
     }
     protected virtual void StartInteraction()
     {
-        if (!interactable || !indicator.facingSubject && !InRange) return;
-    
-        gm.currMode = CurrentMode.Conversation;
-        indicator.currentInteract = this;
-        dialogueRunner.StartDialogue(dialogueTitle);
-        InputManager.Instance.LockInputOnDialogueStart();
+        if (indicator.facingSubject && InRange)
+        {
+            gm.HidePronoun();
+            gm.currMode = CurrentMode.Conversation;
+            indicator.currentInteract = this;
+            dialogueRunner.StartDialogue(dialogueTitle);
+            InputManager.Instance.LockInputOnDialogueStart();
+        }
     }
     protected virtual void EndInteraction()
     {

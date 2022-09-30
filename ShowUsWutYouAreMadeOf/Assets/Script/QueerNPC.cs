@@ -6,7 +6,7 @@ public class QueerNPC : Interactable
 {
     public Queer queerID;
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
-    public bool introduced = false;
+    internal bool introduced, pronounKnown;
     private Animator _animator;
     internal bool alreadySketched, alreadyGifted;
 
@@ -18,12 +18,20 @@ public class QueerNPC : Interactable
     }
     protected override void StartInteraction()
     {
+        if(!interactable) return;
         base.StartInteraction();
         if(indicator.currentInteract == this)
         {
+            if(pronounKnown) ChangePronounTag();
             introduced = true;
             gm.sketchSubject = this;
         }
+    }
+
+    public void ChangePronounTag()
+    {
+        gm.pronounText.text = queerID.pronouns;
+        gm.ShowPronoun();
     }
     protected override void OnTriggerEnter(Collider other)
     {
@@ -36,6 +44,7 @@ public class QueerNPC : Interactable
     {
         gm.currMode = CurrentMode.Conversation;
         dialogueRunner.StartDialogue(queerID.npcName + "Sketch");
+        if(pronounKnown) ChangePronounTag();
     }
 
     protected override void EndInteraction()

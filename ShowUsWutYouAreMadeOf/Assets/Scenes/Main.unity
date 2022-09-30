@@ -2248,7 +2248,6 @@ MonoBehaviour:
   - {fileID: 768684717}
   - {fileID: 1904188850}
   - {fileID: 340310369}
-  introduced: 0
 --- !u!135 &275463913
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4667,8 +4666,8 @@ MonoBehaviour:
   dialogueUI: {fileID: 8333764292567492758}
   newItemWindow: {fileID: 2030396566}
   dialogueRunner: {fileID: 7223145771018723563}
-  npcManager: {fileID: 1340347872}
   pronounTag: {fileID: 1752515339}
+  npcManager: {fileID: 1340347872}
   playerObject: {fileID: 591813546}
 --- !u!4 &598334959
 Transform:
@@ -4795,7 +4794,6 @@ MonoBehaviour:
   centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: 91f614f1d57c13d48b9a7cfdea40b4da, type: 2}
   sketchableAreas: []
-  introduced: 0
 --- !u!136 &613048515
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7126,7 +7124,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -7234,7 +7232,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.25
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -16643,8 +16641,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: a3dacaec0287d7444b4bd276816e1666, type: 2}
   m_PivotOffset: {x: 10, y: 0, z: 10}
-  m_AmplitudeGain: 0.5
-  m_FrequencyGain: 0.5
+  m_AmplitudeGain: 0.35
+  m_FrequencyGain: 0.35
   mNoiseOffsets: {x: -392.4695, y: -793.9263, z: -953.11926}
 --- !u!114 &1813769572
 MonoBehaviour:
@@ -16789,7 +16787,6 @@ MonoBehaviour:
   centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: 030b89e4acb56214fa7f828664cb4d64, type: 2}
   sketchableAreas: []
-  introduced: 0
 --- !u!135 &1851129616
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -20014,7 +20011,6 @@ MonoBehaviour:
   centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: 6827b6f996ad22a4abb3582ddda39cab, type: 2}
   sketchableAreas: []
-  introduced: 0
 --- !u!1 &1984603475
 GameObject:
   m_ObjectHideFlags: 0

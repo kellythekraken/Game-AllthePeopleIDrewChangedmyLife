@@ -24,14 +24,14 @@ public class GameManager : MonoBehaviour
     private CurrentMode lastMode;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
+    public GameObject pronounTag;
     [SerializeField] private NPCManager npcManager;
-    [SerializeField] private GameObject pronounTag;
     [SerializeField] private GameObject playerObject;   //dont reference the actual player with important scripts!
     internal SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
-    private TextMeshProUGUI pronounText;
+    internal TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
     internal bool inConversation;
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         sceneManager = SceneManager.Instance;
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         //dialogueRunner.AddCommandHandler("gift", GiveItem);
-        dialogueRunner.AddCommandHandler("pronoun", ShowPronoun);
+        dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
         dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
@@ -128,15 +128,14 @@ public class GameManager : MonoBehaviour
 #endregion
 
     #region CONVERSATION PHASE
-    public void ShowPronoun()
+    public void DiscoveredPronoun()
     {
-        pronounTag.SetActive(true);
-        pronounText.text = sketchSubject.queerID.pronouns;
+        sketchSubject.pronounKnown = true;
+        sketchSubject.ChangePronounTag();
     }
-    public void HidePronoun()
-    {
-        pronounTag.SetActive(false);
-    }
+    public void ShowPronoun() => pronounTag.SetActive(true);
+    public void HidePronoun() => pronounTag.SetActive(false);
+    
 #endregion
 
     public void PauseGame()

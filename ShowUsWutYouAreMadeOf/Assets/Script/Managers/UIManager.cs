@@ -80,9 +80,14 @@ public class UIManager : MonoBehaviour
         if(!open) 
         {
             GameManager.Instance.currMode = CurrentMode.Nothing;
+            InputManager.Instance.EnableWardrobeAction(true);
             itemGifter.alreadyGifted = true;
         }
-        else {InputManager.Instance.EnableInteractBtn(true);}
+        else 
+        {
+            InputManager.Instance.EnableInteractBtn(true);
+            InputManager.Instance.EnableWardrobeAction(false);
+        }
     
         popupOn = open;
         receivedItemWindow.SetActive(open);

@@ -16,7 +16,6 @@ public class CameraDirector : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        Debug.Log(_animator);
     }
 
     public void SwitchCamera(string animName)
