@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static AudioManager Instance;
+    
     AudioSource source;
     //start with one music. For the restarted version always randomize music.
+    void Awake()
+    {
+        Instance = this;
+    }
+    
     void Start()
     {
         source = GetComponent<AudioSource>();
-
     }
+
+
+
 }
