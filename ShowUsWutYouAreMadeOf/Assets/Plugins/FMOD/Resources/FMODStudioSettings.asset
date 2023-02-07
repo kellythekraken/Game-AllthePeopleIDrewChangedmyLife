@@ -560,8 +560,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../../../FMOD Studio 2.02.09/PROJECTS/AllThePeopleIDrew/AllThePeopleIDrew.fspro
-  sourceBankPath: ../../../../../FMOD Studio 2.02.09/PROJECTS/AllThePeopleIDrew/Build
+  sourceProjectPath: Assets/FMOD/PeopleIDrew/PeopleIDrew.fspro
+  sourceBankPath: Assets/FMOD/PeopleIDrew/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
