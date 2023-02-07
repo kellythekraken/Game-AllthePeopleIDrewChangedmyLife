@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public DialogueRunner dialogueRunner;
     public GameObject pronounTag;
     [SerializeField] private NPCManager npcManager;
-    [SerializeField] private GameObject playerObject;   //dont reference the actual player with important scripts!
+    [SerializeField] public GameObject playerObject;   //dont reference the actual player with important scripts!
     internal SketchingSystem sketchManager;
     internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
     internal bool inConversation;
-    private Camera mainCam;
+    internal Camera mainCam;
     private void Awake()
     {
         Instance = this;

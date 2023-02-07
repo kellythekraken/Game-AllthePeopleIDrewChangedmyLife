@@ -1,23 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class AudioManager : MonoBehaviour
 {
-    public static AudioManager Instance;
+    public static AudioManager Instance {get;private set;}
     
-    AudioSource source;
+    Vector3 playerPosition;
+
     //start with one music. For the restarted version always randomize music.
     void Awake()
     {
+        if(Instance != null)
+        {
+            Debug.Log("warning, more than one audio manager");
+        }
         Instance = this;
     }
-    
+
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        playerPosition = GameManager.Instance.playerObject.transform.position;
     }
-
-
-
+    
+    public void PlayOneShot(EventReference sound) //without distance
+    {
+        RuntimeManager.PlayOneShot(sound);
+    }
+    public void PlayOneShot(EventReference sound, Vector3 worldPos) //with distance
+    {
+        RuntimeManager.PlayOneShot(sound,worldPos);
+    }
 }

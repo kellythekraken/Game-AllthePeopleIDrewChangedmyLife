@@ -78,14 +78,14 @@ public class SketchingSystem : MonoBehaviour
         chosenBody = null; chosenColor = null;
     }
     //start a new sketch
-    public void PrepareToSketch(QueerNPC queer)
+    public void PrepareToSketch(QueerNPC targetNPC)
     {
-        queer.alreadySketched = true;
-        instantiatedCopy = Instantiate(queer.queerID);
+        targetNPC.alreadySketched = true;
+        instantiatedCopy = Instantiate(targetNPC.queerID);
         
         bodypartLists = new List<SketchFocusBodypart>();
 
-        foreach(var i in queer.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
+        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
         areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
         for (int i=0; i < areaChoices.Count(); i++)
         {
@@ -100,6 +100,7 @@ public class SketchingSystem : MonoBehaviour
         UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
         InputManager.Instance.EnableWardrobeAction(false);
         sketchbook.enabled = true;
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
