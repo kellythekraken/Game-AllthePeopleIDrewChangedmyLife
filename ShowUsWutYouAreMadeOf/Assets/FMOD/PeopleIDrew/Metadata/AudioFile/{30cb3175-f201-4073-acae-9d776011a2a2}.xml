@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{26461f7d-e36f-4073-85fe-4372ce679a64}">
+	<object class="AudioFile" id="{30cb3175-f201-4073-acae-9d776011a2a2}">
 		<property name="assetPath">
-			<value>SFX/curtains-opening-closing-2011-35920.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>Ambience/ES_Whiskey Pour 4 - SFX Producer.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>24</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>11.856</value>
+			<value>2.3039999999999998</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{6cbc9d4b-161b-40c1-91f2-e589dc4ea630}</destination>

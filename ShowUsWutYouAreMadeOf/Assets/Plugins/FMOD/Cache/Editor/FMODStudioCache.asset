@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-9117761859593474370
+--- !u!114 &-7374836057392275391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,23 +10,43 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BookOpen
+  m_Name: event:/SFX/Footsteps
   m_EditorClassIdentifier: 
-  Path: event:/BookOpen
+  Path: event:/SFX/Footsteps
   Guid:
-    Data1: 770417770
-    Data2: 1176743650
-    Data3: 1144479414
-    Data4: -1945956850
+    Data1: -714762322
+    Data2: 1194194933
+    Data3: -896182095
+    Data4: -510139893
   Banks:
   - {fileID: -1911925922095950997}
   IsStream: 0
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 590
+--- !u!114 &-7371164977206914832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/BGM.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FMOD/PeopleIDrew/Build/Desktop/BGM.bank
+  Name: BGM
+  StudioPath: bank:/BGM
+  lastModified: 638114086147330449
+  FileSizes:
+  - Name: Desktop
+    Value: 4616800
+  Exists: 1
 --- !u!114 &-6422244205309584632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,11 +62,39 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638113738903088668
+  lastModified: 638114086147440435
   FileSizes:
   - Name: Desktop
-    Value: 852
+    Value: 1102
   Exists: 1
+--- !u!114 &-3104833958478103178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/BGM
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/BGM
+  Guid:
+    Data1: -1652023811
+    Data2: 1278112493
+    Data3: 213732757
+    Data4: 336942024
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -1782718831046793559}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 108453
 --- !u!114 &-1911925922095950997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +110,34 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638113738903705312
+  lastModified: 638114086149372589
   FileSizes:
   - Name: Desktop
-    Value: 20096
+    Value: 40704
+  Exists: 1
+--- !u!114 &-1782718831046793559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM/Muffle
+  m_EditorClassIdentifier: 
+  Name: Muffle
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -83,43 +155,21 @@ MonoBehaviour:
   - {fileID: -6422244205309584632}
   - {fileID: 1861587311605156355}
   - {fileID: -1911925922095950997}
+  - {fileID: -7371164977206914832}
   EditorEvents:
-  - {fileID: -9117761859593474370}
-  - {fileID: 1057631899369784225}
-  EditorParameters: []
+  - {fileID: 9142162930933621409}
+  - {fileID: -3104833958478103178}
+  - {fileID: 6785004808336179957}
+  - {fileID: -7374836057392275391}
+  - {fileID: 7058468792005393516}
+  EditorParameters:
+  - {fileID: 8474737377721607225}
   MasterBanks:
   - {fileID: 1861587311605156355}
   StringsBanks:
   - {fileID: -6422244205309584632}
-  cacheTime: 638113738903705312
+  cacheTime: 638114086149372589
   cacheVersion: 131601
---- !u!114 &1057631899369784225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/BookClose
-  m_EditorClassIdentifier: 
-  Path: event:/BookClose
-  Guid:
-    Data1: 1925681906
-    Data2: 1107105261
-    Data3: 217661579
-    Data4: 185853673
-  Banks:
-  - {fileID: -1911925922095950997}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &1861587311605156355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,8 +185,113 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638113738903028651
+  lastModified: 638114086147400459
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1218
   Exists: 1
+--- !u!114 &6785004808336179957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BookOpen
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BookOpen
+  Guid:
+    Data1: 770417770
+    Data2: 1176743650
+    Data3: 1144479414
+    Data4: -1945956850
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &7058468792005393516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/BookClose
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/BookClose
+  Guid:
+    Data1: 1925681906
+    Data2: 1107105261
+    Data3: 217661579
+    Data4: 185853673
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8474737377721607225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Muffle
+  m_EditorClassIdentifier: 
+  Name: Muffle
+  StudioPath: parameter:/Muffle
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &9142162930933621409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/Ambience
+  Guid:
+    Data1: 1822250172
+    Data2: 1333403948
+    Data3: 1097392823
+    Data4: -644748873
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 68856

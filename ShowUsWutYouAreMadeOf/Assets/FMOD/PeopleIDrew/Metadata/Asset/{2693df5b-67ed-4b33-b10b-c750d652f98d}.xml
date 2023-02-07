@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{2693df5b-67ed-4b33-b10b-c750d652f98d}">
+		<property name="assetPath">
+			<value>SFX/Backpack/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6cbc9d4b-161b-40c1-91f2-e589dc4ea630}</destination>
+		</relationship>
+	</object>
+</objects>

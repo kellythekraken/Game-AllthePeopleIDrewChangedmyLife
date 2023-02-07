@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{1fa2e4b3-a504-464a-9b24-f7d4000aa850}">
 		<property name="assetPath">
-			<value>Drawing/ES_Pencil Write 1 - SFX Producer.mp3</value>
+			<value>SFX/Drawing/ES_Pencil Write 1 - SFX Producer.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{38e648ea-fc90-4696-87ba-ba6124d0b734}">
 		<property name="name">
-			<value>Curtain_Open</value>
+			<value>Curtain</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
@@ -30,6 +30,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{56592cab-07a8-4404-b5f8-52b35be90237}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{b69e7e0d-0c12-4234-8188-6994e4cdfa64}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{ec9a43b2-a7e2-4db5-97b3-cda24a4dd593}">
@@ -79,7 +82,11 @@
 			<destination>{ec9a43b2-a7e2-4db5-97b3-cda24a4dd593}</destination>
 		</relationship>
 	</object>
-	<object class="MultiSound" id="{c2e6e2b9-e9d3-4897-9dfb-0dffa59fd2ad}" />
+	<object class="MultiSound" id="{c2e6e2b9-e9d3-4897-9dfb-0dffa59fd2ad}">
+		<relationship name="sounds">
+			<destination>{566d9c7d-368b-4aa1-832a-647279993002}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{ee23db65-83a8-4824-b4a3-91c25657e162}">
 		<relationship name="effects">
 			<destination>{10092e39-41f0-448d-807e-b4644c2830aa}</destination>
@@ -93,7 +100,41 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{17690f8e-12f3-404a-abbf-500a1472806b}" />
+	<object class="MultiSound" id="{566d9c7d-368b-4aa1-832a-647279993002}">
+		<relationship name="sounds">
+			<destination>{fc96335f-6918-40de-b389-82bf7d977710}</destination>
+			<destination>{9fe340d9-8201-4069-bc8f-f766550d5aa7}</destination>
+			<destination>{90345cad-9c90-4399-b2b0-00102af1197b}</destination>
+			<destination>{645462e4-8b01-4f45-9030-cc52d4ef2ab1}</destination>
+			<destination>{c54ed9fb-d40b-42a2-bd7b-9878722e03ed}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{10092e39-41f0-448d-807e-b4644c2830aa}" />
 	<object class="MixerBusFader" id="{fbd2d1c2-205c-4d0a-bc9f-ab5fb3762377}" />
 	<object class="SpatialiserEffect" id="{1820f9f2-0738-4e27-972a-4a386e477aa7}" />
+	<object class="SingleSound" id="{fc96335f-6918-40de-b389-82bf7d977710}">
+		<relationship name="audioFile">
+			<destination>{7b4b3e55-03e9-4c5b-b11d-822ec9cc3da3}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{9fe340d9-8201-4069-bc8f-f766550d5aa7}">
+		<relationship name="audioFile">
+			<destination>{2eec904d-00d5-4096-949a-6e4984d85c80}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{90345cad-9c90-4399-b2b0-00102af1197b}">
+		<relationship name="audioFile">
+			<destination>{5f2deba9-d585-4553-8b17-eab082ec8116}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{645462e4-8b01-4f45-9030-cc52d4ef2ab1}">
+		<relationship name="audioFile">
+			<destination>{19e759cf-e0e5-4e49-8d52-deefb48bb016}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{c54ed9fb-d40b-42a2-bd7b-9878722e03ed}">
+		<relationship name="audioFile">
+			<destination>{1631b6ee-0384-4eb9-975e-c526b870d5d1}</destination>
+		</relationship>
+	</object>
 </objects>

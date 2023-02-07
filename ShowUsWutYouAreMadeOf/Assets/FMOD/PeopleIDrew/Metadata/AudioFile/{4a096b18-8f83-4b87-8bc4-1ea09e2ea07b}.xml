@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{4a096b18-8f83-4b87-8bc4-1ea09e2ea07b}">
 		<property name="assetPath">
-			<value>Drawing/ES_Track Pants Tie - SFX Producer.mp3</value>
+			<value>SFX/Drawing/ES_Track Pants Tie - SFX Producer.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
