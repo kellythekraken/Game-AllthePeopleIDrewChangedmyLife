@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
     {
         currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
-        OpenCloseSketchbook(false);
+        sketchbookUI.SetActive(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
         DisplayControlInstruction();

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{dd62203e-60d4-4b65-9ea4-3188b19edd0a}">
 		<property name="assetPath">
-			<value>Book/ES_Bible Close Cover 1 - SFX Producer.mp3</value>
+			<value>SFX/ES_Bible Close Cover 1 - SFX Producer.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
