@@ -100,7 +100,6 @@ public class SketchingSystem : MonoBehaviour
         UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
         InputManager.Instance.EnableWardrobeAction(false);
         sketchbook.enabled = true;
-        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color

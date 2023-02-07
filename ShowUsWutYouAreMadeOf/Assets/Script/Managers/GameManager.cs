@@ -115,7 +115,10 @@ public class GameManager : MonoBehaviour
             sketchManager.PrepareToSketch(sketchSubject);
             StartCoroutine(OpenSketchbook());
         }
-        else {sketchbookUI.SetActive(false);}
+        else {
+            sketchbookUI.SetActive(false);
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookClose);
+        }
 
         sketchbookOpen = open;
         wardrobeBtn.gameObject.SetActive(!open);
@@ -124,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.8f);  //delay shortly before opening sketchbook
         sketchbookUI.SetActive(true);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
 #endregion
 

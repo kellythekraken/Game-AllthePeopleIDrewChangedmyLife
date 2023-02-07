@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c594394c-c3e1-4c71-aa15-9f93c8952078}">
+		<property name="assetPath">
+			<value>Drawing/ES_Pencil Write 2 - SFX Producer.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>4.992</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6cbc9d4b-161b-40c1-91f2-e589dc4ea630}</destination>
+		</relationship>
+	</object>
+</objects>
