@@ -5,6 +5,8 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
+    [field:SerializeField] public EventReference footStep {get ; private set;}
+
     [field:SerializeField] public EventReference bookOpen {get ; private set;}
     [field:SerializeField] public EventReference bookClose {get ; private set;}
     [field:SerializeField] public EventReference curtain {get ; private set;}
