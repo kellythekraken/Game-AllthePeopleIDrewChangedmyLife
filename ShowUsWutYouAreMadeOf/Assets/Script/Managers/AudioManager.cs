@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     private List<EventInstance> eventList;
     Vector3 playerPosition;
 
+    EventInstance ambienceEventInstance;
+
     //start with one music. For the restarted version always randomize music.
     void Awake()
     {
@@ -24,8 +26,16 @@ public class AudioManager : MonoBehaviour
     {
         eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
+        //InitAmbience(FMODEvents.Instance.music);
     }
     
+    void InitAmbience(EventReference reference)
+    {
+        ambienceEventInstance = CreateEventInstance(reference);
+        //ambienceEventInstance.set3DAttributes();
+        ambienceEventInstance.start();
+    }
+
     public void PlayOneShot(EventReference sound) //without distance
     {
         RuntimeManager.PlayOneShot(sound);

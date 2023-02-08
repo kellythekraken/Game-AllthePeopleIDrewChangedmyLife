@@ -5,8 +5,13 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
-    [field:SerializeField] public EventReference footStep {get ; private set;}
+    [field:Header("Ambience")]
+    [field:SerializeField] public EventReference chatter {get ; private set;}
+    [field:SerializeField] public EventReference music {get ; private set;}
 
+    
+    [field:Header("SFX")]
+    [field:SerializeField] public EventReference footStep {get ; private set;}
     [field:SerializeField] public EventReference bookOpen {get ; private set;}
     [field:SerializeField] public EventReference bookClose {get ; private set;}
     [field:SerializeField] public EventReference curtain {get ; private set;}
