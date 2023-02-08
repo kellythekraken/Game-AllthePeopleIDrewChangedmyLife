@@ -14823,6 +14823,41 @@ MonoBehaviour:
       Data3: 217661579
       Data4: 185853673
     Path: event:/SFX/BookClose
+  <curtain>k__BackingField:
+    Guid:
+      Data1: 954616042
+      Data2: 1184300176
+      Data3: 1639627399
+      Data4: 884461604
+    Path: event:/SFX/Curtain
+  <draw>k__BackingField:
+    Guid:
+      Data1: -636430219
+      Data2: 1277358054
+      Data3: 1220613253
+      Data4: -2055029425
+    Path: event:/SFX/Draw
+  <pen_pickup>k__BackingField:
+    Guid:
+      Data1: -861259060
+      Data2: 1285638454
+      Data3: 1407435683
+      Data4: 1840977029
+    Path: event:/SFX/Pen
+  <bartend_pour>k__BackingField:
+    Guid:
+      Data1: 1534265372
+      Data2: 1083841554
+      Data3: 395257986
+      Data4: 1789245332
+    Path: event:/SFX/Bartending_Pour
+  <bartend_shake>k__BackingField:
+    Guid:
+      Data1: -7942299
+      Data2: 1211871840
+      Data3: -2141389421
+      Data4: 1384565491
+    Path: event:/SFX/Bartending_Shake
 --- !u!1 &1597048893
 GameObject:
   m_ObjectHideFlags: 0
@@ -17108,7 +17143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.027230944, y: 0.0129787745, z: -0.00035358523, w: 0.99954486}
+  m_LocalRotation: {x: 0.027230924, y: 0.01297874, z: -0.00035358407, w: 0.99954486}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -22443,7 +22478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 2
-  SprintSpeed: 5.335
+  SprintSpeed: 7
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
   LandingAudioClip: {fileID: 8300000, guid: ff697d3070687ce4583faa0561a145a2, type: 3}

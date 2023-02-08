@@ -113,6 +113,7 @@ public class SketchingSystem : MonoBehaviour
         }
         obj.SetActive(false);
         lastCrayon = obj;
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pen_pickup);
         StartCrayonFollow(true);
     }
     private void RegisterBodyChoice(GameObject target)  //called by changing clicked body
@@ -132,6 +133,7 @@ public class SketchingSystem : MonoBehaviour
             UIManager.Instance.DisplayInstruction("Which color shall I use this time?", 3f);
             return;
         }
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
         MakeADrawing();
         StartCrayonFollow(false);
         ChosenBody = null; chosenColor = null;
@@ -172,6 +174,7 @@ public class SketchingSystem : MonoBehaviour
         Image stroke = Instantiate(drawPrefab, drawingParent); 
         stroke.sprite = instantiatedCopy.backgroundDrawing;
         sketchbook.enabled = false;
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
     }
     //command: sketchfin
     void SketchCompleted()

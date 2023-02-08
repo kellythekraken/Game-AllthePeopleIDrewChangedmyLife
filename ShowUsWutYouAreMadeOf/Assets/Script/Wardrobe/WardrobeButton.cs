@@ -47,6 +47,8 @@ public class WardrobeButton : MonoBehaviour
     {
         wardrobeOpen = !wardrobeOpen;
         wardrobeUI.SetActive(wardrobeOpen);
+        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.curtain);
+        
         if(wardrobeOpen)
         {
             GameManager.Instance.currMode = CurrentMode.Changing;

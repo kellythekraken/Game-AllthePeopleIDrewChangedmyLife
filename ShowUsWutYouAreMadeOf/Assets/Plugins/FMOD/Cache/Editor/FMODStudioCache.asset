@@ -42,11 +42,38 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638114086147330449
+  lastModified: 638114470926101877
   FileSizes:
   - Name: Desktop
-    Value: 4616800
+    Value: 4790816
   Exists: 1
+--- !u!114 &-7112038190390967834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Backpack_Close
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Backpack_Close
+  Guid:
+    Data1: 927545313
+    Data2: 1256853235
+    Data3: -280580192
+    Data4: -712532987
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-6422244205309584632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,10 +89,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638114086147440435
+  lastModified: 638114470926251901
   FileSizes:
   - Name: Desktop
-    Value: 1102
+    Value: 1462
   Exists: 1
 --- !u!114 &-3104833958478103178
 MonoBehaviour:
@@ -95,6 +122,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 108453
+--- !u!114 &-3088001734079466487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Page
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Page
+  Guid:
+    Data1: -1801957164
+    Data2: 1209915171
+    Data3: 1156045964
+    Data4: -1414039896
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2857573603548948583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Pen
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Pen
+  Guid:
+    Data1: -861259060
+    Data2: 1285638454
+    Data3: 1407435683
+    Data4: 1840977029
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 580
+--- !u!114 &-2241584035269874880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Backpack_Open
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Backpack_Open
+  Guid:
+    Data1: -1945980422
+    Data2: 1232579241
+    Data3: 1644626586
+    Data4: 1547288350
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-1911925922095950997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,10 +218,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638114086149372589
+  lastModified: 638114470927781916
   FileSizes:
   - Name: Desktop
-    Value: 40704
+    Value: 656096
   Exists: 1
 --- !u!114 &-1782718831046793559
 MonoBehaviour:
@@ -139,6 +247,33 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-1051132456788291797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Draw
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Draw
+  Guid:
+    Data1: -636430219
+    Data2: 1277358054
+    Data3: 1220613253
+    Data4: -2055029425
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1150
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,14 +297,49 @@ MonoBehaviour:
   - {fileID: 6785004808336179957}
   - {fileID: -7374836057392275391}
   - {fileID: 7058468792005393516}
+  - {fileID: 5551185971752746757}
+  - {fileID: 7001917070989884161}
+  - {fileID: -1051132456788291797}
+  - {fileID: 1375176951808623335}
+  - {fileID: -2857573603548948583}
+  - {fileID: -3088001734079466487}
+  - {fileID: -7112038190390967834}
+  - {fileID: -2241584035269874880}
   EditorParameters:
   - {fileID: 8474737377721607225}
   MasterBanks:
   - {fileID: 1861587311605156355}
   StringsBanks:
   - {fileID: -6422244205309584632}
-  cacheTime: 638114086149372589
+  cacheTime: 638114470927781916
   cacheVersion: 131601
+--- !u!114 &1375176951808623335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Curtain
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Curtain
+  Guid:
+    Data1: 954616042
+    Data2: 1184300176
+    Data3: 1639627399
+    Data4: 884461604
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &1861587311605156355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,11 +355,38 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638114086147400459
+  lastModified: 638114470926181900
   FileSizes:
   - Name: Desktop
     Value: 1218
   Exists: 1
+--- !u!114 &5551185971752746757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bartending_Pour
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bartending_Pour
+  Guid:
+    Data1: 1534265372
+    Data2: 1083841554
+    Data3: 395257986
+    Data4: 1789245332
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2350
 --- !u!114 &6785004808336179957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,6 +414,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &7001917070989884161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bartending_Shake
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bartending_Shake
+  Guid:
+    Data1: -7942299
+    Data2: 1211871840
+    Data3: -2141389421
+    Data4: 1384565491
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1700
 --- !u!114 &7058468792005393516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,4 +518,4 @@ MonoBehaviour:
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 68856
+  Length: 57511
