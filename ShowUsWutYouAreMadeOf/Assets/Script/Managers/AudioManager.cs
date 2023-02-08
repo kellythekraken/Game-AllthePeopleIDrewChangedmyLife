@@ -7,7 +7,7 @@ using FMOD.Studio;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance {get;private set;}
-    
+    private List<EventInstance> eventList;
     Vector3 playerPosition;
 
     //start with one music. For the restarted version always randomize music.
@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
     }
     
@@ -37,6 +38,18 @@ public class AudioManager : MonoBehaviour
     public EventInstance CreateEventInstance(EventReference eventRef)
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventRef);
+        eventList.Add(eventInstance);
         return eventInstance;
     }
+
+    private void CleanUp()
+    {
+        foreach(var i in eventList)
+        {
+            i.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+            i.release();
+        }
+    }
+
+    void OnDestroy() => CleanUp();
 }
