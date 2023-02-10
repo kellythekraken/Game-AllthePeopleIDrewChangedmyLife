@@ -3568,7 +3568,7 @@ Transform:
   m_Children:
   - {fileID: 2104525070}
   m_Father: {fileID: 2102689990}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 74.907, z: 0}
 --- !u!135 &445242760
 SphereCollider:
@@ -4508,7 +4508,7 @@ Transform:
   m_Children:
   - {fileID: 2041475967}
   m_Father: {fileID: 2102689990}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 15.708, z: 0}
 --- !u!114 &613048514
 MonoBehaviour:
@@ -10366,7 +10366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13871,11 +13871,11 @@ MonoBehaviour:
     Path: event:/SceneBackground/Ambience
   <music>k__BackingField:
     Guid:
-      Data1: -1652023811
-      Data2: 1278112493
-      Data3: 213732757
-      Data4: 336942024
-    Path: event:/SceneBackground/BGM
+      Data1: 1979498475
+      Data2: 1083390062
+      Data3: 1503453826
+      Data4: -1764816432
+    Path: event:/SceneBackground/BGM_2D Electro
   <footStep>k__BackingField:
     Guid:
       Data1: -714762322
@@ -15370,6 +15370,54 @@ Transform:
   m_Father: {fileID: 1505754207}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 7.28457e-12, y: 4.552856e-13, z: 180}
+--- !u!1 &1829353724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
+  m_PrefabInstance: {fileID: 1900303126}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &1829353725
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829353724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.4
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1829353726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829353724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1822250172
+      Data2: 1333403948
+      Data3: 1097392823
+      Data4: -644748873
+    Path: event:/SceneBackground/Ambience
+  Event: 
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 1.57
+  OverrideMaxDistance: 7.49
 --- !u!1 &1835357735
 GameObject:
   m_ObjectHideFlags: 0
@@ -15432,14 +15480,13 @@ GameObject:
   - component: {fileID: 1851129614}
   - component: {fileID: 1851129615}
   - component: {fileID: 1851129616}
-  - component: {fileID: 1851129617}
   m_Layer: 0
   m_Name: Leon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1851129614
 Transform:
   m_ObjectHideFlags: 0
@@ -15450,10 +15497,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.637, y: 0, z: -1.512}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1900303127}
+  m_Children: []
   m_Father: {fileID: 2102689990}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1851129615
 MonoBehaviour:
@@ -15485,36 +15531,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: -0.32, y: -0.22, z: 0.48}
---- !u!114 &1851129617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851129613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: 1822250172
-      Data2: 1333403948
-      Data3: 1097392823
-      Data4: -644748873
-    Path: event:/SceneBackground/Ambience
-  Event: 
-  PlayEvent: 1
-  StopEvent: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  Params: []
-  OverrideAttenuation: 1
-  OverrideMinDistance: 0.88
-  OverrideMaxDistance: 4.5
 --- !u!1 &1854521251
 GameObject:
   m_ObjectHideFlags: 0
@@ -16049,7 +16065,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1851129614}
+    m_TransformParent: {fileID: 2102689990}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
       propertyPath: m_RootOrder
@@ -16057,7 +16073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.62336254
+      value: -4.2603626
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -16065,7 +16081,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.23453891
+      value: -1.277461
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 496430ecd05629c439e53bcb61e832c8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19424,6 +19440,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1900303127}
   - {fileID: 1851129614}
   - {fileID: 275463911}
   - {fileID: 5252835231037374880}
@@ -21736,7 +21753,7 @@ Transform:
   m_Children:
   - {fileID: 2068933644}
   m_Father: {fileID: 2102689990}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 86.232, z: 0}
 --- !u!1 &5255488597003691826
 GameObject:

@@ -13,20 +13,13 @@ public class AudioManager : MonoBehaviour
     EventInstance ambienceEventInstance;
 
     //start with one music. For the restarted version always randomize music.
-    void Awake()
-    {
-        if(Instance != null)
-        {
-            Debug.Log("warning, more than one audio manager");
-        }
-        Instance = this;
-    }
+    void Awake() => Instance = this;
 
     void Start()
     {
         eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
-        //InitAmbience(FMODEvents.Instance.music);
+        InitAmbience(FMODEvents.Instance.music);
     }
     
     void InitAmbience(EventReference reference)
@@ -51,6 +44,13 @@ public class AudioManager : MonoBehaviour
         eventList.Add(eventInstance);
         return eventInstance;
     }
+
+    public void SetGlobalParameter(string paramName, float newValue)
+    {
+        Debug.Log("setting the param" + paramName + " to " + newValue);
+        RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
+    }
+
 
     private void CleanUp()
     {

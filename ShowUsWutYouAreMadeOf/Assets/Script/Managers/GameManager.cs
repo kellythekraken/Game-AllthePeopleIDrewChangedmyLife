@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
+    internal AudioManager audioManager;
     internal TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        audioManager = AudioManager.Instance;
         currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
         sketchbookUI.SetActive(false);
@@ -74,6 +76,7 @@ public class GameManager : MonoBehaviour
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(true);
                 inConversation = false;
+                audioManager.SetGlobalParameter("Muffle",0f);
                 return;
             case CurrentMode.Conversation:
                 LockCursor(true);
@@ -84,16 +87,19 @@ public class GameManager : MonoBehaviour
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 StartCoroutine(WaitBeforeSketch());
+                audioManager.SetGlobalParameter("Muffle",0.5f);
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
+                audioManager.SetGlobalParameter("Muffle",1f);
                 return;
             case CurrentMode.StartMenu:
                 LockCursor(false);
                 inConversation = false;
                 inputManager.EnableAllInput(false);
+                audioManager.SetGlobalParameter("Muffle",1f);
                 return;
         }
     }
@@ -117,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         else {
             sketchbookUI.SetActive(false);
-            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookClose);
+            audioManager.PlayOneShot(FMODEvents.Instance.bookClose);
         }
 
         sketchbookOpen = open;
@@ -127,7 +133,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.8f);  //delay shortly before opening sketchbook
         sketchbookUI.SetActive(true);
-        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.bookOpen);
+        audioManager.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
 #endregion
 
