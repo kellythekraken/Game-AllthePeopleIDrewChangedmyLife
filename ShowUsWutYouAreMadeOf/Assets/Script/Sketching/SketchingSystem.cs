@@ -23,12 +23,12 @@ public class SketchingSystem : MonoBehaviour
     [SerializeField] private List<PointerFollower> crayonPointers;
     [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
     public Color materialHighlightColor;
-    List<DrawableArea> areaChoices; //copy of the SO data with sketches
+    List<DrawableArea> availableChoices; //copy of the SO data with sketches, to be removed
     List<Button> colorChoices;  //crayon buttons
     List<Image> drawings;
     List<SketchFocusBodypart> bodypartLists; //reference of the list of sketchable area component
     Transform drawingParent;   //where drawing strokes will be instantiated
-    List<Sprite> storedSketches;
+    //List<Sprite> storedSketches;
     GameManager gm;
     Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
     bool initialized = false;
@@ -89,13 +89,13 @@ public class SketchingSystem : MonoBehaviour
         
 
         foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
-        areaChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
-        for (int i=0; i < areaChoices.Count(); i++)
+        availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
+        for (int i=0; i < availableChoices.Count(); i++)
         {
-            DrawableArea choice = areaChoices[i];
+            DrawableArea choice = availableChoices[i];
             if (choice.targetDrawings.Count() < 1)
             {
-                areaChoices.Remove(choice);
+                availableChoices.Remove(choice);
                 continue;
             }
         }
@@ -126,8 +126,7 @@ public class SketchingSystem : MonoBehaviour
         chosenBody = target;
         if(target!= null) 
         {
-            bodyIndex = areaChoices.FindIndex(x=> x.objName == chosenBody.name);
-            chosenArea = areaChoices[bodyIndex];
+            chosenArea = availableChoices.Find(x=> x.objName == chosenBody.name);
         }
 
     }
@@ -150,6 +149,8 @@ public class SketchingSystem : MonoBehaviour
         lastCrayon.SetActive(true);
 
         //change sketchindex to trigger and advance the dialogue
+        bodyIndex = Array.FindIndex(copiedQueerID.drawableAreas, x=> x.objName == chosenArea.objName);
+
         gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
         gm.ContinueSketchChat();
     }
@@ -173,7 +174,7 @@ public class SketchingSystem : MonoBehaviour
         chosenArea.targetDrawings.Remove(drawing);
         if (chosenArea.targetDrawings.Count < 1)
         {
-            areaChoices.Remove(chosenArea);
+            availableChoices.Remove(chosenArea);
             
             //disable the clickable area from being clickable after the drawing has been exhausted
             var completedBody = bodypartLists.FindAll(x=>x.name == chosenArea.objName);
