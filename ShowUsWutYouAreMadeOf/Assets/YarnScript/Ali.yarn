@@ -66,6 +66,8 @@ title: AliSpecial
 ---
 <<if visited_count("AliSpecial") == 0>>
     Ali: Hey! That hairstyle looks good on you!
+    Ali: It's nice to give a change in style sometimes.
+    Ali: But obviously it may not work everytime.
 <<elseif visited_count("AliSpecial") == 1>>
     Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
     Ali: I think lilac might look good on you.
