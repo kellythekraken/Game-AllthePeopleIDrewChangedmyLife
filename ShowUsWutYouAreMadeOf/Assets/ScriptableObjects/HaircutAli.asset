@@ -24,7 +24,6 @@ MonoBehaviour:
   - objName: Hair
     targetDrawings:
     - {fileID: 21300000, guid: a7e40853efcf2b84e9ceaeb644b432ba, type: 3}
-    - {fileID: 21300000, guid: 9c65ee1d49014bb4fa153a5a5903c706, type: 3}
     - {fileID: 21300000, guid: adb9571a8993bba40a5aca1409645453, type: 3}
     - {fileID: 21300000, guid: 0ad665981c8cd3e4a8c7e5924e7730e0, type: 3}
   - objName: Head
@@ -45,4 +44,4 @@ MonoBehaviour:
     targetDrawings:
     - {fileID: 21300000, guid: c7d36e9080a37dc48b689d09f675e63f, type: 3}
   backgroundDrawing: {fileID: 21300000, guid: 3811905866ec5e846b1027e9ad89090d, type: 3}
-  dialogueLength: 0
+  maximumStrokes: 8

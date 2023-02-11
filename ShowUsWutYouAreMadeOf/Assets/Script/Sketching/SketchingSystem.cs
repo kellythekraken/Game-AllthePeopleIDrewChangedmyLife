@@ -30,7 +30,7 @@ public class SketchingSystem : MonoBehaviour
     Transform drawingParent;   //where drawing strokes will be instantiated
     List<Sprite> storedSketches;
     GameManager gm;
-    Queer instantiatedCopy; //instantiated copy of queer SO so delete doesn't affect the actual SO
+    Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
     bool initialized = false;
     private void OnEnable()
     {
@@ -44,8 +44,8 @@ public class SketchingSystem : MonoBehaviour
     void OnDisable()
     {
         ChosenBody = null; chosenColor = null; lastCrayon = null;
+        Destroy(copiedQueerID);
         //save the sketch to a storage, then delete the sketches in scene
-        Destroy(instantiatedCopy);
     }
 
     void Awake() 
@@ -82,12 +82,14 @@ public class SketchingSystem : MonoBehaviour
     public void PrepareToSketch(QueerNPC targetNPC)
     {
         targetNPC.alreadySketched = true;
-        instantiatedCopy = Instantiate(targetNPC.queerID);
+        copiedQueerID = Instantiate(targetNPC.queerID);
         
         bodypartLists = new List<SketchFocusBodypart>();
+        gm.variableStorage.SetValue("$MaxStrokes",copiedQueerID.maximumStrokes);
+        
 
         foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
-        areaChoices = new List<DrawableArea>(instantiatedCopy.drawableAreas.ToList());
+        areaChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
         for (int i=0; i < areaChoices.Count(); i++)
         {
             DrawableArea choice = areaChoices[i];
@@ -124,10 +126,10 @@ public class SketchingSystem : MonoBehaviour
         chosenBody = target;
         if(target!= null) 
         {
-            //chosenArea = areaChoices.Find(x=> x.objName == chosenBody.name);
             bodyIndex = areaChoices.FindIndex(x=> x.objName == chosenBody.name);
             chosenArea = areaChoices[bodyIndex];
         }
+
     }
     
     //called when sketchbook is clicked
@@ -141,26 +143,24 @@ public class SketchingSystem : MonoBehaviour
             UIManager.Instance.DisplayInstruction("Which color shall I use this time?", 3f);
             return;
         }
-        gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
-
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
         MakeADrawing();
         StartCrayonFollow(false);
         ChosenBody = null; chosenColor = null;
         lastCrayon.SetActive(true);
-        //advance the conversation
+
+        //change sketchindex to trigger and advance the dialogue
+        gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
         gm.ContinueSketchChat();
     }
 
     void MakeADrawing()
     {
-        //change sketchindex depends on which body is focusing
-        //change strokeindex 
-
         //Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
 
         //instantiate the corresponding drawing
         Image stroke = Instantiate(drawPrefab, drawingParent);
+
         //go to the next drawing!!! remove the current one
         Sprite drawing = chosenArea.targetDrawings[0]; 
         stroke.sprite = drawing;
@@ -185,7 +185,7 @@ public class SketchingSystem : MonoBehaviour
     void LastStroke()
     {
         Image stroke = Instantiate(drawPrefab, drawingParent); 
-        stroke.sprite = instantiatedCopy.backgroundDrawing;
+        stroke.sprite = copiedQueerID.backgroundDrawing;
         sketchbook.enabled = false;
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
     }
@@ -203,7 +203,7 @@ public class SketchingSystem : MonoBehaviour
     void PlayAfterSketchDialogue()
     {
         //give logic to back button at start: trigger the fin dialogue.
-        string dialogueTitle = instantiatedCopy.npcName + "SketchFin";
+        string dialogueTitle = copiedQueerID.npcName + "SketchFin";
         gm.dialogueRunner.StartDialogue(dialogueTitle);
         gm.currMode = CurrentMode.Conversation;
     }

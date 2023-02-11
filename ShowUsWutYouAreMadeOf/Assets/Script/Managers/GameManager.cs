@@ -118,6 +118,9 @@ public class GameManager : MonoBehaviour
     public void ContinueSketchChat()
     {
         sketchSubject.StartSketchConversation();
+        float count;
+        variableStorage.TryGetValue("$StrokeCount", out count);
+        Debug.Log("sketch count:" + count);
     }
     public void OpenCloseSketchbook(bool open)
     {

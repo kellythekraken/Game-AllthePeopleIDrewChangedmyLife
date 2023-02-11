@@ -1,16 +1,24 @@
 ﻿title: AliStart
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
-<<set $SketchIndex to 0>> //for which body part
-<<set $StrokeIndex to 0>> //for which StrokeCount it is
-<<set $TotalStrokes to 5>> //how many strokes before call it a day
-<<set $StrokeCount to 0>> //how many strokes have already made
-
-
 <<camera AliChat>>
 <<pose Ali SitLook>>
+
 <<if !$AliIntroduced>>
     <<set $NumberOfEncounters +=1>>
+    <<set $SketchIndex to 0>> //for which body part
+    <<set $MaxStrokes to 10>> //how many strokes before call it a day
+    <<set $StrokeCount to 0>> //how many strokes have already made
+    <<set $SpecialDialogue to false>> //in respond to wearing their gift
+    
+<<set $AliChat to 0>>
+
+    //counting strokes on different body part and next dialogue
+    <<set $hair to 0>>
+    <<set $head to 0>> 
+    <<set $eye to 0>> 
+    <<set $top to 0>>
+    
     <<wait .5>>
     Ali: Hey!
     Ali: Enjoying the night?
@@ -27,9 +35,11 @@
     <<set $AliIntroduced to true>>
     <<sketch true>>
     <<camera AliSketch>>
-    <<jump AliSketch>>
+    <<wait .5>>
+    Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
+<<elseif $SpecialDialogue == true>>
+    Ali: Hey! That hairstyle looks good on you!
 <<else>>
-//special conditioned text should come before the count, and doesn't go into the chat count.
     <<if $AliChat == 0>>
         Ali: Hey! Thank you for the drawing earlier.
         Ali: We were discussing about the benefit of colorful hair.
@@ -57,13 +67,13 @@ title: AliSketch
 ---
 <<wait .5>>
 
-<<if $StrokeCount== 0>>
-    Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
-<<else>>
+<<if $StrokeCount < $MaxStrokes>>
+    <<set $StrokeCount +=1>>
+
     <<if $SketchIndex == 0>>
     <<jump Ali_Hair>>
     <<elseif $SketchIndex ==1>>
-    <<jump Ali_Body>>
+    <<jump Ali_Head>>
     <<elseif $SketchIndex ==2>>
     <<jump Ali_Eye>>
     <<elseif $SketchIndex ==3>>
@@ -71,76 +81,109 @@ title: AliSketch
     <<elseif $SketchIndex ==4>>
     <<jump Ali_Tattoo>>
     <<endif>>
-<<endif>>
-<<set $StrokeCount +=1>>
-
-<<if $TotalStrokes == $StrokeCount >>
+<<else>>
     <<lastdraw>>
-    Ali: I'd love to invite you to pop by my salon one day, to continue this conversation.
+    Ali: I'd love to invite you to my salon one day, to continue this conversation.
     <<set $StrokeCount to 0>>
     <<sketchfin>>
 <<endif>>
 ===
 title: Ali_Hair
 ---
-<<if $StrokeIndex == 0>>
+<<if $hair == 0>>
+    Ali: My hair? I'm actually trying something new. It got a bit long and I thought I'd just shave off the sides.
+<<elseif $hair == 1>>
     Ali: What's in your mind when you’re drawing your subject?
     Ali: I work in a salon. Usually I talk to my client when I'm giving haircuts. 
     Ali: Getting to know who they are, why they want that hairstyle…
     Ali: Then I have a better understanding of what represents them the best, and how they want to be seen.
-<<elseif $StrokeIndex == 1>>
+<<elseif $hair == 2>>
     Ali: The first time I shaved my head I felt so liberated. 
     Ali: I always wanted to do that but never had the need, or reason to. 
     Ali: Until we had this occassion, where someone dared me to shave it all off.
     Ali: I did. And I looked at myself in the mirror. It was someone new, someone different. 
     Ali: Someone hiding inside of me that wanted to be seen for a long time.
-<<elseif $StrokeIndex == 2>>
+<<elseif $hair == 3>>
+    Ali: There’s a reason why hair is so important for many queer folks.
+    Ali: It’s very fulfilling to be in a hair space, where queer visibility is fostered to flourish.
+    Ali: It's always delightful to see people leave with a look that they relate themselves more than the one they came in with. 
+<<endif>>
+<<set $hair +=1>>
+
+<<if $StrokeCount >= $MaxStrokes>>
+    <<jump AliSketch>>
+<<endif>>
+===
+title: Ali_Head
+---
+<<if $head == 0>>
+    Ali: It's not my first time to be drawn, but it still feels honoring when you asked.
+    Ali: Wearing black? Yeah, I guess it's a dresscode of this city. Unfortunately you couldn't escape that even at queer spaces.
+<<elseif $head == 1>>
+    Ali: I don't see myself fitting in the binary anymore. 
+    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself as she/they the most.
+    <<pronoun>>
+    Ali: It shouldn't be black or white anyways.
+<<elseif $head == 2>>
     Ali: I felt brave for looking different. 
     Ali: Gender and style expressions. For me it's all a form of rebellion.
     Ali: But not only that, I am acting myself this time. For once I could abandon the fear of not fitting in. I was comfortable in my skin.
     Ali: People started to recognizing me as queer. And especially queer people, too.
     Ali: I felt so visible. I never looked back.
-<<elseif $StrokeIndex == 3>>
-    Ali: There’s a reason why hair is so important for many queer folks.
-    Ali: It’s very fulfilling to be in a hair space, where queer visibility is fostered to flourish.
-    Ali: It's always delightful to see people leave with a look that they relate themselves more than the one they came in with. 
+<<elseif $head == 3>>
+    Ali: There's no rulebook of what queerness look like.
+    Ali: By defining a queer look, you’re putting yourself into box again!
+    Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
 <<endif>>
-===
-title: Ali_Body
----
-<<if $StrokeIndex == 0>>
-    Ali: I don't see myself fitting in the binary anymore. 
-    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself as she/they the most.
-    <<pronoun>>
-    Ali: It shouldn't be black or white anyways.
+<<set $head +=1>>
+
+<<if $StrokeCount >= $MaxStrokes>>
+    <<jump AliSketch>>
 <<endif>>
 ===
 title: Ali_Eye
 ---
-<<if $StrokeIndex == 0>>
+<<if $eye == 0>>
     Ali: Studying a person's features closely. Isn’t that quite personal and intimate? 
+    Ali: Except unlike haircuts or tattoos, you’re not changing or altering their look. 
+<<elseif $eye == 1>>
+    Ali: How would a non-queer artist approach to drawing someone queer? 
+    Ali: It perhaps has something to do with the gaze. 
+    Ali: Male gaze, female gaze, queer gaze... when I'm returning you the gaze, how does that make you feel?
+    Ali: Am I staring too much?
+<<endif>>
+<<set $eye +=1>>
+
+<<if $StrokeCount >= $MaxStrokes>>
+    <<jump AliSketch>>
 <<endif>>
 ===
 title: Ali_Top
 ---
-<<if $StrokeIndex == 0>>
-    Ali: Finding a community also helps. 
+<<if $top == 0>>
+    Ali: Community is so important. 
     Ali: No matter how different you are with people out there. Knowing there're people sharing similar experiences and stories with you. 
     Ali: It eases that feeling of isolation.
-<<elseif $StrokeIndex == 1>>
+<<elseif $top == 1>>
     Ali: But on a negative note, I did fall into the trap of altering myself to look more queer. 
     Ali: I thought I'm not queer enough for the longest time.
     Ali: But I tell you, looking queer is a scam! 
     Ali: Pretty sure everyone felt that way. 
 <<endif>>
+<<set $top +=1>>
+
+<<if $StrokeCount >= $MaxStrokes>>
+    <<jump AliSketch>>
+<<endif>>
 ===
 
 title: Ali_Tattoo
 ---
-<<if $StrokeIndex == 0>>
-    Ali: There's no rulebook of what queerness look like.
-    Ali: By defining a queer look, you’re putting yourself into box again!
-    Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
+    Ali: I got this tattoo on the last day of a travel.
+    Ali: A bit spontaneous, but one of my favorite artist was visiting, how could I miss that opportunity?
+
+<<if $StrokeCount >= $MaxStrokes>>
+    <<jump AliSketch>>
 <<endif>>
 ===
 title: AliSketchFin

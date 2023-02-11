@@ -2,16 +2,17 @@
 ---
 <<camera LeonCam>>
 <<if !$LeonIntroduced>>
-    Leon: Hey, you look new. 
-    Leon: Welcome! 
-    Leon: People are quite friendly here. 
+    Leon: Hey, what can I get you?
+    Leon: It's your first time to the place? 
+    Leon: It tends to get busier later in the evening.
     <<set $LeonIntroduced to true>>
-<<elseif $ChatCount > 0>>
+<<elseif $NumberOfEncounters > 0>>
     Leon: Already getting to know people? 
     Leon: We have an event coming in a few days, come again!
     Leon: I'd love to see you here again. 
 <<else>>
-    Leon: Want a drink?
+    Leon: You say you're an artist? What kinds of work do you make?
+    Leon: We host quite a few art events here. Poetry slam, even knitting club, quite a while ago.
 <<endif>>
 <<camera Player>>
 ===
