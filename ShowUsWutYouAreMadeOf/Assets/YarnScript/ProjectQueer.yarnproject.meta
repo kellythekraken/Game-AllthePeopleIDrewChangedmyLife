@@ -9,9 +9,10 @@ ScriptedImporter:
   assetBundleVariant: 
   script: {fileID: 11500000, guid: 053561912b1654d80a424bb0696a74ae, type: 3}
   sourceScripts:
-  - {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+  - {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
+  - {fileID: 6391573757903218779, guid: 15acf6a12bb8d3341967491b68b8956d, type: 3}
+  - {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
   - {fileID: 6391573757903218779, guid: 2079c36923b0a1742a3db9fd05edbaef, type: 3}
-  - {fileID: 6391573757903218779, guid: 681edf867e3bc3b46ab02914b8bde489, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $Stroke
@@ -19,57 +20,49 @@ ScriptedImporter:
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   - name: $ChatCount
     typeName: Number
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   - name: $LeonIntroduced
     typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   - name: $AliIntroduced
     typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
-  - name: $AliSketched
-    typeName: Bool
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
+  - name: $AliChat
+    typeName: Number
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   - name: $ToniIntroduced
     typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
+    description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
-  - name: $ToniSketched
-    typeName: Bool
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in NPCConversation.yarn, node Start
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b14eb8fe30cb0aa4aba2b59f66661aac, type: 3}
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   defaultLanguage: en-GB
   languagesToSourceAssets: []
   useAddressableAssets: 0

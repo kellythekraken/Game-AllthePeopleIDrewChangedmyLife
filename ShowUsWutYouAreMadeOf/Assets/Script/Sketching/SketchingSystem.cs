@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 using UnityEngine.Events;
+using System;
 public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
@@ -116,10 +117,17 @@ public class SketchingSystem : MonoBehaviour
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.pen_pickup);
         StartCrayonFollow(true);
     }
+    
+    int bodyIndex;
     private void RegisterBodyChoice(GameObject target)  //called by changing clicked body
     {
         chosenBody = target;
-        if(target!= null) chosenArea = areaChoices.Find(x=> x.objName == chosenBody.name);
+        if(target!= null) 
+        {
+            //chosenArea = areaChoices.Find(x=> x.objName == chosenBody.name);
+            bodyIndex = areaChoices.FindIndex(x=> x.objName == chosenBody.name);
+            chosenArea = areaChoices[bodyIndex];
+        }
     }
     
     //called when sketchbook is clicked
@@ -133,6 +141,8 @@ public class SketchingSystem : MonoBehaviour
             UIManager.Instance.DisplayInstruction("Which color shall I use this time?", 3f);
             return;
         }
+        gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
+
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
         MakeADrawing();
         StartCrayonFollow(false);
@@ -144,6 +154,9 @@ public class SketchingSystem : MonoBehaviour
 
     void MakeADrawing()
     {
+        //change sketchindex depends on which body is focusing
+        //change strokeindex 
+
         //Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
 
         //instantiate the corresponding drawing

@@ -47,7 +47,6 @@ public class AudioManager : MonoBehaviour
 
     public void SetGlobalParameter(string paramName, float newValue)
     {
-        Debug.Log("setting the param" + paramName + " to " + newValue);
         RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
     }
 

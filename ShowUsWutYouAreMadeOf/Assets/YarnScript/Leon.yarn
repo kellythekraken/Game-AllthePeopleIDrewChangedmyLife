@@ -1,0 +1,17 @@
+﻿title: LeonStart
+---
+<<camera LeonCam>>
+<<if !$LeonIntroduced>>
+    Leon: Hey, you look new. 
+    Leon: Welcome! 
+    Leon: People are quite friendly here. 
+    <<set $LeonIntroduced to true>>
+<<elseif $ChatCount > 0>>
+    Leon: Already getting to know people? 
+    Leon: We have an event coming in a few days, come again!
+    Leon: I'd love to see you here again. 
+<<else>>
+    Leon: Want a drink?
+<<endif>>
+<<camera Player>>
+===

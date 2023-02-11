@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     private CurrentMode lastMode;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
+    internal InMemoryVariableStorage variableStorage;
     public GameObject pronounTag;
     [SerializeField] private NPCManager npcManager;
     [SerializeField] public GameObject playerObject;   //dont reference the actual player with important scripts!
@@ -58,13 +59,18 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         audioManager = AudioManager.Instance;
+        variableStorage = dialogueRunner.GetComponent<InMemoryVariableStorage>();
         currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
         sketchbookUI.SetActive(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
         DisplayControlInstruction();
-    }
+
+        //float value;
+        //variableStorage.TryGetValue("$StrokeIndex",out value);
+        //Debug.Log("stroke index has value of " + value);
+    }   
     void OnDisable()=> currMode = CurrentMode.StartMenu;
     void OnModeChanged(CurrentMode mode)
     {
