@@ -19,6 +19,13 @@ public class QueerNPC : Interactable
     protected override void StartInteraction()
     {
         if(!interactable) return;
+        
+        if(alreadyGifted)
+        {
+            if(WardrobeManager.Instance.IsWearingGiftedItem(queerID.npcName)) 
+            GameManager.Instance.variableStorage.SetValue("$SpecialDialogue",true);
+        }
+       
         base.StartInteraction();
         if(indicator.currentInteract == this)
         {

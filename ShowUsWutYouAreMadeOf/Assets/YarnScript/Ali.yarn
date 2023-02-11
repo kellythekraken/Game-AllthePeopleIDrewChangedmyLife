@@ -1,6 +1,4 @@
-﻿
-
-title: AliStart
+﻿title: AliStart
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
 <<camera AliChat>>
@@ -12,8 +10,9 @@ title: AliStart
     <<set $MaxStrokes to 10>> //how many strokes before call it a day
     <<set $StrokeCount to 0>> //how many strokes have already made
     <<set $SpecialDialogue to false>> //in respond to wearing their gift
+    <<set $SpecialDialogueSpoken to false>> 
     
-<<set $AliChat to 0>>
+<<set $AliSmallTalk to 0>>
 
     //counting strokes on different body part and next dialogue
     <<set $hair to 0>>
@@ -23,7 +22,6 @@ title: AliStart
     
     <<wait .5>>
     Ali: Hey!
-    Ali: Enjoying the night?
     Ali: Haven’t seen you around before. I’m Ali. 
     Ali: Saw you sketching earlier. Are you an artist?
     Ali: Had the luck to be drawn by one queer illustrator a few weeks ago. 
@@ -31,7 +29,6 @@ title: AliStart
     Ali: Afterall, I was being carefully watched for a period of time.
     Ali: I thought, so that's how they see me.
     Ali: ...
-    //isn't that queer gaze at its finest?
     Ali: You would like to sketch me? 
     Ali: Oh, that would be my honour. 
     <<set $AliIntroduced to true>>
@@ -39,18 +36,17 @@ title: AliStart
     <<camera AliSketch>>
     <<wait .5>>
     Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
-<<elseif $SpecialDialogue == true>>
-    Ali: Hey! That hairstyle looks good on you!
+
 <<else>>
-    <<if $AliChat == 0>>
+    <<if $SpecialDialogue == true>>
+        <<jump AliSpecial>>
+    <<elseif $AliSmallTalk == 0>>
         Ali: Hey! Thank you for the drawing earlier.
         Ali: We were discussing about the benefit of colorful hair.
         Ali: Once met this person who used her blue hair as a strategy, so people remember her in networking events.
-    <<elseif $AliChat == 1>>
-        Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
-        Ali: I think lilac might look good on you.
-        Ali: We got a hairdye specialist who comes here often. Will give you a shout if I spot them tonight!
-    <<elseif $AliChat == 2>>
+    <<elseif $AliSmallTalk == 1>>
+        Ali: My horoscope? I'm a Sagittarius, does that mean I don't get along with a certain group of people?
+    <<elseif $AliSmallTalk == 2>>
         Ali: Was talking with my friends about your drawing. 
         Ali: It's a way to break the ice, getting to know people a bit.
         Ali: Even flirt a bit, maybe.
@@ -59,11 +55,29 @@ title: AliStart
         //<<leave Ali>>
         //<<enter Toni>>
     <<endif>>
+
     <<camera Player>>
     <<pose Ali Sit>>
-    <<set $AliChat +=1>>
+    <<set $AliSmallTalk +=1>>
 <<endif>>
 
+===
+title: AliSpecial
+---
+<<if visited_count("AliSpecial") == 0>>
+    Ali: Hey! That hairstyle looks good on you!
+<<elseif visited_count("AliSpecial") == 1>>
+    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+    Ali: I think lilac might look good on you.
+    Ali: We got a hairdye specialist who comes here often. Will give you a shout if I spot them tonight!
+<<else>>
+    <<set $SpecialDialogueSpoken to true>>
+    <<set $SpecialDialogue to false>>
+    <<jump AliStart>>
+<<endif>>
+
+<<camera Player>>
+<<pose Ali Sit>>
 ===
 title: AliSketch
 ---
@@ -205,7 +219,7 @@ title: ToniStart
 <<camera ToniCam>>
 <<if !$ToniIntroduced>>
      <<set $NumberOfEncounters +=1>>
-    Toni: Hey, I'm Toni. You new here?
+    Toni: Hey, I'm Toni. 
     Toni: First time? Ha, I come here all the time.
     <<set $ToniIntroduced to true>>
     <<sketch true>>

@@ -28,10 +28,16 @@ public class WardrobeManager : MonoBehaviour
     public List<WardrobeSection> WardrobeSections;
     List<GameObject> accessoryList; //reference to all the hidden accessory gameobjects
     List<Transform> wardrobeSectionList;    //transforms of all the wardrobe section parents
+    List<string> outfitGifterList; //list the names of people who you're wearing their gifted item
+
+    //each piece will have queer score, (and fashion score??)
+
+    //new feature that triggers extra dialogue based on score/if you're wearing someone's gifted piece
+
 
     void OnDestroy()
     {
-        foreach(var i in WardrobeSections)i.renderer.sharedMesh = i.defaultMesh;
+        //foreach(var i in WardrobeSections)i.renderer.sharedMesh = i.defaultMesh;
     }
 
     //called by wardrobebutton at start
@@ -40,6 +46,8 @@ public class WardrobeManager : MonoBehaviour
         Instance = this;
         accessoryList = new List<GameObject>();
         wardrobeSectionList = new List<Transform>();
+        outfitGifterList = new List<string>();
+
         foreach(Transform i in transform)
         {
             wardrobeSectionList.Add(i);
@@ -67,13 +75,13 @@ public class WardrobeManager : MonoBehaviour
             }
         }
     }
-    public void AddItemToWardrobe(GiftItem item)
+    public void AddGiftToWardrobe(GiftItem item, string gifterName)
     {
-        CreateItemBtn(item);
+        CreateItemBtn(item, true, gifterName);
     }
 
     //take care of mesh/gameobject/ type of wearable item
-    void CreateItemBtn(GiftItem item, bool isNew = true)
+    void CreateItemBtn(GiftItem item, bool isNew, string gifterName = null)
     {
         Transform parent = wardrobeSectionList.Find(x => x.name == item.section.ToString());
 
@@ -103,8 +111,24 @@ public class WardrobeManager : MonoBehaviour
 
         WearableItem itemComponent = obj.GetComponent<WearableItem>();
         itemComponent.InitItem(item, isNew);
+        itemComponent.gifter = gifterName;
+    }
+    public void UpdateGifterList(string gifterName, bool addItem = true)
+    {
+        if(addItem) 
+        {outfitGifterList.Add(gifterName);}
+        else if(outfitGifterList.Contains(gifterName)) 
+        {outfitGifterList.Remove(gifterName);}
+        
+        Debug.Log("gifter" + gifterName + outfitGifterList.Count);
     }
 
+    public bool IsWearingGiftedItem(string gifterName)
+    {
+        return outfitGifterList.Contains(gifterName);
+    }
+
+#region ItemAppearance
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)
     {
         Mesh myMesh = section.renderer.sharedMesh;
@@ -122,7 +146,7 @@ public class WardrobeManager : MonoBehaviour
 
     void ChangeMaterial()
     {
-        //change material of all renderer
+        //change material color of all renderer
     }
 
     void DisplayGameobject(string objName)
@@ -131,6 +155,7 @@ public class WardrobeManager : MonoBehaviour
         var obj = accessoryList.Find(x => x.name == objName);
         obj.SetActive(!obj.activeSelf);
     }
+#endregion
 }
 
 

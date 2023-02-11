@@ -78,7 +78,7 @@ public class WardrobeButton : MonoBehaviour
             GameObject icon = Instantiate(itemIconPrefab, iconLayoutParent.transform);
             Image iconImage = icon.GetComponent<Image>();
             iconImage.sprite = gifts[i].icon;
-            wardrobeManager.AddItemToWardrobe(gifts[i]);
+            wardrobeManager.AddGiftToWardrobe(gifts[i], npc.queerID.npcName);
         }
         
         //manipulate the item icon scales based on numbers
