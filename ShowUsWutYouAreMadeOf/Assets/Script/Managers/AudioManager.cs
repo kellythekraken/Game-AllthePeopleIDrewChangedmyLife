@@ -47,9 +47,15 @@ public class AudioManager : MonoBehaviour
 
     public void SetGlobalParameter(string paramName, float newValue)
     {
+        Debug.Log("set " +paramName + " to " + newValue);
         RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
     }
 
+    public void DoorTriggerMuffleBGM()
+    {
+        //if muffle = 1, make it 0, vice versa
+        //RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
+    }
 
     private void CleanUp()
     {

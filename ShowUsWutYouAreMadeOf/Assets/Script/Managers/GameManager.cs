@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
         settingsUI.SetActive(false);
         DisplayControlInstruction();
 
+        AudioManager.Instance.SetGlobalParameter("Muffle",1f);
+
         //float value;
         //variableStorage.TryGetValue("$StrokeIndex",out value);
         //Debug.Log("stroke index has value of " + value);
