@@ -4518,7 +4518,6 @@ MonoBehaviour:
   notification: 
   centerFacingBias: 0.3
   indoorLandingPosition: {x: -0.82, y: 0.027, z: 5.14}
-  player: {fileID: 2722001489276367796}
 --- !u!135 &610133932
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -15788,7 +15787,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.23031212, y: -0.13266778, z: 0.031712193, w: 0.9635092}
+  m_LocalRotation: {x: 0.33126006, y: -0.38946477, z: 0.15254171, w: 0.84576297}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19619,7 +19618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
   m_LocalRotation: {x: -0, y: -0.99988776, z: -0, w: 0.014985152}
-  m_LocalPosition: {x: -10.740043, y: -3.5990002, z: 2.2641973}
+  m_LocalPosition: {x: -10.800043, y: -3.1390002, z: 0.124197006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -20444,7 +20443,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116004488851913433}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -251.97002, y: -140.319, z: 13.764197}
+  m_LocalPosition: {x: -252.03003, y: -139.85901, z: 11.624197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1116004488226458338}
@@ -20768,7 +20767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354527797997906190}
   m_LocalRotation: {x: -0, y: -0.9998877, z: -0, w: 0.014985151}
-  m_LocalPosition: {x: -0.89, y: -0.97, z: 9.76}
+  m_LocalPosition: {x: -0.95, y: -0.51, z: 7.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6952351074407895122}
@@ -20924,6 +20923,7 @@ MonoBehaviour:
   BottomClamp: 0
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  stopMoveUpdate: 1
 --- !u!1 &3354527797997906190
 GameObject:
   m_ObjectHideFlags: 0

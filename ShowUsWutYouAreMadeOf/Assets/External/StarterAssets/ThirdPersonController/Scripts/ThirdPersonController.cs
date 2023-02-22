@@ -146,13 +146,13 @@ namespace StarterAssets
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
+        public bool stopMoveUpdate = false;
         private void Update()
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            JumpAndGravity();
-            GroundedCheck();
+            //JumpAndGravity();
+            //GroundedCheck();
             Move();
         }
 
@@ -206,11 +206,8 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
-        internal bool stopMoveUpdate = false;
         private void Move()
         {
-            if(stopMoveUpdate) return;
-            
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
@@ -276,7 +273,6 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
         }
-
         private void JumpAndGravity()
         {
             if (Grounded)
