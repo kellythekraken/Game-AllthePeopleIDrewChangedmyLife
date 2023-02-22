@@ -29,7 +29,11 @@ public class DoorInteraction : Interactable
     {
         Teleport();
     }
-
+    protected override void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player") || !interactable) return;
+        indicator.DrawRay("Door");
+    }
     void Teleport()
     {
         Debug.Log("teleport indoor!");

@@ -13,12 +13,16 @@ public class InteractIndicator : MonoBehaviour
     Camera mainCam;
     TextMeshProUGUI myText;
     internal Interactable currentInteract = null;
+    GameObject player;
+
+    [SerializeField] LayerMask layerMask;
 
     void Awake() => Instance = this; 
     void Start()
     {
         gm = GameManager.Instance;
-        mainCam = Camera.main;
+        player = gm.player;
+        mainCam = gm.mainCam;
         myText = GetComponent<TextMeshProUGUI>();
         myText.enabled = false;
     }
@@ -26,6 +30,8 @@ public class InteractIndicator : MonoBehaviour
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target, float biasValue)
     {
+        //also check if the object is in the canvas rect? 
+
         if(gm.inConversation) 
         {
             DisplayIndicator(false);
@@ -37,6 +43,24 @@ public class InteractIndicator : MonoBehaviour
         var distanceFromCenter = Vector2.Distance(viewportPoint,Vector2.one * .5f);
         var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
+    }
+    
+    public void DrawRay(string interactName)
+    {
+        var pos = player.transform.position + new Vector3(0,1.6f,0);
+        var forward = mainCam.transform.forward;
+        var rayLength = 4f;
+        RaycastHit hit;
+        
+        Debug.DrawRay(pos,forward,Color.yellow);
+
+        if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
+            Transform objectHit = hit.transform;
+            Debug.Log(objectHit.name);
+            bool show = (hit.transform.gameObject.layer == 11) && (objectHit.name == interactName);
+            //if() show = false;
+            myText.enabled = facingSubject = show;
+        }
     }
 
     public void DisplayIndicator(bool display)

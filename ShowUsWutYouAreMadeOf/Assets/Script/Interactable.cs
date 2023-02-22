@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Yarn.Unity;
 
-[RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
 {
     [SerializeField] private string dialogueTitle;
@@ -46,11 +46,11 @@ public class Interactable : MonoBehaviour
         InRange = true;
         indicator.ChangeText(name); 
     }
-    void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
         InRange = true;
-        indicator.CheckFaceDir(transform,centerFacingBias);
+        indicator.DrawRay(name);
     }
     private void OnTriggerExit(Collider other)
     {
@@ -58,20 +58,17 @@ public class Interactable : MonoBehaviour
         InRange = false;
         indicator.DisplayIndicator(false);
     }
-    public void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        StartInteraction();
+        if (indicator.facingSubject && InRange) StartInteraction();
     }
     protected virtual void StartInteraction()
     {
-        if (indicator.facingSubject && InRange)
-        {
-            gm.HidePronoun();
-            gm.currMode = CurrentMode.Conversation;
-            indicator.currentInteract = this;
-            dialogueRunner.StartDialogue(dialogueTitle);
-            InputManager.Instance.LockInputOnDialogueStart();
-        }
+        gm.HidePronoun();
+        gm.currMode = CurrentMode.Conversation;
+        indicator.currentInteract = this;
+        dialogueRunner.StartDialogue(dialogueTitle);
+        InputManager.Instance.LockInputOnDialogueStart();
     }
     protected virtual void EndInteraction()
     {

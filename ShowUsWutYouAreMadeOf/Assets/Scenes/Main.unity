@@ -1760,7 +1760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 232280846}
   - component: {fileID: 232280847}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: entrance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2509,7 +2509,7 @@ GameObject:
   m_Component:
   - component: {fileID: 314428331}
   - component: {fileID: 314428332}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Stair-bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3656,7 +3656,7 @@ GameObject:
   m_Component:
   - component: {fileID: 472071771}
   - component: {fileID: 472071772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3863,7 +3863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 529585189}
   - component: {fileID: 529585190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: intersect-L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4479,9 +4479,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 610133930}
-  - component: {fileID: 610133932}
   - component: {fileID: 610133931}
-  m_Layer: 9
+  - component: {fileID: 610133932}
+  m_Layer: 11
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4496,8 +4496,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610133929}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.77, y: 2.271, z: -3.87}
-  m_LocalScale: {x: 1, y: 1.9673655, z: 0.38979194}
+  m_LocalPosition: {x: 5.028, y: 1.573, z: -3.87}
+  m_LocalScale: {x: 1, y: 1.9673655, z: 0.31438264}
   m_Children: []
   m_Father: {fileID: 1336766317}
   m_RootOrder: 0
@@ -4530,8 +4530,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.76
-  m_Center: {x: 0.15694547, y: -0.63, z: 0}
+  m_Radius: 0.59
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &613048512
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,7 +6332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 826962321}
   - component: {fileID: 826962322}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Stair-bar (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7457,7 +7457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1083261616}
   - component: {fileID: 1083261617}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: intersect-R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8103,7 +8103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1135891419}
   - component: {fileID: 1135891420}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side_sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8596,7 +8596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208538924}
   - component: {fileID: 1208538925}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side_Long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10048,6 +10048,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -642451929503139416, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -603605124668940358, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
       propertyPath: m_Name
       value: room 2 floor
@@ -10185,6 +10189,10 @@ PrefabInstance:
       value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 8198478932450056164, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8715528380888108859, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -11424,7 +11432,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
       propertyPath: m_IsActive
@@ -14315,6 +14323,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38ee711d82876047a3f1bfcc050ab3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2560
 --- !u!114 &1729560204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15499,7 +15510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1859437472}
   - component: {fileID: 1859437473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Side_loo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15730,7 +15741,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.17983142, y: -0.14554502, z: 0.026913736, w: 0.97249836}
+  m_LocalRotation: {x: 0.054622244, y: -0.04562136, z: 0.0024982835, w: 0.99746126}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19132,7 +19143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2125226427}
   - component: {fileID: 2125226428}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: end-loo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
