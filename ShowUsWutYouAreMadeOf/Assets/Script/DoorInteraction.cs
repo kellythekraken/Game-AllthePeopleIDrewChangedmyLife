@@ -36,7 +36,6 @@ public class DoorInteraction : Interactable
     }
     void Teleport()
     {
-        Debug.Log("teleport indoor!");
         controller.enabled = false;
         player.transform.position = indoor? outdoorLandingPosition : indoorLandingPosition;
         AudioManager.Instance.SetMuffleParameter(indoor? 0f: 1f);
