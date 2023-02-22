@@ -1,0 +1,14 @@
+﻿title: Rue
+tags:
+---
+<<if !$RueIntroduced>>
+    <<set $RueIntroduced to true>>
+    <<set $NumberOfEncounters +=1>>
+    <<set $RueSmallTalk to 0>>
+<<endif>>
+
+<<camera RueChat>>
+Rue: Hey!
+Rue: How are you?
+<<camera Player>>
+===

@@ -3514,14 +3514,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445242758}
-  m_LocalRotation: {x: -0, y: 0.60811496, z: -0, w: 0.793849}
-  m_LocalPosition: {x: 2.6280844, y: 1.448, z: -5.285632}
+  m_LocalRotation: {x: -0, y: -0.79516286, z: -0, w: 0.606396}
+  m_LocalPosition: {x: 3.99, y: 1.448, z: -5.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2104525070}
   m_Father: {fileID: 2102689990}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 74.907, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -105.341, z: 0}
 --- !u!135 &445242760
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3550,7 +3550,7 @@ MonoBehaviour:
   dialogueTitle: 
   notification: 
   centerFacingBias: 0.3
-  queerID: {fileID: 11400000, guid: 91f614f1d57c13d48b9a7cfdea40b4da, type: 2}
+  queerID: {fileID: 11400000, guid: ccf8f3f2c312d2640aff9f797a86d3fe, type: 2}
   sketchableAreas: []
 --- !u!136 &445242762
 CapsuleCollider:
@@ -18772,6 +18772,30 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
   m_PrefabInstance: {fileID: 2104525069}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2104525071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
+  m_PrefabInstance: {fileID: 2104525069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2104525072
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104525071}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
+  m_Controller: {fileID: 9100000, guid: 58276662b0a24bf4c98089867d8e942a, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!224 &2107970637 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}

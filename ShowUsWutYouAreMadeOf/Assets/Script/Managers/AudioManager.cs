@@ -44,11 +44,15 @@ public class AudioManager : MonoBehaviour
         eventList.Add(eventInstance);
         return eventInstance;
     }
-
-    public void SetGlobalParameter(string paramName, float newValue)
+    float currentMuffle = 0f;
+    public void SetMuffleParameter(float newValue)
     {
-        Debug.Log("set " +paramName + " to " + newValue);
-        RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
+        if(currentMuffle!=newValue)
+        {
+            Debug.Log("set muffle "+ " to " + newValue);
+            RuntimeManager.StudioSystem.setParameterByName("Muffle",newValue);
+            currentMuffle = newValue;
+        }
     }
 
     public void DoorTriggerMuffleBGM()

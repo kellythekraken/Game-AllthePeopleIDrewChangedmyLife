@@ -13,7 +13,7 @@ public class OnTriggerFMODEvent : MonoBehaviour
         Debug.Log("triggered!");
         if(other.CompareTag("Player"))
         {
-            AudioManager.Instance.SetGlobalParameter("Muffle",0f);
+            AudioManager.Instance.SetMuffleParameter(0f);
         }
     }
 }

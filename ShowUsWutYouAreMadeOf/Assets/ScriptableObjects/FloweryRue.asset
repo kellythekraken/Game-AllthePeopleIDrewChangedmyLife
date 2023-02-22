@@ -15,7 +15,8 @@ MonoBehaviour:
   npcName: Rue
   pronouns: She/Her
   giftLine: Rue gifted you some dresses!
-  items: []
+  items:
+  - {fileID: 11400000, guid: f6836ba2262e87a44bd72f0ac42f828e, type: 2}
   drawableAreas: []
   backgroundDrawing: {fileID: 0}
-  dialogueLength: 0
+  maximumStrokes: 1

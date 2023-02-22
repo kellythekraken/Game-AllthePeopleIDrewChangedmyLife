@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
         settingsUI.SetActive(false);
         DisplayControlInstruction();
 
-        AudioManager.Instance.SetGlobalParameter("Muffle",1f);
+        AudioManager.Instance.SetMuffleParameter(1f);
 
         //float value;
         //variableStorage.TryGetValue("$StrokeIndex",out value);
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(true);
                 inConversation = false;
-                audioManager.SetGlobalParameter("Muffle",0f);
+                audioManager.SetMuffleParameter(0f);
                 return;
             case CurrentMode.Conversation:
                 LockCursor(true);
@@ -95,19 +95,19 @@ public class GameManager : MonoBehaviour
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 StartCoroutine(WaitBeforeSketch());
-                audioManager.SetGlobalParameter("Muffle",0.5f);
+                audioManager.SetMuffleParameter(0.5f);
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
                 inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
-                audioManager.SetGlobalParameter("Muffle",1f);
+                audioManager.SetMuffleParameter(1f);
                 return;
             case CurrentMode.StartMenu:
                 LockCursor(false);
                 inConversation = false;
                 inputManager.EnableAllInput(false);
-                audioManager.SetGlobalParameter("Muffle",1f);
+                audioManager.SetMuffleParameter(1f);
                 return;
         }
     }

@@ -6,11 +6,8 @@ position: 22,-25
 
 <<set $LeonIntroduced to false>>
 
-//Ali
 <<set $AliIntroduced to false>>
-<<set $AliChat to 0>>
-
-//Toni
+<<set $RueIntroduced to false>>
 <<set $ToniIntroduced to false>>
 
 <<enter Leon>>
