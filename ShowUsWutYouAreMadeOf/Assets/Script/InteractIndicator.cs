@@ -27,6 +27,7 @@ public class InteractIndicator : MonoBehaviour
         myText.enabled = false;
     }
 
+    /*
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target, float biasValue)
     {
@@ -44,7 +45,8 @@ public class InteractIndicator : MonoBehaviour
         var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
     }
-    
+    */
+
     public void DrawRay(string interactName)
     {
         var pos = player.transform.position + new Vector3(0,1.6f,0);
@@ -56,9 +58,7 @@ public class InteractIndicator : MonoBehaviour
 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
             Transform objectHit = hit.transform;
-            Debug.Log(objectHit.name);
             bool show = (hit.transform.gameObject.layer == 11) && (objectHit.name == interactName);
-            //if() show = false;
             myText.enabled = facingSubject = show;
         }
     }

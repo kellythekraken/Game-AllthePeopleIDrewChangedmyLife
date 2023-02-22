@@ -60,7 +60,7 @@ public class Interactable : MonoBehaviour
     }
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (indicator.facingSubject && InRange) StartInteraction();
+        if (indicator.facingSubject && InRange && interactable) StartInteraction();
     }
     protected virtual void StartInteraction()
     {
@@ -74,14 +74,14 @@ public class Interactable : MonoBehaviour
     {
         if(indicator.currentInteract == this)
         {
-            StartCoroutine(TimerBeforeNextInteraction());
+            StartCoroutine(InteractionCooldown());
             gm.currMode = CurrentMode.Nothing;
         }
     }
-    protected IEnumerator TimerBeforeNextInteraction()
+    protected IEnumerator InteractionCooldown(float timer = 4f)
     {
         interactable = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(timer);
         interactable = true;
     }
 

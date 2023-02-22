@@ -18,8 +18,6 @@ public class QueerNPC : Interactable
     }
     protected override void StartInteraction()
     {
-        if(!interactable) return;
-        
         if(alreadyGifted)
         {
             bool wearingGiftedItem = WardrobeManager.Instance.IsWearingGiftedItem(queerID.npcName);
@@ -58,7 +56,7 @@ public class QueerNPC : Interactable
     {
         if(indicator.currentInteract == this)
         {
-            StartCoroutine(TimerBeforeNextInteraction());
+            StartCoroutine(InteractionCooldown());
             if(gm.sketchbookOpen) gm.currMode = CurrentMode.Sketching;
             else if (!alreadySketched) { gm.currMode = CurrentMode.Nothing;} 
             else if (alreadyGifted){ gm.currMode = CurrentMode.Nothing;} 
