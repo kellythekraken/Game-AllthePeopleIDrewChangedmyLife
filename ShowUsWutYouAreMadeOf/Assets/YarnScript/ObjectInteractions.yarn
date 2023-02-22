@@ -5,7 +5,6 @@ Leon: Interested?
 Leon: They're made by local artists.
 <<camera PlayerCam>>
 ===
-
 title: DoorExit
 ---
 The door leading outside.

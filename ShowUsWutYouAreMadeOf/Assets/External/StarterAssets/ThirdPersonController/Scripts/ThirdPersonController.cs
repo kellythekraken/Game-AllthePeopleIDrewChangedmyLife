@@ -206,8 +206,11 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
+        internal bool stopMoveUpdate = false;
         private void Move()
         {
+            if(stopMoveUpdate) return;
+            
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
 
