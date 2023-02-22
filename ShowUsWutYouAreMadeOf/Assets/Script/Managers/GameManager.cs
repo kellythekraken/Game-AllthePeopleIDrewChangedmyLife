@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
     internal TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
-    internal bool inConversation;
     internal Camera mainCam;
     private void Awake()
     {
@@ -57,6 +56,7 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
     }
+
     private void Start()
     {
         audioManager = AudioManager.Instance;
@@ -84,29 +84,24 @@ public class GameManager : MonoBehaviour
             case CurrentMode.Nothing:
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(true);
-                inConversation = false;
                 audioManager.SetMuffleParameter(0f);
                 return;
             case CurrentMode.Conversation:
                 LockCursor(true);
-                inConversation = true;
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
-                inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 StartCoroutine(WaitBeforeSketch());
                 audioManager.SetMuffleParameter(0.5f);
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
-                inConversation = false;
                 inputManager.EnableChatMoveBtn(false);
                 audioManager.SetMuffleParameter(1f);
                 return;
             case CurrentMode.StartMenu:
                 LockCursor(false);
-                inConversation = false;
                 inputManager.EnableAllInput(false);
                 audioManager.SetMuffleParameter(1f);
                 return;
@@ -117,6 +112,14 @@ public class GameManager : MonoBehaviour
         currMode = lastMode;
     }
 
+    public bool CanFreelyInteract()
+    {
+        return currMode == CurrentMode.Nothing;
+    }
+    public bool InConversation()
+    {
+        return currMode == CurrentMode.Conversation;
+    }
     #region SKETCHING PHASE
     public void ContinueSketchChat()
     {

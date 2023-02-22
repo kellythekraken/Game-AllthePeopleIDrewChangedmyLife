@@ -27,13 +27,13 @@ public class InteractIndicator : MonoBehaviour
         myText.enabled = false;
     }
 
-    /*
+    
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target, float biasValue)
     {
         //also check if the object is in the canvas rect? 
 
-        if(gm.inConversation) 
+        if(!gm.CanFreelyInteract()) 
         {
             DisplayIndicator(false);
             return;
@@ -45,21 +45,23 @@ public class InteractIndicator : MonoBehaviour
         var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
     }
-    */
-
+    
     public void DrawRay(string interactName)
     {
+        if(!gm.CanFreelyInteract()) 
+        {
+            DisplayIndicator(false);
+            return;
+        }
         var pos = player.transform.position + new Vector3(0,1.6f,0);
         var forward = mainCam.transform.forward;
         var rayLength = 4f;
         RaycastHit hit;
-        
-        Debug.DrawRay(pos,forward,Color.yellow);
 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
             Transform objectHit = hit.transform;
             bool show = (hit.transform.gameObject.layer == 11) && (objectHit.name == interactName);
-            myText.enabled = facingSubject = show;
+            DisplayIndicator(show);
         }
     }
 
@@ -67,7 +69,7 @@ public class InteractIndicator : MonoBehaviour
     {
         myText.enabled = facingSubject = display;
         if(myText.enabled) UIManager.Instance.ShowInstruction("E / Left Mouse to interact");
-        else if(!myText.enabled || gm.inConversation){ UIManager.Instance.HideInstruction();}
+        else if(!myText.enabled || gm.InConversation()){ UIManager.Instance.HideInstruction();}
     }
     public void ChangeText(string text)
     {

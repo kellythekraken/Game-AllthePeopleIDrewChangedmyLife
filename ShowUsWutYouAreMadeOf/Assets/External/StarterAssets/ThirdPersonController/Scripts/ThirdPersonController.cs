@@ -151,8 +151,8 @@ namespace StarterAssets
         {
             _hasAnimator = TryGetComponent(out _animator);
 
-            //JumpAndGravity();
-            //GroundedCheck();
+            JumpAndGravity();
+            GroundedCheck();
             Move();
         }
 

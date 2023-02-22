@@ -49,7 +49,6 @@ public class AudioManager : MonoBehaviour
     {
         if(currentMuffle!=newValue)
         {
-            Debug.Log("set muffle "+ " to " + newValue);
             RuntimeManager.StudioSystem.setParameterByName("Muffle",newValue);
             currentMuffle = newValue;
         }
