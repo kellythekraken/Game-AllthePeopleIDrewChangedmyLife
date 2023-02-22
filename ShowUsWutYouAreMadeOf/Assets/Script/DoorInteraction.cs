@@ -5,38 +5,39 @@ using StarterAssets;
 
 public class DoorInteraction : Interactable
 {
-    [SerializeField] Vector3 indoorLandingPosition;
+    [SerializeField] Vector3 indoorLandingPosition, outdoorLandingPosition;
     GameObject player;
-    ThirdPersonController controller;
+    CharacterController controller;
+    bool indoor = false;
 
     protected override void Start()
     {
         base.Start();
         player = gm.player;
-        controller = player.GetComponent<ThirdPersonController>();
+        controller = player.GetComponent<CharacterController>();
     }
     protected override void OnTriggerEnter(Collider other)
     {
         //display name (either enter/exit)
         if (!other.CompareTag("Player") || !interactable) return;
         InRange = true;
-        indicator.ChangeText("Enter"); 
+        indicator.ChangeText(indoor? "Exit" :"Enter"); 
     }
 
     //when action key is pressed
     protected override void StartInteraction()
     {
-        TeleportToIndoor();
+        Teleport();
     }
 
-
-    void TeleportToIndoor()
+    void Teleport()
     {
         Debug.Log("teleport indoor!");
 //       controller.stopMoveUpdate = true;
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = indoorLandingPosition;
-        player.GetComponent<CharacterController>().enabled = true;
-
+        controller.enabled = false;
+        player.transform.position = indoor? outdoorLandingPosition : indoorLandingPosition;
+        AudioManager.Instance.SetMuffleParameter(indoor? 0f: 1f);
+        controller.enabled = true;
+        indoor = !indoor;
     }
 }
