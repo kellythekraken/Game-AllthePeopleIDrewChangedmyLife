@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class PointerFollower : MonoBehaviour
 {
     Camera mainCamera;
-    Vector2 offset = new Vector2(50f,45f);
+    Vector2 offset = new Vector2(110f,90f);
     void OnEnable()
     {
         mainCamera = Camera.main;

@@ -10197,6 +10197,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8715528380888108859, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9169064512787607963, guid: 4b635d7be7ed0184ba6484dee8fe8178, type: 3}
       propertyPath: m_Name
       value: wall
