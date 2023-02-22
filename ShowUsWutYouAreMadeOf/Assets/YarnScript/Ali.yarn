@@ -30,6 +30,7 @@
     <<camera AliSketch>>
     <<wait .5>>
     Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
+    <<startsketch>>
 
 <<else>>
     <<if $SpecialDialogue == true>>

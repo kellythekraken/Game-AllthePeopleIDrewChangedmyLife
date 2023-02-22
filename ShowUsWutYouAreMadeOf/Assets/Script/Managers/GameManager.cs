@@ -50,6 +50,7 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
+        dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
         dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
         dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
         dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
@@ -57,6 +58,10 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
     }
 
+    void ShowSketchInstruction()
+    {
+        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
+    }
     private void Start()
     {
         audioManager = AudioManager.Instance;

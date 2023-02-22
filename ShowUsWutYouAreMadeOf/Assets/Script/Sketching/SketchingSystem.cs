@@ -100,7 +100,6 @@ public class SketchingSystem : MonoBehaviour
             }
         }
         foreach(Button i in colorChoices) {i.enabled = true; }
-        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
         InputManager.Instance.EnableWardrobeAction(false);
         sketchbook.enabled = true;
     }
