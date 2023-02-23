@@ -1,14 +1,30 @@
 ﻿title: Rue
 tags:
 ---
-<<if !$RueIntroduced>>
+<<camera RueChat>>
+
+<<if visited_count("Rue") == 0>>
     <<set $RueIntroduced to true>>
     <<set $NumberOfEncounters +=1>>
     <<set $RueSmallTalk to 0>>
+
+    <<wait .5>>
+    Rue: Hey!
+    Rue: How are you?
+<<else>>
+    Rue: another chat
+    <<sketch true>>
+    <<camera AliSketch>>
+    <<wait .5>>
+    Rue: Sketch!
+    <<startsketch>>
 <<endif>>
 
-<<camera RueChat>>
-Rue: Hey!
-Rue: How are you?
+
 <<camera Player>>
+===
+title: RueSketch
+---
+Rue: I am Rue.
+
 ===

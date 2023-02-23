@@ -19,14 +19,13 @@ public class QueerNPC : Interactable
     public override void StartInteraction()
     {
         if(!interactable) return;
-        base.StartInteraction();
 
         if(alreadyGifted)
         {
             bool wearingGiftedItem = WardrobeManager.Instance.IsWearingGiftedItem(queerID.npcName);
             GameManager.Instance.variableStorage.SetValue("$SpecialDialogue", wearingGiftedItem);
         }
-        
+        base.StartInteraction();
         if(indicator.currentInteract == this)
         {
             if(pronounKnown) ChangePronounTag();

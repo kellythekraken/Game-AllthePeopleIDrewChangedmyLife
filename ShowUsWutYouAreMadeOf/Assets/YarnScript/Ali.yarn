@@ -4,7 +4,7 @@
 <<camera AliChat>>
 <<pose Ali SitLook>>
 
-<<if !$AliIntroduced>>
+<<if visited_count("AliStart") == 0>>
     <<set $NumberOfEncounters +=1>>
     <<set $SketchIndex to 0>> //for which body part
     <<set $MaxStrokes to 10>> //how many strokes before call it a day
@@ -25,7 +25,6 @@
     Ali: ...
     Ali: You would like to sketch me? 
     Ali: Oh, that would be my honour. 
-    <<set $AliIntroduced to true>>
     <<sketch true>>
     <<camera AliSketch>>
     <<wait .5>>
@@ -211,14 +210,13 @@ Ali: Here, or at my salon!
 <<camera Player>>
 ===
 
-title: ToniStart
+title: Toni
 ---
 <<camera ToniCam>>
-<<if !$ToniIntroduced>>
+<<if visited_count("Toni") == 0>>
      <<set $NumberOfEncounters +=1>>
     Toni: Hey, I'm Toni. 
     Toni: First time? Ha, I come here all the time.
-    <<set $ToniIntroduced to true>>
     <<sketch true>>
     <<jump ToniSketch>>
 <<elseif $AliSketched>>
