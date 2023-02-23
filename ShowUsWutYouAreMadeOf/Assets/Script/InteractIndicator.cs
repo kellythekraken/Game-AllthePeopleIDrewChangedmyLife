@@ -25,9 +25,24 @@ public class InteractIndicator : MonoBehaviour
         mainCam = gm.mainCam;
         myText = GetComponent<TextMeshProUGUI>();
         myText.enabled = false;
+        InputManager.Instance.interactAction.performed += InteractionAction;
+
     }
 
-    
+    void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
+    {
+        //if hit 
+        if (rayHitObject!=null) 
+        {
+            Debug.Log("trying to interact wth " + rayHitObject.name);
+            rayHitObject.GetComponent<Interactable>().StartInteraction();
+        }
+    }
+
+    void Update()
+    {
+        DrawRay();
+    }
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target, float biasValue)
     {
@@ -45,8 +60,31 @@ public class InteractIndicator : MonoBehaviour
         var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
     }
-    
-    public void DrawRay(string interactName)
+
+    [SerializeField] Transform rayHitObject;    
+    public void DrawRay()
+    {
+        if(!gm.CanFreelyInteract()) 
+        {
+            DisplayIndicator(false);
+            return;
+        }
+        var pos = player.transform.position + new Vector3(0,1.6f,0);
+        var forward = mainCam.transform.forward;
+        var rayLength = 2f;
+        RaycastHit hit;
+
+        if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
+            Transform objectHit = hit.transform;
+            bool hitInteractable = hit.transform.gameObject.layer == 11;
+            DisplayIndicator(hitInteractable);
+        
+            if(hitInteractable) {rayHitObject = objectHit.transform;}
+            else{rayHitObject =null;}
+        }
+    }
+
+    public void DrawRay1(string interactName)
     {
         if(!gm.CanFreelyInteract()) 
         {

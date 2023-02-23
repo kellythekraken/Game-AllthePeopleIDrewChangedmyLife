@@ -20,19 +20,18 @@ public class DoorInteraction : Interactable
     {
         //display name (either enter/exit)
         if (!other.CompareTag("Player") || !interactable) return;
-        InRange = true;
         indicator.ChangeText(indoor? "Exit" :"Enter"); 
     }
 
     //when action key is pressed
-    protected override void StartInteraction()
+    public override void StartInteraction()
     {
         Teleport();
     }
     protected override void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
-        indicator.DrawRay("Door");
+        indicator.DrawRay();//"Door"
     }
     void Teleport()
     {

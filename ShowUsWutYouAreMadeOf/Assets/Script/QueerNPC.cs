@@ -16,7 +16,7 @@ public class QueerNPC : Interactable
         _animator = GetComponent<Animator>();
         alreadyGifted = alreadySketched = false;
     }
-    protected override void StartInteraction()
+    public override void StartInteraction()
     {
         if(alreadyGifted)
         {
@@ -42,7 +42,6 @@ public class QueerNPC : Interactable
     protected override void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
-        InRange = true;
         var displayTxt = introduced? queerID.npcName : "Chat"; 
         indicator.ChangeText(displayTxt); 
     }

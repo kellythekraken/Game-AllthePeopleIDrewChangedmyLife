@@ -12,7 +12,6 @@ public class Interactable : MonoBehaviour
     protected GameManager gm;
     protected InteractIndicator indicator;
     private Collider _collider;
-    protected bool InRange = false;
     private Transform playerTransform;
     protected bool interactable 
     {
@@ -29,13 +28,13 @@ public class Interactable : MonoBehaviour
         dialogueRunner = gm.dialogueRunner;
         _collider = GetComponent<Collider>();
         _collider.isTrigger = true;
-        InputManager.Instance.interactAction.performed += InteractionAction;
+        //InputManager.Instance.interactAction.performed += InteractionAction;
         dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
     }
 
     void OnDisable()
     {
-        InputManager.Instance.interactAction.performed -= InteractionAction;
+        //InputManager.Instance.interactAction.performed -= InteractionAction;
     }
 
     //if in range, communicate with the interactindicator, change the text
@@ -43,26 +42,23 @@ public class Interactable : MonoBehaviour
     protected virtual void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
-        InRange = true;
         indicator.ChangeText(name); 
     }
     protected virtual void OnTriggerStay(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
-        InRange = true;
-        indicator.DrawRay(name);
+        indicator.DrawRay(); //name
     }
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        InRange = false;
         indicator.DisplayIndicator(false);
     }
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (indicator.facingSubject && InRange && interactable) StartInteraction();
+        if (indicator.facingSubject && interactable) StartInteraction();
     }
-    protected virtual void StartInteraction()
+    public virtual void StartInteraction()
     {
         gm.HidePronoun();
         gm.currMode = CurrentMode.Conversation;
