@@ -39,7 +39,8 @@ public class Interactable : MonoBehaviour
 
     //if in range, communicate with the interactindicator, change the text
     //if face the object, the indicator will show up, and then the condition to interact should THEN be satisfied.
-    protected virtual void OnTriggerEnter(Collider other)
+    
+   /* protected virtual void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
         indicator.ChangeText(name); 
@@ -53,7 +54,8 @@ public class Interactable : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         indicator.DisplayIndicator(false);
-    }
+    }*/
+
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         if (indicator.facingSubject && interactable) StartInteraction();

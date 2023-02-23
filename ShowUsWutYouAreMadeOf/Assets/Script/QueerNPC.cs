@@ -18,13 +18,14 @@ public class QueerNPC : Interactable
     }
     public override void StartInteraction()
     {
+        base.StartInteraction();
+
         if(alreadyGifted)
         {
             bool wearingGiftedItem = WardrobeManager.Instance.IsWearingGiftedItem(queerID.npcName);
             GameManager.Instance.variableStorage.SetValue("$SpecialDialogue", wearingGiftedItem);
         }
-       
-        base.StartInteraction();
+        
         if(indicator.currentInteract == this)
         {
             if(pronounKnown) ChangePronounTag();
@@ -39,12 +40,15 @@ public class QueerNPC : Interactable
         gm.pronounText.text = queerID.pronouns;
         gm.ShowPronoun();
     }
+
+    /*
     protected override void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player") || !interactable) return;
         var displayTxt = introduced? queerID.npcName : "Chat"; 
         indicator.ChangeText(displayTxt); 
-    }
+    }*/
+
     public void StartSketchConversation()
     {
         gm.currMode = CurrentMode.Conversation;

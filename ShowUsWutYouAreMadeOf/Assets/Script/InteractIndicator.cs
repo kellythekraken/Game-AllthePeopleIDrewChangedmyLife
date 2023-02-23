@@ -26,7 +26,6 @@ public class InteractIndicator : MonoBehaviour
         myText = GetComponent<TextMeshProUGUI>();
         myText.enabled = false;
         InputManager.Instance.interactAction.performed += InteractionAction;
-
     }
 
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
@@ -34,7 +33,6 @@ public class InteractIndicator : MonoBehaviour
         //if hit 
         if (rayHitObject!=null) 
         {
-            Debug.Log("trying to interact wth " + rayHitObject.name);
             rayHitObject.GetComponent<Interactable>().StartInteraction();
         }
     }
@@ -43,6 +41,10 @@ public class InteractIndicator : MonoBehaviour
     {
         DrawRay();
     }
+
+//make the name change when you can interact already! the ontrigger enter function
+
+    /*
     //display when the player is facing this ui element
     public void CheckFaceDir(Transform target, float biasValue)
     {
@@ -60,8 +62,10 @@ public class InteractIndicator : MonoBehaviour
         var show = distanceFromCenter < biasValue;
         DisplayIndicator(show);
     }
-
-    [SerializeField] Transform rayHitObject;    
+*/
+    
+    [SerializeField] Transform rayHitObject;
+    public bool hitInteractable;    
     public void DrawRay()
     {
         if(!gm.CanFreelyInteract()) 
@@ -71,20 +75,20 @@ public class InteractIndicator : MonoBehaviour
         }
         var pos = player.transform.position + new Vector3(0,1.6f,0);
         var forward = mainCam.transform.forward;
-        var rayLength = 2f;
+        var rayLength = 1f;
         RaycastHit hit;
 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
             Transform objectHit = hit.transform;
-            bool hitInteractable = hit.transform.gameObject.layer == 11;
+            hitInteractable = hit.transform.gameObject.layer == 11;
             DisplayIndicator(hitInteractable);
-        
+            
             if(hitInteractable) {rayHitObject = objectHit.transform;}
-            else{rayHitObject =null;}
+            else{rayHitObject =null; DisplayIndicator(false);}
         }
     }
 
-    public void DrawRay1(string interactName)
+/*    public void DrawRay1(string interactName)
     {
         if(!gm.CanFreelyInteract()) 
         {
@@ -101,10 +105,12 @@ public class InteractIndicator : MonoBehaviour
             bool show = (hit.transform.gameObject.layer == 11) && (objectHit.name == interactName);
             DisplayIndicator(show);
         }
-    }
+    }*/
 
     public void DisplayIndicator(bool display)
     {
+        if(display && rayHitObject !=null) ChangeText(rayHitObject.name);
+
         myText.enabled = facingSubject = display;
         if(myText.enabled) UIManager.Instance.ShowInstruction("E / Left Mouse to interact");
         else if(!myText.enabled || gm.InConversation()){ UIManager.Instance.HideInstruction();}
