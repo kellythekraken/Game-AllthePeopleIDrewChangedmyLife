@@ -32,7 +32,7 @@ public class InteractIndicator : MonoBehaviour
         //if hit 
         if (rayHitObject!=null && myText.enabled) 
         {
-            rayHitObject.GetComponent<Interactable>().StartInteraction();
+            rayHitInteract.StartInteraction();
             rayHitObject = null;
         }
     }
@@ -65,6 +65,7 @@ public class InteractIndicator : MonoBehaviour
 */
     
     [SerializeField] Transform rayHitObject;
+    Interactable rayHitInteract;
     public void DrawRay()
     {
         if(!gm.CanFreelyInteract()) 
@@ -83,6 +84,8 @@ public class InteractIndicator : MonoBehaviour
             if(Vector3.Distance(pos, objectHit.position) < 2.5f)
             {
                 rayHitObject = objectHit.transform;
+                rayHitInteract = rayHitObject.GetComponent<Interactable>();
+                if(!rayHitInteract.interactable) return;
                 ChangeText(rayHitObject.name);
                 DisplayIndicator(true);
             }

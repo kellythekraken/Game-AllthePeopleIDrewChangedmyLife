@@ -18,6 +18,7 @@ public class QueerNPC : Interactable
     }
     public override void StartInteraction()
     {
+        if(!interactable) return;
         base.StartInteraction();
 
         if(alreadyGifted)

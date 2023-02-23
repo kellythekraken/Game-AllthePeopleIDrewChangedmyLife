@@ -13,7 +13,7 @@ public class Interactable : MonoBehaviour
     protected InteractIndicator indicator;
     private Collider _collider;
     private Transform playerTransform;
-    protected bool interactable 
+    internal bool interactable 
     {
         get { return _interactable;}
         set { if(!silence) _interactable = value; }
@@ -54,14 +54,15 @@ public class Interactable : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
         indicator.DisplayIndicator(false);
-    }*/
+    }
 
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         if (interactable) StartInteraction();
-    }
+    }*/
     public virtual void StartInteraction()
     {
+        if(!interactable) return;
         gm.HidePronoun();
         gm.currMode = CurrentMode.Conversation;
         indicator.currentInteract = this;

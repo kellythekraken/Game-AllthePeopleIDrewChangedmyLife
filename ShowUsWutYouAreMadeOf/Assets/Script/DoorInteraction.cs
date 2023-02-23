@@ -31,7 +31,7 @@ public class DoorInteraction : Interactable
     //when action key is pressed
     public override void StartInteraction()
     {
-        Teleport();
+        if(interactable) Teleport();
     }
 
 
