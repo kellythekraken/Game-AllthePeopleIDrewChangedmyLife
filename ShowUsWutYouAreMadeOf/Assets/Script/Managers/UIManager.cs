@@ -42,9 +42,10 @@ public class UIManager : MonoBehaviour
     }
     bool currentlyDisplayingInstruction = false;
 
-    public void ShowInstruction(string textToDisplay)
+    public void ShowInteractInstruction()
     {
-        instructionText.text = textToDisplay;
+        if(currentlyDisplayingInstruction) {InteractIndicator.Instance.DisplayIndicator(false); return;}
+        instructionText.text = "E / Left Mouse to interact";    //maybe change this to (e) after the text display??
         instructionText.enabled = true;
     }
 
@@ -54,6 +55,8 @@ public class UIManager : MonoBehaviour
         instructionText.enabled = false;
     }
 
+    //add the dialogue into a queue, and priority?? or override the show hid instruction
+    //bool instructionRunning = false;
     public void DisplayInstruction(string textToDisplay, float displayTime)
     {
         instructionText.text = textToDisplay;

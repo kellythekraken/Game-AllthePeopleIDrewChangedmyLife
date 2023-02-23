@@ -173,7 +173,7 @@ title: Ali_Eye
 title: Ali_Top
 ---
 <<if visited_count("Ali_Top") == 0>>
-    Ali: Wearing black? Yeah, I guess it's a dresscode of this city. Unfortunately you couldn't escape that even at queer spaces.
+    Ali: Black? I guess it is a dresscode of this city. Unfortunately you couldn't escape that even in queer spaces.
 //    Ali: Community is so important. 
 //    Ali: No matter how different you are with people out there. Knowing there're people sharing similar experiences and stories with you. 
 //    Ali: It eases that feeling of isolation.

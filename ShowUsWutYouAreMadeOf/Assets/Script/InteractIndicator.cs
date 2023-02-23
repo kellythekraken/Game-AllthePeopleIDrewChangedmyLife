@@ -8,7 +8,6 @@ public class InteractIndicator : MonoBehaviour
     //take info from interactables, check facing direction
     //attached to the gameobject under interface canvas
     public static InteractIndicator Instance;
-    internal bool facingSubject;
     GameManager gm;
     Camera mainCam;
     TextMeshProUGUI myText;
@@ -31,9 +30,10 @@ public class InteractIndicator : MonoBehaviour
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         //if hit 
-        if (rayHitObject!=null) 
+        if (rayHitObject!=null && myText.enabled) 
         {
             rayHitObject.GetComponent<Interactable>().StartInteraction();
+            rayHitObject = null;
         }
     }
 
@@ -65,26 +65,26 @@ public class InteractIndicator : MonoBehaviour
 */
     
     [SerializeField] Transform rayHitObject;
-    public bool hitInteractable;    
     public void DrawRay()
     {
         if(!gm.CanFreelyInteract()) 
         {
-            DisplayIndicator(false);
             return;
         }
         var pos = player.transform.position + new Vector3(0,1.6f,0);
         var forward = mainCam.transform.forward;
-        var rayLength = 1f;
+        var rayLength = 5f;
         RaycastHit hit;
 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
             Transform objectHit = hit.transform;
-            hitInteractable = hit.transform.gameObject.layer == 11;
-            DisplayIndicator(hitInteractable);
-            
-            if(hitInteractable) {rayHitObject = objectHit.transform;}
-            else{rayHitObject =null; DisplayIndicator(false);}
+            if(Vector3.Distance(pos, objectHit.position) < 2.5f)
+            {
+                rayHitObject = objectHit.transform;
+                ChangeText(rayHitObject.name);
+                DisplayIndicator(true);
+            }
+            else{DisplayIndicator(false);}
         }
     }
 
@@ -109,10 +109,8 @@ public class InteractIndicator : MonoBehaviour
 
     public void DisplayIndicator(bool display)
     {
-        if(display && rayHitObject !=null) ChangeText(rayHitObject.name);
-
-        myText.enabled = facingSubject = display;
-        if(myText.enabled) UIManager.Instance.ShowInstruction("E / Left Mouse to interact");
+        myText.enabled = display;
+        if(myText.enabled) UIManager.Instance.ShowInteractInstruction();
         else if(!myText.enabled || gm.InConversation()){ UIManager.Instance.HideInstruction();}
     }
     public void ChangeText(string text)

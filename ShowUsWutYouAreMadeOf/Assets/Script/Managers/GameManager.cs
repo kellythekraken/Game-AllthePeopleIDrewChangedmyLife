@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     internal SceneManager sceneManager;
     internal InputManager inputManager;
     internal AudioManager audioManager;
+    internal InteractIndicator interactIndicator;
     internal TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
     internal bool sketchbookOpen;
@@ -65,6 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         audioManager = AudioManager.Instance;
+        interactIndicator = InteractIndicator.Instance;
         variableStorage = dialogueRunner.GetComponent<InMemoryVariableStorage>();
         currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
                 audioManager.SetMuffleParameter(0f);
                 return;
             case CurrentMode.Conversation:
+                interactIndicator.DisplayIndicator(false);
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(false);
                 return;

@@ -58,7 +58,7 @@ public class Interactable : MonoBehaviour
 
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        if (indicator.facingSubject && interactable) StartInteraction();
+        if (interactable) StartInteraction();
     }
     public virtual void StartInteraction()
     {

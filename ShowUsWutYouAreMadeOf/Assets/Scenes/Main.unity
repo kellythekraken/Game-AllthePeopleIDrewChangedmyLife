@@ -14466,7 +14466,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2560
   rayHitObject: {fileID: 0}
-  hitInteractable: 0
 --- !u!114 &1729560204
 MonoBehaviour:
   m_ObjectHideFlags: 0
