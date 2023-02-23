@@ -2239,7 +2239,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTitle: AliStart
   notification: 
-  centerFacingBias: 0.8
   queerID: {fileID: 11400000, guid: 6827b6f996ad22a4abb3582ddda39cab, type: 2}
   sketchableAreas:
   - {fileID: 1097750096}
@@ -3579,7 +3578,6 @@ GameObject:
   - component: {fileID: 445242759}
   - component: {fileID: 445242762}
   - component: {fileID: 445242761}
-  - component: {fileID: 445242760}
   m_Layer: 0
   m_Name: Rue
   m_TagString: Untagged
@@ -3602,19 +3600,6 @@ Transform:
   m_Father: {fileID: 2102689990}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -105.341, z: 0}
---- !u!135 &445242760
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 445242758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &445242761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3622,14 +3607,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445242758}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9312ec86c42fa0b43985eb19e36baaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueTitle: 
+  dialogueTitle: Rue
   notification: 
-  centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: ccf8f3f2c312d2640aff9f797a86d3fe, type: 2}
   sketchableAreas: []
 --- !u!136 &445242762
@@ -3642,10 +3626,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.33324784
-  m_Height: 1.326944
+  m_Radius: 0.4991966
+  m_Height: 2.7239053
   m_Direction: 1
-  m_Center: {x: 0.0056453347, y: 0.35011894, z: 1.00165015e-11}
+  m_Center: {x: 0.03, y: 0.55801785, z: 0.49999902}
 --- !u!1 &446127090
 GameObject:
   m_ObjectHideFlags: 0
@@ -4552,7 +4536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTitle: 
   notification: 
-  centerFacingBias: 0.45
   indoorLandingPosition: {x: -0.82, y: 0.027, z: 5.14}
   outdoorLandingPosition: {x: -0.95, y: -0.51, z: 7.62}
 --- !u!135 &610133932
@@ -4616,7 +4599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTitle: ToniStart
   notification: 
-  centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: 91f614f1d57c13d48b9a7cfdea40b4da, type: 2}
   sketchableAreas: []
 --- !u!136 &613048515
@@ -5094,11 +5076,29 @@ MonoBehaviour:
     m_ActivateAfter: 0
     m_MinDuration: 0
   m_DefaultBlend:
-    m_Style: 1
+    m_Style: 4
     m_Time: 0.8
     m_CustomCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -7596,7 +7596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 93667318b5de24146bffa2041c96fcd8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.640738
+      value: -22.53
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 93667318b5de24146bffa2041c96fcd8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13197,7 +13197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTitle: 
   notification: 
-  centerFacingBias: 0.45
   indoorLandingPosition: {x: -0.82, y: 0.027, z: 5.14}
   outdoorLandingPosition: {x: -0.95, y: -0.51, z: 7.62}
 --- !u!1 &1501136950
@@ -15469,7 +15468,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTitle: LeonStart
   notification: 
-  centerFacingBias: 0.3
   queerID: {fileID: 11400000, guid: 030b89e4acb56214fa7f828664cb4d64, type: 2}
   sketchableAreas: []
 --- !u!135 &1851129616
@@ -15881,7 +15879,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.054622218, y: -0.0456214, z: 0.0024982844, w: 0.99746126}
+  m_LocalRotation: {x: 0.2000496, y: -0.230141, z: 0.048404533, w: 0.95114267}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -19711,8 +19709,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0, y: -0.99988776, z: -0, w: 0.014985152}
-  m_LocalPosition: {x: -10.740043, y: -3.1390002, z: 2.0241976}
+  m_LocalRotation: {x: -0, y: -0.9243339, z: -0, w: 0.38158467}
+  m_LocalPosition: {x: -8.200065, y: -3.1390002, z: -6.4637704}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -20536,8 +20534,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116004488851913433}
-  m_LocalRotation: {x: -0, y: -0.99988776, z: -0, w: 0.014985152}
-  m_LocalPosition: {x: -251.97002, y: -139.85901, z: 13.524198}
+  m_LocalRotation: {x: -0, y: -0.9243339, z: -0, w: 0.38158467}
+  m_LocalPosition: {x: -249.43004, y: -139.85901, z: 5.0362296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1116004488226458338}
@@ -20860,8 +20858,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354527797997906190}
-  m_LocalRotation: {x: -0, y: -0.9998877, z: -0, w: 0.014985151}
-  m_LocalPosition: {x: -0.89, y: -0.51, z: 9.52}
+  m_LocalRotation: {x: -0, y: -0.9243339, z: -0, w: 0.38158467}
+  m_LocalPosition: {x: -1.11, y: -0.51, z: 2.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6952351074407895122}
@@ -20869,7 +20867,7 @@ Transform:
   - {fileID: 1111358187}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -178.283, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -135.136, z: 0}
 --- !u!114 &3354527797997906178
 MonoBehaviour:
   m_ObjectHideFlags: 0

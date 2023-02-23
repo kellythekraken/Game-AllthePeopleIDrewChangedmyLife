@@ -74,10 +74,12 @@ public class InteractIndicator : MonoBehaviour
         var pos = player.transform.position + new Vector3(0,1.6f,0);
         var forward = mainCam.transform.forward;
         var rayLength = 5f;
-        RaycastHit hit;
+        RaycastHit hit; 
 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
             Transform objectHit = hit.transform;
+            if(objectHit.gameObject.layer != 11) {DisplayIndicator(false); return;}
+
             if(Vector3.Distance(pos, objectHit.position) < 2.5f)
             {
                 rayHitObject = objectHit.transform;

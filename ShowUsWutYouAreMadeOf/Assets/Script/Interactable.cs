@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour
 {
     [SerializeField] private string dialogueTitle;
     [TextArea(1,3)][SerializeField] private string notification;
-    [SerializeField] private float centerFacingBias = 0.3f;
+    //[SerializeField] private float centerFacingBias = 0.3f;
     protected DialogueRunner dialogueRunner;
     protected GameManager gm;
     protected InteractIndicator indicator;
