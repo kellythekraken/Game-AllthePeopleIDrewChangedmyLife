@@ -65,7 +65,9 @@ public class InteractIndicator : MonoBehaviour
 */
     
     [SerializeField] Transform rayHitObject;
+    Transform objectHit;
     Interactable rayHitInteract;
+
     public void DrawRay()
     {
         if(!gm.CanFreelyInteract()) 
@@ -74,14 +76,13 @@ public class InteractIndicator : MonoBehaviour
         }
         var pos = player.transform.position + new Vector3(0,1.6f,0);
         var forward = mainCam.transform.forward;
-        var rayLength = 5f;
+        var rayLength = 3f;
         RaycastHit hit; 
-
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
-            Transform objectHit = hit.transform;
+            objectHit = hit.transform;
             if(objectHit.gameObject.layer != 11) {DisplayIndicator(false); return;}
-
-            if(Vector3.Distance(pos, objectHit.position) < 2.5f)
+            
+            if(hit.distance < 1f)
             {
                 rayHitObject = objectHit.transform;
                 rayHitInteract = rayHitObject.GetComponent<Interactable>();

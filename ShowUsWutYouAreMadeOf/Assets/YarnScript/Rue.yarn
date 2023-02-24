@@ -11,17 +11,19 @@ tags:
     <<wait .5>>
     Rue: Hey!
     Rue: How are you?
-<<else>>
-    Rue: another chat
     <<sketch true>>
-    <<camera AliSketch>>
+    <<camera RueSketch>>
     <<wait .5>>
     Rue: Sketch!
+    <<pose Rue Sit>>
     <<startsketch>>
+<<else>>
+    Rue: another chat
+    <<camera Player>>
 <<endif>>
 
 
-<<camera Player>>
+
 ===
 title: RueSketch
 ---

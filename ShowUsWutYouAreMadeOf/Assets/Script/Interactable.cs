@@ -11,7 +11,6 @@ public class Interactable : MonoBehaviour
     protected DialogueRunner dialogueRunner;
     protected GameManager gm;
     protected InteractIndicator indicator;
-    private Collider _collider;
     private Transform playerTransform;
     internal bool interactable 
     {
@@ -26,8 +25,6 @@ public class Interactable : MonoBehaviour
         gm = GameManager.Instance;
         indicator = InteractIndicator.Instance;
         dialogueRunner = gm.dialogueRunner;
-        _collider = GetComponent<Collider>();
-        _collider.isTrigger = true;
         //InputManager.Instance.interactAction.performed += InteractionAction;
         dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
     }
