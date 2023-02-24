@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
         float count;
         variableStorage.TryGetValue("$StrokeCount", out count);
     }
+    // yarn command 'sketch'
     public void OpenCloseSketchbook(bool open)
     {
         ShowPlayer(!open);
