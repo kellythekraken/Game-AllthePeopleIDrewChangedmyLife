@@ -2,7 +2,7 @@
 tags:
 ---
 <<camera RueChat>>
-
+<<pose Rue Sketch>>
 <<if visited_count("Rue") == 0>>
     <<set $RueIntroduced to true>>
     <<set $NumberOfEncounters +=1>>
@@ -15,7 +15,6 @@ tags:
     <<camera RueSketch>>
     <<wait .5>>
     Rue: Sketch!
-    <<pose Rue Sit>>
     <<startsketch>>
 <<else>>
     Rue: another chat

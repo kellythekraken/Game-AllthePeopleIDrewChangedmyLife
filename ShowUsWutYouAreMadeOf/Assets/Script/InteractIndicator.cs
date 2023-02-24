@@ -29,7 +29,6 @@ public class InteractIndicator : MonoBehaviour
 
     void InteractionAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
-        //if hit 
         if (rayHitObject!=null && myText.enabled) 
         {
             rayHitInteract.StartInteraction();
@@ -64,8 +63,7 @@ public class InteractIndicator : MonoBehaviour
     }
 */
     
-    [SerializeField] Transform rayHitObject;
-    Transform objectHit;
+    Transform rayHitObject;
     Interactable rayHitInteract;
 
     public void DrawRay()
@@ -79,7 +77,7 @@ public class InteractIndicator : MonoBehaviour
         var rayLength = 3f;
         RaycastHit hit; 
         if (Physics.Raycast(pos, forward, out hit,rayLength,layerMask)) {
-            objectHit = hit.transform;
+            Transform objectHit = hit.transform;
             if(objectHit.gameObject.layer != 11) {DisplayIndicator(false); return;}
             
             if(hit.distance < 1f)
