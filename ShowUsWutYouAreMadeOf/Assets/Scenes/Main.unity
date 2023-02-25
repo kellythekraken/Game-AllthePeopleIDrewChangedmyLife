@@ -4009,7 +4009,7 @@ Transform:
   m_LocalScale: {x: 0.66489863, y: 0.66489863, z: 0.66489863}
   m_Children: []
   m_Father: {fileID: 1336766317}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &485647218
 MonoBehaviour:
@@ -5046,6 +5046,65 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &632776148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 632776149}
+  - component: {fileID: 632776151}
+  - component: {fileID: 632776150}
+  m_Layer: 11
+  m_Name: NPC-GroupOfGirls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &632776149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632776148}
+  m_LocalRotation: {x: -0, y: 0.8309709, z: -0, w: -0.55631596}
+  m_LocalPosition: {x: 8.968, y: 0.5024171, z: -7.342}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1336766317}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 247.603, z: 0}
+--- !u!114 &632776150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632776148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3316006942b1db4eb10781d82f10af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactName: Listen
+  dialogueTitle: GroupOfGirls
+--- !u!65 &632776151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632776148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.3298199, y: 1.77234, z: 1.7493433}
+  m_Center: {x: -0.061131466, y: 1.0961179, z: -0.37467188}
 --- !u!114 &637598064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2537494556865132031, guid: 5a413dcf3462fa144b9c0e26b5b77a0b, type: 3}
@@ -9992,6 +10051,8 @@ Transform:
   - {fileID: 22303660}
   - {fileID: 1968525971}
   - {fileID: 543450653665033398}
+  - {fileID: 632776149}
+  - {fileID: 1460507780}
   - {fileID: 1640948410}
   - {fileID: 485647217}
   - {fileID: 1413703337}
@@ -10939,7 +11000,7 @@ Transform:
   m_LocalScale: {x: 0.66489863, y: 0.66489863, z: 0.66489863}
   m_Children: []
   m_Father: {fileID: 1336766317}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1413703338
 MonoBehaviour:
@@ -11290,6 +11351,65 @@ Transform:
   m_Father: {fileID: 1548616924}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 4.0711057e-13, y: -9.718231e-13, z: 180}
+--- !u!1 &1460507779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460507780}
+  - component: {fileID: 1460507782}
+  - component: {fileID: 1460507781}
+  m_Layer: 11
+  m_Name: NPC-GroupOfGirls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460507780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460507779}
+  m_LocalRotation: {x: -0, y: 0.6886716, z: -0, w: -0.7250735}
+  m_LocalPosition: {x: 9.57, y: 0.5024171, z: -9.65}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1336766317}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 272.95, z: 0}
+--- !u!114 &1460507781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460507779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3316006942b1db4eb10781d82f10af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactName: Listen
+  dialogueTitle: GroupOfGirls
+--- !u!65 &1460507782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460507779}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8752681, y: 1.77234, z: 1.0128642}
+  m_Center: {x: 0.12074524, y: 1.0961161, z: 0.4403594}
 --- !u!1 &1494015773
 GameObject:
   m_ObjectHideFlags: 0
@@ -12466,7 +12586,7 @@ Transform:
   m_LocalScale: {x: 0.66489863, y: 0.66489863, z: 0.66489863}
   m_Children: []
   m_Father: {fileID: 1336766317}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1640948411
 MonoBehaviour:
@@ -13675,7 +13795,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1810661637}
   - component: {fileID: 1810661640}
-  - component: {fileID: 1810661639}
   - component: {fileID: 1810661638}
   m_Layer: 0
   m_Name: Leon Cam
@@ -13714,23 +13833,6 @@ MonoBehaviour:
   m_ChannelMask: 1
   m_Gain: 1
   m_Use2DDistance: 0
---- !u!114 &1810661639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810661636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ConfineMode: 1
-  m_BoundingVolume: {fileID: 0}
-  m_BoundingShape2D: {fileID: 0}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
 --- !u!114 &1810661640
 MonoBehaviour:
   m_ObjectHideFlags: 0
