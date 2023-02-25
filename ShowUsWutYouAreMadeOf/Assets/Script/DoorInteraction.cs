@@ -16,17 +16,11 @@ public class DoorInteraction : Interactable
         player = gm.player;
         controller = player.GetComponent<CharacterController>();
     }
-   /* protected override void OnTriggerEnter(Collider other)
-    {
-        //display name (either enter/exit)
-        if (!other.CompareTag("Player") || !interactable) return;
-        indicator.ChangeText(indoor? "Exit" :"Enter"); 
-    }
-    protected override void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Player") || !interactable) return;
-        indicator.DrawRay();//"Door"
-    }*/
+    public override string GetName() 
+     {
+        return indoor? "Exit" :"Enter"; 
+
+     }
 
     //when action key is pressed
     public override void StartInteraction()

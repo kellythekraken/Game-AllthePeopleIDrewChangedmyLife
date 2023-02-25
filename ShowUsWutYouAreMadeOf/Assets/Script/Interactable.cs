@@ -5,6 +5,7 @@ using Yarn.Unity;
 [RequireComponent(typeof(Collider))]
 public class Interactable : MonoBehaviour
 {
+    public string interactName;
     [SerializeField] private string dialogueTitle;
     [TextArea(1,3)][SerializeField] private string notification;
     //[SerializeField] private float centerFacingBias = 0.3f;
@@ -27,6 +28,11 @@ public class Interactable : MonoBehaviour
         dialogueRunner = gm.dialogueRunner;
         //InputManager.Instance.interactAction.performed += InteractionAction;
         dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
+    }
+
+    public virtual string GetName() 
+    {
+        return interactName;
     }
 
     void OnDisable()

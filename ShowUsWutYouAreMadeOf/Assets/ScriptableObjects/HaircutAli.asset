@@ -45,4 +45,4 @@ MonoBehaviour:
     targetDrawings:
     - {fileID: 21300000, guid: c7d36e9080a37dc48b689d09f675e63f, type: 3}
   backgroundDrawing: {fileID: 21300000, guid: 3811905866ec5e846b1027e9ad89090d, type: 3}
-  maximumStrokes: 1
+  maximumStrokes: 8

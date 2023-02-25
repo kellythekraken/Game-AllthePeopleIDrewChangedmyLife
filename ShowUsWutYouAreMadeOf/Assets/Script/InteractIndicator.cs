@@ -85,7 +85,7 @@ public class InteractIndicator : MonoBehaviour
                 rayHitObject = objectHit.transform;
                 rayHitInteract = rayHitObject.GetComponent<Interactable>();
                 if(!rayHitInteract.interactable) return;
-                ChangeText(rayHitObject.name);
+                ChangeText(rayHitInteract.GetName());
                 DisplayIndicator(true);
             }
             else{DisplayIndicator(false);}

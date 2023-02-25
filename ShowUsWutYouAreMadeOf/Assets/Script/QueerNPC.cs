@@ -40,14 +40,10 @@ public class QueerNPC : Interactable
         gm.pronounText.text = queerID.pronouns;
         gm.ShowPronoun();
     }
-
-    /*
-    protected override void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Player") || !interactable) return;
-        var displayTxt = introduced? queerID.npcName : "Chat"; 
-        indicator.ChangeText(displayTxt); 
-    }*/
+     public override string GetName() 
+     {
+        return introduced? queerID.npcName : "Chat"; 
+     }
 
     public void StartSketchConversation()
     {

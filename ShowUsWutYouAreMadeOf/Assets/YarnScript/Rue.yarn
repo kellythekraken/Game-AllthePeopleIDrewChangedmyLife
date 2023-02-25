@@ -9,19 +9,21 @@ tags:
     <<set $RueSmallTalk to 0>>
 
     <<wait .5>>
-    Rue: Hey!
-    Rue: How are you?
-    <<sketch true>>
-    <<camera RueSketch>>
-    <<wait .5>>
-    Rue: Sketch!
-    <<startsketch>>
+    Rue: How's your evening going?
+    Rue: I never get tired of queer bars. 
+    <<camera Player>>
+    <<pose Rue Sit>>
+    //<<sketch true>>
+    //<<camera RueSketch>>
+    //<<wait .5>>
+    //Rue: Sketch!
+    //<<startsketch>>
 <<else>>
     Rue: another chat
     <<camera Player>>
 <<endif>>
 
-
+//maybe have some npc just say a few lines, but you can't sketch them, just chat. or reject your offering to sketch.
 
 ===
 title: RueSketch
