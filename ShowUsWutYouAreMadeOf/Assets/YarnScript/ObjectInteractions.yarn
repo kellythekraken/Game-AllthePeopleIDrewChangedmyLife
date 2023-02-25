@@ -1,7 +1,7 @@
 ﻿title: DisplayBox
 ---
 <<camera LeonCam>>
-Leon: Interested?
+Leon: Looks quite nice, right?
 Leon: They're made by local artists.
 <<camera PlayerCam>>
 ===
@@ -17,11 +17,52 @@ Is it time to leave?
     Not too tired yet, could stay for a bit longer.
     <<option false>>
 ===
-
 title: EndOfDemo
 ---
 <<option false>>
 Thank you for playing the demo!
 Have a great day!
 <<the_end>>
+
+
+
+//DECORs
+===
+title: VulvaDecor
+---
+An impressively large vulva-shaped decor.
+===
+title: TreeDecor
+---
+A painted branch with christmas tree decoration hanging on it.
+===
+title: RainbowDecor
+---
+Rainbow may be an obvious motif, but it is still comforting to have this indication of a safe space.
+===
+title: Restroom
+---
+Restroom with a gender neutral toilet sign.
+===
+title: FlyerShelf
+---
+A shelf full of flyers for upcoming events.
+Summer queer festival, vegan market, and a new exhibition on gender expression in fashion.
+===
+title: DragPoster
+---
+A poster of an upcoming drag festival hosted by Morgan Morgenstern.
+Featuring performances by drag queen 'Dana Doll' and drag king 'Kentuckys Finest Capitalist'.
+
+//NPC CHATS
+===
+title: GroupOfGirls
+---
+
+===
+title: NPC_RedSunglasses
+---
+Have you tried their new cocktail 'fruit salad'? 
+Although my favorite remain to be 'unicorn sunset'. 
+Who doesn't want to drink pretty glitters?
 ===
