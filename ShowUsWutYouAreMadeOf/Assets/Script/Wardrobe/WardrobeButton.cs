@@ -25,10 +25,12 @@ public class WardrobeButton : MonoBehaviour
 	public float iconGridHeight;
 	public int iconGridCellCount = 2;
     void Awake() => Instance = this;
+    InputManager inputManager;
     private void Start()
     {
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
+        inputManager = InputManager.Instance;
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
@@ -37,6 +39,11 @@ public class WardrobeButton : MonoBehaviour
         iconLayoutrect = iconLayoutParent.GetComponent<RectTransform> ();
         ClearIconGridLayout();
     }
+    void OnEnable() 
+    {
+        if(inputManager != null) inputManager.wardrobeAction.Enable();
+    }
+    void OnDisable() => inputManager.wardrobeAction.Disable();
 
     public void WardrobeAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {

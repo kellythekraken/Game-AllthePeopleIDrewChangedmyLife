@@ -100,7 +100,7 @@ public class SketchingSystem : MonoBehaviour
             }
         }
         foreach(Button i in colorChoices) {i.enabled = true; }
-        InputManager.Instance.EnableWardrobeAction(false);
+        gm.EnableWardrobeAction(false);
         sketchbook.enabled = true;
     }
     GameObject lastCrayon = null;
@@ -195,7 +195,7 @@ public class SketchingSystem : MonoBehaviour
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
-        InputManager.Instance.EnableWardrobeAction(true);
+        gm.EnableWardrobeAction(true);
         foreach(var i in bodypartLists) { i.focusable = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
     }

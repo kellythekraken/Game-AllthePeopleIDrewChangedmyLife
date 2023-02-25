@@ -34,8 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject player;   //the one with important controls and scripts
 
     [Header("Settings")]
-    public bool startIndoor;
-
+    public bool startIndoor;    //determine where you start as 
     internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
@@ -93,10 +92,12 @@ public class GameManager : MonoBehaviour
         {
             case CurrentMode.Nothing:
                 LockCursor(true);
+                if(DoorInteraction.indoor) EnableWardrobeAction(true);
                 inputManager.EnableChatMoveBtn(true);
                 audioManager.SetMuffleParameter(0f);
                 return;
             case CurrentMode.Conversation:
+                EnableWardrobeAction(false);
                 interactIndicator.DisplayIndicator(false);
                 LockCursor(true);
                 inputManager.EnableChatMoveBtn(false);

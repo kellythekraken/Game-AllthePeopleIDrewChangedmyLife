@@ -8,7 +8,7 @@ public class DoorInteraction : Interactable
     [SerializeField] Vector3 indoorLandingPosition, outdoorLandingPosition;
     GameObject player;
     CharacterController controller;
-    bool indoor;
+    public static bool indoor;
 
     protected override void Start()
     {

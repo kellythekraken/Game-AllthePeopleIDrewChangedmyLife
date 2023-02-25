@@ -44,12 +44,6 @@ public class InputManager : MonoBehaviour
         if(enable) mainAcionMap.Enable();
         else mainAcionMap.Disable();
     }
-    
-    public void EnableWardrobeAction(bool enable)
-    {
-        if(enable) wardrobeAction.Enable();
-        else {wardrobeAction.Disable();}
-    }
     public void EnableChatMoveBtn(bool enable)
     {
         if (enable) 
