@@ -4,16 +4,16 @@ using UnityEngine.EventSystems;
 
 public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    [SerializeField] SkinnedMeshRenderer bodypartMesh;
+    [SerializeField] string bodyName;
     internal bool focusable = false;
-    Material parentMaterial;
-    GameObject parentObj;
+    Material materialToHighlight;
     Color highlightColor;
     internal bool selected = false; // there should only be one selected!
 
     void Start()
     {   
-        parentMaterial = GetComponentInParent<SkinnedMeshRenderer>().material;
-        parentObj = transform.parent.gameObject;
+        materialToHighlight = bodypartMesh.material;
         GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
         highlightColor = SketchingSystem.Instance.materialHighlightColor;
     }
@@ -31,23 +31,25 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     {
         if(!focusable) return;
         selected = true;
-        SketchingSystem.Instance.ChosenBody = parentObj;
+        SketchingSystem.Instance.ChosenBody = bodyName;
     }
      
-     public void HighlightMaterial()
-     {
-        parentMaterial.SetColor("_EmissionColor", highlightColor);
-     }
-     public void UnlightMaterial()
-     {
-        parentMaterial.SetColor("_EmissionColor", Color.black);
-     }
-     void OnSelect()
-     {
-        if(SketchingSystem.Instance.ChosenBody != parentObj) 
-        {
-            UnlightMaterial();
-            selected = false;
-        }
-     }
+    public void HighlightMaterial()
+    {
+    materialToHighlight.SetColor("_EmissionColor", highlightColor);
+    }
+    public void UnlightMaterial()
+    {
+    materialToHighlight.SetColor("_EmissionColor", Color.black);
+    }
+
+    //unselect other
+    void OnSelect()
+    {
+    if(SketchingSystem.Instance.ChosenBody != bodyName) 
+    {
+        UnlightMaterial();
+        selected = false;
+    }
+    }
 }

@@ -11,13 +11,11 @@ tags:
     <<wait .5>>
     Rue: How's your evening going?
     Rue: I never get tired of queer bars. 
-    <<camera Player>>
-    <<pose Rue Sit>>
-    //<<sketch true>>
-    //<<camera RueSketch>>
-    //<<wait .5>>
-    //Rue: Sketch!
-    //<<startsketch>>
+    <<sketch true>>
+    <<camera RueSketch>>
+    <<wait .5>>
+    Rue: Should I be looking at you, or would that be too intense?
+    <<startsketch>>
 <<else>>
     Rue: another chat
     <<camera Player>>
@@ -28,6 +26,25 @@ tags:
 ===
 title: RueSketch
 ---
-Rue: I am Rue.
+<<wait .5>>
 
+<<if $StrokeCount < $MaxStrokes>>
+    <<set $StrokeCount +=1>>
+    Rue: I am Rue.
+<<else>>
+    <<lastdraw>>
+    Ali: I'd love to invite you to my salon one day, to continue this conversation.
+    <<set $StrokeCount to 0>>
+    <<sketchfin>>
+<<endif>>
+===
+title: RueSketchFin
+---
+<<sketch false>>
+<<camera Player>>
+Rue: Oh, is that me?
+Rue: Thank you for the sketch.
+<<gift Rue>>
+<<pose Rue Sit>>
+<<camera Player>>
 ===

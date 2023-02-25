@@ -8,8 +8,9 @@ public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
     internal UnityEvent BodypartSelectEvent = new UnityEvent();
-    private GameObject chosenBody;
-    internal GameObject ChosenBody
+
+    private string chosenBody;
+    internal string ChosenBody
     {
         get { return chosenBody; } 
         set { RegisterBodyChoice(value); BodypartSelectEvent.Invoke(); }
@@ -82,6 +83,7 @@ public class SketchingSystem : MonoBehaviour
     public void PrepareToSketch(QueerNPC targetNPC)
     {
         targetNPC.alreadySketched = true;
+        targetNPC.EnableCollider(false);
         copiedQueerID = Instantiate(targetNPC.queerID);
         
         bodypartLists = new List<SketchFocusBodypart>();
@@ -120,12 +122,12 @@ public class SketchingSystem : MonoBehaviour
     }
     
     int bodyIndex;
-    private void RegisterBodyChoice(GameObject target)  //called by changing clicked body
+    private void RegisterBodyChoice(string target)  //called by changing clicked body
     {
         chosenBody = target;
         if(target!= null) 
         {
-            chosenArea = availableChoices.Find(x=> x.objName == chosenBody.name);
+            chosenArea = availableChoices.Find(x=> x.objName == chosenBody);
         }
 
     }

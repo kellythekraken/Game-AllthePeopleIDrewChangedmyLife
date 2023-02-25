@@ -17,6 +17,15 @@ MonoBehaviour:
   giftLine: Rue gifted you some dresses!
   items:
   - {fileID: 11400000, guid: f6836ba2262e87a44bd72f0ac42f828e, type: 2}
-  drawableAreas: []
-  backgroundDrawing: {fileID: 0}
-  maximumStrokes: 1
+  drawableAreas:
+  - objName: Hair
+    targetDrawings:
+    - {fileID: 21300000, guid: a7e40853efcf2b84e9ceaeb644b432ba, type: 3}
+  - objName: Face
+    targetDrawings:
+    - {fileID: 21300000, guid: cd22e682bd898f1498b6c787a4b0db1c, type: 3}
+  - objName: Cardigan
+    targetDrawings:
+    - {fileID: 21300000, guid: 8eb1a7b0cb0200b46a246c0810961dc2, type: 3}
+  backgroundDrawing: {fileID: 21300000, guid: 3811905866ec5e846b1027e9ad89090d, type: 3}
+  maximumStrokes: 2

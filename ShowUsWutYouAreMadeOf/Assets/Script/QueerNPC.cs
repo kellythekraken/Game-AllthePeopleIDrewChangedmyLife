@@ -1,20 +1,25 @@
 using UnityEngine;
 using Yarn.Unity;
-using System.Collections;
 
 public class QueerNPC : Interactable
 {
     public Queer queerID;
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
     internal bool introduced, pronounKnown;
-    private Animator _animator;
     internal bool alreadySketched, alreadyGifted;
-
+    Animator _animator;
+    Collider _collider;
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
+        _collider = GetComponent<Collider>();
         alreadyGifted = alreadySketched = false;
+    }
+
+    public void EnableCollider(bool enable)
+    {
+        _collider.enabled = enable;
     }
     public override void StartInteraction()
     {
