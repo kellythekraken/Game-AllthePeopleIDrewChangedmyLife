@@ -38,7 +38,7 @@ public class Interactable : MonoBehaviour
         gm.currMode = CurrentMode.Conversation;
         indicator.currentInteract = this;
         dialogueRunner.StartDialogue(dialogueTitle);
-        InputManager.Instance.LockInputOnDialogueStart();
+        gm.inputManager.LockInputOnDialogueStart();
     }
     protected virtual void EndInteraction()
     {

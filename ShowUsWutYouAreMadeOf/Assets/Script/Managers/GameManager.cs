@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     //saves all the important reference
     public static GameManager Instance;
     private CurrentMode _currMode;
-    public CurrentMode currMode
+    internal CurrentMode currMode
     {
         get { return _currMode; }
         set
@@ -22,18 +22,26 @@ public class GameManager : MonoBehaviour
         }
     }
     private CurrentMode lastMode;
+
+    [Header("UI")]
+    public GameObject pronounTag;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
     internal InMemoryVariableStorage variableStorage;
-    public GameObject pronounTag;
-    [SerializeField] private NPCManager npcManager;
+
+    [Header("Player")]
     [SerializeField] public GameObject playerObject;   //player visibility
     [SerializeField] public GameObject player;   //the one with important controls and scripts
-    internal SketchingSystem sketchManager;
+
+    [Header("Settings")]
+    public bool startIndoor;
+
     internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
     internal AudioManager audioManager;
+    internal NPCManager npcManager;
+    internal SketchingSystem sketchManager;
     internal InteractIndicator interactIndicator;
     internal TextMeshProUGUI pronounText;
     internal QueerNPC sketchSubject;
@@ -48,15 +56,9 @@ public class GameManager : MonoBehaviour
         wardrobeBtn = WardrobeButton.Instance;
         sketchManager = SketchingSystem.Instance;
         sceneManager = SceneManager.Instance;
-        dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
-        //dialogueRunner.AddCommandHandler("gift", GiveItem);
-        dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
-        dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
-        dialogueRunner.AddCommandHandler<string>("enter", npcManager.OnStage);
-        dialogueRunner.AddCommandHandler<string>("leave", npcManager.OffStage);
-        dialogueRunner.AddCommandHandler("randomEnter", npcManager.OnStageRandom);
-        dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
-        dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
+        npcManager = NPCManager.Instance;
+        
+
     }
 
     void ShowSketchInstruction()
@@ -75,11 +77,12 @@ public class GameManager : MonoBehaviour
         settingsUI.SetActive(false);
         DisplayControlInstruction();
 
-        AudioManager.Instance.SetMuffleParameter(1f);
-
-        //float value;
-        //variableStorage.TryGetValue("$StrokeIndex",out value);
-        //Debug.Log("stroke index has value of " + value);
+        dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
+        //dialogueRunner.AddCommandHandler("gift", GiveItem);
+        dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
+        dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
+        dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
+        dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
     }   
     void OnDisable()=> currMode = CurrentMode.StartMenu;
     void OnModeChanged(CurrentMode mode)
@@ -150,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
 
         sketchbookOpen = open;
-        wardrobeBtn.gameObject.SetActive(!open);
+        EnableWardrobeAction(!open);
     }
     IEnumerator OpenSketchbook()
     {
@@ -160,7 +163,7 @@ public class GameManager : MonoBehaviour
     }
 #endregion
 
-    #region CONVERSATION PHASE
+#region CONVERSATION PHASE
     public void DiscoveredPronoun()
     {
         sketchSubject.pronounKnown = true;
@@ -171,6 +174,13 @@ public class GameManager : MonoBehaviour
     
 #endregion
 
+#region WARDROBE 
+
+    public void EnableWardrobeAction(bool enable)
+    {
+        wardrobeBtn.gameObject.SetActive(enable);
+    }
+#endregion
     public void PauseGame()
     {
         Time.timeScale = 0;

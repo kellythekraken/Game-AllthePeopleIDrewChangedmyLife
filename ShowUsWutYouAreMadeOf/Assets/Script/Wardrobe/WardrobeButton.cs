@@ -10,7 +10,7 @@ public class WardrobeButton : MonoBehaviour
     //also control the popup ui to display received item
 
     public static WardrobeButton Instance;
-    public GameObject wardrobeUI;
+    public GameObject wardrobeUI;   //the entire wardrobe canvas
     public Button closeBtn;
     public Image newIndicator;
     [SerializeField] private WardrobeManager wardrobeManager;

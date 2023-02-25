@@ -7,15 +7,20 @@ public class NPCManager : MonoBehaviour
     //Control the onstage and offstage of npc, keep track of the active and completed character,
     //and provide method to spawn random available npc.
 
-
+    public static NPCManager Instance;
     [SerializeField] private QueerNPC[] NPCFullList;//add in the editor
     internal List<QueerNPC> NPCToSpawn;
     internal List<QueerNPC> completedNPC; //finished sketching and chatting
     private List<QueerNPC> activeNPC; //currently in scene
     //would there be one npc to stay until the end???
 
+    void Awake() => Instance = this;
     void Start()
     {
+        GameManager.Instance.dialogueRunner.AddCommandHandler("randomEnter", OnStageRandom);
+        GameManager.Instance.dialogueRunner.AddCommandHandler<string>("enter", OnStage);
+        GameManager.Instance.dialogueRunner.AddCommandHandler<string>("leave", OffStage);
+
         activeNPC = new List<QueerNPC>();
         completedNPC = new List<QueerNPC>();
         NPCToSpawn = new List<QueerNPC>(NPCFullList.ToList());
