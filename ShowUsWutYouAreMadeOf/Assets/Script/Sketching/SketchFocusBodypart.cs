@@ -29,7 +29,6 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         selected = true;
-        Debug.Log("chosen" + bodyName);
         sketchingSystem.ChosenBody = bodyName;
     }
     public void HighlightMaterial()

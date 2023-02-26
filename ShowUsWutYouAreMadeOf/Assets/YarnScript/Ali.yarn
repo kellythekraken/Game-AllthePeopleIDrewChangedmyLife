@@ -97,7 +97,7 @@ title: AliSketch
     Ali: Seems like my friends are arriving. I’m going to say hi. 
     Ali: I'd love to invite you to my salon one day, to continue this conversation.
     <<lastdraw>>
-    <<wait 1>>
+    <<wait .5>>
     <<set $StrokeCount to 0>>
     <<sketchfin>>
 <<endif>>

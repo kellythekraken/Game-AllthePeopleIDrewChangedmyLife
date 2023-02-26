@@ -197,7 +197,6 @@ public class SketchingSystem : MonoBehaviour
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
-        gm.EnableWardrobeAction(true);
         foreach(var i in bodypartLists) { i.enabled = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
         availableChoices.Clear();

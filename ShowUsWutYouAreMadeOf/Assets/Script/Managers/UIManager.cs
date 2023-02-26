@@ -48,11 +48,15 @@ public class UIManager : MonoBehaviour
         instructionText.text = "E / Left Mouse to interact";    //maybe change this to (e) after the text display??
         instructionText.enabled = true;
     }
-
     public void HideInstruction()
     {
         if(currentlyDisplayingInstruction) return;
         instructionText.enabled = false;
+    }
+    public void DisplayInstruction(string textToDisplay)
+    {
+        instructionText.text = textToDisplay;
+        instructionText.enabled = true;
     }
 
     //add the dialogue into a queue, and priority?? or override the show hid instruction
@@ -82,12 +86,14 @@ public class UIManager : MonoBehaviour
     {
         if(!open) 
         {
+            HideInstruction();
             GameManager.Instance.currMode = CurrentMode.Nothing;
             GameManager.Instance.EnableWardrobeAction(true);
             itemGifter.alreadyGifted = true;
         }
         else 
         {
+            DisplayInstruction("E/Click to continue");
             InputManager.Instance.EnableInteractBtn(true);
             GameManager.Instance.EnableWardrobeAction(false);
         }
