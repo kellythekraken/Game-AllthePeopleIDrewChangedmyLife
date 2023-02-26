@@ -11363,7 +11363,7 @@ GameObject:
   - component: {fileID: 1460507782}
   - component: {fileID: 1460507781}
   m_Layer: 11
-  m_Name: NPC-GroupOfGirls
+  m_Name: NPC-GroupConversation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11396,7 +11396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactName: Listen
-  dialogueTitle: GroupOfGirls
+  dialogueTitle: GroupConversation
 --- !u!65 &1460507782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14380,7 +14380,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.048944905, y: -0.15865178, z: 0.00787474, w: 0.9860892}
+  m_LocalRotation: {x: 0.048944905, y: -0.15865178, z: 0.007874738, w: 0.9860892}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

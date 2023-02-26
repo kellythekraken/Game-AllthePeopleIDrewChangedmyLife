@@ -11,6 +11,7 @@ ScriptedImporter:
   sourceScripts:
   - {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
   - {fileID: 6391573757903218779, guid: 2079c36923b0a1742a3db9fd05edbaef, type: 3}
+  - {fileID: 6391573757903218779, guid: 635adc4ff9cf49640b0e51a5daac5130, type: 3}
   - {fileID: 6391573757903218779, guid: 15acf6a12bb8d3341967491b68b8956d, type: 3}
   - {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
   - {fileID: 6391573757903218779, guid: 065b6af7cfa76a641a5fe907fc6357e2, type: 3}
@@ -40,8 +41,8 @@ ScriptedImporter:
     description: Implicitly declared in General.yarn, node Init
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 1767c62abcf970647ab6a07476ae3617, type: 3}
-  - name: $AliChat
-    typeName: Number
+  - name: $RueIntroduced
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
@@ -104,44 +105,12 @@ ScriptedImporter:
     description: Implicitly declared in Ali.yarn, node AliStart
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
-  - name: $hair
-    typeName: Number
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in Ali.yarn, node AliStart
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
-  - name: $head
-    typeName: Number
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in Ali.yarn, node AliStart
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
-  - name: $eye
-    typeName: Number
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in Ali.yarn, node AliStart
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
-  - name: $top
-    typeName: Number
-    defaultValueBool: 0
-    defaultValueNumber: 0
-    defaultValueString: 
-    description: Implicitly declared in Ali.yarn, node AliStart
-    isImplicit: 1
-    sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
   - name: $AliSketched
     typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ali.yarn, node ToniStart
+    description: Implicitly declared in Ali.yarn, node Toni
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
   - name: $ToniSketched
@@ -152,6 +121,14 @@ ScriptedImporter:
     description: Implicitly declared in Ali.yarn, node ToniSketchFin
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: b43bbda6f78769144901c27a488ea8e6, type: 3}
+  - name: $RueSmallTalk
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Rue.yarn, node Rue
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 065b6af7cfa76a641a5fe907fc6357e2, type: 3}
   defaultLanguage: en-GB
   languagesToSourceAssets: []
   useAddressableAssets: 0

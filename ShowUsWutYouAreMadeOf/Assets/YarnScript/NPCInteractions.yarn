@@ -1,0 +1,41 @@
+﻿title: GroupConversation
+---
+//maybe randomize the conversation if you interact with them after a while? 
+//(time has passed and the conversation is no longer linear)
+
+<<if visited_count("GroupConversation") == 0>>
+//talking about being hit on by cis men
+B: No matter how androgynous I dress, I still get hit on by cis men all the time
+B: It is very frustrating, my feature doesn't signal any invitation or permission to those men.
+
+<<elseif visited_count("GroupConversation") == 1>>
+//talking about straight passing at queer space
+A: When I'm in queer spaces I'm always perceived as the 'ally'.
+A: Just because I dress feminine? 
+B: It can be especially dishartening to not be recognized by people from the queer community.
+B: But at the end of the day, why should one's outfit reflect on how valid they are as a queer person?
+
+<<elseif visited_count("GroupConversation") == 2>>
+//talking about looking queer
+B: Why do you think some queer people choose not to look queer?
+B: I heard that the older people get, the more comfortable they are with looking queer.
+C: There are many factors considered. It may not be the safest option to be out of the closet, 
+C: especially if the young are dependent on the adult they live with.
+A: It's not a style that suits everyone, I guess. If I feel very comfortable with myself, why should I change?
+
+<<elseif visited_count("GroupConversation") == 3>>
+//talking about being perceived as woman
+C: Many cis people are shocked when I come out to them as non-binary.
+C: They think, why do you have long hair? Why do you wear pink and pastel? 
+C: How can you be non-binary without looking androgynous?
+C: Just because I dress more feminine, most people automatically assume my gender identity and pronouns.
+C: Why can't I just be outside of the box?
+
+<<endif>>
+===
+title: NPC_RedSunglasses
+---
+Have you tried their new cocktail 'fruit salad'? 
+Although my favorite remain to be 'unicorn sunset'. 
+Who doesn't want to drink pretty glitters?
+===
