@@ -1,5 +1,5 @@
 ﻿title: Rue
-tags:
+tags: 
 ---
 <<camera RueChat>>
 <<pose Rue Sketch>>
@@ -9,8 +9,8 @@ tags:
     <<set $RueSmallTalk to 0>>
 
     <<wait .5>>
-    Rue: How's your evening going?
     Rue: I never get tired of queer bars. 
+    Rue: How's your evening going?
     <<sketch true>>
     <<camera RueSketch>>
     <<wait .5>>
@@ -21,22 +21,51 @@ tags:
     <<camera Player>>
 <<endif>>
 
-//maybe have some npc just say a few lines, but you can't sketch them, just chat. or reject your offering to sketch.
 
 ===
 title: RueSketch
 ---
+//maybe with rue you can spend as much time as possible? because she is patient. so you can stop whenever you want.
 <<wait .5>>
 
 <<if $StrokeCount < $MaxStrokes>>
     <<set $StrokeCount +=1>>
-    Rue: I am Rue.
+    
+    <<if $SketchIndex == 0>>
+    <<jump Rue_Hair>>
+    <<elseif $SketchIndex ==1>>
+    <<jump Rue_Face>>
+    <<elseif $SketchIndex ==2>>
+    <<jump Rue_Body>>
+    <<elseif $SketchIndex ==3>>
+    <<jump Rue_Cardigan>>
+    <<endif>>
+
 <<else>>
+    Rue: thank you for the drawing.
     <<lastdraw>>
-    Ali: I'd love to invite you to my salon one day, to continue this conversation.
+    <<wait .5>>
     <<set $StrokeCount to 0>>
     <<sketchfin>>
 <<endif>>
+===
+title: Rue_Hair
+---
+Rue: Hair;
+
+===
+title: Rue_Face
+---
+Rue: Face;
+===
+title: Rue_Body
+---
+Rue: Body;
+===
+title: Rue_Cardigan
+---
+Rue: Cardi;
+
 ===
 title: RueSketchFin
 ---

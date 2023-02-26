@@ -1,4 +1,7 @@
-﻿title: GroupConversation
+﻿
+//maybe have some npc just say a few lines, but you can't sketch them, just chat. or reject your offering to sketch.
+
+title: GroupConversation
 ---
 //maybe randomize the conversation if you interact with them after a while? 
 //(time has passed and the conversation is no longer linear)

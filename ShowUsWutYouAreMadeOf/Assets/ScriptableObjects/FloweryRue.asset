@@ -23,7 +23,10 @@ MonoBehaviour:
     - {fileID: 21300000, guid: a7e40853efcf2b84e9ceaeb644b432ba, type: 3}
   - objName: Face
     targetDrawings:
-    - {fileID: 21300000, guid: cd22e682bd898f1498b6c787a4b0db1c, type: 3}
+    - {fileID: 21300000, guid: 90a8ca94671ede4439edff6036bab85d, type: 3}
+  - objName: Body
+    targetDrawings:
+    - {fileID: 21300000, guid: 0331bc7ee59e4d743b4febb3aaffac98, type: 3}
   - objName: Cardigan
     targetDrawings:
     - {fileID: 21300000, guid: 8eb1a7b0cb0200b46a246c0810961dc2, type: 3}

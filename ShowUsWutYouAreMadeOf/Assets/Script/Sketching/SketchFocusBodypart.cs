@@ -9,12 +9,14 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     Material materialToHighlight;
     Color highlightColor;
     internal bool selected = false; // there should only be one selected!
+    SketchingSystem sketchingSystem;
 
     void Start()
     {   
+        sketchingSystem = SketchingSystem.Instance;
         materialToHighlight = bodypartMesh.material;
         GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
-        highlightColor = SketchingSystem.Instance.materialHighlightColor;
+        highlightColor = sketchingSystem.materialHighlightColor;
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
@@ -27,7 +29,8 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     public void OnPointerDown(PointerEventData pointerEventData)
     {
         selected = true;
-        SketchingSystem.Instance.ChosenBody = bodyName;
+        Debug.Log("chosen" + bodyName);
+        sketchingSystem.ChosenBody = bodyName;
     }
     public void HighlightMaterial()
     {
@@ -41,7 +44,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     //unselect other
     void OnSelect()
     {
-        if(SketchingSystem.Instance.ChosenBody != bodyName) 
+        if(sketchingSystem.ChosenBody != bodyName) 
         {
             UnlightMaterial();
             selected = false;

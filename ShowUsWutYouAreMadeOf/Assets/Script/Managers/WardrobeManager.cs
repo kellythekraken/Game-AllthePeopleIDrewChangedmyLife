@@ -119,8 +119,6 @@ public class WardrobeManager : MonoBehaviour
         {outfitGifterList.Add(gifterName);}
         else if(outfitGifterList.Contains(gifterName)) 
         {outfitGifterList.Remove(gifterName);}
-        
-        Debug.Log("gifter" + gifterName + outfitGifterList.Count);
     }
 
     public bool IsWearingGiftedItem(string gifterName)

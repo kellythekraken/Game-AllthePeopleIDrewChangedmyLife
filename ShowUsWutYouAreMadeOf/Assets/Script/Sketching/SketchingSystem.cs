@@ -9,6 +9,7 @@ public class SketchingSystem : MonoBehaviour
     public static SketchingSystem Instance;
     internal UnityEvent BodypartSelectEvent = new UnityEvent();
 
+    internal string highlightedBody;
     private string chosenBody;
     internal string ChosenBody
     {
