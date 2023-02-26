@@ -8,19 +8,14 @@ public class QueerNPC : Interactable
     internal bool introduced, pronounKnown;
     internal bool alreadySketched, alreadyGifted;
     Animator _animator;
-    Collider _collider;
     protected override void Start()
     {
         base.Start();
         _animator = GetComponent<Animator>();
-        _collider = GetComponent<Collider>();
         alreadyGifted = alreadySketched = false;
+        foreach(var i in sketchableAreas) i.enabled = false;
     }
 
-    public void EnableCollider(bool enable)
-    {
-        _collider.enabled = enable;
-    }
     public override void StartInteraction()
     {
         if(!interactable) return;

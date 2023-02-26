@@ -6,7 +6,6 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
 {
     [SerializeField] SkinnedMeshRenderer bodypartMesh;
     [SerializeField] string bodyName;
-    internal bool focusable = false;
     Material materialToHighlight;
     Color highlightColor;
     internal bool selected = false; // there should only be one selected!
@@ -19,37 +18,33 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     }
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
-        if(focusable)HighlightMaterial();
+        HighlightMaterial();
     }
-
     public void OnPointerExit(PointerEventData pointerEventData)
     {
         if(!selected) UnlightMaterial();
     }
-
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        if(!focusable) return;
         selected = true;
         SketchingSystem.Instance.ChosenBody = bodyName;
     }
-     
     public void HighlightMaterial()
     {
-    materialToHighlight.SetColor("_EmissionColor", highlightColor);
+        materialToHighlight.SetColor("_EmissionColor", highlightColor);
     }
     public void UnlightMaterial()
     {
-    materialToHighlight.SetColor("_EmissionColor", Color.black);
+        materialToHighlight.SetColor("_EmissionColor", Color.black);
     }
 
     //unselect other
     void OnSelect()
     {
-    if(SketchingSystem.Instance.ChosenBody != bodyName) 
-    {
-        UnlightMaterial();
-        selected = false;
-    }
+        if(SketchingSystem.Instance.ChosenBody != bodyName) 
+        {
+            UnlightMaterial();
+            selected = false;
+        }
     }
 }

@@ -120,7 +120,6 @@ title: Ali_Hair
     Ali: It’s very fulfilling to be in a hair space, where queer visibility is fostered to flourish.
     Ali: It's always delightful to see people leave with a look that they relate themselves more than the one they came in with. 
 <<endif>>
-<<set $hair +=1>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
@@ -146,7 +145,6 @@ title: Ali_Head
     Ali: By defining a queer look, you’re putting yourself into box again!
     Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
 <<endif>>
-<<set $head +=1>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
@@ -163,7 +161,6 @@ title: Ali_Eye
     Ali: Male gaze, female gaze, queer gaze... when I'm returning you the gaze, how does that make you feel?
     Ali: Am I staring too much?
 <<endif>>
-<<set $eye +=1>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
@@ -182,7 +179,6 @@ title: Ali_Top
     Ali: But I tell you, looking queer is a scam! 
     Ali: Pretty sure everyone felt that way. 
 <<endif>>
-<<set $top +=1>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>

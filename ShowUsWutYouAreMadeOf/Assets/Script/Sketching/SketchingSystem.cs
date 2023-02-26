@@ -83,14 +83,13 @@ public class SketchingSystem : MonoBehaviour
     public void PrepareToSketch(QueerNPC targetNPC)
     {
         targetNPC.alreadySketched = true;
-        targetNPC.EnableCollider(false);
         copiedQueerID = Instantiate(targetNPC.queerID);
         
         bodypartLists = new List<SketchFocusBodypart>();
         gm.variableStorage.SetValue("$MaxStrokes",copiedQueerID.maximumStrokes);
         
 
-        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.focusable = true;}
+        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true;}
         availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
         for (int i=0; i < availableChoices.Count(); i++)
         {
@@ -179,7 +178,7 @@ public class SketchingSystem : MonoBehaviour
             
             //disable the clickable area from being clickable after the drawing has been exhausted
             var completedBody = bodypartLists.FindAll(x=>x.name == chosenArea.objName);
-            foreach(var i in completedBody) { i.focusable = false; bodypartLists.Remove(i);}
+            foreach(var i in completedBody) { i.enabled = false; bodypartLists.Remove(i);}
         }
     }
 
@@ -198,8 +197,9 @@ public class SketchingSystem : MonoBehaviour
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
         gm.EnableWardrobeAction(true);
-        foreach(var i in bodypartLists) { i.focusable = false;}
+        foreach(var i in bodypartLists) { i.enabled = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
+        availableChoices.Clear();
     }
     //called by pressing done button
     void PlayAfterSketchDialogue()
