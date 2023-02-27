@@ -9,12 +9,38 @@ ModelImporter:
   - first:
       74: 7571183903700067488
     second: Base_Walk
-  externalObjects: {}
+  - first:
+      74: -6768895465508000293
+    second: Player_Idle
+  - first:
+      74: 4272298700473792222
+    second: Player_Walk
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Palette_SkinEye
+    second: {fileID: 2100000, guid: 267bce8c76163e045b49ebef48ae5a00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Palette_SkinEye.002
+    second: {fileID: 2100000, guid: 267bce8c76163e045b49ebef48ae5a00, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color palette
+    second: {fileID: 2100000, guid: 14f1499148c34274c8000290c97ad569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: color palette.002
+    second: {fileID: 2100000, guid: 14f1499148c34274c8000290c97ad569, type: 2}
   materials:
-    materialImportMode: 1
+    materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -38,11 +64,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Base_Idle
-      takeName: Base_Idle
+      name: Player_Idle
+      takeName: Player_Idle
       internalID: 0
       firstFrame: 0
-      lastFrame: 38
+      lastFrame: 44
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -50,7 +76,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -67,8 +93,8 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Base_Walk
-      takeName: Base_Walk
+      name: Player_Walk
+      takeName: Player_Walk
       internalID: 0
       firstFrame: 0
       lastFrame: 24
@@ -79,7 +105,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -90,21 +116,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.08601377
-        functionName: OnFootStep
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.5379992
-        functionName: OnFootStep
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

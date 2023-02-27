@@ -3842,11 +3842,6 @@ Transform:
   m_Father: {fileID: 1597048894}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 270, y: 19.90261, z: 0}
---- !u!137 &457833228 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6850124984150904397, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
-  m_PrefabInstance: {fileID: 1951054015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &464378272
 GameObject:
   m_ObjectHideFlags: 3
@@ -6173,11 +6168,6 @@ Transform:
   m_Father: {fileID: 630031042}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &746950819 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -9193529409288891529, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
-  m_PrefabInstance: {fileID: 1951054015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!137 &748407422 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5524170907498554070, guid: 7eab870f0ae237d4895cc7cf13a63514, type: 3}
@@ -7360,11 +7350,6 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 5
---- !u!137 &874448837 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8575374067615804877, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
-  m_PrefabInstance: {fileID: 1951054015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!137 &881764022 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5704082114021842419, guid: 7eab870f0ae237d4895cc7cf13a63514, type: 3}
@@ -9448,11 +9433,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 686028186}
---- !u!137 &1226622366 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8953438258372033903, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
-  m_PrefabInstance: {fileID: 1951054015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1234541090
 GameObject:
   m_ObjectHideFlags: 3
@@ -14643,26 +14623,26 @@ MonoBehaviour:
   WardrobeSections:
   - DisplayName: Top
     sectionName: 0
-    renderer: {fileID: 746950819}
+    renderer: {fileID: 0}
     defaultMesh: {fileID: 7690173156520557084, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
     defaultItems:
     - {fileID: 11400000, guid: 6ec2b612ff2a52b4094683671a230137, type: 2}
     - {fileID: 11400000, guid: 9695dbf1aba64b6409374f6738daa030, type: 2}
   - DisplayName: Bottom
     sectionName: 1
-    renderer: {fileID: 1226622366}
+    renderer: {fileID: 0}
     defaultMesh: {fileID: -8429018785055073106, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
     defaultItems:
     - {fileID: 11400000, guid: a0077c77a0cd5884b96096a78babbd13, type: 2}
     - {fileID: 11400000, guid: f6836ba2262e87a44bd72f0ac42f828e, type: 2}
   - DisplayName: Shoes
     sectionName: 4
-    renderer: {fileID: 457833228}
+    renderer: {fileID: 0}
     defaultMesh: {fileID: -2422661533217758221, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
     defaultItems: []
   - DisplayName: Hair
     sectionName: 3
-    renderer: {fileID: 874448837}
+    renderer: {fileID: 0}
     defaultMesh: {fileID: 510551924907666367, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
     defaultItems:
     - {fileID: 11400000, guid: b35dbbeb6111237479a79a3dfd53fa49, type: 2}
@@ -15063,7 +15043,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.070566945, y: 0.026436394, z: -0.001870858, w: 0.99715495}
+  m_LocalRotation: {x: 0.07056694, y: 0.02643639, z: -0.001870858, w: 0.99715495}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15815,6 +15795,10 @@ PrefabInstance:
     - target: {fileID: -7218213153948372991, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -7216250204495409760, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7156987383496380646, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
       propertyPath: m_Layer
@@ -17535,6 +17519,10 @@ PrefabInstance:
     - target: {fileID: 7593182884548852120, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7631050046376472527, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7636532232901631651, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
       propertyPath: m_Layer
