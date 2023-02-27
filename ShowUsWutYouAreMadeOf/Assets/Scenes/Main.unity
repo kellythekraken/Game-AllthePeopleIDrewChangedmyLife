@@ -13014,7 +13014,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619750248}
   m_LocalRotation: {x: -0.39879692, y: -0.0283643, z: 0.02823472, w: 0.9161656}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.025, y: 0.104, z: 0.099}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1346745135}
@@ -13031,8 +13031,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4452919, y: 0.16593692, z: 0.67294115}
-  m_Center: {x: -0.005925439, y: 0.3475393, z: -0.16352774}
+  m_Size: {x: 0.4452919, y: 0.16593695, z: 0.3434329}
+  m_Center: {x: -0.005925375, y: 0.34753844, z: 0.0012264217}
 --- !u!114 &1619750251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18563,8 +18563,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.16729377
-  m_Center: {x: 0.000000018546448, y: 0.14734717, z: 0.000000056968904}
+  m_Radius: 0.1754085
+  m_Center: {x: 0.009475816, y: 0.12723497, z: 0.01875094}
 --- !u!114 &2104525076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18578,7 +18578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodypartMesh: {fileID: 1259378346}
-  bodyName: Body
+  bodyName: Face
 --- !u!224 &2107970637 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5481484092624835572, guid: 3ff4e0d87ab7d4789a1565ac303e8261, type: 3}
