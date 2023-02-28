@@ -199,10 +199,12 @@ public class SketchingSystem : MonoBehaviour
         foreach(Button i in colorChoices) {i.enabled = false; }        
         availableChoices.Clear();
     }
+
     //called by pressing done button
     void PlayAfterSketchDialogue()
     {
         //give logic to back button at start: trigger the fin dialogue.
+        doneBtn.gameObject.SetActive(false);
         string dialogueTitle = copiedQueerID.npcName + "SketchFin";
         gm.dialogueRunner.StartDialogue(dialogueTitle);
         gm.currMode = CurrentMode.Conversation;
