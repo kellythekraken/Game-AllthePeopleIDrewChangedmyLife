@@ -13,5 +13,7 @@
     Leon: You say you're an artist? What kinds of work do you make?
     Leon: We host quite a few art events here. Poetry slam, even knitting club, quite a while ago.
 <<endif>>
+
+//if you have interacted with the scene, for example the poster, you will ask leon about it.
 <<camera Player>>
 ===

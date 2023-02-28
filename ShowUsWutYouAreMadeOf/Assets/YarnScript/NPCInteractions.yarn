@@ -9,38 +9,38 @@ title: GroupConversation
 <<if visited_count("GroupConversation") == 0>>
 //talking about being hit on by cis men
 <<camera NPC_B>>
-B: No matter how androgynous I dress, I still get hit on by cis men all the time
-B: It is very frustrating, my feature doesn't signal any invitation or permission to those men.
+No matter how androgynous I dress, I still get hit on by cis men all the time
+It is very frustrating, my feature doesn't signal any invitation or permission to those men.
 
 <<elseif visited_count("GroupConversation") == 1>>
 //talking about straight passing at queer space
 <<camera NPC_A>>
-A: When I'm in queer spaces I'm always perceived as the 'ally'.
-A: Just because I dress feminine? 
+When I'm in queer spaces I'm always perceived as the 'ally'.
+Just because I dress feminine? 
 <<camera NPC_B>>
-B: It can be especially dishartening to not be recognized by people from the queer community.
-B: But at the end of the day, why should one's outfit reflect on how valid they are as a queer person?
+It can be especially dishartening to not be recognized by people from the queer community.
+But at the end of the day, why should one's outfit reflect on how valid they are as a queer person?
 
 <<elseif visited_count("GroupConversation") == 2>>
 //talking about looking queer
 <<camera NPC_B>>
-B: Why do you think some queer people choose not to look queer?
-B: I heard that the older people get, the more comfortable they are with looking queer.
+Why do you think some queer people choose not to look queer?
+I heard that the older people get, the more comfortable they are with looking queer.
 <<camera NPC_C>>
-C: There are many factors considered. It may not be the safest option to be out of the closet, 
-C: especially if the young are dependent on the adult they live with.
+There are many factors considered. It may not be the safest option to be out of the closet, 
+especially if the young are dependent on the adult they live with.
 <<camera NPC_A>>
-A: It's not a style that suits everyone, I guess. If I feel very comfortable with myself, why should I change?
+It's not a style that suits everyone, I guess. If I feel very comfortable with myself, why should I change?
 
 <<elseif visited_count("GroupConversation") == 3>>
 //talking about being perceived as woman
 <<camera NPC_C>>
-C: Many cis people are shocked when I come out to them as non-binary.
-C: They think, why do you have long hair? Why do you wear pink and pastel? 
-C: How can you be non-binary without looking androgynous?
-C: Just because I dress more feminine, most people automatically assume my gender identity and pronouns.
-C: Why can't I just be outside of the box?
-
+Many cis people are shocked when I come out to them as non-binary.
+They think, why do you have long hair? Why do you wear pink and pastel? 
+How can you be non-binary without looking androgynous?
+Just because I dress more feminine, most people automatically assume my gender identity and pronouns.
+Why can't I just be outside of the box?
+<<silence Groupchat>>
 <<endif>>
 <<camera Player>>
 ===
@@ -49,4 +49,5 @@ title: NPC_RedSunglasses
 Have you tried their new cocktail 'fruit salad'? 
 Although my favorite remain to be 'unicorn sunset'. 
 Who doesn't want to drink pretty glitters?
+<<silence RedSunglasses>>
 ===
