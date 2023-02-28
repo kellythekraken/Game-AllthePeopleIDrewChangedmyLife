@@ -16,7 +16,7 @@ MonoBehaviour:
   pronouns: She/Her
   giftLine: Rue gifted you some dresses!
   items:
-  - {fileID: 11400000, guid: f6836ba2262e87a44bd72f0ac42f828e, type: 2}
+  - {fileID: 11400000, guid: ca152a866d44ea44da241ace2f4771fb, type: 2}
   drawableAreas:
   - objName: Hair
     targetDrawings:

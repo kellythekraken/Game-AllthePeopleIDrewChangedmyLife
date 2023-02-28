@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] SkinnedMeshRenderer bodypartMesh;
-    [SerializeField] string bodyName;
+    public string bodyName;
     Material materialToHighlight;
     Color highlightColor;
     internal bool selected = false; // there should only be one selected!

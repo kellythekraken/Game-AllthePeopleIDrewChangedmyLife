@@ -50,10 +50,7 @@ public class SketchingSystem : MonoBehaviour
         //save the sketch to a storage, then delete the sketches in scene
     }
 
-    void Awake() 
-    {
-        Instance = this;
-    }
+    void Awake() => Instance = this;
     void Start()
     {
         gm = GameManager.Instance;
@@ -92,6 +89,8 @@ public class SketchingSystem : MonoBehaviour
 
         foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true;}
         availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
+        
+        //remove empty choices
         for (int i=0; i < availableChoices.Count(); i++)
         {
             DrawableArea choice = availableChoices[i];
@@ -151,7 +150,6 @@ public class SketchingSystem : MonoBehaviour
 
         //change sketchindex to trigger and advance the dialogue
         bodyIndex = Array.FindIndex(copiedQueerID.drawableAreas, x=> x.objName == chosenArea.objName);
-
         gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
         gm.ContinueSketchChat();
     }
@@ -178,7 +176,7 @@ public class SketchingSystem : MonoBehaviour
             availableChoices.Remove(chosenArea);
             
             //disable the clickable area from being clickable after the drawing has been exhausted
-            var completedBody = bodypartLists.FindAll(x=>x.name == chosenArea.objName);
+            var completedBody = bodypartLists.FindAll(x=>x.bodyName == chosenArea.objName);
             foreach(var i in completedBody) { i.enabled = false; bodypartLists.Remove(i);}
         }
     }
