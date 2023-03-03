@@ -12,6 +12,15 @@ ModelImporter:
   - first:
       74: 5230819772685607656
     second: RIG-new_leonrig|Idle
+  - first:
+      74: -356165408556131347
+    second: Leon_pouring
+  - first:
+      74: 978479908165066944
+    second: Leon_shaking
+  - first:
+      74: -3413852933866767000
+    second: 'Leon_standing '
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -23,6 +32,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: color palette
     second: {fileID: 2100000, guid: 14f1499148c34274c8000290c97ad569, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkened color palette.002
+    second: {fileID: 2100000, guid: ff4dc792197c0794787aa507cdd2e0ef, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
