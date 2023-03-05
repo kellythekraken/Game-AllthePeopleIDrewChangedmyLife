@@ -40,6 +40,14 @@ They think, why do you have long hair? Why do you wear pink and pastel?
 How can you be non-binary without looking androgynous?
 Just because I dress more feminine, most people automatically assume my gender identity and pronouns.
 Why can't I just be outside of the box?
+<<elseif visited_count("GroupConversation") == 4>>
+<<camera NPC_C>>
+Do you know that there are four genders in the native American society?
+Feminine women, masculine men, feminine men, and masculine women.
+<<camera NPC_B>>
+Pff, I don't get why people can't let go of those who just don't want be bound to the binary.
+
+//they go out to smoke, you can eavesdrop outside.
 <<silence Groupchat>>
 <<endif>>
 <<camera Player>>

@@ -18,13 +18,15 @@
     Ali: Hey!
     Ali: Haven’t seen you around before. I’m Ali. 
     Ali: Saw you sketching earlier. Are you an artist?
-    Ali: Had the luck to be drawn by one queer illustrator a few weeks ago. 
+    Ali: I was at this art market a few weeks ago. An artist was doing some live portrait drawing.
     Ali: It's intriguing to see yourself on a flat piece of paper, not quite like photos.
     Ali: Afterall, I was being carefully watched for a period of time.
     Ali: I thought, so that's how they see me.
     Ali: ...
     Ali: You would like to sketch me? 
-    Ali: Oh, that would be my honour. 
+    Ali: Wow, what a luck to be asked!
+    Ali: Is it my hair that has caught your eyes?
+    Ali: That would be my absolute honour.
     <<sketch true>>
     <<camera AliSketch>>
     <<wait .5>>
@@ -35,7 +37,7 @@
     <<if $SpecialDialogue == true>>
         <<jump AliSpecial>>
     <<elseif $AliSmallTalk == 0>>
-        Ali: Hey! Thank you for the drawing earlier.
+        Ali: Hey! Thanks for the drawing earlier.
         Ali: We were discussing about the benefit of colorful hair.
         Ali: Once met this person who used her blue hair as a strategy, so people remember her in networking events.
     <<elseif $AliSmallTalk == 1>>
@@ -59,11 +61,11 @@
 title: AliSpecial
 ---
 <<if visited_count("AliSpecial") == 0>>
-    Ali: Hey! That hairstyle looks good on you!
+    Ali: Hey, that hairstyle looks good on you!
     Ali: It's nice to give a change in style sometimes.
     Ali: It may not work everytime, but I think this hair suits you!
 <<elseif visited_count("AliSpecial") == 1>>
-    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+    Ali: It always put a smile on my face when I see people embracing their queerness with crazy hair.
     Ali: I think lilac might look good on you.
     Ali: We got a hairdye specialist who comes here often. Will give you a shout if I spot them tonight!
 <<else>>
@@ -95,7 +97,7 @@ title: AliSketch
     <<endif>>
 <<else>>
     Ali: Seems like my friends are arriving. I’m going to say hi. 
-    Ali: I'd love to invite you to my salon one day, to continue this conversation.
+    Ali: Come visit my salon some day, so we can continue this conversation.
     <<lastdraw>>
     <<wait .5>>
     <<set $StrokeCount to 0>>
