@@ -23,5 +23,7 @@ public class Queer : ScriptableObject
     public GiftItem[] items;
     public DrawableArea[] drawableAreas;
     public Sprite backgroundDrawing;
+    public Sprite signature;
+    public int minimumStrokes; //number of strokes before able to stop
     public int maximumStrokes; //number of strokes before conversation end
 }

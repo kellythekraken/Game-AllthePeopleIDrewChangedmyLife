@@ -30,10 +30,34 @@ tags:
     Rue: Let me know what you need. Should I look at you, or from a certain angle?
     <<startsketch>>
 <<else>>
-    Rue: chat after sketch
+    <<if $SpecialDialogue == true>>
+        <<jump RueSpecial>>
+    <<else>>
+        Rue: I hope that wasn't too much of a ramble. Thank you for patiently listening through.
+        Rue: There are many great queer bars around the city, if you need any more recommendations?
+        <<silence Rue>>
+    <<endif>>
+
     <<camera Player>>
+    <<pose Rue Sit>>
 <<endif>>
 
+===
+title: RueSpecial
+---
+<<if visited_count("RueSpecial") == 0>>
+    Rue: Do you like those dresses?
+    Rue: I love vintage clothes, especially knowing they had a history of stories.
+    Rue: They are all once loved, now passed onto your hand.
+//<<elseif visited_count("RueSpecial") == 1>>
+<<else>>
+    <<set $SpecialDialogueSpoken to true>>
+    <<set $SpecialDialogue to false>>
+    <<jump Rue>>
+<<endif>>
+
+<<camera Player>>
+<<pose Rue Sit>>
 ===
 title: RueSketch
 ---
