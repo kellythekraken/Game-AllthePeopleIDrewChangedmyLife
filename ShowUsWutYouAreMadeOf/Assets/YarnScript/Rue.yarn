@@ -8,7 +8,7 @@ tags:
     <<set $NumberOfEncounters +=1>>
     <<set $RueSmallTalk to 0>>
 
-    //<<pose Player sit>>
+    //<<playerpose SketchRue>>
     <<wait .5>>
     Rue: I could never get tired of queer bars. They are truly hidden gems of the city.
     Rue: How is your evening going?
@@ -134,6 +134,7 @@ title: Rue_Cardigan
 title: RueSketchFin
 ---
 <<set $StrokeCount to 0>>
+//<<unpose>>
 <<sketch false>>
 <<camera Player>>
 Rue: Hey, that's me!
