@@ -34,6 +34,7 @@ public class SketchingSystem : MonoBehaviour
     //List<Sprite> storedSketches;
     GameManager gm;
     Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
+    int strokeCount;    //keep track in purpose to show stop btn when you can stop sketching
     bool initialized = false;
     private void OnEnable()
     {
@@ -106,6 +107,8 @@ public class SketchingSystem : MonoBehaviour
         gm.EnableWardrobeAction(false);
         sketchbook.enabled = true;
         crayonButtons.SetActive(true);
+        stopBtn.gameObject.SetActive(false);
+        strokeCount = 0;
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
@@ -155,6 +158,11 @@ public class SketchingSystem : MonoBehaviour
         bodyIndex = Array.FindIndex(copiedQueerID.drawableAreas, x=> x.objName == chosenArea.objName);
         gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
         gm.ContinueSketchChat();
+
+        if(copiedQueerID.minimumStrokes != 0)
+        {
+            if(strokeCount >= copiedQueerID.minimumStrokes) stopBtn.gameObject.SetActive(true);
+        }
     }
 
     void MakeADrawing()
@@ -171,6 +179,7 @@ public class SketchingSystem : MonoBehaviour
         //set the color of the drawing
         int currCrayonIndex = crayonPointers.IndexOf(currentCrayonFollower);
         stroke.color = crayonColors[currCrayonIndex];
+        strokeCount++;
 
         //remove the drawing from lists
         chosenArea.targetDrawings.Remove(drawing);
