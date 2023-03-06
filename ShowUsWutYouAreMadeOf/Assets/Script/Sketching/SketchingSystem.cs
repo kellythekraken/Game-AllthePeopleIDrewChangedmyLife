@@ -20,8 +20,9 @@ public class SketchingSystem : MonoBehaviour
     DrawableArea chosenArea;
     public Button sketchbook;
     //[SerializeField] private Button areaBtnPrefab;
-    [SerializeField] private Button doneBtn;
+    [SerializeField] private Button doneBtn,stopBtn;
     [SerializeField] private Image drawPrefab;
+    [SerializeField] private GameObject crayonButtons;  
     [SerializeField] private List<PointerFollower> crayonPointers;
     [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
     public Color materialHighlightColor;
@@ -59,6 +60,7 @@ public class SketchingSystem : MonoBehaviour
         gm.dialogueRunner.AddCommandHandler("sketchfin", SketchCompleted);
         doneBtn.onClick.AddListener(PlayAfterSketchDialogue);
         doneBtn.gameObject.SetActive(false);
+        stopBtn.onClick.AddListener(StopSketching);
     }
     
     void InitList()
@@ -103,6 +105,7 @@ public class SketchingSystem : MonoBehaviour
         foreach(Button i in colorChoices) {i.enabled = true; }
         gm.EnableWardrobeAction(false);
         sketchbook.enabled = true;
+        crayonButtons.SetActive(true);
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
@@ -181,6 +184,10 @@ public class SketchingSystem : MonoBehaviour
         }
     }
 
+    void StopSketching()
+    {
+        gm.dialogueRunner.StartDialogue(copiedQueerID.npcName + "LastStroke");
+    }
     //command: lastdraw
     void LastStroke()
     {
@@ -188,11 +195,13 @@ public class SketchingSystem : MonoBehaviour
         stroke.sprite = copiedQueerID.backgroundDrawing;
         sketchbook.enabled = false;
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
+        stopBtn.gameObject.SetActive(false);
     }
     //command: sketchfin
     void SketchCompleted()
     {
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
+        crayonButtons.SetActive(false);
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
         foreach(var i in bodypartLists) { i.enabled = false;}

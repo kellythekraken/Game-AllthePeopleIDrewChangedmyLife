@@ -54,15 +54,17 @@ title: RueSketch
     <<elseif $SketchIndex ==4>>
     <<jump Rue_Cardigan>>
     <<endif>>
-
 <<else>>
+    <<jump RueLastStroke>>
+<<endif>>
+===
+title: RueLastStroke
+---
     Rue: Oh, are you finished?
     Rue: Can I have a look?
     <<lastdraw>>
     <<wait .5>>
-    <<set $StrokeCount to 0>>
     <<sketchfin>>
-<<endif>>
 ===
 title: Rue_Hair
 ---
@@ -131,6 +133,7 @@ title: Rue_Cardigan
 ===
 title: RueSketchFin
 ---
+<<set $StrokeCount to 0>>
 <<sketch false>>
 <<camera Player>>
 Rue: Hey, that's me!
