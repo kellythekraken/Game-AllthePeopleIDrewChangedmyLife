@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
   m_Name: plaindress2
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 881218b5716446f438624c3144346cf1, type: 3}
+  icon: {fileID: 21300000, guid: 2dfeee0759eed5a448fb38d462454d31, type: 3}
   section: 1
   type: 0
   mesh: {fileID: 8281885746810148913, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
