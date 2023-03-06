@@ -33,10 +33,12 @@ MonoBehaviour:
   - objName: Body
     targetDrawings:
     - {fileID: 21300000, guid: 1b71fbbe60020ec418b6f748f6e93045, type: 3}
-    - {fileID: 21300000, guid: 283c73a9e5b6ec8418f8f5983b9566d6, type: 3}
     - {fileID: 21300000, guid: fd77272abe9adf84abaf0ae08f01ccd1, type: 3}
+  - objName: Dress
+    targetDrawings:
+    - {fileID: 21300000, guid: 283c73a9e5b6ec8418f8f5983b9566d6, type: 3}
   - objName: Cardigan
     targetDrawings:
     - {fileID: 21300000, guid: e5c283f2589911d4c8686f148301a386, type: 3}
   backgroundDrawing: {fileID: 21300000, guid: 04b26bf27d4f12a4e9856e57e30fede7, type: 3}
-  maximumStrokes: 8
+  maximumStrokes: 10

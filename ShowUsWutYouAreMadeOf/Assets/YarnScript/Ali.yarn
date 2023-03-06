@@ -120,7 +120,7 @@ Ali: Here, or at my salon!
 title: Ali_Hair
 ---
 <<if visited_count("Ali_Hair") == 0>>
-    Ali: My hair? I'm actually trying something new. It got a bit long and I thought I'd just shave off the sides.
+    Ali: My hair? I'm actually trying something new. It got a bit long so I just shaved off the sides.
 <<elseif visited_count("Ali_Hair") == 1>>
     Ali: What's in your mind when you’re drawing your subject?
     Ali: I work in a salon. Usually I talk to my client when I'm giving haircuts. 
@@ -145,10 +145,11 @@ title: Ali_Hair
 title: Ali_Head
 ---
 <<if visited_count("Ali_Head") == 0>>
-    Ali: It's not my first time to be drawn, but it still feels honoring when you asked.
+    Ali: People think I must have been one of those cool kids in school. 
+    Ali: But back in the days I only wanted to fit in.
 <<elseif visited_count("Ali_Head") == 1>>
     Ali: I don't see myself fitting in the binary anymore. 
-    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself as she/they the most.
+    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself with she/they the most.
     <<pronoun>>
     Ali: It shouldn't be black or white anyways.
 <<elseif visited_count("Ali_Head") == 2>>
@@ -203,9 +204,8 @@ title: Ali_Top
 ===
 title: Ali_Tattoo
 ---
-    Ali: I got this tattoo on the last day of a travel.
+    Ali: I got this tattoo on the last day of a trip.
     Ali: A bit spontaneous, but one of my favorite artist was visiting, how could I miss that opportunity?
-
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>

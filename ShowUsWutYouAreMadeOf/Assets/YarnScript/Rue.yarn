@@ -8,6 +8,7 @@ tags:
     <<set $NumberOfEncounters +=1>>
     <<set $RueSmallTalk to 0>>
 
+    //<<pose Player sit>>
     <<wait .5>>
     Rue: I could never get tired of queer bars. They are truly hidden gems of the city.
     Rue: How is your evening going?
@@ -23,8 +24,8 @@ tags:
     Rue: I really appreciate your approach. I should talk to more artists like you.
     Rue: To be sketched? How could I possibly say no?
     Rue: That's really sweet of you.
-    <<sketch true>>
     <<camera RueSketch>>
+    <<sketch true>>
     <<wait .5>>
     Rue: Let me know what you need. Should I look at you, or from a certain angle?
     <<startsketch>>
@@ -49,11 +50,14 @@ title: RueSketch
     <<elseif $SketchIndex ==2>>
     <<jump Rue_Body>>
     <<elseif $SketchIndex ==3>>
+    <<jump Rue_Dress>>    
+    <<elseif $SketchIndex ==4>>
     <<jump Rue_Cardigan>>
     <<endif>>
 
 <<else>>
-    Rue: thank you for the drawing.
+    Rue: Oh, are you finished?
+    Rue: Can I have a look?
     <<lastdraw>>
     <<wait .5>>
     <<set $StrokeCount to 0>>
@@ -70,10 +74,12 @@ title: Rue_Hair
     Rue: It's not a linear journey, especially when you work in a place where most of your colleagues are cis men. 
     Rue: That was tough, as there were no role models to follow, so I had to step forward and be the first one. 
 <<elseif visited_count("Rue_Hair") == 2>>
-    Rue: It first started from a name that was used as a nickname in online forums. 
-    Rue: I wanted to remain anonymous from my other connections, so that’s what I used among queer community, too. 
-    Rue: As I grew comfortable with the name and my identity, and being addressed this way, 
-    Rue: I eventually announced it at work, which was a big step for me. 
+    Rue: Media often has this harmful depiction of trans people. 
+    Rue: They make it seem like being trans is just a mask they put on, instead of being their true selves. 
+    Rue: But not all trans people conform to extreme versions of masculinity or femininity. 
+    Rue: They are just like everyone else, with different kinds of gender expressions,
+    Rue: wanting to be accepted and treated the same as a cis man or woman. 
+    Rue: Sometimes that means dressing or acting in a certain way to be recognized as such.
 <<endif>>
 ===
 title: Rue_Face
@@ -91,7 +97,7 @@ title: Rue_Face
     Rue: Some of those questions could easily be found on Google, but I understood that he may have never met anyone with this experience before.
     Rue: He was genuinely curious, and I just answered.
 <<elseif visited_count("Rue_Face") == 3>>
-    Rue: As the only trans woman in a team of cis men, I feel the weight of representation on my shoulder. 
+    Rue: Being the only trans woman in a team of cis men, I feel the weight of representation on my shoulder. 
     Rue: I was once invited to participate in the interview process.
     Rue: We hired the candidate, and later she told me that she felt more comfortable seeing my presence,
     Rue: and would may not have accepted the offer otherwise.
@@ -103,25 +109,16 @@ title: Rue_Body
 <<if visited_count("Rue_Body") == 0>>
     Rue: I don't come here as often these days, but I enjoy being surrounded by my people every once in a while.
 <<elseif visited_count("Rue_Body") == 1>>
-    Rue: When you tell people you're a trans woman, they often exclude you from being a woman, as if trans is a separate category.
-    Rue: But being trans is just a part of a person's history and identity, it doesn't take them out of their gender identity.
-    Rue: Just like when we address an Asian man. 
-    Rue: Ethnicity is a big part of his identity, but doesn't make him less of a man. 
-    Rue: Same goes for trans men, they are still men despite being trans.
+    Rue: Sometimes companies want to use you as a token queer employee for diversity.
+    Rue: But here's the thing. If a company hires you because of your sexuality, ethnicity, or gender, why not take advantage of that? 
+    Rue: Use your voice to advocate for your community. 
+    Rue: Remember, your presence can be the most empowering thing for them.
 <<endif>>
-
 ===
 title: Rue_Dress
 ---
 <<if visited_count("Rue_Dress") == 0>>
     Rue: Most of my wardrobe is thrifted. It is a very affordable way to start experimenting with gender expression.
-<<elseif visited_count("Rue_Dress") == 1>>
-    Rue: Media often has this harmful depiction of trans people. 
-    Rue: They make it seem like being trans is just a mask they put on, instead of being their true selves. 
-    Rue: But not all trans people conform to extreme versions of masculinity or femininity. 
-    Rue: They are just like everyone else, with different kinds of gender expressions,
-    Rue: wanting to be accepted and treated the same as a cis man or woman. 
-    Rue: Sometimes that means dressing or acting in a certain way to be recognized as such.
 <<endif>> 
 ===
 title: Rue_Cardigan
@@ -130,19 +127,16 @@ title: Rue_Cardigan
     //do i need to specify coming out or is this clear enough?
     Rue: This cardigan is from my mother.
     Rue: She was delighted that she wouldn't have to throw away her old clothes anymore.
-<<elseif visited_count("Rue_Cardigan") == 1>>
-    Rue: Sometimes companies want to use you as a token queer employee for diversity.
-    Rue: But here's the thing. If a company hires you because of your sexuality, ethnicity, or gender, why not take advantage of that? 
-    Rue: Use your voice to advocate for your community. 
-    Rue: Remember, your presence can be the most empowering thing for them.
 <<endif>>
 ===
 title: RueSketchFin
 ---
 <<sketch false>>
 <<camera Player>>
-Rue: Oh, is that me?
-Rue: Thank you for the sketch.
+Rue: Hey, that's me!
+Rue: What a lovely drawing.
+Rue: Very intriguing to see myself portrayed like this.
+Rue: Thank you, it was a great conversation. How inspiring.
 <<gift Rue>>
 <<pose Rue Sit>>
 <<camera Player>>
