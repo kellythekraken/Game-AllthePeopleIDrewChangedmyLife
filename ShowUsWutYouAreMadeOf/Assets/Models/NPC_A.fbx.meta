@@ -6,6 +6,9 @@ ModelImporter:
   - first:
       74: 2239980264833910209
     second: A_default.001
+  - first:
+      74: -5554110528588168817
+    second: A_default
   externalObjects:
   - first:
       type: UnityEngine:Material
