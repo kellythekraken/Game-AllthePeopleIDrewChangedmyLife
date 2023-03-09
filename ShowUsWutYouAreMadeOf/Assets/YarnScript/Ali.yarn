@@ -2,7 +2,7 @@
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
 <<camera AliChat>>
-
+<<pose Ali Chat>>
 <<if visited_count("AliStart") == 0>>
     <<set $NumberOfEncounters +=1>>
     <<set $SketchIndex to 0>> //for which body part

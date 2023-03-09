@@ -83,7 +83,7 @@ ModelImporter:
       takeName: Ali_DefaultChat
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -112,7 +112,7 @@ ModelImporter:
       takeName: Ali_DefaultSketch
       internalID: 0
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
