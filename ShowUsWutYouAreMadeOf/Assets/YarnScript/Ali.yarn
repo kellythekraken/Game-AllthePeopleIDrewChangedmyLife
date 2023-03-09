@@ -1,8 +1,7 @@
-﻿title: AliStart
+﻿title: Ali
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
 <<camera AliChat>>
-<<pose Ali SitLook>>
 
 <<if visited_count("AliStart") == 0>>
     <<set $NumberOfEncounters +=1>>
@@ -29,6 +28,7 @@
     Ali: That would be my absolute honour.
     <<sketch true>>
     <<camera AliSketch>>
+    <<pose Ali Sketch>>
     <<wait .5>>
     Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
     <<startsketch>>

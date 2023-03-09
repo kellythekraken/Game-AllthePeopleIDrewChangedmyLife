@@ -69,6 +69,7 @@ public class QueerNPC : Interactable
     void ChangePose(string anim)
     {
         _animator.CrossFade(anim,12f,0);
+        Debug.Log("posing " + anim);
     }
 
     [YarnCommand("gift")]

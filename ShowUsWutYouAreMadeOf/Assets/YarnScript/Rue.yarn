@@ -17,6 +17,7 @@ tags:
     Rue: I write for games, and I often find myself in bustling places in seek of inspiration. 
     Rue: There are many great queer bars around the city, but this place will always hold a special place in my heart. 
     Rue: I used to be afraid of crowded places while I was still figuring things out.
+    //too fast?
     Rue: There was a panel discussion on gender identity here, which I decided to attend. That was my first connection to this community. 
     Rue: It's encouraging to know that there are people like you.
     Rue: Currently I'm pushing for more diversity in gender representation in the game we're developing. 
@@ -144,7 +145,7 @@ title: Rue_Body
 title: Rue_Dress
 ---
 <<if visited_count("Rue_Dress") == 0>>
-    Rue: Most of my wardrobe is thrifted. It is a very affordable way to start experimenting with gender expression.
+    Rue: If you would like to experiment with gender expression, maybe you could start from thrifting.
 <<endif>> 
 ===
 title: Rue_Cardigan
