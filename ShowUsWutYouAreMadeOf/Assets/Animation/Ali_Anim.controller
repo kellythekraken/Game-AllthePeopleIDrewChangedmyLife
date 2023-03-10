@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Face
+  m_Name: Eye
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9089947411717378722, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_Motion: {fileID: -3455589888516361660, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -166,7 +166,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9089947411717378722, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_Motion: {fileID: -3638736572470996307, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -192,7 +192,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9089947411717378722, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_Motion: {fileID: -4663976740645654660, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -283,7 +283,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Head
+  m_Name: Body
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -296,7 +296,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -9089947411717378722, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_Motion: {fileID: 3723958245127214560, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

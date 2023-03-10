@@ -86,15 +86,19 @@ title: AliSketch
     <<set $StrokeCount +=1>>
 
     <<if $SketchIndex == 0>>
+    <<pose Ali Hair .5>>
     <<jump Ali_Hair>>
     <<elseif $SketchIndex ==1>>
-    <<jump Ali_Head>>
+    <<pose Ali Body .5>>
+    <<jump Ali_Body>>
     <<elseif $SketchIndex ==2>>
+    <<pose Ali Eye .5>>
     <<jump Ali_Eye>>
     <<elseif $SketchIndex ==3>>
+    <<pose Ali Top .5>>
     <<jump Ali_Top>>
     <<elseif $SketchIndex ==4>>
-    <<pose Ali Tattoo>>
+    <<pose Ali Tattoo .5>>
     <<jump Ali_Tattoo>>
     <<endif>>
 <<else>>
@@ -148,27 +152,26 @@ title: Ali_Hair
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
-
-<<pose Ali Sketch>>
+<<pose Ali Sketch .5>>
 ===
-title: Ali_Head
+title: Ali_Body
 ---
 <<wait .5>>
-<<if visited_count("Ali_Head") == 0>>
+<<if visited_count("Ali_Body") == 0>>
     Ali: People think I must have been one of those cool kids in school. 
     Ali: But back in the days I only wanted to fit in.
-<<elseif visited_count("Ali_Head") == 1>>
+<<elseif visited_count("Ali_Body") == 1>>
     Ali: I don't see myself fitting in the binary anymore. 
     Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself with she/they the most.
     <<pronoun>>
     Ali: It shouldn't be black or white anyways.
-<<elseif visited_count("Ali_Head") == 2>>
+<<elseif visited_count("Ali_Body") == 2>>
     Ali: I felt brave for looking different. 
     Ali: Gender and style expressions. For me it's all a form of rebellion.
     Ali: But not only that, I am acting myself this time. For once I could abandon the fear of not fitting in. I was comfortable in my skin.
     Ali: People started to recognizing me as queer. And especially queer people, too.
     Ali: I felt so visible. I never looked back.
-<<elseif visited_count("Ali_Head") == 3>>
+<<elseif visited_count("Ali_Body") == 3>>
     Ali: There's no rulebook of what queerness look like.
     Ali: By defining a queer look, you’re putting yourself into box again!
     Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
@@ -177,6 +180,7 @@ title: Ali_Head
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Eye
 ---
@@ -194,6 +198,7 @@ title: Ali_Eye
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Top
 ---
@@ -213,6 +218,8 @@ title: Ali_Top
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Tattoo
 ---
@@ -222,7 +229,8 @@ title: Ali_Tattoo
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
-<<pose Ali Sketch>>
+<<wait .5>>
+<<pose Ali Sketch .5>>
 ===
 
 

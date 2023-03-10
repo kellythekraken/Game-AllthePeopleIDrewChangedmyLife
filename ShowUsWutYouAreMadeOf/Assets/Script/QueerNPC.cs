@@ -67,9 +67,9 @@ public class QueerNPC : Interactable
     }
 
     [YarnCommand("pose")]
-    void ChangePose(string anim)
+    void ChangePose(string anim, float transitionTime = 1f)
     {
-        _animator.CrossFadeInFixedTime(anim,.8f,0);
+        _animator.CrossFadeInFixedTime(anim,transitionTime,0);
     }
 
     [YarnCommand("gift")]
