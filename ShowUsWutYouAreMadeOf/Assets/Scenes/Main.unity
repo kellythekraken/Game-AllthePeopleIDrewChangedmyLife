@@ -2355,11 +2355,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291700246}
   m_CullTransparentMesh: 1
---- !u!137 &299392022 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 8087244531529940618, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
-  m_PrefabInstance: {fileID: 1383218068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &302414168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,11 +2579,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.643668, y: 1.02, z: 2.4019098}
   m_Center: {x: 1.0451553, y: 0.22998703, z: 1.6810308}
---- !u!137 &316941405 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 107895136456387498, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
-  m_PrefabInstance: {fileID: 2104525069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &320645612
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,8 +3057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 1580889781}
-  bodyName: Head
+  bodyName: Body
 --- !u!1 &401594769
 GameObject:
   m_ObjectHideFlags: 0
@@ -3625,6 +3614,7 @@ MonoBehaviour:
   - {fileID: 1146302174}
   - {fileID: 1823892301}
   - {fileID: 821453140}
+  bodyPartMeshes: []
 --- !u!136 &445242762
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3670,11 +3660,6 @@ Transform:
   m_Father: {fileID: 1597048894}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 270, y: 19.90261, z: 0}
---- !u!137 &447195820 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6268238552560437597, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
-  m_PrefabInstance: {fileID: 1383218068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &464378272
 GameObject:
   m_ObjectHideFlags: 3
@@ -3764,11 +3749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!137 &471772220 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2603282040156559165, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
-  m_PrefabInstance: {fileID: 1383218068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &472071770
 GameObject:
   m_ObjectHideFlags: 0
@@ -4508,6 +4488,12 @@ MonoBehaviour:
   - {fileID: 1552922505}
   - {fileID: 389024779}
   - {fileID: 1601891281}
+  bodyPartMeshes:
+  - {fileID: 1383218073}
+  - {fileID: 1383218072}
+  - {fileID: 1383218071}
+  - {fileID: 843373336}
+  - {fileID: 1016608117}
 --- !u!1 &560651083
 GameObject:
   m_ObjectHideFlags: 0
@@ -4883,6 +4869,7 @@ MonoBehaviour:
   dialogueTitle: ToniStart
   queerID: {fileID: 11400000, guid: 91f614f1d57c13d48b9a7cfdea40b4da, type: 2}
   sketchableAreas: []
+  bodyPartMeshes: []
 --- !u!136 &613048515
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5109,6 +5096,7 @@ MonoBehaviour:
   dialogueTitle: Leon
   queerID: {fileID: 11400000, guid: 030b89e4acb56214fa7f828664cb4d64, type: 2}
   sketchableAreas: []
+  bodyPartMeshes: []
 --- !u!95 &630031045
 Animator:
   serializedVersion: 3
@@ -6549,7 +6537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 1259378346}
   bodyName: Body
 --- !u!65 &821453141
 BoxCollider:
@@ -6727,6 +6714,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d1cc01316f6a041ad4188b06b84feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!137 &843373336 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8087244531529940618, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_PrefabInstance: {fileID: 1383218068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &872480199
 GameObject:
   m_ObjectHideFlags: 0
@@ -7051,7 +7043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 299392022}
   bodyName: Tattoo
 --- !u!1 &937985053
 GameObject:
@@ -7397,6 +7388,11 @@ Transform:
   m_Father: {fileID: 2062081301}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -8.1422065e-13, y: -3.4499035e-14, z: -1.7811046e-13}
+--- !u!137 &1016608117 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6268238552560437597, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_PrefabInstance: {fileID: 1383218068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1033046749
 GameObject:
   m_ObjectHideFlags: 0
@@ -7689,11 +7685,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!137 &1051093209 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 215501753092924088, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
-  m_PrefabInstance: {fileID: 2104525069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1065994068
 GameObject:
   m_ObjectHideFlags: 0
@@ -7793,14 +7784,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075261785}
-  m_LocalRotation: {x: 0.031677943, y: -0.6357959, z: 0.02613083, w: 0.7707641}
-  m_LocalPosition: {x: -253.12, y: -139.11, z: 1.42}
+  m_LocalRotation: {x: 0.05263707, y: -0.6136688, z: 0.049500424, w: 0.7862504}
+  m_LocalPosition: {x: -252.402, y: -138.772, z: 0.897}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1813769569}
   m_Father: {fileID: 684621785}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 38.651, y: 5.551, z: 0}
+  m_LocalEulerAnglesHint: {x: 8.252, y: -75.889, z: 0.766}
 --- !u!114 &1075261789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7822,7 +7813,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 30
+    FieldOfView: 20
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -8542,7 +8533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 1778331734}
   bodyName: Cardigan
 --- !u!1 &1147514741
 GameObject:
@@ -8756,11 +8746,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   continueBtn: {fileID: 7778558436113867053}
   playerInput: {fileID: 3354527797997906178}
---- !u!137 &1168061439 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 4320098735860348617, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
-  m_PrefabInstance: {fileID: 1383218068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1180259368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4770805661026527715, guid: 1973935b4361e4e43a070a6c55c140f6, type: 3}
@@ -9169,7 +9154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 471772220}
   bodyName: Eye
 --- !u!135 &1222520596
 SphereCollider:
@@ -9530,11 +9514,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257155994}
   m_CullTransparentMesh: 1
---- !u!137 &1259378346 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 1355469950277869788, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
-  m_PrefabInstance: {fileID: 2104525069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1260494710
 GameObject:
   m_ObjectHideFlags: 0
@@ -11005,6 +10984,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6271998399412544090, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
   m_PrefabInstance: {fileID: 1383218068}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1383218071 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7823293702887809713, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_PrefabInstance: {fileID: 1383218068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1383218072 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5241284212654878085, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_PrefabInstance: {fileID: 1383218068}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1383218073 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1630794972795428178, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
+  m_PrefabInstance: {fileID: 1383218068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1396099051
 GameObject:
   m_ObjectHideFlags: 0
@@ -12102,7 +12096,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 471772220}
   bodyName: Eye
 --- !u!1 &1557777770
 GameObject:
@@ -12495,11 +12488,6 @@ Transform:
   m_Father: {fileID: 1652924071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 3.408581, y: 343.00726, z: 282.21793}
---- !u!137 &1580889781 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 731256284166303632, guid: 1784230be6465cc4b93aa8c6162c2ea4, type: 3}
-  m_PrefabInstance: {fileID: 1383218068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1582346222
 GameObject:
   m_ObjectHideFlags: 0
@@ -12869,7 +12857,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 1168061439}
   bodyName: Hair
 --- !u!65 &1601891282
 BoxCollider:
@@ -12941,7 +12928,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 1051093209}
   bodyName: Hair
 --- !u!1 &1635017868
 GameObject:
@@ -13314,7 +13300,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 447195820}
   bodyName: Top
 --- !u!1 &1695857139
 GameObject:
@@ -13954,11 +13939,6 @@ SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8575374067615804877, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
   m_PrefabInstance: {fileID: 1951054015}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &1778331734 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6848466053141908385, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
-  m_PrefabInstance: {fileID: 2104525069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1787531671
 GameObject:
   m_ObjectHideFlags: 0
@@ -14381,7 +14361,6 @@ GameObject:
   - component: {fileID: 1813769569}
   - component: {fileID: 1813769572}
   - component: {fileID: 1813769571}
-  - component: {fileID: 1813769570}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -14403,33 +14382,6 @@ Transform:
   m_Father: {fileID: 1075261786}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1813769570
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813769568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 10.5, y: -2.18, z: -21}
-  m_LookaheadTime: 0
-  m_LookaheadSmoothing: 0
-  m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.5
-  m_VerticalDamping: 0.5
-  m_ScreenX: 0.5
-  m_ScreenY: 0.5
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
-  m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
-  m_BiasX: -0.000000074505806
-  m_BiasY: 0
-  m_CenterOnActivate: 1
 --- !u!114 &1813769571
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -14516,7 +14468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 2104525071}
   bodyName: Dress
 --- !u!1 &1854521251
 GameObject:
@@ -14991,7 +14942,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: 0.13476779, y: 0.029777246, z: -0.0040518246, w: 0.9904214}
+  m_LocalRotation: {x: 0.13476776, y: 0.029777193, z: -0.0040518153, w: 0.9904214}
   m_LocalPosition: {x: -9.78, y: -2.74, z: -11.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -21517,11 +21468,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
   m_PrefabInstance: {fileID: 2104525069}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &2104525071 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -2631256171634967975, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
-  m_PrefabInstance: {fileID: 2104525069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2104525072 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1371830318901324133, guid: c86d613888f3af3429e9dfa0a354cef7, type: 3}
@@ -21552,7 +21498,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6c85269ee3f244fa077b646b07dc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodypartMesh: {fileID: 316941405}
   bodyName: Face
 --- !u!224 &2107970637 stripped
 RectTransform:
@@ -22023,14 +21968,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272038264671929}
-  m_LocalRotation: {x: 0.059694264, y: -0.2663513, z: 0.0165297, w: 0.9618838}
-  m_LocalPosition: {x: -254.025, y: -138.963, z: -1.1520004}
+  m_LocalRotation: {x: 0.06380227, y: -0.2090002, z: 0.012275275, w: 0.97575486}
+  m_LocalPosition: {x: -254.44, y: -138.853, z: -1.316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4290420359099631}
   m_Father: {fileID: 684621785}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: -30.955, z: 0}
+  m_LocalEulerAnglesHint: {x: 7.449, y: -24.19, z: -0.157}
 --- !u!4 &4847470036273939
 Transform:
   m_ObjectHideFlags: 0
@@ -22174,7 +22119,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 30
+    FieldOfView: 25
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000

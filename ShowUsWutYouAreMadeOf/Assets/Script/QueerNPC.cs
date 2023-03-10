@@ -5,6 +5,7 @@ public class QueerNPC : Interactable
 {
     public Queer queerID;
     public SketchFocusBodypart[] sketchableAreas; //load all the scripts, for the sketching system to access
+    public SkinnedMeshRenderer[] bodyPartMeshes;    //automate reference for the sketchfocusbodypart
     internal bool introduced, pronounKnown;
     internal bool alreadySketched, alreadyGifted;
     Animator _animator;
@@ -68,8 +69,7 @@ public class QueerNPC : Interactable
     [YarnCommand("pose")]
     void ChangePose(string anim)
     {
-        _animator.CrossFade(anim,.2f,0);
-        Debug.Log("posing " + anim);
+        _animator.CrossFadeInFixedTime(anim,.8f,0);
     }
 
     [YarnCommand("gift")]

@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    [SerializeField] SkinnedMeshRenderer bodypartMesh;
     public string bodyName;
     Material materialToHighlight;
     Color highlightColor;
@@ -14,6 +14,8 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     void Start()
     {   
         sketchingSystem = SketchingSystem.Instance;
+        var npc = GetComponentInParent<QueerNPC>();
+        var bodypartMesh = Array.Find(npc.bodyPartMeshes,t=> t.name == bodyName);
         materialToHighlight = bodypartMesh.material;
         GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
         highlightColor = sketchingSystem.materialHighlightColor;

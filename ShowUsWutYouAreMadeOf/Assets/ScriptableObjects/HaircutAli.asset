@@ -26,7 +26,7 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 9c65ee1d49014bb4fa153a5a5903c706, type: 3}
     - {fileID: 21300000, guid: adb9571a8993bba40a5aca1409645453, type: 3}
     - {fileID: 21300000, guid: 0ad665981c8cd3e4a8c7e5924e7730e0, type: 3}
-  - objName: Head
+  - objName: Body
     targetDrawings:
     - {fileID: 21300000, guid: 90a8ca94671ede4439edff6036bab85d, type: 3}
     - {fileID: 21300000, guid: cd22e682bd898f1498b6c787a4b0db1c, type: 3}
