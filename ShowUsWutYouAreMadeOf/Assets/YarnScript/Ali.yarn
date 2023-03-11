@@ -29,7 +29,7 @@
     Ali: That would be my absolute honour.
     <<sketch true>>
     <<camera AliSketch>>
-    <<pose Ali Sketch>>
+    <<pose Ali Sketch .5>>
     <<wait .5>>
     Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
     <<startsketch>>
@@ -86,10 +86,10 @@ title: AliSketch
     <<set $StrokeCount +=1>>
 
     <<if $SketchIndex == 0>>
-    <<pose Ali Hair .5>>
+    <<pose Ali Hair .25>>
     <<jump Ali_Hair>>
     <<elseif $SketchIndex ==1>>
-    <<pose Ali Body .5>>
+    <<pose Ali Body .25>>
     <<jump Ali_Body>>
     <<elseif $SketchIndex ==2>>
     <<pose Ali Eye .5>>
@@ -102,6 +102,7 @@ title: AliSketch
     <<jump Ali_Tattoo>>
     <<endif>>
 <<else>>
+    <<pose Ali Laststroke .5>>
     <<jump AliLastStroke>>
 <<endif>>
 ===
@@ -109,6 +110,7 @@ title: AliLastStroke
 ---
     Ali: Seems like my friends are arriving. I’m going to say hi. 
     Ali: Come visit my salon some day, so we can continue this conversation.
+    <<pose Ali Sketch>>
     <<lastdraw>>
     <<wait .5>>
     <<set $StrokeCount to 0>>
