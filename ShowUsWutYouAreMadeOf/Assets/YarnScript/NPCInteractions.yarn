@@ -42,7 +42,7 @@ Do you care if the person you date is also queer?
 <<camera NPC_C>>
 Well, they sort of have to.
 I'm neither a woman or a man.
-So it's naturally a queer relationship.
+So it's always a queer relationship.
 
 <<elseif visited_count("GroupConversation") == 3>>
 //ghosted by girl
@@ -52,7 +52,7 @@ Any updates from you?
 You just want to hear the gossip, right?
 She still ghosts me, nothing new.
 I mean, we are seeing eachother once a week.
-Or maybe two weeks, actually.
+Or maybe every two weeks, actually.
 But it's not necessarily romantic. We go on dates but it feels more like friendship.
 I wish I have the courage to just shaker her and confess my feeling.
 Sigh! When is it my turn to have a cute and healthy relationship?
@@ -95,10 +95,10 @@ Yo, there's this monthly queer womxns club night next Tuesday, wanna go?
 God, the last time I was there I caught my ex making out with someone.
 I just wanted to get out of that place as fast as possible, but my friend begged me to stay.
 <<camera NPC_B>>
-Damn, sounds like a hell of a night. 
+Damn! That sounds like hell of a night. 
 Forget about it, I won't mention that again.
 <<camera NPC_A>>
-Thanks, I think I'm traumatized.
+Yeah, thanks for respecting my trauma.
 
 <<elseif visited_count("GroupConversation") == 6>>
 //talking about looking queer
@@ -112,7 +112,18 @@ Adding to that, I guess it's not a style that suits everyone.
 I mean, if I feel very comfortable with myself, why should I change?
 <<silence Groupchat>>
 <<endif>>
-
+//they go out to smoke, you can eavesdrop outside.
+<<camera Player>>
+===
+title: NPC_RedSunglasses
+---
+Have you tried their new cocktail 'fruit salad'? 
+Although my favorite remain to be 'unicorn sunset'. 
+Who doesn't want to drink pretty glitters?
+<<silence RedSunglasses>>
+===
+title: backup
+---
 //random chat
 <<camera NPC_C>>
 Do you know that there are four genders in the native American society?
@@ -131,15 +142,4 @@ But I don't want everyone to know.
 what's your attachment style?
 i'm anxious
 aye, me too!
-
-//they go out to smoke, you can eavesdrop outside.
-
-<<camera Player>>
-===
-title: NPC_RedSunglasses
----
-Have you tried their new cocktail 'fruit salad'? 
-Although my favorite remain to be 'unicorn sunset'. 
-Who doesn't want to drink pretty glitters?
-<<silence RedSunglasses>>
 ===
