@@ -7,49 +7,133 @@ title: GroupConversation
 //(time has passed and the conversation is no longer linear)
 
 <<if visited_count("GroupConversation") == 0>>
-//talking about being hit on by cis men
+//drag
 <<camera NPC_B>>
-No matter how androgynous I dress, I still get hit on by cis men all the time
-It is very frustrating, my feature doesn't signal any invitation or permission to those men.
+That drag show we went to last week was epic!
+I'm always in awe with the costumes they put up.
+<<camera NPC_A>>
+Glad you enjoyed it! Morgan's show always slays.
+<<camera NPC_B>>
+Honesty I've been wanting to dress in drag for the longest time. 
+But I'm quite shy when it comes to performance.
+I think I just need a little push. 
+Maybe I'd finally do it if we have a flat party or something.
 
 <<elseif visited_count("GroupConversation") == 1>>
-//talking about straight passing at queer space
+//talking about being hit on by cis men
 <<camera NPC_A>>
-When I'm in queer spaces I'm always perceived as the 'ally'.
-Just because I dress feminine? 
+What's wrong?
 <<camera NPC_B>>
-It can be especially dishartening to not be recognized by people from the queer community.
-But at the end of the day, why should one's outfit reflect on how valid they are as a queer person?
+It's just frustrating that I still get hit on by cis men all the time.
+I'm already dressing myself very androgynous.
+Isn't it clear that I don't want their attention?
+<<camera NPC_A>>
+Sometimes I wish I have that confidence.
+But at the end of the day, your outfit shouldn't determine anything.
 
 <<elseif visited_count("GroupConversation") == 2>>
-//talking about looking queer
-<<camera NPC_B>>
-Why do you think some queer people choose not to look queer?
-I heard that the older people get, the more comfortable they are with looking queer.
+//bisexual nonbinary
 <<camera NPC_C>>
-There are many factors considered. It may not be the safest option to be out of the closet, 
-especially if the young are dependent on the adult they live with.
-<<camera NPC_A>>
-It's not a style that suits everyone, I guess. If I feel very comfortable with myself, why should I change?
+So, I'm going out with this guy at the moment.
+But I'm aware we can look straight passing. 
+Sometimes I feel unwelcomed bringing him to queer events.
+<<camera NPC_B>>
+Do you care if the person you date is also queer?
+<<camera NPC_C>>
+Well, they sort of have to.
+I'm neither a woman or a man.
+So it's naturally a queer relationship.
 
 <<elseif visited_count("GroupConversation") == 3>>
-//talking about being perceived as woman
+//ghosted by girl
+<<camera NPC_C>>
+Any updates from you?
+<<camera NPC_A>>
+You just want to hear the gossip, right?
+She still ghosts me, nothing new.
+I mean, we are seeing eachother once a week.
+Or maybe two weeks, actually.
+But it's not necessarily romantic. We go on dates but it feels more like friendship.
+I wish I have the courage to just shaker her and confess my feeling.
+Sigh! When is it my turn to have a cute and healthy relationship?
+
+<<elseif visited_count("GroupConversation") == 3>>
+//Being perceived as woman
 <<camera NPC_C>>
 Many cis people are shocked when I come out to them as non-binary.
-They think, why do you have long hair? Why do you wear pink and pastel? 
-How can you be non-binary without looking androgynous?
-Just because I dress more feminine, most people automatically assume my gender identity and pronouns.
-Why can't I just be outside of the box?
+They think, why do you have long hair? Why do you wear pink and pastel?
+
+Most people also assume my gender identity and pronouns automatically when they first met me.
+I can dress however feminine or masculine I want. 
+Why can't I just be outside of the binary?
+<<camera NPC_A>>
+Of course, of course, only androgynous people can wear that non-binary badge, what else?
+You're not obliged to represent everyone of the community.
+<<camera NPC_C>>
+Funny enough, I got mistaken as a guy once. 
+Spoiler alert, I didn't wear any color that day.
+
 <<elseif visited_count("GroupConversation") == 4>>
+//perceived as ally
+<<camera NPC_C>>
+Speaking of that, I'm always perceived as the 'ally' at queer spaces.
+<<camera NPC_A>>
+Oh boy, tell me about it.
+Based on judging your appearance, relationship, and things like that, am I right?
+<<camera NPC_C>>
+Lol, don't get me started on how hostile some queer community are towards bisexual people.
+<<camera NPC_B>>
+I don't get it, our lives are already hard enough being a marginalized group.
+Why do we have this conflict within our community?
+
+<<elseif visited_count("GroupConversation") == 5>>
+//ex trauma drama
+<<camera NPC_B>>
+//scrolling
+Yo, there's this monthly queer womxns club night next Tuesday, wanna go?
+<<camera NPC_A>>
+God, the last time I was there I caught my ex making out with someone.
+I just wanted to get out of that place as fast as possible, but my friend begged me to stay.
+<<camera NPC_B>>
+Damn, sounds like a hell of a night. 
+Forget about it, I won't mention that again.
+<<camera NPC_A>>
+Thanks, I think I'm traumatized.
+
+<<elseif visited_count("GroupConversation") == 6>>
+//talking about looking queer
+<<camera NPC_B>>
+Why do you think some folks choose not to dress so queer?
+<<camera NPC_C>>
+Well, it may not be the safest option to be out of the closet, 
+Especially for some young people that are still dependent on the adult they live with.
+<<camera NPC_A>>
+Adding to that, I guess it's not a style that suits everyone.
+I mean, if I feel very comfortable with myself, why should I change?
+<<silence Groupchat>>
+<<endif>>
+
+//random chat
 <<camera NPC_C>>
 Do you know that there are four genders in the native American society?
 Feminine women, masculine men, feminine men, and masculine women.
 <<camera NPC_B>>
 Pff, I don't get why people can't let go of those who just don't want be bound to the binary.
 
+<<camera NPC_B>>
+Do you think queer signaling still relevant?
+<<camera NPC_A>>
+Sometimes I walk on the street and wonders, do I look too gay?
+I mean, it's okay that women and other queer people sees me.
+But I don't want everyone to know.
+<<camera NPC_A>>
+//
+what's your attachment style?
+i'm anxious
+aye, me too!
+
 //they go out to smoke, you can eavesdrop outside.
-<<silence Groupchat>>
-<<endif>>
+
 <<camera Player>>
 ===
 title: NPC_RedSunglasses

@@ -98,7 +98,7 @@ title: AliSketch
     <<pose Ali Top .5>>
     <<jump Ali_Top>>
     <<elseif $SketchIndex ==4>>
-    <<pose Ali Tattoo .5>>
+    <<pose Ali Tattoo .3>>
     <<jump Ali_Tattoo>>
     <<endif>>
 <<else>>
