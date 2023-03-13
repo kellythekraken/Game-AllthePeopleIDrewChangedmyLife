@@ -9,109 +9,158 @@ title: GroupConversation
 <<if visited_count("GroupConversation") == 0>>
 //drag
 <<camera NPC_B>>
+<<pos B Excited>>
 That drag show we went to last week was epic!
 I'm always in awe with the costumes they put up.
 <<camera NPC_A>>
+<<pos A Surprise>>
 Glad you enjoyed it! Morgan's show always slays.
 <<camera NPC_B>>
+<<pos B Think>>
 Honesty I've been wanting to dress in drag for the longest time. 
 But I'm quite shy when it comes to performance.
 I think I just need a little push. 
+<<pos B Explain .3>>
 Maybe I'd finally do it if we have a flat party or something.
 
+<<pos A Default 1>>
+<<pos B Default 1>>
 <<elseif visited_count("GroupConversation") == 1>>
 //talking about being hit on by cis men
 <<camera NPC_A>>
 What's wrong?
 <<camera NPC_B>>
+<<pos B Explain>>
 It's just frustrating that I still get hit on by cis men all the time.
 I'm already dressing myself very androgynous.
+<<pos B Frustrated .3>>
 Isn't it clear that I don't want their attention?
 <<camera NPC_A>>
+<<pos A Drink>>
 Sometimes I wish I have that confidence.
 But at the end of the day, your outfit shouldn't determine anything.
-
+<<pos A Default 1>>
+<<pos B Default 1>>
 <<elseif visited_count("GroupConversation") == 2>>
 //bisexual nonbinary
 <<camera NPC_C>>
+<<pos C Explain>>
 So, I'm going out with this guy at the moment.
 But I'm aware we can look straight passing. 
 Sometimes I feel unwelcomed bringing him to queer events.
 <<camera NPC_B>>
+<<pos B FaceC>>
 Do you care if the person you date is also queer?
 <<camera NPC_C>>
+<<pos C Drink>>
 Well, they sort of have to.
+<<pos C FaceB .3>>
 I'm neither a woman or a man.
 So it's always a queer relationship.
-
+<<pos B Default 1>>
+<<pos C Default 1>>
 <<elseif visited_count("GroupConversation") == 3>>
 //ghosted by girl
 <<camera NPC_C>>
+<<pos C Speak>>
 Any updates from you?
 <<camera NPC_A>>
+<<pos A FaceC>>
 You just want to hear the gossip, right?
+<<pos A Drink .3>>
 She still ghosts me, nothing new.
 I mean, we are seeing eachother once a week.
 Or maybe every two weeks, actually.
 But it's not necessarily romantic. We go on dates but it feels more like friendship.
 I wish I have the courage to just shaker her and confess my feeling.
+<<pos A Frustrated .3>>
 Sigh! When is it my turn to have a cute and healthy relationship?
+<<pos A Default 1>>
+<<pos C Default 1>>
 
 <<elseif visited_count("GroupConversation") == 3>>
 //Being perceived as woman
 <<camera NPC_C>>
+<<pos C Drink>>
 Many cis people are shocked when I come out to them as non-binary.
 They think, why do you have long hair? Why do you wear pink and pastel?
-
+<<pos C Explain .4>>
 Most people also assume my gender identity and pronouns automatically when they first met me.
 I can dress however feminine or masculine I want. 
+<<pos C Speak .4>>
 Why can't I just be outside of the binary?
 <<camera NPC_A>>
+<<pos A Surprise>>
 Of course, of course, only androgynous people can wear that non-binary badge, what else?
+<<pos A Explain .4>>
 You're not obliged to represent everyone of the community.
 <<camera NPC_C>>
 Funny enough, I got mistaken as a guy once. 
+<<pos C Drink .5>>
 Spoiler alert, I didn't wear any color that day.
+<<pos A Default 1>>
+<<pos C Default 1>>
 
 <<elseif visited_count("GroupConversation") == 4>>
 //perceived as ally
 <<camera NPC_C>>
+<<pos C Drink>>
 Speaking of that, I'm always perceived as the 'ally' at queer spaces.
 <<camera NPC_A>>
+<<pos A Frustrated>>
 Oh boy, tell me about it.
+<<pos A FaceC .3>>
 Based on judging your appearance, relationship, and things like that, am I right?
 <<camera NPC_C>>
+<<pos C Explain>>
 Lol, don't get me started on how hostile some queer community are towards bisexual people.
 <<camera NPC_B>>
+<<pos B Think>>
 I don't get it, our lives are already hard enough being a marginalized group.
+<<pos B Frustrated .4>>
 Why do we have this conflict within our community?
+<<pos A Default 1>>
+<<pos B Default 1>>
+<<pos C Default 1>>
 
 <<elseif visited_count("GroupConversation") == 5>>
 //ex trauma drama
 <<camera NPC_B>>
-//scrolling
+<<pos B Excited>>
 Yo, there's this monthly queer womxns club night next Tuesday, wanna go?
 <<camera NPC_A>>
+<<pos A Frustrated>>
 God, the last time I was there I caught my ex making out with someone.
 I just wanted to get out of that place as fast as possible, but my friend begged me to stay.
 <<camera NPC_B>>
+<<pos B Think>>
 Damn! That sounds like hell of a night. 
 Forget about it, I won't mention that again.
 <<camera NPC_A>>
+<<pos A Drink>>
 Yeah, thanks for respecting my trauma.
+<<pos A Default 1>>
+<<pos B Default 1>>
 
 <<elseif visited_count("GroupConversation") == 6>>
 //talking about looking queer
 <<camera NPC_B>>
+<<pos B Drink>>
 Why do you think some folks choose not to dress so queer?
 <<camera NPC_C>>
+<<pos C Speak>>
 Well, it may not be the safest option to be out of the closet, 
 Especially for some young people that are still dependent on the adult they live with.
 <<camera NPC_A>>
+<<pos A Explain>>
 Adding to that, I guess it's not a style that suits everyone.
 I mean, if I feel very comfortable with myself, why should I change?
+<<pos A Default 1>>
+<<pos B Default 1>>
+<<pos C Default 1>>
 <<silence Groupchat>>
 <<endif>>
+
 //they go out to smoke, you can eavesdrop outside.
 <<camera Player>>
 ===

@@ -9,7 +9,7 @@ public class QueerNPC : Interactable
     internal bool introduced, pronounKnown;
     internal bool alreadySketched, alreadyGifted;
     Animator _animator;
-    protected override void Start()
+    protected override void Start() 
     {
         base.Start();
         _animator = GetComponent<Animator>();
