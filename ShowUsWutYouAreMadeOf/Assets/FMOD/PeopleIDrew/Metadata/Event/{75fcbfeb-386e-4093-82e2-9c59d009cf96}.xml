@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{75fcbfeb-386e-4093-82e2-9c59d009cf96}">
 		<property name="name">
-			<value>BGM_2D Electro</value>
+			<value>BGM_2D Cons</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -66,7 +66,7 @@
 	<object class="MarkerTrack" id="{384eb627-31c6-45e5-8701-37bf7ec079c3}" />
 	<object class="GroupTrack" id="{fc190748-a1ae-4651-84b1-ffec3e6b2ff8}">
 		<relationship name="modules">
-			<destination>{f3cb777c-2138-4915-be3d-5c0d1da4501c}</destination>
+			<destination>{8800e926-426f-4f90-ad2f-6cd5848cc599}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{fc504a65-803d-4974-aa8a-520f5e8f8305}</destination>
@@ -74,7 +74,7 @@
 	</object>
 	<object class="Timeline" id="{54104fa3-cf3d-45a3-bb15-271999108cef}">
 		<relationship name="modules">
-			<destination>{f3cb777c-2138-4915-be3d-5c0d1da4501c}</destination>
+			<destination>{8800e926-426f-4f90-ad2f-6cd5848cc599}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{3c799dd1-af30-4dd4-82cb-012c76977221}</destination>
@@ -107,12 +107,12 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4a72fad8-5a05-4aeb-992b-dea6d24eb8a5}" />
-	<object class="SingleSound" id="{f3cb777c-2138-4915-be3d-5c0d1da4501c}">
+	<object class="SingleSound" id="{8800e926-426f-4f90-ad2f-6cd5848cc599}">
 		<property name="length">
-			<value>307.22612244897959</value>
+			<value>240</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{7a8bc1e1-8610-47d9-a9d7-d0b093b96c70}</destination>
+			<destination>{8104911d-8c6f-422f-ae9c-18a3c433e9c0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fc504a65-803d-4974-aa8a-520f5e8f8305}">
@@ -140,7 +140,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>305</value>
+			<value>240</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{54104fa3-cf3d-45a3-bb15-271999108cef}</destination>
