@@ -11,6 +11,7 @@ title: GroupConversation
 <<camera NPC_B>>
 <<pos B Excited>>
 That drag show we went to last week was epic!
+<<pos B FaceC .3>>
 I'm always in awe with the costumes they put up.
 <<camera NPC_A>>
 <<pos A Surprise>>
@@ -19,6 +20,7 @@ Glad you enjoyed it! Morgan's show always slays.
 <<pos B Think>>
 Honesty I've been wanting to dress in drag for the longest time. 
 But I'm quite shy when it comes to performance.
+<<pos B FaceC .3>>
 I think I just need a little push. 
 <<pos B Explain .3>>
 Maybe I'd finally do it if we have a flat party or something.
@@ -30,16 +32,17 @@ Maybe I'd finally do it if we have a flat party or something.
 <<camera NPC_A>>
 What's wrong?
 <<camera NPC_B>>
-<<pos B Explain>>
+<<pos B Drink>>
 It's just frustrating that I still get hit on by cis men all the time.
+<<pos B Explain .3>>
 I'm already dressing myself very androgynous.
 <<pos B Frustrated .3>>
 Isn't it clear that I don't want their attention?
 <<camera NPC_A>>
 <<pos A Drink>>
 Sometimes I wish I have that confidence.
+<<pos A Default .3>>
 But at the end of the day, your outfit shouldn't determine anything.
-<<pos A Default 1>>
 <<pos B Default 1>>
 <<elseif visited_count("GroupConversation") == 2>>
 //bisexual nonbinary
@@ -47,6 +50,7 @@ But at the end of the day, your outfit shouldn't determine anything.
 <<pos C Explain>>
 So, I'm going out with this guy at the moment.
 But I'm aware we can look straight passing. 
+<<pos C Default .3>>
 Sometimes I feel unwelcomed bringing him to queer events.
 <<camera NPC_B>>
 <<pos B FaceC>>
@@ -56,9 +60,9 @@ Do you care if the person you date is also queer?
 Well, they sort of have to.
 <<pos C FaceB .3>>
 I'm neither a woman or a man.
+<<pos C Default .3>>
 So it's always a queer relationship.
 <<pos B Default 1>>
-<<pos C Default 1>>
 <<elseif visited_count("GroupConversation") == 3>>
 //ghosted by girl
 <<camera NPC_C>>
@@ -69,9 +73,12 @@ Any updates from you?
 You just want to hear the gossip, right?
 <<pos A Drink .3>>
 She still ghosts me, nothing new.
+<<pos A Explain .3>>
 I mean, we are seeing eachother once a week.
 Or maybe every two weeks, actually.
+<<pos A FaceC .3>>
 But it's not necessarily romantic. We go on dates but it feels more like friendship.
+<<pos A Default .3>>
 I wish I have the courage to just shake her and confess my feeling.
 <<pos A Frustrated .3>>
 Sigh! When is it my turn to have a cute and healthy relationship?
@@ -131,10 +138,12 @@ Yo, there's this monthly queer womxns club night next Tuesday, wanna go?
 <<camera NPC_A>>
 <<pos A Frustrated>>
 God, the last time I was there I caught my ex making out with someone.
+<<pos A Explain .3>>
 I just wanted to get out of that place as fast as possible, but my friend begged me to stay.
 <<camera NPC_B>>
-<<pos B Think>>
+<<pos B Excited>>
 Damn! That sounds like hell of a night. 
+<<pos B Think .3>>
 Forget about it, I won't mention that again.
 <<camera NPC_A>>
 <<pos A Drink>>

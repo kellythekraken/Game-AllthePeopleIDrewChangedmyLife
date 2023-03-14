@@ -24,34 +24,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-8217780467314916716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/BGM
-  m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/BGM
-  Guid:
-    Data1: -1652023811
-    Data2: 1278112493
-    Data3: 213732757
-    Data4: 336942024
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 2908583056374045826}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 108453
 --- !u!114 &-7374836057392275391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,10 +66,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638143419795016924
+  lastModified: 638143807464813072
   FileSizes:
   - Name: Desktop
-    Value: 11611648
+    Value: 7821888
   Exists: 1
 --- !u!114 &-7112038190390967834
 MonoBehaviour:
@@ -141,10 +113,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638143419795206567
+  lastModified: 638143807464953095
   FileSizes:
   - Name: Desktop
-    Value: 1558
+    Value: 1516
   Exists: 1
 --- !u!114 &-4068463142945601016
 MonoBehaviour:
@@ -269,7 +241,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638143419802993828
+  lastModified: 638143807474233079
   FileSizes:
   - Name: Desktop
     Value: 656352
@@ -333,14 +305,13 @@ MonoBehaviour:
   - {fileID: 4562736670638075003}
   - {fileID: -4068463142945601016}
   - {fileID: 3251524518601983610}
-  - {fileID: -8217780467314916716}
   EditorParameters:
   - {fileID: 8474737377721607225}
   MasterBanks:
   - {fileID: 1861587311605156355}
   StringsBanks:
   - {fileID: -6422244205309584632}
-  cacheTime: 638143419802993828
+  cacheTime: 638143807474233079
   cacheVersion: 131601
 --- !u!114 &224266968279458511
 MonoBehaviour:
@@ -408,34 +379,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638143419795116529
+  lastModified: 638143807464893099
   FileSizes:
   - Name: Desktop
     Value: 1218
-  Exists: 1
---- !u!114 &2908583056374045826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM/Muffle
-  m_EditorClassIdentifier: 
-  Name: Muffle
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3179359666
-    data2: 4174788577
-  Type: 0
-  IsGlobal: 1
-  Labels: []
   Exists: 1
 --- !u!114 &3251524518601983610
 MonoBehaviour:
