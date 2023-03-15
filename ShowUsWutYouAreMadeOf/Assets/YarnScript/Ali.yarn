@@ -16,16 +16,23 @@
     <<wait .5>>
     Ali: Hey!
     Ali: Haven’t seen you around before. I’m Ali. 
+    <<pose Ali Chat .5>>
     Ali: Saw you sketching earlier. Are you an artist?
-    <<pose Ali Chat>>
+    <<pose Ali CExplain .4>>
     Ali: I was at this art market a few weeks ago. An artist was doing some live portrait drawing.
+    <<pose Ali Chat .5>>
     Ali: It's intriguing to see yourself on a flat piece of paper, not quite like photos.
+    <<pose Ali CThink .5>>
     Ali: Afterall, I was being carefully watched for a period of time.
+    <<pose Ali CThinklook .5>>
     Ali: I thought, so that's how they see me.
     Ali: ...
+    <<pose Ali CSurprised .3>>
     Ali: You would like to sketch me? 
     Ali: Wow, what a luck to be asked!
+    <<pose Ali CHair .5>>
     Ali: Is it my hair that has caught your eyes?
+    <<pose Ali Chat .5>>
     Ali: That would be my absolute honour.
     <<sketch true>>
     <<camera AliSketch>>
@@ -98,7 +105,7 @@ title: AliSketch
     <<pose Ali Top .5>>
     <<jump Ali_Top>>
     <<elseif $SketchIndex ==4>>
-    <<pose Ali Tattoo .3>>
+    <<pose Ali Tattoo .5>>
     <<jump Ali_Tattoo>>
     <<endif>>
 <<else>>
@@ -227,12 +234,11 @@ title: Ali_Tattoo
 ---
 <<wait .5>>
     Ali: I got this tattoo on the last day of a trip.
+    <<pose Ali Sketch .5>>
     Ali: A bit spontaneous, but one of my favorite artist was visiting, how could I miss that opportunity?
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
-<<wait .5>>
-<<pose Ali Sketch .5>>
 ===
 
 

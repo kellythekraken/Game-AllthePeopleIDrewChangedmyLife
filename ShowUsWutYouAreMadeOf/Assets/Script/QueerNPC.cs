@@ -1,5 +1,6 @@
 using UnityEngine;
 using Yarn.Unity;
+using System.Collections;
 
 public class QueerNPC : Interactable
 {
@@ -69,9 +70,20 @@ public class QueerNPC : Interactable
     [YarnCommand("pose")]
     void ChangePose(string anim, float transitionTime = 1f)
     {
+        if(transitionTime!=1f)
+        {
+            StartCoroutine(DelayedAnim(anim,transitionTime));
+        }
+        else {_animator.CrossFadeInFixedTime(anim,1f,0);}
+    }
+    
+    IEnumerator DelayedAnim(string anim, float transitionTime)
+    {
+        var randWait = Random.Range(.3f,.7f);
+        yield return new WaitForSeconds(randWait);
         _animator.CrossFadeInFixedTime(anim,transitionTime,0);
     }
-
+        
     [YarnCommand("gift")]
     public void GiveItem()
     {

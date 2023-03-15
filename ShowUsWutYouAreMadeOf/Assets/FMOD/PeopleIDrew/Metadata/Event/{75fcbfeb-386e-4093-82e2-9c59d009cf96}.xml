@@ -86,6 +86,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{e88bd463-cc4d-4ec6-aa26-bd854b7d477e}">
+		<property name="pitch">
+			<value>-2</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{dc0e3987-ca87-4d4d-ac40-d58c8f21bf1c}</destination>
 		</relationship>
@@ -137,10 +140,10 @@
 	</object>
 	<object class="LoopRegion" id="{3c799dd1-af30-4dd4-82cb-012c76977221}">
 		<property name="position">
-			<value>0</value>
+			<value>34.896551724137929</value>
 		</property>
 		<property name="length">
-			<value>240</value>
+			<value>39.003448275862077</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{54104fa3-cf3d-45a3-bb15-271999108cef}</destination>

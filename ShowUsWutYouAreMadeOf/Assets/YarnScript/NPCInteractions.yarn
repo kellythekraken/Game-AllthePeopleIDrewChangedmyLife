@@ -11,7 +11,7 @@ title: GroupConversation
 <<camera NPC_B>>
 <<pos B Excited>>
 That drag show we went to last week was epic!
-<<pos B FaceC .3>>
+<<pos B FaceC .8>>
 I'm always in awe with the costumes they put up.
 <<camera NPC_A>>
 <<pos A Surprise>>
@@ -20,9 +20,9 @@ Glad you enjoyed it! Morgan's show always slays.
 <<pos B Think>>
 Honesty I've been wanting to dress in drag for the longest time. 
 But I'm quite shy when it comes to performance.
-<<pos B FaceC .3>>
+<<pos B FaceC .8>>
 I think I just need a little push. 
-<<pos B Explain .3>>
+<<pos B Explain .5>>
 Maybe I'd finally do it if we have a flat party or something.
 
 <<pos A Default 1>>
@@ -34,14 +34,14 @@ What's wrong?
 <<camera NPC_B>>
 <<pos B Drink>>
 It's just frustrating that I still get hit on by cis men all the time.
-<<pos B Explain .3>>
+<<pos B Explain .5>>
 I'm already dressing myself very androgynous.
-<<pos B Frustrated .3>>
+<<pos B Frustrated .5>>
 Isn't it clear that I don't want their attention?
 <<camera NPC_A>>
 <<pos A Drink>>
 Sometimes I wish I have that confidence.
-<<pos A Default .3>>
+<<pos A Default .5>>
 But at the end of the day, your outfit shouldn't determine anything.
 <<pos B Default 1>>
 <<elseif visited_count("GroupConversation") == 2>>
@@ -50,7 +50,7 @@ But at the end of the day, your outfit shouldn't determine anything.
 <<pos C Explain>>
 So, I'm going out with this guy at the moment.
 But I'm aware we can look straight passing. 
-<<pos C Default .3>>
+<<pos C Default .5>>
 Sometimes I feel unwelcomed bringing him to queer events.
 <<camera NPC_B>>
 <<pos B FaceC>>
@@ -58,9 +58,9 @@ Do you care if the person you date is also queer?
 <<camera NPC_C>>
 <<pos C Drink>>
 Well, they sort of have to.
-<<pos C FaceB .3>>
+<<pos C FaceB .5>>
 I'm neither a woman or a man.
-<<pos C Default .3>>
+<<pos C Default .5>>
 So it's always a queer relationship.
 <<pos B Default 1>>
 <<elseif visited_count("GroupConversation") == 3>>
@@ -71,16 +71,16 @@ Any updates from you?
 <<camera NPC_A>>
 <<pos A FaceC>>
 You just want to hear the gossip, right?
-<<pos A Drink .3>>
+<<pos A Drink .5>>
 She still ghosts me, nothing new.
-<<pos A Explain .3>>
+<<pos A Explain .5>>
 I mean, we are seeing eachother once a week.
 Or maybe every two weeks, actually.
-<<pos A FaceC .3>>
+<<pos A FaceC .5>>
 But it's not necessarily romantic. We go on dates but it feels more like friendship.
-<<pos A Default .3>>
+<<pos A Default .5>>
 I wish I have the courage to just shake her and confess my feeling.
-<<pos A Frustrated .3>>
+<<pos A Frustrated .5>>
 Sigh! When is it my turn to have a cute and healthy relationship?
 <<pos A Default 1>>
 <<pos C Default 1>>
@@ -103,7 +103,7 @@ Of course, of course, only androgynous people can wear that non-binary badge, wh
 You're not obliged to represent everyone of the community.
 <<camera NPC_C>>
 Funny enough, I got mistaken as a guy once. 
-<<pos C Drink .5>>
+<<pos C Drink .8>>
 Spoiler alert, I didn't wear any color that day.
 <<pos A Default 1>>
 <<pos C Default 1>>
@@ -116,7 +116,7 @@ Speaking of that, I'm always perceived as the 'ally' at queer spaces.
 <<camera NPC_A>>
 <<pos A Frustrated>>
 Oh boy, tell me about it.
-<<pos A FaceC .3>>
+<<pos A FaceC .5>>
 Based on judging your appearance, relationship, and things like that, am I right?
 <<camera NPC_C>>
 <<pos C Explain>>
@@ -138,12 +138,12 @@ Yo, there's this monthly queer womxns club night next Tuesday, wanna go?
 <<camera NPC_A>>
 <<pos A Frustrated>>
 God, the last time I was there I caught my ex making out with someone.
-<<pos A Explain .3>>
+<<pos A Explain .5>>
 I just wanted to get out of that place as fast as possible, but my friend begged me to stay.
 <<camera NPC_B>>
 <<pos B Excited>>
 Damn! That sounds like hell of a night. 
-<<pos B Think .3>>
+<<pos B Think .5>>
 Forget about it, I won't mention that again.
 <<camera NPC_A>>
 <<pos A Drink>>
