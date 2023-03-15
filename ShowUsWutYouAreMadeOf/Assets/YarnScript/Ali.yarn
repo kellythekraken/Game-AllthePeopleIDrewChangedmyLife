@@ -2,7 +2,7 @@
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
 <<camera AliChat>>
-<<if visited_count("AliStart") == 0>>
+<<if visited_count("Ali") == 0>>
     <<set $NumberOfEncounters +=1>>
     <<set $SketchIndex to 0>> //for which body part
     <<set $MaxStrokes to 10>> //how many strokes before call it a day
@@ -18,17 +18,17 @@
     Ali: Haven’t seen you around before. I’m Ali. 
     <<pose Ali Chat .5>>
     Ali: Saw you sketching earlier. Are you an artist?
-    <<pose Ali CExplain .4>>
+    <<pose Ali CExplain .5>>    
     Ali: I was at this art market a few weeks ago. An artist was doing some live portrait drawing.
-    <<pose Ali Chat .5>>
     Ali: It's intriguing to see yourself on a flat piece of paper, not quite like photos.
-    <<pose Ali CThink .5>>
-    Ali: Afterall, I was being carefully watched for a period of time.
     <<pose Ali CThinklook .5>>
+    Ali: Afterall, I was being carefully watched for a period of time.
+    <<pose Ali CThink .5>>
     Ali: I thought, so that's how they see me.
     Ali: ...
-    <<pose Ali CSurprised .3>>
+    <<pose Ali CSurprised .4>>
     Ali: You would like to sketch me? 
+    <<pose Ali CHandsonchest .4>>
     Ali: Wow, what a luck to be asked!
     <<pose Ali CHair .5>>
     Ali: Is it my hair that has caught your eyes?
@@ -42,18 +42,23 @@
     <<startsketch>>
 
 <<else>>
-    <<pose Ali Chat>>
     <<if $SpecialDialogue == true>>
         <<jump AliSpecial>>
     <<elseif $AliSmallTalk == 0>>
+        <<pose Ali Chat>>
         Ali: Hey! Thanks for the drawing earlier.
+        <<pose Ali Explain .5>>
         Ali: We were discussing about the benefit of colorful hair.
         Ali: Once met this person who used her blue hair as a strategy, so people remember her in networking events.
     <<elseif $AliSmallTalk == 1>>
+        <<pose Ali Explain>>
         Ali: My horoscope? I'm a Sagittarius, does that mean I don't get along with a certain group of people?
     <<elseif $AliSmallTalk == 2>>
+        <<pose Ali Introchat>>
         Ali: I showed the picture of your drawing to my friends, they were very impressed too. 
+        <<pose Ali Chat .5>>
         Ali: It's a way to break the ice, getting to know people a bit.
+        <<pose Ali Explain .5>>
         Ali: Even flirt a bit, maybe.
         Ali: Coming from one of their suggestions.
         <<silence Ali>>
@@ -70,17 +75,21 @@
 title: AliSpecial
 ---
 <<if visited_count("AliSpecial") == 0>>
+    <<pose Ali CThinklook>>
     Ali: Hey, that hairstyle looks good on you!
     Ali: It's nice to give a change in style sometimes.
+    <<pose Ali CExplain .5>>
     Ali: It may not work everytime, but I think this hair suits you!
 <<elseif visited_count("AliSpecial") == 1>>
     Ali: It always put a smile on my face when I see people embracing their queerness with crazy hair.
+    <<pose Ali CThinklook .5>>
     Ali: I think lilac might look good on you.
+    <<pose Ali CExplain .5>>
     Ali: We got a hairdye specialist who comes here often. Will give you a shout if I spot them tonight!
 <<else>>
     <<set $SpecialDialogueSpoken to true>>
     <<set $SpecialDialogue to false>>
-    <<jump AliStart>>
+    <<jump Ali>>
 <<endif>>
 
 <<camera Player>>
@@ -116,8 +125,8 @@ title: AliSketch
 title: AliLastStroke
 ---
     Ali: Seems like my friends are arriving. I’m going to say hi. 
-    Ali: Come visit my salon some day, so we can continue this conversation.
     <<pose Ali Sketch>>
+    Ali: Come visit my salon some day, so we can continue this conversation.
     <<lastdraw>>
     <<wait .5>>
     <<set $StrokeCount to 0>>
@@ -128,9 +137,12 @@ title: AliSketchFin
 <<sketch false>>
 <<camera Player>>
 <<set $AliSketched to true>>
+<<pose Ali Thinklook>>
 Ali: Oh, I love your choice of colour.
 Ali: It's fascinating to see how you see me in this drawing. It make me think of the conversation we had.
+<<pose Ali Explain .5>>
 Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
+<<pose Ali Chat .5>>
 Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
