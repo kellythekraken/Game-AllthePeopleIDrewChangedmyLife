@@ -7843,14 +7843,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075261785}
-  m_LocalRotation: {x: 0.041646432, y: -0.61451256, z: 0.03542178, w: 0.78701025}
-  m_LocalPosition: {x: -252.39, y: -139, z: 0.89}
+  m_LocalRotation: {x: 0.045527767, y: -0.6142374, z: 0.04039297, w: 0.7867707}
+  m_LocalPosition: {x: -252.36, y: -138.972, z: 0.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1813769569}
   m_Father: {fileID: 684621785}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 6.263, y: -75.952, z: 0.263}
+  m_LocalEulerAnglesHint: {x: 6.965, y: -75.932, z: 0.44}
 --- !u!114 &1075261789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7872,7 +7872,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 20
+    FieldOfView: 22
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -14086,7 +14086,7 @@ GameObject:
   - component: {fileID: 1769934325}
   - component: {fileID: 1769934327}
   - component: {fileID: 1769934326}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22225,14 +22225,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272038264671929}
-  m_LocalRotation: {x: 0.06357742, y: -0.19187313, z: 0.013391188, w: 0.9792667}
-  m_LocalPosition: {x: -254.43, y: -139.01, z: -1.33}
+  m_LocalRotation: {x: 0.062405273, y: -0.1185037, z: 0.018082988, w: 0.99082565}
+  m_LocalPosition: {x: -254.664, y: -138.958, z: -1.294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4290420359099631}
   m_Father: {fileID: 684621785}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 7.45, y: -22.165, z: 0.106}
+  m_LocalEulerAnglesHint: {x: 7.351, y: -13.562, z: 1.216}
 --- !u!4 &4847470036273939
 Transform:
   m_ObjectHideFlags: 0
@@ -22376,7 +22376,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 25
+    FieldOfView: 28
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -24084,7 +24084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yarnProject: {fileID: 7545569452688597077, guid: 23977c68ac291404c88932b604721e90, type: 3}
+  yarnProject: {fileID: 7545569452688597077, guid: 1c2e447041653034e9b27bc9d7818322, type: 3}
   _variableStorage: {fileID: 6970033078280331516}
   dialogueViews:
   - {fileID: 4495344655914505407}

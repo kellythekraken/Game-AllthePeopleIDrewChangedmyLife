@@ -79,7 +79,7 @@ public class QueerNPC : Interactable
     
     IEnumerator DelayedAnim(string anim, float transitionTime)
     {
-        var randWait = Random.Range(.3f,.7f);
+        var randWait = Random.Range(.2f,.6f);
         yield return new WaitForSeconds(randWait);
         _animator.CrossFadeInFixedTime(anim,transitionTime,0);
     }
