@@ -7,10 +7,9 @@ using UnityEngine.UI;
 [Serializable]
 public class WardrobeSection
 {
-    public string DisplayName;
     public ItemSection sectionName;
-    public SkinnedMeshRenderer renderer;   //renderer to replace the materials, maybe a list if there're more renderer?
-    public Mesh defaultMesh;
+    internal SkinnedMeshRenderer renderer;   //current renderer to replace the materials, maybe a list if there're more renderer?
+    public SkinnedMeshRenderer defaultMesh;
     public List<GiftItem> defaultItems;
     int _materialIndex;
     int _subObjectIndex;
@@ -48,7 +47,7 @@ public class WardrobeManager : MonoBehaviour
         wardrobeSectionList = new List<Transform>();
         outfitGifterList = new List<string>();
 
-        foreach(Transform i in transform)
+        foreach(Transform i in transform)//get all children transform, that are wardrobe sections
         {
             wardrobeSectionList.Add(i);
             foreach (Transform child in i) Destroy(child.gameObject);//clear child
@@ -68,6 +67,7 @@ public class WardrobeManager : MonoBehaviour
 
         foreach(WardrobeSection section in WardrobeSections)
         {
+            section.renderer = section.defaultMesh;
             //create button for the default items
             foreach(GiftItem i in section.defaultItems)
             {
@@ -133,8 +133,7 @@ public class WardrobeManager : MonoBehaviour
 
         if(myMesh == meshToChange)  //if the item is clicked twice, set it back to default.
         {
-            Debug.Log("set" + section.renderer + "mesh to default");
-            section.renderer.sharedMesh = section.defaultMesh;
+            section.renderer.sharedMesh = section.defaultMesh.sharedMesh;
         }
         else
         {
