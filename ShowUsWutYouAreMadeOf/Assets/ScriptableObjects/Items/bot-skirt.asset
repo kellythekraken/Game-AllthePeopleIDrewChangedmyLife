@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
   m_Name: bot-skirt
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2dfeee0759eed5a448fb38d462454d31, type: 3}
+  icon: {fileID: 21300000, guid: 9675ef74a03101f4b830179077fc2ef8, type: 3}
   section: 1
   type: 0
   mesh: {fileID: -7429483680903742720, guid: a66761427fe88194095e6b90037beb70, type: 3}

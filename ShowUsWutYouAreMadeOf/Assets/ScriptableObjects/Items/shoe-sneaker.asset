@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae026f2980f0949ba45ad23c3c8c2d, type: 3}
   m_Name: shoe-sneaker
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 2dfeee0759eed5a448fb38d462454d31, type: 3}
+  icon: {fileID: 21300000, guid: a661d79ffe06f6547895bee840f8365e, type: 3}
   section: 4
   type: 0
   mesh: {fileID: -6106519863122946620, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
