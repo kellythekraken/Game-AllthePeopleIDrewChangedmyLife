@@ -100,7 +100,6 @@ public class WardrobeManager : MonoBehaviour
         switch(item.type)
         {
             case ItemType.Mesh:
-            //if(section.renderer == null) Debug.LogWarning("Warning! " + section.DisplayName + " does not have a renderer but has meshes");
             btn.onClick.AddListener( () => ChangeMesh(section, item.mesh));
             break;
 
