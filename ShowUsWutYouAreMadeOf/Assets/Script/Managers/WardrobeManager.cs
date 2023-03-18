@@ -27,7 +27,7 @@ public class WardrobeManager : MonoBehaviour
     [SerializeField] Transform accessoryParent;
     public List<WardrobeSection> WardrobeSections;
     List<GameObject> accessoryList; //reference to all the hidden accessory gameobjects
-    List<Transform> wardrobeSectionList;    //transforms of all the wardrobe section parents
+    List<Transform> wardrobeParentTransforms;    //transforms of all the wardrobe section parents
     List<string> outfitGifterList; //list the names of people who you're wearing their gifted item
 
     //each piece will have queer score, (and fashion score??)
@@ -45,12 +45,13 @@ public class WardrobeManager : MonoBehaviour
     {
         Instance = this;
         accessoryList = new List<GameObject>();
-        wardrobeSectionList = new List<Transform>();
+        wardrobeParentTransforms = new List<Transform>();
         outfitGifterList = new List<string>();
+        topSection = WardrobeSections.Find(t=>t.sectionName == ItemSection.Top);
 
         foreach(Transform i in transform)//get all children transform, that are wardrobe sections
         {
-            wardrobeSectionList.Add(i);
+            wardrobeParentTransforms.Add(i);
             foreach (Transform child in i) Destroy(child.gameObject);//clear child
         }
         InitDefaultItems();
@@ -86,7 +87,7 @@ public class WardrobeManager : MonoBehaviour
     //take care of mesh/gameobject/ type of wearable item
     void CreateItemBtn(GiftItem item, bool isNew, string gifterName = null)
     {
-        Transform parent = wardrobeSectionList.Find(x => x.name == item.section.ToString());
+        Transform parent = wardrobeParentTransforms.Find(x => x.name == item.section.ToString());
 
         GameObject obj = Instantiate(btnPrefab,parent);
         Button btn = obj.GetComponent<Button>();
@@ -130,26 +131,50 @@ public class WardrobeManager : MonoBehaviour
     }
 
 #region ItemAppearance
+    bool wearingDress = false;
+    WardrobeSection topSection;
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)
     {
         Mesh myMesh = section.renderer.sharedMesh;
 
         if(myMesh == meshToChange)  //if the item is clicked twice, set it back to default.
         {
+            if(wearingDress) //dress and top logic
+            {
+                if(section.sectionName == ItemSection.Dress)   //attempt to take off dress
+                {
+                    wearingDress = false;
+                    if( topSection.renderer.sharedMesh ==null)
+                        topSection.renderer.sharedMesh = topSection.defaultMesh;
+                }
+                else if(section.sectionName == ItemSection.Top) //attempt to take of top when dress
+                {
+                    topSection.renderer.sharedMesh = null;
+                    return;
+                }
+            }
             section.renderer.sharedMesh = section.defaultMesh;
         }
         else
         {
+            if(section.sectionName == ItemSection.Dress)
+            {   
+                wearingDress = true;
+            }
+            else if (section.sectionName == ItemSection.Bottom) //put top on if change to trouser
+            {
+                wearingDress = false;
+                var topSection = WardrobeSections.Find(t=>t.sectionName == ItemSection.Top);
+                if( topSection.renderer.sharedMesh ==null)
+                    topSection.renderer.sharedMesh = topSection.defaultMesh;
+            }
             section.renderer.sharedMesh = meshToChange;
         }
     }
 
-    void ChangeDress()
+    void ResetTop()
     {
-        //dress and trouser share the same mesh (to change)
-        //when you're wearing dress, you can also take off the top
-        //if taking off dress by clicking the button again, then change it to default bottom.
-        //also change to default top if taking the dress off
+
     }
     void ChangeMaterial()
     {
