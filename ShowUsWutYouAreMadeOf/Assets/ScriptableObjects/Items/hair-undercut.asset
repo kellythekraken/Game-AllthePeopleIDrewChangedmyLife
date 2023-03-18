@@ -15,5 +15,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 2d4eed89ce271c544a34dc22039fa7c8, type: 3}
   section: 3
   type: 0
-  mesh: {fileID: 8315254327082197370, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
+  mesh: {fileID: 8315254327082197370, guid: a66761427fe88194095e6b90037beb70, type: 3}
   material: {fileID: 0}

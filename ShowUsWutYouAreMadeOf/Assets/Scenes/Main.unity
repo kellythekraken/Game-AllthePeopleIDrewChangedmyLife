@@ -14727,31 +14727,31 @@ MonoBehaviour:
   accessoryParent: {fileID: 1111358187}
   WardrobeSections:
   - sectionName: 0
-    defaultMesh: {fileID: 557023568}
+    defaultRender: {fileID: 557023568}
     defaultItems:
     - {fileID: 11400000, guid: 6ec2b612ff2a52b4094683671a230137, type: 2}
     - {fileID: 11400000, guid: 9695dbf1aba64b6409374f6738daa030, type: 2}
     - {fileID: 11400000, guid: 38d784203a959e448a16dcd96626ffaf, type: 2}
   - sectionName: 1
-    defaultMesh: {fileID: 133489179}
+    defaultRender: {fileID: 133489179}
     defaultItems:
     - {fileID: 11400000, guid: e0a56aa90a482b54ab3830ab648a5802, type: 2}
     - {fileID: 11400000, guid: a0077c77a0cd5884b96096a78babbd13, type: 2}
     - {fileID: 11400000, guid: 38c39c4b1a440bf4db595ef23bd0e12c, type: 2}
   - sectionName: 3
-    defaultMesh: {fileID: 1050843353}
+    defaultRender: {fileID: 1050843353}
     defaultItems:
     - {fileID: 11400000, guid: b35dbbeb6111237479a79a3dfd53fa49, type: 2}
     - {fileID: 11400000, guid: 4073ae3c316517245b58f3a9c3bab0be, type: 2}
     - {fileID: 11400000, guid: 5d334d3d9eb4ffe4a8d17b823a019df3, type: 2}
     - {fileID: 11400000, guid: b6df9249017de08489439d53a9e2c99a, type: 2}
   - sectionName: 4
-    defaultMesh: {fileID: 2059870058}
+    defaultRender: {fileID: 2059870058}
     defaultItems:
     - {fileID: 11400000, guid: e4bb626aa9240134f86f395f64da64c8, type: 2}
     - {fileID: 11400000, guid: 117f953ac9836044d952fe476187e2fe, type: 2}
   - sectionName: 2
-    defaultMesh: {fileID: 0}
+    defaultRender: {fileID: 133489179}
     defaultItems:
     - {fileID: 11400000, guid: ca152a866d44ea44da241ace2f4771fb, type: 2}
 --- !u!1 &1854719422

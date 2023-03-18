@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class WardrobeSection
 {
     public ItemSection sectionName;
+    public SkinnedMeshRenderer defaultRender;
     internal SkinnedMeshRenderer renderer;   //current renderer to replace the materials, maybe a list if there're more renderer?
-    public SkinnedMeshRenderer defaultMesh;
+    internal Mesh defaultMesh;
     public List<GiftItem> defaultItems;
     int _materialIndex;
     int _subObjectIndex;
@@ -67,7 +68,9 @@ public class WardrobeManager : MonoBehaviour
 
         foreach(WardrobeSection section in WardrobeSections)
         {
-            section.renderer = section.defaultMesh;
+            section.renderer = section.defaultRender;
+            section.defaultMesh = section.defaultRender.sharedMesh;
+
             //create button for the default items
             foreach(GiftItem i in section.defaultItems)
             {
@@ -133,7 +136,7 @@ public class WardrobeManager : MonoBehaviour
 
         if(myMesh == meshToChange)  //if the item is clicked twice, set it back to default.
         {
-            section.renderer.sharedMesh = section.defaultMesh.sharedMesh;
+            section.renderer.sharedMesh = section.defaultMesh;
         }
         else
         {
@@ -141,6 +144,13 @@ public class WardrobeManager : MonoBehaviour
         }
     }
 
+    void ChangeDress()
+    {
+        //dress and trouser share the same mesh (to change)
+        //when you're wearing dress, you can also take off the top
+        //if taking off dress by clicking the button again, then change it to default bottom.
+        //also change to default top if taking the dress off
+    }
     void ChangeMaterial()
     {
         //change material color of all renderer
