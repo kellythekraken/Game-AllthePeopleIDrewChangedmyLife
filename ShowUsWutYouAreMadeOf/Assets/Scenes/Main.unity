@@ -3286,7 +3286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3331e93363871b24d9fe2a5bb8b67705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotateTarget: {fileID: 2722001489276367796}
+  rotateTarget: {fileID: 2029202921}
   lookCamera: {fileID: 1897373170}
 --- !u!114 &325654482
 MonoBehaviour:
