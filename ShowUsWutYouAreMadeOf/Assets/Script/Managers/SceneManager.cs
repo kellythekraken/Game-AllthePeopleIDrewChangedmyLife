@@ -28,11 +28,6 @@ public class SceneManager : MonoBehaviour
         quitBtn.onClick.AddListener(QuitGame);
     }
 
-    void SetStartCam()
-    {
-        startMenuCam.transform.position = new Vector3(60,173,-1325);
-    }
-
     //start the game from start scene
     public void LoadMainScene()
     {

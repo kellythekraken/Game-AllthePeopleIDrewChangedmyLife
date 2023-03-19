@@ -49,7 +49,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        dialogueUI.SetActive(true);
         mainCam = Camera.main;
         inputManager = FindObjectOfType<InputManager>();
         wardrobeBtn = WardrobeButton.Instance;
@@ -64,6 +63,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        dialogueUI.SetActive(true);
+        sketchManager.InitSketchbook();
         audioManager = AudioManager.Instance;
         interactIndicator = InteractIndicator.Instance;
         variableStorage = dialogueRunner.GetComponent<InMemoryVariableStorage>();

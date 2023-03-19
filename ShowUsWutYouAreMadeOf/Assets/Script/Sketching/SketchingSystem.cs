@@ -36,25 +36,17 @@ public class SketchingSystem : MonoBehaviour
     Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
     int strokeCount;    //keep track in purpose to show stop btn when you can stop sketching
     bool initialized = false;
-    private void OnEnable()
-    {
-        if(!initialized)
-        {
-            InitList();
-            initialized = true;
-        }
-        ClearChild(drawingParent);
-    }
+
     void OnDisable()
     {
         ChosenBody = null; chosenColor = null; lastCrayon = null;
         Destroy(copiedQueerID);
         //save the sketch to a storage, then delete the sketches in scene
     }
-
-    void Awake() => Instance = this;
-    void Start()
+    public void InitSketchbook()
     {
+        if(initialized) return;
+        Instance = this;
         gm = GameManager.Instance;
         DisableAllFollower();
         gm.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
@@ -62,6 +54,8 @@ public class SketchingSystem : MonoBehaviour
         doneBtn.onClick.AddListener(PlayAfterSketchDialogue);
         doneBtn.gameObject.SetActive(false);
         stopBtn.onClick.AddListener(StopSketching);
+        InitList();
+        initialized = true;
     }
     
     void InitList()
@@ -83,6 +77,8 @@ public class SketchingSystem : MonoBehaviour
     //start a new sketch
     public void PrepareToSketch(QueerNPC targetNPC)
     {
+        ClearChild(drawingParent);
+
         targetNPC.alreadySketched = true;
         copiedQueerID = Instantiate(targetNPC.queerID);
         
