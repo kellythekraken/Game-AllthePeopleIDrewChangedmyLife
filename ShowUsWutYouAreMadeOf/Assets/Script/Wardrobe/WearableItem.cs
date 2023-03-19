@@ -12,7 +12,7 @@ public class WearableItem : MonoBehaviour
     [SerializeField] private GameObject newIndicator;
     //[SerializeField] private Image selectedIndicator;
     WardrobeManager wManager;
-    internal ItemSection sectionType;    //assigned by wardrobe manager
+    ItemSection sectionType;    //assigned by wardrobe manager
     Image iconImage;
     WardrobeParent parentWardrobeSection;
     bool newItem = true;
@@ -21,13 +21,14 @@ public class WearableItem : MonoBehaviour
     Button btn;
     internal string gifter; 
 
-    public void InitItem(GiftItem incomingItem, bool isNew)
+    public void InitItem(GiftItem incomingItem, bool isNew, ItemSection section)
     {
         btn = GetComponent<Button>();
         iconImage = GetComponent<Image>();
         btn.onClick.AddListener(WearBtnClicked);
         wManager = WardrobeManager.Instance;
 
+        sectionType = section;
         item = incomingItem;
         isWearing = false;      //=selectedIndicator.enabled = 
         newIndicator.SetActive(true);
@@ -43,9 +44,12 @@ public class WearableItem : MonoBehaviour
         if(isWearing)
         {
             //make default light up if you're clicking on the same one 
-            Debug.Log("taking off " + name);
-            parentWardrobeSection.SetToDefaultItem();
-            return;
+            if(sectionType == ItemSection.Accessory) WearItem(false);
+            else 
+            {
+                parentWardrobeSection.SetToDefaultItem();
+                return;
+            }
         }
         else { WearItem(true);}
     }
@@ -62,7 +66,7 @@ public class WearableItem : MonoBehaviour
         iconImage.color = wear? Color.black : Color.white;
 
         //make the last wearing item of the same parenthood !ISWEARING and deselected!
-        if(isWearing)
+        if(isWearing && sectionType != ItemSection.Accessory)
         {
             parentWardrobeSection.UnSelectPreviousItem(name);
         }

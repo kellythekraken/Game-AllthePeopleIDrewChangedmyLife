@@ -25,6 +25,7 @@ public class WardrobeManager : MonoBehaviour
     [SerializeField] GameObject btnPrefab;
     [SerializeField] Transform accessoryParent;
     public List<WardrobeSection> WardrobeSections;
+    public WardrobeSection AccessorySections;
     List<WardrobeParent> wardrobeParents;
     List<GameObject> accessoryList; //reference to all the hidden accessory gameobjects
     List<Transform> wardrobeParentTransforms;    //transforms of all the wardrobe section parents
@@ -62,21 +63,26 @@ public class WardrobeManager : MonoBehaviour
     //loop through the default list set in the editor, and load them into the wardrobe
     void InitDefaultItems()
     {
-        //create the list of accessory gameobject reference
         foreach(Transform i in accessoryParent)
         {
             GameObject obj = i.gameObject;
             accessoryList.Add(obj);
             obj.SetActive(false);
         }
+        //create the list of accessory gameobject reference
+        for(var x=0; x < AccessorySections.defaultItems.Count; x++)
+        {
+            var btn = CreateItemBtn(AccessorySections.defaultItems[x],false);
+        }
 
+        //for the rest of the wardrobe section
         foreach(WardrobeSection section in WardrobeSections)
         {
             section.renderer = section.defaultRender;
             section.defaultMesh = section.defaultRender.sharedMesh;
 
             //create button for the default items
-            for(var i = 0; i<section.defaultItems.Count;i++)
+            for(var i = 0; i < section.defaultItems.Count;i++)
             {
                 var btn = CreateItemBtn(section.defaultItems[i],false);
             }
@@ -108,15 +114,15 @@ public class WardrobeManager : MonoBehaviour
 
             case ItemType.Material:
             btn.onClick.AddListener(ChangeMaterial);
-
             break;
+
             case ItemType.Gameobject:
             btn.onClick.AddListener(() => DisplayGameobject(item.name));
             break;
         }
 
         WearableItem itemComponent = obj.GetComponent<WearableItem>();
-        itemComponent.InitItem(item, isNew);
+        itemComponent.InitItem(item, isNew,item.section);
         itemComponent.gifter = gifterName;
         return obj;
     }
