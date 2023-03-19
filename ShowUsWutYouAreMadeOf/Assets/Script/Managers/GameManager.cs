@@ -53,11 +53,9 @@ public class GameManager : MonoBehaviour
         mainCam = Camera.main;
         inputManager = FindObjectOfType<InputManager>();
         wardrobeBtn = WardrobeButton.Instance;
-        sketchManager = SketchingSystem.Instance;
         sceneManager = SceneManager.Instance;
         npcManager = NPCManager.Instance;
-        
-
+        sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
     }
 
     void ShowSketchInstruction()

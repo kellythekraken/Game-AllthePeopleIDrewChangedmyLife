@@ -90,7 +90,7 @@ public class SketchingSystem : MonoBehaviour
         gm.variableStorage.SetValue("$MaxStrokes",copiedQueerID.maximumStrokes);
         
 
-        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true;}
+        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true; i.Init();}
         availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
         
         //remove empty choices

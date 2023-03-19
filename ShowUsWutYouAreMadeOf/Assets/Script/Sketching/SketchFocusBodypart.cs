@@ -10,16 +10,21 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     Color highlightColor;
     internal bool selected = false; // there should only be one selected!
     SketchingSystem sketchingSystem;
+    bool init = false;
 
-    void Start()
+    public void Init()
     {   
+        if(init) return;
+        
         sketchingSystem = SketchingSystem.Instance;
         var npc = GetComponentInParent<QueerNPC>();
         var bodypartMesh = Array.Find(npc.bodyPartMeshes,t=> t.name == bodyName);
         materialToHighlight = bodypartMesh.material;
         GameManager.Instance.sketchManager.BodypartSelectEvent.AddListener(() => OnSelect());
         highlightColor = sketchingSystem.materialHighlightColor;
+        init = true;
     }
+
     public void OnPointerEnter(PointerEventData pointerEventData)
     {
         HighlightMaterial();
