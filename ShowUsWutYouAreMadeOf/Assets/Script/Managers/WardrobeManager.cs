@@ -144,6 +144,8 @@ public class WardrobeManager : MonoBehaviour
         {
             if(wearingDress) //dress, top and bottom logic
             {
+                wardrobeParents.Find(t=>t.name == "Top").wearingDress = true;
+
                 if(section.sectionName == ItemSection.Dress)   //attempt to take off dress
                 {
                     wearingDress = false;
@@ -174,6 +176,8 @@ public class WardrobeManager : MonoBehaviour
                 //deselect dress?
                 wearingDress = false;
                 SelectDefaultButton("Dress",false);
+                wardrobeParents.Find(t=>t.name == "Top").wearingDress = false;
+
                 if( topSection.renderer.sharedMesh ==null)
                 {
                     topSection.renderer.sharedMesh = topSection.defaultMesh; 

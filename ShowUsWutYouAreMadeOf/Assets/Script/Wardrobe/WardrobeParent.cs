@@ -28,9 +28,14 @@ public class WardrobeParent : MonoBehaviour
         if(items == null) items = new List<WearableItem>();;
         items.Add(item);
     }
+    internal bool wearingDress = false;
     public void SetToDefaultItem()
     {
         if(sectionName == ItemSection.Dress)
+        {
+            UnselectAllItems(); return;
+        }
+        else if (sectionName == ItemSection.Top && wearingDress)
         {
             UnselectAllItems(); return;
         }
