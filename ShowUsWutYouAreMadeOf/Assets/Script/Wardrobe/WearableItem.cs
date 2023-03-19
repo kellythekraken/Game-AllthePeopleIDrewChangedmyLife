@@ -14,37 +14,40 @@ public class WearableItem : MonoBehaviour
     WardrobeManager wManager;
     internal ItemSection sectionType;    //assigned by wardrobe manager
     Image iconImage;
-    Transform parentWardrobeSection;
+    WardrobeParent parentWardrobeSection;
     bool newItem = true;
-    bool isWearing;
+    internal bool isWearing;
     GiftItem item;
     Button btn;
     internal string gifter; 
 
-    void Start()
+    public void InitItem(GiftItem incomingItem, bool isNew)
     {
         btn = GetComponent<Button>();
         iconImage = GetComponent<Image>();
         btn.onClick.AddListener(WearBtnClicked);
         wManager = WardrobeManager.Instance;
-    }
-    public void InitItem(GiftItem incomingItem, bool isNew)
-    {
+
         item = incomingItem;
         isWearing = false;      //=selectedIndicator.enabled = 
         newIndicator.SetActive(true);
-        parentWardrobeSection = transform.parent;
+        parentWardrobeSection = transform.parent.GetComponent<WardrobeParent>();
         if(!isNew) //default item shouldn't have new indicator
         {
             newItem = false; 
             newIndicator.SetActive(false);
         }
     }
-
-    void WearBtnClicked()
+    void WearBtnClicked()//for actual button response
     {
-        isWearing = !isWearing;
-        WearItem(isWearing);
+        if(isWearing)
+        {
+            //make default light up if you're clicking on the same one 
+            Debug.Log("taking off " + name);
+            parentWardrobeSection.SetToDefaultItem();
+            return;
+        }
+        else { WearItem(true);}
     }
     public void WearItem(bool wear)
     {
@@ -55,22 +58,13 @@ public class WearableItem : MonoBehaviour
         }
         //put on/off the item
         isWearing = wear;
-
         //logic to call wardrobemanager 
         iconImage.color = wear? Color.black : Color.white;
 
         //make the last wearing item of the same parenthood !ISWEARING and deselected!
-        
         if(isWearing)
         {
-            foreach(Transform i in parentWardrobeSection)
-            {
-                var component = i.GetComponent<WearableItem>();
-                if(i.name != this.name && component.isWearing) 
-                {
-                    component.WearItem(false);
-                }
-            }
+            parentWardrobeSection.UnSelectPreviousItem(name);
         }
         
         //selectedIndicator.enabled = isWearing;  

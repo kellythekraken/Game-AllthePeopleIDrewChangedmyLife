@@ -21,12 +21,10 @@ public class WardrobeManager : MonoBehaviour
     //only manage things within the wardrobe!
     //store all of the found items
 
-    // available colors
     public static WardrobeManager Instance;
     [SerializeField] GameObject btnPrefab;
     [SerializeField] Transform accessoryParent;
     public List<WardrobeSection> WardrobeSections;
-    Dictionary<string,WearableItem> defaultItemPair;
     List<WardrobeParent> wardrobeParents;
     List<GameObject> accessoryList; //reference to all the hidden accessory gameobjects
     List<Transform> wardrobeParentTransforms;    //transforms of all the wardrobe section parents
@@ -36,33 +34,31 @@ public class WardrobeManager : MonoBehaviour
 
     //new feature that triggers extra dialogue based on score/if you're wearing someone's gifted piece
 
-    void OnDestroy()
-    {
-        //foreach(var i in WardrobeSections)i.renderer.sharedMesh = i.defaultMesh;
-    }
-   
     //called by wardrobebutton at start
     public void WardrobeInit()
     {
         Instance = this;
         accessoryList = new List<GameObject>();
         wardrobeParents = new List<WardrobeParent>();
-
-        wardrobeParentTransforms = new List<Transform>();
-        defaultItemPair = new Dictionary<string, WearableItem>();
-        outfitGifterList = new List<string>();
+        
         topSection = WardrobeSections.Find(t=>t.sectionName == ItemSection.Top);
-        botSection = WardrobeSections.Find(t=>t.sectionName == ItemSection.Bottom);
+        wardrobeParentTransforms = new List<Transform>();
+        outfitGifterList = new List<string>();
+
         foreach(Transform i in transform)//get all children transform, that are wardrobe sections
         {
-            var x = i.GetComponent<WardrobeParent>();
-            if(x !=null) wardrobeParents.Add(x);
+            var p = i.GetComponent<WardrobeParent>();
+            wardrobeParents.Add(p);
 
             wardrobeParentTransforms.Add(i);
-            foreach (Transform child in i) Destroy(child.gameObject);//clear child
+            foreach (Transform child in i.transform) Destroy(child.gameObject);
         }
         InitDefaultItems();
+
+        //load default item to wardrobeparent list
+        foreach(var i in wardrobeParents) i.AddDefaultItemsToList();
     }
+
     //loop through the default list set in the editor, and load them into the wardrobe
     void InitDefaultItems()
     {
@@ -78,18 +74,11 @@ public class WardrobeManager : MonoBehaviour
         {
             section.renderer = section.defaultRender;
             section.defaultMesh = section.defaultRender.sharedMesh;
-            
-            var parent = wardrobeParents.Find(x =>x.sectionName == section.sectionName);
-            
+
             //create button for the default items
             for(var i = 0; i<section.defaultItems.Count;i++)
             {
                 var btn = CreateItemBtn(section.defaultItems[i],false);
-                if(parent!=null) parent.AddToList(btn.GetComponent<WearableItem>());
-                if(i==0)//create the dict storing default items
-                {
-                    defaultItemPair.Add(section.sectionName.ToString(),btn.GetComponent<WearableItem>());
-                }
             }
         }
     }
@@ -146,23 +135,20 @@ public class WardrobeManager : MonoBehaviour
 
 #region ItemAppearance
     bool wearingDress = false;
-    WardrobeSection topSection,botSection;
+    WardrobeSection topSection; //to check if wearing anything on the top
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)
     {
         Mesh myMesh = section.renderer.sharedMesh;
 
         if(myMesh == meshToChange)  //if the item is clicked twice, set it back to default.
         {
-            if(wearingDress) //dress and top logic
+            if(wearingDress) //dress, top and bottom logic
             {
                 if(section.sectionName == ItemSection.Dress)   //attempt to take off dress
                 {
                     wearingDress = false;
-
-                    //button indicate default trousers 
                     SelectDefaultButton("Bottom",true);
-
-                    if( topSection.renderer.sharedMesh ==null)
+                    if(topSection.renderer.sharedMesh == null)
                     {
                         topSection.renderer.sharedMesh = topSection.defaultMesh;
                         SelectDefaultButton("Top",true);
@@ -174,7 +160,6 @@ public class WardrobeManager : MonoBehaviour
                     return;
                 }
             }
-            //SelectDefaultButton(section.sectionName.ToString(),true);
             section.renderer.sharedMesh = section.defaultMesh;
         }
         else
@@ -188,7 +173,7 @@ public class WardrobeManager : MonoBehaviour
             {
                 //deselect dress?
                 wearingDress = false;
-                var topSection = WardrobeSections.Find(t=>t.sectionName == ItemSection.Top);
+                SelectDefaultButton("Dress",false);
                 if( topSection.renderer.sharedMesh ==null)
                 {
                     topSection.renderer.sharedMesh = topSection.defaultMesh; 
@@ -198,13 +183,16 @@ public class WardrobeManager : MonoBehaviour
             section.renderer.sharedMesh = meshToChange;
         }
     }
-    void SelectDefaultButton(string parentName, bool select)
+    void SelectDefaultButton(string sectionName, bool select)
     {
-        WearableItem defaultitem;
-        defaultItemPair.TryGetValue(parentName,out defaultitem);
-        Debug.Log("select" + parentName);
-        defaultitem.WearItem(select);
+        var p = wardrobeParents.Find(t=>t.name == sectionName);
+        if(p!=null)
+        {
+            if(select) p.SetToDefaultItem();
+            else { p.UnselectAllItems();}
+        }
     }
+
     void ChangeMaterial()
     {
         //change material color of all renderer
