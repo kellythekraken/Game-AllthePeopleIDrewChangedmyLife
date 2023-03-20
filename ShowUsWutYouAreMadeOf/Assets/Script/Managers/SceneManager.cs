@@ -12,8 +12,6 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private EventSystem eventsystemInStartScene;
     [SerializeField] private GameObject startSceneObjects;
     [SerializeField] private Camera startMenuCam;
-    enum CurrentScene {START,MAIN};
-    CurrentScene currScene;
     void Awake() => Instance = this;
     void Start()
     {
