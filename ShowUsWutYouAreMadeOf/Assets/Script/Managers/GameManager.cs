@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
         {
             GameStartInit();
             StartFromTitle();
+            wardrobeBtn.Init();
             sceneManager.GamestartEvent.AddListener(StartBtnClicked);
         }
         else 

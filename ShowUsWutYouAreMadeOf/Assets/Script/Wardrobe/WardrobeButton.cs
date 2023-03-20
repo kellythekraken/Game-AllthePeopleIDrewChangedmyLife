@@ -30,7 +30,14 @@ public class WardrobeButton : MonoBehaviour
     bool newItem = false;
     GameManager gm;
 
+    bool init = false;
     private void Start()
+    {
+        if(!init) Init();
+    }
+
+    //also called by gamemanager if start from main menu
+    public void Init()
     {
         gm = GameManager.Instance;
         inputManager = InputManager.Instance;
@@ -64,7 +71,6 @@ public class WardrobeButton : MonoBehaviour
     public void PlayerCustomization()
     {
         //load the wardrobe init!
-        
         Debug.Log("show player customize screen");
         customizeScreen.SetActive(true);
         changingScreen.SetActive(false);
