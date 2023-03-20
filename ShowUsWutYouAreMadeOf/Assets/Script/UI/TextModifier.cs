@@ -5,10 +5,11 @@ using TMPro;
 
 public class TextModifier : MonoBehaviour
 {
-    public float delay = 0.1f;
+    public float delay = 0.07f;
     TextMeshProUGUI text;
     string currText = "";
     string fullText;
+    public bool typing = false;
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
@@ -18,12 +19,14 @@ public class TextModifier : MonoBehaviour
 
     public IEnumerator Typewrite()
     {
+        typing = true;
         for(int i=0; i< fullText.Length + 1; i++)
         {
             currText = fullText.Substring(0,i);
             text.text = currText;
             yield return new WaitForSeconds(delay);
         }
+        typing = false;
     }
 
     public void UnderlineFont()

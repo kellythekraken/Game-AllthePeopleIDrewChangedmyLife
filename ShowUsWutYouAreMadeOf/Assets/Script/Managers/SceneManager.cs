@@ -8,26 +8,23 @@ using UnityEngine.Events;
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
-    public CanvasFade startCanvasFade, blackoutFade;
-    [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
-    [SerializeField] private EventSystem eventsystemInStartScene;
+    [Header("Canvas")] 
     [SerializeField] private GameObject startSceneObjects;
-    [SerializeField] private Camera startMenuCam;
+    public CanvasFade startCanvasFade, blackoutFade, buttonCanvas;
+    [Header("UI")]
     [SerializeField] private TextModifier titleText;
-    public UnityEvent GamestartEvent;
-    bool startFromBeginning = true;
-
+    [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
+    internal UnityEvent GamestartEvent;
     void Awake() => Instance = this;
     void Start()
     {
-        StartCoroutine(FadeInStartMenu());
-        //load the main game scene from the very beginning
+        blackoutFade.gameObject.SetActive(true);
+        StartCoroutine(FadeInStartUI());
         LoadMainGameUponStart();
-
         restartBtn.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(false);
 
-        startBtn.onClick.AddListener(LoadMainScene);
+        startBtn.onClick.AddListener(StartFromBeginning);
         continueBtn.onClick.AddListener(DeactivateStartMenu);
         restartBtn.onClick.AddListener(ReloadGame);
         quitBtn.onClick.AddListener(QuitGame);
@@ -35,55 +32,21 @@ public class SceneManager : MonoBehaviour
             GamestartEvent = new UnityEvent();
     }
 
+#region Scene Loading
     public void LoadMainGameUponStart()
     {
-        AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
+        AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main",LoadSceneMode.Additive);
     }
-
-    //start the game from start scene
-    public void LoadMainScene()
+    public void StartFromBeginning()
     {
         startBtn.interactable = false;
         DeactivateStartMenu();
         startBtn.gameObject.SetActive(false);
 
-        if(startFromBeginning) GamestartEvent.Invoke();
+        GamestartEvent.Invoke();
         //StartCoroutine(SwitchToMain());
     }
-    IEnumerator SwitchToMain()  //first time loading main scene
-    {
-        var fade = FadeOutStart();
-        yield return fade;
 
-        AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
-        yield return load;
-        //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(0);
-        startSceneObjects.SetActive(false);
-        startBtn.gameObject.SetActive(false);
-
-        var eventList = FindObjectsOfType<EventSystem>();
-        foreach(var i in eventList) if(i != eventsystemInStartScene) Destroy(i.gameObject);
-    }
-
-    void DeactivateStartMenu()
-    {
-        continueBtn.interactable = false;
-        InputManager.Instance.EnableAllInput(true);
-        GameManager.Instance.BackToLastMode();
-        startSceneObjects.SetActive(false);
-    }
-
-    //load the start scene from main game, called by button in setting screen
-    public void ActivateStartMenu()
-    {
-        startFromBeginning = false;
-        StartCoroutine(FadeInStartMenu());
-        continueBtn.gameObject.SetActive(true);
-        restartBtn.gameObject.SetActive(true);
-        continueBtn.interactable = true;
-        GameManager.Instance.currMode = CurrentMode.StartMenu;
-        startSceneObjects.SetActive(true);
-    }
     public void QuitGame()
     {
         Debug.Log("quit game!");
@@ -100,22 +63,48 @@ public class SceneManager : MonoBehaviour
     }
     IEnumerator Reload()
     {
-        startFromBeginning = true;
-        var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(1);
+        var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Main");
         yield return load;
-        LoadMainScene();
+        StartFromBeginning();
     }
-    IEnumerator FadeInStartMenu()
+#endregion
+
+#region Menu/Canvas
+    //load the start scene from main game, called by button in setting screen
+    public void ActivateStartMenu()
     {
+        StartCoroutine(FadeInStartUI());
+        continueBtn.gameObject.SetActive(true);
+        restartBtn.gameObject.SetActive(true);
+        continueBtn.interactable = true;
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
+        startSceneObjects.SetActive(true);
+    }
+
+    void DeactivateStartMenu()
+    {
+        continueBtn.interactable = false;
+        InputManager.Instance.EnableAllInput(true);
+        GameManager.Instance.BackToLastMode();
+        startSceneObjects.SetActive(false);
+    }
+
+    IEnumerator FadeInStartUI()
+    {
+        buttonCanvas.gameObject.SetActive(false);
         var fade = FadeInStart(1.5f);
         yield return fade;
         StartCoroutine(titleText.Typewrite());
+        while(titleText.typing == true)
+        {yield return null;}
+        buttonCanvas.gameObject.SetActive(true);
+        StartCoroutine(buttonCanvas.ChangeAlphaOverTime(0f,1f,1f));
     }
     public void DisplayStartScreen()
     {
         FadeInStart(2f);
         startCanvasFade.BlockRayCast(true);
-        GameManager.Instance.LockCursor(false);
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
         GameManager.Instance.PauseGame();
     }    
 
@@ -125,4 +114,5 @@ public class SceneManager : MonoBehaviour
     private Coroutine FadeInStart(float time = 1f) {
         return StartCoroutine(blackoutFade.ChangeAlphaOverTime(1f,0f, time));
     }
+#endregion
 }

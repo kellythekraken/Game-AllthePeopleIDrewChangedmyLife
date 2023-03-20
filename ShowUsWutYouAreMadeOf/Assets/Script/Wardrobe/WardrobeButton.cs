@@ -58,6 +58,11 @@ public class WardrobeButton : MonoBehaviour
 
         //start the game cinematic if you click I'm ready button
     }
+    //done button is clicked
+    void CustomizeFinished()
+    {
+        GameManager.Instance.StartGameCinematic();
+    }
 
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()

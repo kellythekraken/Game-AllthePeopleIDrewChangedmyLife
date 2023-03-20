@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     {
         if(startFromTitle) 
         {
+            GameStartInit();
             StartFromTitle();
             sceneManager.GamestartEvent.AddListener(StartBtnClicked);
         }
@@ -99,30 +100,26 @@ public class GameManager : MonoBehaviour
     {
         currMode = CurrentMode.StartMenu;
         // first show frozen scene, hiding all the character? to save the processing?
-        // lock all input
-        // allow mouse pointer
-        // hide all the instruction
-        // listen to unityevent of gamestart button clicked?
         // force player to start form outdoor
     }
 
+    //unityevent when start button is clicked
     void StartBtnClicked()
     {
-        //call CustomizableWardrobe() in wardrobebutton
+        //canvas fade to black
         Debug.Log("start button is clicked, received by game manager");
+        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
         wardrobeBtn.PlayerCustomization();
+        //canvas fade out
     }
 
     //called by wardrobe button, when you're done customizing
     public void StartGameCinematic()
     {
-        // hide mouse pointer
         // start cinematic
-        // lock all input
-
+        Debug.Log("cinematic start");
         // start the game once cinematic is over
         DisplayControlInstruction();
-        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
     }
 
 
@@ -156,7 +153,6 @@ public class GameManager : MonoBehaviour
             case CurrentMode.StartMenu:
                 LockCursor(false);
                 inputManager.EnableAllInput(false);
-                audioManager.SetMuffleParameter(1f);
                 return;
         }
     }
