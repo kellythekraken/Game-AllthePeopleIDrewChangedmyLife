@@ -22,12 +22,15 @@ public class CanvasFade : MonoBehaviour
     // A coroutine that fades to transparency {alpha} over {time} seconds
     public IEnumerator ChangeAlphaOverTime(float startAlpha, float endAlpha, float time) {
         float elapsed = 0f;
+        BlockRayCast(true); 
         while (elapsed < time) {
             var factor = elapsed / time;
             canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, factor);
             yield return null;
             elapsed += Time.deltaTime;
         }
+        BlockRayCast(endAlpha!=0);
+
         canvasGroup.alpha = endAlpha;
     }
 }

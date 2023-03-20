@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
-    public CanvasFade startCanvasFade;
+    public CanvasFade startCanvasFade, blackoutFade;
     [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
     [SerializeField] private EventSystem eventsystemInStartScene;
     [SerializeField] private GameObject startSceneObjects;
@@ -18,7 +18,7 @@ public class SceneManager : MonoBehaviour
     void Start()
     {
         FadeInStart(2f);
-        //startCanvasFade.gameObject.SetActive(true);
+
         restartBtn.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(false);
 
@@ -36,13 +36,17 @@ public class SceneManager : MonoBehaviour
     }
     IEnumerator SwitchToMain()  //first time loading main scene
     {
+        var fade = FadeOutStart();
+        yield return fade;
+
         AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
         yield return load;
         //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(0);
         startSceneObjects.SetActive(false);
+        startBtn.gameObject.SetActive(false);
+
         var eventList = FindObjectsOfType<EventSystem>();
         foreach(var i in eventList) if(i != eventsystemInStartScene) Destroy(i.gameObject);
-        startBtn.gameObject.SetActive(false);
     }
 
     void DeactivateStartMenu()
@@ -93,9 +97,9 @@ public class SceneManager : MonoBehaviour
     }    
 
     private Coroutine FadeOutStart(float time = 1f) {
-        return StartCoroutine(startCanvasFade.ChangeAlphaOverTime(1f,0f, time));
+        return StartCoroutine(blackoutFade.ChangeAlphaOverTime(0f,1f, time));
     }
     private Coroutine FadeInStart(float time = 1f) {
-        return StartCoroutine(startCanvasFade.ChangeAlphaOverTime(0f,1f, time));
+        return StartCoroutine(blackoutFade.ChangeAlphaOverTime(1f,0f, time));
     }
 }
