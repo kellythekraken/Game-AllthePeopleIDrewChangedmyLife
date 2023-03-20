@@ -9,7 +9,6 @@ public class WardrobeButton : MonoBehaviour
     //control everything wardrobe outside of the wardrobe canvas
     //also control the popup ui to display received item
 
-    public static WardrobeButton Instance;
     public GameObject wardrobeUI;   //the entire wardrobe canvas
     public Button closeBtn;
     public Image newIndicator;
@@ -24,7 +23,6 @@ public class WardrobeButton : MonoBehaviour
 	RectTransform iconLayoutrect;
 	public float iconGridHeight;
 	public int iconGridCellCount = 2;
-    void Awake() => Instance = this;
     InputManager inputManager;
     private void Start()
     {

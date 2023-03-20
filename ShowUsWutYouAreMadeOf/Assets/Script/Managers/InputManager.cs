@@ -28,15 +28,15 @@ public class InputManager : MonoBehaviour
         wardrobeAction = mainAcionMap["Wardrobe"];
         settingsAction = mainAcionMap["Setting"];
 
-        settingsAction.performed += SwitchSettingScreen; 
-        wardrobeAction.performed += WardrobeButton.Instance.WardrobeAction;
-        mainAcionMap.Enable();
         gm = GameManager.Instance;
+        settingsAction.performed += SwitchSettingScreen; 
+        wardrobeAction.performed += gm.wardrobeBtn.WardrobeAction;
+        mainAcionMap.Enable();
     }
     void OnDisable()
     {
         settingsAction.performed -= SwitchSettingScreen; 
-        wardrobeAction.performed -= WardrobeButton.Instance.WardrobeAction;
+        wardrobeAction.performed -= gm.wardrobeBtn.WardrobeAction;
         mainAcionMap.Disable();
     }
     public void EnableAllInput(bool enable)   //when in start screen

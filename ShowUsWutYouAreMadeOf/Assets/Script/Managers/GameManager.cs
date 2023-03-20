@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject pronounTag;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
+    public WardrobeButton wardrobeBtn;
     internal InMemoryVariableStorage variableStorage;
 
     [Header("Player")]
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     public bool startIndoor;    //determine where you start as 
-    internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
     internal AudioManager audioManager;
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         mainCam = Camera.main;
         inputManager = FindObjectOfType<InputManager>();
-        wardrobeBtn = WardrobeButton.Instance;
         sceneManager = SceneManager.Instance;
         npcManager = NPCManager.Instance;
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
