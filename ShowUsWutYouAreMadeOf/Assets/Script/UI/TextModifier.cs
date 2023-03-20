@@ -13,7 +13,7 @@ public class TextModifier : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         fullText = text.text;
-        StartCoroutine(Typewrite());
+        text.text = "";
     }
 
     public IEnumerator Typewrite()

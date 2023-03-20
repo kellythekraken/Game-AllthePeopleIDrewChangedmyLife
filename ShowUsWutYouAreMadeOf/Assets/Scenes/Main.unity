@@ -8398,6 +8398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startIndoor: 1
+  startFromTitle: 0
+  cinematicStart: 0
   pronounTag: {fileID: 1752515339}
   settingsUI: {fileID: 1253938074506939}
   sketchbookUI: {fileID: 542770381}
@@ -8407,7 +8410,6 @@ MonoBehaviour:
   wardrobeBtn: {fileID: 302414173}
   playerObject: {fileID: 591813546}
   player: {fileID: 3354527797997906190}
-  startIndoor: 1
 --- !u!4 &598334959
 Transform:
   m_ObjectHideFlags: 0
@@ -17657,7 +17659,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1523523570
 Transform:
   m_ObjectHideFlags: 0
@@ -31704,8 +31706,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0.00026432544, y: 0.9957172, z: -0.09079217, w: -0.017433243}
-  m_LocalPosition: {x: -10.6, y: 1.4000001, z: 18.2}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -10.710001, y: -2.6740003, z: 3.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -31782,9 +31784,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
-  far clip plane: 500
-  field of view: 20
+  near clip plane: 0.001
+  far clip plane: 50
+  field of view: 30
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -32513,7 +32515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116004488851913433}
   m_LocalRotation: {x: -0, y: -0.9243339, z: -0, w: 0.38158467}
-  m_LocalPosition: {x: -251.93999, y: -139.394, z: 6.81}
+  m_LocalPosition: {x: -251.93999, y: -139.394, z: 14.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1116004488226458338}
@@ -32837,7 +32839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3354527797997906190}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.74, y: -0.045, z: 2.81}
+  m_LocalPosition: {x: -0.74, y: -0.045, z: 10.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1897373170}
@@ -33009,6 +33011,7 @@ GameObject:
   - component: {fileID: 1307154873652901234}
   - component: {fileID: 3354527797997906178}
   - component: {fileID: 3354527797997906191}
+  - component: {fileID: 3354527797997906193}
   - component: {fileID: 3354527797997906192}
   m_Layer: 3
   m_Name: Player
@@ -33048,6 +33051,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cc9ab7d948d3840a5156816b24bfe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3354527797997906193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3354527797997906190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21e748acec143d541839b2660c7cd93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indoorStartLocation: {x: -0.74, y: -0.045, z: 3.43}
+  outdoorStartLocation: {x: -0.74, y: -0.045, z: 10.79}
 --- !u!224 &4017384235884744418
 RectTransform:
   m_ObjectHideFlags: 0

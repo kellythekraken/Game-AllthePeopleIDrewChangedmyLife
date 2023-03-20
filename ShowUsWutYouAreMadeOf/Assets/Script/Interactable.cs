@@ -49,7 +49,7 @@ public class Interactable : MonoBehaviour
             gm.currMode = CurrentMode.Nothing;
         }
     }
-    protected IEnumerator InteractionCooldown(float timer = 3f)
+    protected IEnumerator InteractionCooldown(float timer = 1.5f)
     {
         interactable = false;
         yield return new WaitForSeconds(timer);

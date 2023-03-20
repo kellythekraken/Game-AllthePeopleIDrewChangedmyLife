@@ -23,6 +23,11 @@ public class GameManager : MonoBehaviour
     }
     private CurrentMode lastMode;
 
+    [Header("Settings")]
+    public bool startIndoor;    //determine where you start as 
+    public bool startFromTitle; //freeze and allow pointer
+    public bool cinematicStart; //trigger leon conversation upon enter the bar for the first time?
+
     [Header("UI")]
     public GameObject pronounTag;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
@@ -34,8 +39,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] public GameObject playerObject;   //player visibility
     [SerializeField] public GameObject player;   //the one with important controls and scripts
 
-    [Header("Settings")]
-    public bool startIndoor;    //determine where you start as 
     internal SceneManager sceneManager;
     internal InputManager inputManager;
     internal AudioManager audioManager;
@@ -50,38 +53,79 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
         mainCam = Camera.main;
-        inputManager = FindObjectOfType<InputManager>();
         sceneManager = SceneManager.Instance;
         npcManager = NPCManager.Instance;
         sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
     }
-
-    void ShowSketchInstruction()
-    {
-        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
-    }
+    void OnDisable()=> currMode = CurrentMode.StartMenu;
+    
     private void Start()
+    {
+        if(startFromTitle) 
+        {
+            StartFromTitle();
+            sceneManager.GamestartEvent.AddListener(StartBtnClicked);
+        }
+        else 
+        {
+            //teleport player based on start indoor or outdoor
+            GameStartInit();
+            player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
+            if(startIndoor) EnableWardrobeAction(true);
+            currMode = CurrentMode.Nothing;
+            DisplayControlInstruction();
+        }
+    } 
+    void GameStartInit()
     {
         dialogueUI.SetActive(true);
         sketchManager.InitSketchbook();
+        inputManager = InputManager.Instance;
         audioManager = AudioManager.Instance;
         interactIndicator = InteractIndicator.Instance;
         variableStorage = dialogueRunner.GetComponent<InMemoryVariableStorage>();
-        currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
         sketchbookUI.SetActive(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
-        DisplayControlInstruction();
 
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
-        //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
         dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
         dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
-    }   
-    void OnDisable()=> currMode = CurrentMode.StartMenu;
+    }  
+    void StartFromTitle()
+    {
+        currMode = CurrentMode.StartMenu;
+        // first show frozen scene, hiding all the character? to save the processing?
+        // lock all input
+        // allow mouse pointer
+        // hide all the instruction
+        // listen to unityevent of gamestart button clicked?
+        // force player to start form outdoor
+    }
+
+    void StartBtnClicked()
+    {
+        //call CustomizableWardrobe() in wardrobebutton
+        Debug.Log("start button is clicked, received by game manager");
+        wardrobeBtn.PlayerCustomization();
+    }
+
+    //called by wardrobe button, when you're done customizing
+    public void StartGameCinematic()
+    {
+        // hide mouse pointer
+        // start cinematic
+        // lock all input
+
+        // start the game once cinematic is over
+        DisplayControlInstruction();
+        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
+    }
+
+
     void OnModeChanged(CurrentMode mode)
     {
         lastMode = currMode;
@@ -90,7 +134,6 @@ public class GameManager : MonoBehaviour
         {
             case CurrentMode.Nothing:
                 LockCursor(true);
-                if(DoorInteraction.indoor) EnableWardrobeAction(true);
                 inputManager.EnableChatMoveBtn(true);
                 audioManager.SetMuffleParameter(0f);
                 return;
@@ -130,7 +173,11 @@ public class GameManager : MonoBehaviour
     {
         return currMode == CurrentMode.Conversation;
     }
-    #region SKETCHING PHASE
+#region SKETCHING PHASE
+    void ShowSketchInstruction()
+    {
+        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
+    }
     public void ContinueSketchChat()
     {
         sketchSubject.StartSketchConversation();
@@ -160,6 +207,11 @@ public class GameManager : MonoBehaviour
         sketchbookUI.SetActive(true);
         audioManager.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
+    IEnumerator WaitBeforeSketch(float seconds = .5f)
+    {
+        yield return new WaitForSeconds(seconds);
+        LockCursor(false);
+    }
 #endregion
 
 #region CONVERSATION PHASE
@@ -174,7 +226,6 @@ public class GameManager : MonoBehaviour
 #endregion
 
 #region WARDROBE 
-
     public void EnableWardrobeAction(bool enable)
     {
         wardrobeBtn.gameObject.SetActive(enable);
@@ -216,11 +267,6 @@ public class GameManager : MonoBehaviour
     {
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !lockCursor;
-    }
-    IEnumerator WaitBeforeSketch(float seconds = .5f)
-    {
-        yield return new WaitForSeconds(seconds);
-        LockCursor(false);
     }
     void DisplayControlInstruction()
     {

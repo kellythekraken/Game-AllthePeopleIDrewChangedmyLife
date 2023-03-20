@@ -42,11 +42,23 @@ public class WardrobeButton : MonoBehaviour
         if(inputManager != null) inputManager.wardrobeAction.Enable();
     }
     void OnDisable() => inputManager.wardrobeAction.Disable();
-
     public void WardrobeAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         OpenCloseWardrobe();
     }
+
+    //called by gamemanager
+    public void PlayerCustomization()
+    {
+        Debug.Log("show player customize screen");
+        // change done button text to 'im ready'
+        // you can customize your skin, hair and eye color
+        // besides that everything remains in the wardrobe ui
+        // the background is not changing room
+
+        //start the game cinematic if you click I'm ready button
+    }
+
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()
     {

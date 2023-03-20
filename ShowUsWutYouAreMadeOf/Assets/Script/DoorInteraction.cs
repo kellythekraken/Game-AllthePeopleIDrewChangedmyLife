@@ -7,14 +7,15 @@ public class DoorInteraction : Interactable
 {
     [SerializeField] Vector3 indoorLandingPosition, outdoorLandingPosition;
     GameObject player;
-    CharacterController controller;
+    PlayerTeleport teleportScript;
     public static bool indoor;
+    bool firstEntrance = false;
 
     protected override void Start()
     {
         base.Start();
         player = gm.player;
-        controller = player.GetComponent<CharacterController>();
+        teleportScript = player.GetComponent<PlayerTeleport>();
         indoor = gm.startIndoor;
         ModifyWardrobeAndSound();
     }
@@ -26,14 +27,20 @@ public class DoorInteraction : Interactable
     //when action key is pressed
     public override void StartInteraction()
     {
+        if(firstEntrance) 
+        { FirstEntranceTeleport(); return;}
+
         if(interactable) Teleport();
     }
 
+    void FirstEntranceTeleport()
+    {
+        //teleport to leon for the cinematic start
+        firstEntrance = true;
+    }
     void Teleport()
     {
-        controller.enabled = false;
-        player.transform.position = indoor? outdoorLandingPosition : indoorLandingPosition;
-        controller.enabled = true;
+        teleportScript.Teleport(indoor? outdoorLandingPosition : indoorLandingPosition);
         indoor = !indoor;
         ModifyWardrobeAndSound();
 
