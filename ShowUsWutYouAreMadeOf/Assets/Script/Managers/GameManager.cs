@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     public DialogueRunner dialogueRunner;
     public WardrobeButton wardrobeBtn;
     internal InMemoryVariableStorage variableStorage;
+    [SerializeField] CanvasFade fadeScreen;
 
     [Header("Player")]
     [SerializeField] public GameObject playerObject;   //player visibility
@@ -70,6 +71,8 @@ public class GameManager : MonoBehaviour
         else 
         {
             //teleport player based on start indoor or outdoor
+            fadeScreen.gameObject.SetActive(true);
+            FadeOut();
             GameStartInit();
             player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
             if(startIndoor) EnableWardrobeAction(true);
@@ -111,6 +114,8 @@ public class GameManager : MonoBehaviour
         player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
         wardrobeBtn.PlayerCustomization();
         //canvas fade out
+        fadeScreen.gameObject.SetActive(true);
+        FadeOut();
     }
 
     //called by wardrobe button, when you're done customizing
@@ -119,10 +124,9 @@ public class GameManager : MonoBehaviour
         // start cinematic
         Debug.Log("cinematic start");
         // start the game once cinematic is over
+        FadeOut();
         DisplayControlInstruction();
     }
-
-
     void OnModeChanged(CurrentMode mode)
     {
         lastMode = currMode;
@@ -231,11 +235,19 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
     }
-
     public void UnPause()
     {
         Time.timeScale = 1;
     }
+    public Coroutine FadeIn()
+    {
+       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,1f));
+    }
+    public Coroutine FadeOut()
+    {
+       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(1f,0f,1f));
+    }
+
     //command:the_end
     public void TriggerEndGameEvent()
     {

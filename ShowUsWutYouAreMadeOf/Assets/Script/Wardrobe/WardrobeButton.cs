@@ -9,30 +9,42 @@ public class WardrobeButton : MonoBehaviour
     //control everything wardrobe outside of the wardrobe canvas
     //also control the popup ui to display received item
 
+    [Header("Wardrobe Canvas")]
     public GameObject wardrobeUI;   //the entire wardrobe canvas
-    public Button closeBtn;
     public Image newIndicator;
     [SerializeField] private WardrobeManager wardrobeManager;
+    [SerializeField] GameObject changingScreen,customizeScreen; //show customize screen on start
+    [SerializeField] Button closeBtn, customizeFinishBtn;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
-    private List<Transform> wardrobeSections;
-    private Button openBtn;
-    bool newItem = false;
+
+    [Header("Pop up UI")]
     [SerializeField] private GameObject itemIconPrefab;
 	[SerializeField] private GridLayoutGroup iconLayoutParent;
 	RectTransform iconLayoutrect;
 	public float iconGridHeight;
 	public int iconGridCellCount = 2;
     InputManager inputManager;
+    private List<Transform> wardrobeSections;
+    private Button openBtn;
+    bool newItem = false;
+    GameManager gm;
+
     private void Start()
     {
+        gm = GameManager.Instance;
+        inputManager = InputManager.Instance;
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
-        inputManager = InputManager.Instance;
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
+        customizeFinishBtn.onClick.AddListener(()=>CustomizeFinished());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
 
+        //default set customize to false
+        customizeScreen.SetActive(false);
+        changingScreen.SetActive(true);
+        
         //set up the image layout
         iconLayoutrect = iconLayoutParent.GetComponent<RectTransform> ();
         ClearIconGridLayout();
@@ -47,22 +59,29 @@ public class WardrobeButton : MonoBehaviour
         OpenCloseWardrobe();
     }
 
+#region GameStartCustomization
     //called by gamemanager
     public void PlayerCustomization()
     {
+        //load the wardrobe init!
+        
         Debug.Log("show player customize screen");
-        // change done button text to 'im ready'
-        // you can customize your skin, hair and eye color
-        // besides that everything remains in the wardrobe ui
-        // the background is not changing room
+        customizeScreen.SetActive(true);
+        changingScreen.SetActive(false);
+        wardrobeUI.SetActive(true);
 
-        //start the game cinematic if you click I'm ready button
+        // you can customize your skin, hair and eye color
     }
     //done button is clicked
     void CustomizeFinished()
     {
-        GameManager.Instance.StartGameCinematic();
+        gm.FadeIn();
+        gm.StartGameCinematic();
+        wardrobeUI.SetActive(false);
+        customizeScreen.SetActive(false);
+        changingScreen.SetActive(true);
     }
+#endregion
 
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()
@@ -73,7 +92,7 @@ public class WardrobeButton : MonoBehaviour
         
         if(wardrobeOpen)
         {
-            GameManager.Instance.currMode = CurrentMode.Changing;
+            gm.currMode = CurrentMode.Changing;
             if(newItem)
             {
                 newItem = false;
@@ -81,7 +100,7 @@ public class WardrobeButton : MonoBehaviour
             }
         }
         else{
-            GameManager.Instance.BackToLastMode();
+            gm.BackToLastMode();
         }
     }
     //load a list of gift

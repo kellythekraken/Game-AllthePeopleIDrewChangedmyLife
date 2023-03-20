@@ -40,7 +40,7 @@ public class SceneManager : MonoBehaviour
     public void StartFromBeginning()
     {
         startBtn.interactable = false;
-        DeactivateStartMenu();
+        startSceneObjects.SetActive(false);
         startBtn.gameObject.SetActive(false);
 
         GamestartEvent.Invoke();

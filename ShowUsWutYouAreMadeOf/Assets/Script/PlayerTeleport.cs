@@ -13,7 +13,7 @@ public class PlayerTeleport : MonoBehaviour
     CharacterController controller;
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        if(controller==null) controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -26,6 +26,8 @@ public class PlayerTeleport : MonoBehaviour
 
     public void TeleportToStartLocation(bool startindoor)
     {
+        if(controller==null) controller =GetComponent<CharacterController>();
+        
         Teleport(startindoor? indoorStartLocation:outdoorStartLocation);
     }
 }

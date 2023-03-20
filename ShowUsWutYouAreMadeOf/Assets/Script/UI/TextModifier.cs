@@ -9,7 +9,7 @@ public class TextModifier : MonoBehaviour
     TextMeshProUGUI text;
     string currText = "";
     string fullText;
-    public bool typing = false;
+    internal bool typing = false;
     void Start()
     {
         text = GetComponent<TextMeshProUGUI>();
