@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         {
             GameStartInit();
             StartFromTitle();
-            wardrobeBtn.Init();
             sceneManager.GamestartEvent.AddListener(StartBtnClicked);
         }
         else 
@@ -99,6 +98,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
         dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
+
+        wardrobeBtn.Init();
     }  
     void StartFromTitle()
     {
@@ -127,6 +128,7 @@ public class GameManager : MonoBehaviour
         // start the game once cinematic is over
         FadeOut();
         DisplayControlInstruction();
+        currMode = CurrentMode.Nothing;
     }
     void OnModeChanged(CurrentMode mode)
     {

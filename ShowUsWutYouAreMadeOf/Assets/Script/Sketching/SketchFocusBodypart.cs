@@ -16,6 +16,7 @@ public class SketchFocusBodypart : MonoBehaviour, IPointerEnterHandler, IPointer
     {   
         if(init) return;
 
+        gameObject.layer = 8;
         sketchingSystem = SketchingSystem.Instance;
         var npc = GetComponentInParent<QueerNPC>();
         var bodypartMesh = Array.Find(npc.bodyPartMeshes,t=> t.name == bodyName);

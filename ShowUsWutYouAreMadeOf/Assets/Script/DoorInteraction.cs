@@ -40,6 +40,8 @@ public class DoorInteraction : Interactable
     }
     void Teleport()
     {
+        gm.FadeIn();
+        gm.FadeOut();
         teleportScript.Teleport(indoor? outdoorLandingPosition : indoorLandingPosition);
         indoor = !indoor;
         ModifyWardrobeAndSound();

@@ -29,12 +29,7 @@ public class WardrobeButton : MonoBehaviour
     private Button openBtn;
     bool newItem = false;
     GameManager gm;
-
     bool init = false;
-    private void Start()
-    {
-        if(!init) Init();
-    }
 
     //also called by gamemanager if start from main menu
     public void Init()

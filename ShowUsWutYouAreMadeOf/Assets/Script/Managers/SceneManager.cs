@@ -98,7 +98,7 @@ public class SceneManager : MonoBehaviour
         while(titleText.typing == true)
         {yield return null;}
         buttonCanvas.gameObject.SetActive(true);
-        StartCoroutine(buttonCanvas.ChangeAlphaOverTime(0f,1f,1f));
+        StartCoroutine(buttonCanvas.ChangeAlphaOverTime(0f,1f,.5f));
     }
     public void DisplayStartScreen()
     {
