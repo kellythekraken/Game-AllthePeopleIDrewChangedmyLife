@@ -36,6 +36,7 @@ public class SketchingSystem : MonoBehaviour
     Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
     int strokeCount;    //keep track in purpose to show stop btn when you can stop sketching
     bool initialized = false;
+    int sketchCount;
 
     void OnDisable()
     {
@@ -130,7 +131,6 @@ public class SketchingSystem : MonoBehaviour
         {
             chosenArea = availableChoices.Find(x=> x.objName == chosenBody);
         }
-
     }
     
     //called when sketchbook is clicked
@@ -212,6 +212,9 @@ public class SketchingSystem : MonoBehaviour
         foreach(var i in bodypartLists) { i.enabled = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
         availableChoices.Clear();
+
+        sketchCount++;
+        if(sketchCount>=1) gm.UnlockEndGame();
     }
 
     //called by pressing done button

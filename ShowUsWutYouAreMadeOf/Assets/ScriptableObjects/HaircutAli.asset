@@ -16,9 +16,12 @@ MonoBehaviour:
   pronouns: She/They
   giftLine: Ali offered you some cool haircut!
   items:
-  - {fileID: 11400000, guid: 102aa244712ab5d4881e54102ffcd068, type: 2}
+  - {fileID: 11400000, guid: 01a933be1aecd0e499d3068852ccdc69, type: 2}
+  - {fileID: 11400000, guid: 3b9765fee7f5f7745878ebb854878090, type: 2}
   - {fileID: 11400000, guid: 0b4ea4611ebe9a84697276b6ee61ee30, type: 2}
+  - {fileID: 11400000, guid: 102aa244712ab5d4881e54102ffcd068, type: 2}
   - {fileID: 11400000, guid: 7cdc5e63351a28747973f1a6ea2c0be6, type: 2}
+  - {fileID: 11400000, guid: ebb885871c5710f49914c33b39819750, type: 2}
   drawableAreas:
   - objName: Hair
     targetDrawings:

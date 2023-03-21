@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public WardrobeButton wardrobeBtn;
     internal InMemoryVariableStorage variableStorage;
     [SerializeField] CanvasFade fadeScreen;
+    [SerializeField] Interactable endGameTrigger;
 
     [Header("Player")]
     [SerializeField] public GameObject playerObject;   //player visibility
@@ -92,7 +93,7 @@ public class GameManager : MonoBehaviour
         sketchbookUI.SetActive(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
-
+        
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
         dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
         dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
@@ -100,6 +101,7 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
 
         wardrobeBtn.Init();
+        //endGameTrigger.interactable = false;
     }  
     void StartFromTitle()
     {
@@ -119,6 +121,10 @@ public class GameManager : MonoBehaviour
         FadeOut();
     }
 
+    public void UnlockEndGame()
+    {
+        endGameTrigger.interactable = true;
+    }
     //called by wardrobe button, when you're done customizing
     public void StartGameCinematic()
     {
@@ -256,8 +262,7 @@ public class GameManager : MonoBehaviour
     //command:the_end
     public void TriggerEndGameEvent()
     {
-        //show ending screen or start screen
-        sceneManager.StartOver();
+        sceneManager.EndGame();
     }
     public void ShowPlayer(bool show)
     {

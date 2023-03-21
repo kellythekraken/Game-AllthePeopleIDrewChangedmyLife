@@ -11,7 +11,7 @@ public class CanvasFade : MonoBehaviour
     private CanvasGroup canvasGroup; // canvas UI layer we are fading
 
     // when this fade layer object is created
-    private void OnEnable() {
+    private void Awake() {
         canvasGroup = GetComponent<CanvasGroup>();
     }
 

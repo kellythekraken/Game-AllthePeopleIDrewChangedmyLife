@@ -9,8 +9,10 @@ public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
     [Header("Canvas")] 
-    [SerializeField] private GameObject startSceneObjects;
-    public CanvasFade startCanvasFade, blackoutFade, buttonCanvas;
+    [SerializeField] GameObject sceneGroup;
+    [SerializeField] CanvasFade startCanvasFade, endCanvasFade;
+    public CanvasFade blackoutFade, buttonCanvas;
+
     [Header("UI")]
     [SerializeField] private TextModifier titleText;
     [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
@@ -21,13 +23,15 @@ public class SceneManager : MonoBehaviour
         blackoutFade.gameObject.SetActive(true);
         StartCoroutine(FadeInStartUI());
         LoadMainGameUponStart();
+        ShowStartCanvas(true);
         restartBtn.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(false);
-
+        
         startBtn.onClick.AddListener(StartFromBeginning);
         continueBtn.onClick.AddListener(DeactivateStartMenu);
         restartBtn.onClick.AddListener(ReloadGame);
         quitBtn.onClick.AddListener(QuitGame);
+
         if (GamestartEvent == null)
             GamestartEvent = new UnityEvent();
     }
@@ -41,7 +45,7 @@ public class SceneManager : MonoBehaviour
     public void StartFromBeginning()
     {
         startBtn.interactable = false;
-        startSceneObjects.SetActive(false);
+        sceneGroup.SetActive(false);
         startBtn.gameObject.SetActive(false);
 
         GamestartEvent.Invoke();
@@ -79,7 +83,7 @@ public class SceneManager : MonoBehaviour
         restartBtn.gameObject.SetActive(true);
         continueBtn.interactable = true;
         GameManager.Instance.currMode = CurrentMode.StartMenu;
-        startSceneObjects.SetActive(true);
+        ShowStartCanvas(true);
     }
 
     void DeactivateStartMenu()
@@ -87,7 +91,7 @@ public class SceneManager : MonoBehaviour
         continueBtn.interactable = false;
         InputManager.Instance.EnableAllInput(true);
         GameManager.Instance.BackToLastMode();
-        startSceneObjects.SetActive(false);
+        sceneGroup.SetActive(false);
     }
 
     IEnumerator FadeInStartUI()
@@ -101,7 +105,8 @@ public class SceneManager : MonoBehaviour
         buttonCanvas.gameObject.SetActive(true);
         StartCoroutine(buttonCanvas.ChangeAlphaOverTime(0f,1f,.5f));
     }
-    public void DisplayStartScreen()
+
+    public void DisplaysceneGroup()
     {
         FadeInStart(2f);
         startCanvasFade.BlockRayCast(true);
@@ -109,6 +114,39 @@ public class SceneManager : MonoBehaviour
         GameManager.Instance.PauseGame();
     }    
 
+    public void EndGame()
+    {
+        Debug.Log("end game");
+        ShowStartCanvas(false);
+        StartCoroutine(FadeInEndUI());
+    }
+    IEnumerator FadeInEndUI()
+    {
+        var continueBtn = endCanvasFade.transform.Find("Continue").GetComponent<CanvasFade>();
+        continueBtn.gameObject.SetActive(false);
+
+        var fade = FadeInStart(1.5f);
+        yield return fade;
+        TextModifier thankTxt = endCanvasFade.transform.Find("Thank").GetComponent<TextModifier>();
+        TextModifier endTxt = endCanvasFade.transform.Find("End").GetComponent<TextModifier>();
+        StartCoroutine(thankTxt.Typewrite());
+        while(thankTxt.typing)
+        {yield return null;}
+        yield return new WaitForSeconds(2f);
+        thankTxt.ClearText();
+        StartCoroutine(endTxt.Typewrite());
+        while(endTxt.typing)
+        {yield return null;}
+        yield return new WaitForSeconds(1f);
+        continueBtn.ChangeAlphaOverTime(0f,1f,1f);
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
+    }
+    void ShowStartCanvas(bool start)
+    {
+        sceneGroup.SetActive(true);
+        startCanvasFade.gameObject.SetActive(start);
+        endCanvasFade.gameObject.SetActive(!start);
+    }
     private Coroutine FadeOutStart(float time = 1f) {
         return StartCoroutine(blackoutFade.ChangeAlphaOverTime(0f,1f, time));
     }

@@ -14,7 +14,7 @@ public class TextModifier : MonoBehaviour
     {
         text = GetComponent<TextMeshProUGUI>();
         fullText = text.text;
-        text.text = "";
+        ClearText();
     }
 
     public IEnumerator Typewrite()
@@ -28,14 +28,5 @@ public class TextModifier : MonoBehaviour
         }
         typing = false;
     }
-
-    public void UnderlineFont()
-    {
-        text.fontStyle = FontStyles.Underline;
-    }
-
-    public void ResetFontStyle()
-    {
-        text.fontStyle = FontStyles.Normal;
-    }
+    public void ClearText() => text.text = "";
 }

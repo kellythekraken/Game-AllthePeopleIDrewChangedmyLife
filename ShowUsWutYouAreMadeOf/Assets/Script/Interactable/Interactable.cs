@@ -24,6 +24,7 @@ public class Interactable : MonoBehaviour
         indicator = InteractIndicator.Instance;
         dialogueRunner = gm.dialogueRunner;
         dialogueRunner.onDialogueComplete.AddListener(EndInteraction);
+        gameObject.layer = 11;
         //Debug.Log("tags: " + dialogueRunner.GetTagsForNode(dialogueTitle));
     }
 
