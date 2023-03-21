@@ -17,6 +17,7 @@ public class DoorInteraction : Interactable
     protected override void Start()
     {
         base.Start();
+
         player = gm.player;
         teleportScript = player.GetComponent<PlayerTeleport>();
     }
@@ -28,16 +29,15 @@ public class DoorInteraction : Interactable
     //when action key is pressed
     public override void StartInteraction()
     {
-        if(!firstEntrance) FirstEntranceTeleport();
+        if(!firstEntrance) StartCoroutine(FirstEntranceTeleport());
         else if(interactable) Teleport();
     }
-
-    void FirstEntranceTeleport()
+    IEnumerator FirstEntranceTeleport()
     {
         firstEntrance = true;
-        //teleport to leon for the cinematic start
+        //teleport to leon and trigger dialogue
         teleportScript.TeleportToLeon();
-        //trigger leon dialogue
+        yield return new WaitForSeconds(.7f);
         NPCManager.Instance.FindNPC("Leon").StartInteraction();
     }
     void Teleport()
@@ -53,6 +53,7 @@ public class DoorInteraction : Interactable
 
     void ModifyWardrobeAndSound()
     {
+        if(gm == null) gm = GameManager.Instance;
         gm.EnableWardrobeAction(indoor);
         AudioManager.Instance.SetMuffleParameter(indoor? 0f: 1f);
     }

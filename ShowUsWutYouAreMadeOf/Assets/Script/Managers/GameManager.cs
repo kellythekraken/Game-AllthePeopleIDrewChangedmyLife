@@ -70,14 +70,13 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
-            audioManager.SetSceneParam(1);
-            //teleport player based on start indoor or outdoor
+            GameStartInit();
             fadeScreen.gameObject.SetActive(true);
             FadeOut();
-            GameStartInit();
+            audioManager.SetSceneParam(1);
             player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
-            DoorInteraction.Instance.indoor = startIndoor;
             currMode = CurrentMode.Nothing;
+            DoorInteraction.Instance.indoor = startIndoor;
             DisplayControlInstruction();
         }
     } 

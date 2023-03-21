@@ -1,7 +1,6 @@
 ﻿title: Leon
 ---
 <<if visited_count("Leon") == 0>>
-    <<wait 1>>
     <<camera LeonCam>>
     Hello. What can I get you?
     Hey, you’re an art student? What kinds of work do you do?
