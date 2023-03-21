@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     internal SketchingSystem sketchManager;
     internal InteractIndicator interactIndicator;
     internal TextMeshProUGUI pronounText;
-    internal QueerNPC sketchSubject;
+    internal QueerNPC currentQueerSubject;
     internal bool sketchbookOpen;
     internal Camera mainCam;
     private void Awake()
@@ -186,7 +186,7 @@ public class GameManager : MonoBehaviour
     }
     public void ContinueSketchChat()
     {
-        sketchSubject.StartSketchConversation();
+        currentQueerSubject.StartSketchConversation();
         float count;
         variableStorage.TryGetValue("$StrokeCount", out count);
     }
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
         ShowPlayer(!open);
         if(open) 
         {
-            sketchManager.PrepareToSketch(sketchSubject);
+            sketchManager.PrepareToSketch(currentQueerSubject);
             StartCoroutine(OpenSketchbook());
         }
         else {
@@ -223,8 +223,8 @@ public class GameManager : MonoBehaviour
 #region CONVERSATION PHASE
     public void DiscoveredPronoun()
     {
-        sketchSubject.pronounKnown = true;
-        sketchSubject.ChangePronounTag();
+        currentQueerSubject.pronounKnown = true;
+        currentQueerSubject.ChangePronounTag();
     }
     public void ShowPronoun() => pronounTag.SetActive(true);
     public void HidePronoun() => pronounTag.SetActive(false);

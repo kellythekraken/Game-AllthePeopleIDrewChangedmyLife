@@ -8,7 +8,7 @@ using UnityEngine;
 //maybe also for changing position when in a conversation??
 public class PlayerTeleport : MonoBehaviour
 {
-    [SerializeField] Vector3 indoorStartLocation, outdoorStartLocation;
+    [SerializeField] Vector3 indoorStartLocation, outdoorStartLocation, barLocation;
 
     CharacterController controller;
     void Start()
@@ -24,6 +24,10 @@ public class PlayerTeleport : MonoBehaviour
         controller.enabled = true;
     }
 
+    public void TeleportToLeon()
+    {
+        Teleport(barLocation);
+    }
     public void TeleportToStartLocation(bool startindoor)
     {
         if(controller==null) controller =GetComponent<CharacterController>();

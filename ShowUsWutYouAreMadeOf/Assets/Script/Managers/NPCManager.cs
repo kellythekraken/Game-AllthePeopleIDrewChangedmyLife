@@ -25,6 +25,11 @@ public class NPCManager : MonoBehaviour
         completedNPC = new List<QueerNPC>();
         NPCToSpawn = new List<QueerNPC>(NPCFullList.ToList());
     }
+
+    public QueerNPC FindNPC(string name)
+    {
+        return System.Array.Find(NPCFullList,t=>t.queerID.npcName == name);
+    }
     //command: enter random
     public void OnStageRandom()
     {

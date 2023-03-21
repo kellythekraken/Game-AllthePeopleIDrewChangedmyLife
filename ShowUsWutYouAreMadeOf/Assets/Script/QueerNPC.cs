@@ -32,7 +32,7 @@ public class QueerNPC : Interactable
         {
             if(pronounKnown) ChangePronounTag();
             introduced = true;
-            gm.sketchSubject = this;
+            gm.currentQueerSubject = this;
         }
     }
     //IsDialogueRunning after first interaction. because this is when you start sketching.

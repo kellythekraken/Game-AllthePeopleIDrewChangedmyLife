@@ -36,8 +36,9 @@ public class DoorInteraction : Interactable
     {
         firstEntrance = true;
         //teleport to leon for the cinematic start
-
+        teleportScript.TeleportToLeon();
         //trigger leon dialogue
+        NPCManager.Instance.FindNPC("Leon").StartInteraction();
     }
     void Teleport()
     {
