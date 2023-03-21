@@ -28,6 +28,15 @@ public class AudioManager : MonoBehaviour
         //ambienceEventInstance.set3DAttributes();
         ambienceEventInstance.start();
     }
+    
+    //wip
+    void StopAmbience(EventReference reference)
+    {
+        //eventList.Find(t=>t.name)
+        ambienceEventInstance = CreateEventInstance(reference);
+        //ambienceEventInstance.set3DAttributes();
+        ambienceEventInstance.start();
+    }
 
     public void PlayOneShot(EventReference sound) //without distance
     {
@@ -54,17 +63,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void DoorTriggerMuffleBGM()
+    public void SetSceneParam(float newValue)
     {
-        //if muffle = 1, make it 0, vice versa
-        //RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
+        RuntimeManager.StudioSystem.setParameterByName("Scene",newValue);
     }
-
     private void CleanUp()
     {
         foreach(var i in eventList)
         {
-            i.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             i.release();
         }
     }

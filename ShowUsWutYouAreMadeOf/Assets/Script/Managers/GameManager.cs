@@ -70,12 +70,13 @@ public class GameManager : MonoBehaviour
         }
         else 
         {
+            audioManager.SetSceneParam(1);
             //teleport player based on start indoor or outdoor
             fadeScreen.gameObject.SetActive(true);
             FadeOut();
             GameStartInit();
             player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
-            if(startIndoor) EnableWardrobeAction(true);
+            DoorInteraction.Instance.indoor = startIndoor;
             currMode = CurrentMode.Nothing;
             DisplayControlInstruction();
         }
@@ -104,18 +105,17 @@ public class GameManager : MonoBehaviour
     void StartFromTitle()
     {
         currMode = CurrentMode.StartMenu;
+        audioManager.SetSceneParam(0);
+        audioManager.SetMuffleParameter(1);
+        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
         // first show frozen scene, hiding all the character? to save the processing?
         // force player to start form outdoor
     }
 
-    //unityevent when start button is clicked
+    //show customize wardrobe
     void StartBtnClicked()
     {
-        //canvas fade to black
-        Debug.Log("start button is clicked, received by game manager");
-        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
         wardrobeBtn.PlayerCustomization();
-        //canvas fade out
         fadeScreen.gameObject.SetActive(true);
         FadeOut();
     }
@@ -125,10 +125,13 @@ public class GameManager : MonoBehaviour
     {
         // start cinematic
         Debug.Log("cinematic start");
+
         // start the game once cinematic is over
         FadeOut();
         DisplayControlInstruction();
+        audioManager.SetSceneParam(1);
         currMode = CurrentMode.Nothing;
+        DoorInteraction.Instance.indoor = false;
     }
     void OnModeChanged(CurrentMode mode)
     {

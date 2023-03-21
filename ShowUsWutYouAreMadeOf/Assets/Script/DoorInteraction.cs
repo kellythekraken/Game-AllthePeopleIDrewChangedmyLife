@@ -5,19 +5,20 @@ using StarterAssets;
 
 public class DoorInteraction : Interactable
 {
+    public static DoorInteraction Instance;
     [SerializeField] Vector3 indoorLandingPosition, outdoorLandingPosition;
     GameObject player;
     PlayerTeleport teleportScript;
-    public static bool indoor;
+    bool _indoor;
+    internal bool indoor {get{ return _indoor;} set {_indoor = value; ModifyWardrobeAndSound();}}
     bool firstEntrance = false;
 
+    void Awake() => Instance = this;
     protected override void Start()
     {
         base.Start();
         player = gm.player;
         teleportScript = player.GetComponent<PlayerTeleport>();
-        indoor = gm.startIndoor;
-        ModifyWardrobeAndSound();
     }
     public override string GetName() 
      {
@@ -27,16 +28,16 @@ public class DoorInteraction : Interactable
     //when action key is pressed
     public override void StartInteraction()
     {
-        if(firstEntrance) 
-        { FirstEntranceTeleport(); return;}
-
-        if(interactable) Teleport();
+        if(!firstEntrance) FirstEntranceTeleport();
+        else if(interactable) Teleport();
     }
 
     void FirstEntranceTeleport()
     {
-        //teleport to leon for the cinematic start
         firstEntrance = true;
+        //teleport to leon for the cinematic start
+
+        //trigger leon dialogue
     }
     void Teleport()
     {
@@ -44,7 +45,6 @@ public class DoorInteraction : Interactable
         gm.FadeOut();
         teleportScript.Teleport(indoor? outdoorLandingPosition : indoorLandingPosition);
         indoor = !indoor;
-        ModifyWardrobeAndSound();
 
         StartCoroutine(InteractionCooldown(1f));
         indicator.DisplayIndicator(false);

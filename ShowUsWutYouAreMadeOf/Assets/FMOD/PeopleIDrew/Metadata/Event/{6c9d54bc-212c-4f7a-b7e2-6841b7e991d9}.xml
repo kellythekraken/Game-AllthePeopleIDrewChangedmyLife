@@ -93,6 +93,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6c9e4ddc-093c-45d5-96fc-d671f411166d}">
+		<property name="pitch">
+			<value>-1.20000005</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{f2ce324e-ae3a-46be-98e4-cd8622171fbe}</destination>
 		</relationship>
@@ -214,7 +217,7 @@
 			<value>0</value>
 		</property>
 		<property name="length">
-			<value>57.511129064039409</value>
+			<value>68.855999999999995</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{98801de8-ae91-4870-96a2-c760c7128e02}</destination>

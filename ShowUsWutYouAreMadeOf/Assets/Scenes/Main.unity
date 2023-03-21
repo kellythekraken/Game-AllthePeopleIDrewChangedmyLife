@@ -8401,8 +8401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startIndoor: 1
-  startFromTitle: 0
+  startIndoor: 0
+  startFromTitle: 1
   cinematicStart: 0
   pronounTag: {fileID: 1752515339}
   settingsUI: {fileID: 1253938074506939}
@@ -21438,7 +21438,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897373169}
-  m_LocalRotation: {x: -0.01211634, y: -0.9875621, z: 0.09744138, w: -0.12279833}
+  m_LocalRotation: {x: -0.012116346, y: -0.9875621, z: 0.097441405, w: -0.12279837}
   m_LocalPosition: {x: -0.73000073, y: 1.5850002, z: 2.8899999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -31865,8 +31865,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -10.710001, y: -2.6740003, z: -5.56}
+  m_LocalRotation: {x: -0.00026432544, y: 0.9957172, z: -0.09079217, w: -0.017433243}
+  m_LocalPosition: {x: -10.600018, y: 1.3999925, z: 18.200012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -31943,9 +31943,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.001
-  far clip plane: 50
-  field of view: 30
+  near clip plane: 0.2
+  far clip plane: 60
+  field of view: 20
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
