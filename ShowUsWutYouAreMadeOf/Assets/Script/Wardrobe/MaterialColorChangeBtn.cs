@@ -47,10 +47,10 @@ public class MaterialColorChangeBtn : MonoBehaviour
                 //change the color of the icons too??
                 return;
             case MaterialType.Skin:
-                targetRenderer.material = newMaterial;
+                targetRenderer.sharedMaterial = newMaterial;
                 return;
             case MaterialType.Eye:
-                targetRenderer.material = newMaterial;
+                targetRenderer.materials[1].CopyPropertiesFromMaterial(newMaterial); 
                 return;
         }
     }
