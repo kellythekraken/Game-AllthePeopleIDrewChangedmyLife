@@ -10,15 +10,11 @@ public class TextModifier : MonoBehaviour
     string currText = "";
     string fullText;
     internal bool typing = false;
-    void Start()
-    {
-        text = GetComponent<TextMeshProUGUI>();
-        fullText = text.text;
-        ClearText();
-    }
 
     public IEnumerator Typewrite()
     {
+        ClearText();
+
         typing = true;
         for(int i=0; i< fullText.Length + 1; i++)
         {
@@ -28,5 +24,13 @@ public class TextModifier : MonoBehaviour
         }
         typing = false;
     }
-    public void ClearText() => text.text = "";
+    public void ClearText() 
+    {
+        if(text == null) 
+        {
+            text = GetComponent<TextMeshProUGUI>();
+            fullText = text.text;
+        }
+        text.text = "";
+    } 
 }

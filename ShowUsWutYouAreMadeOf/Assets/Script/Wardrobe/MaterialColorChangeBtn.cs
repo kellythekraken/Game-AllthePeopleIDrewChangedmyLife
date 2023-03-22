@@ -19,7 +19,6 @@ public class MaterialColorChangeBtn : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(ChangeMaterialColor);
         player = GameManager.Instance.playerObject.transform;
         FindMaterial();
-        
     }
 
     void FindMaterial()
@@ -44,7 +43,6 @@ public class MaterialColorChangeBtn : MonoBehaviour
         {
             case MaterialType.Hair:
                 targetRenderer.sharedMaterial = newMaterial;
-                //change the color of the icons too??
                 return;
             case MaterialType.Skin:
                 targetRenderer.sharedMaterial = newMaterial;

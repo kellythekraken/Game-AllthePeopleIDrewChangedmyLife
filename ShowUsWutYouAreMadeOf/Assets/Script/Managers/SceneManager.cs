@@ -96,6 +96,7 @@ public class SceneManager : MonoBehaviour
 
     IEnumerator FadeInStartUI()
     {
+        titleText.ClearText();
         buttonCanvas.gameObject.SetActive(false);
         var fade = FadeInStart(1.5f);
         yield return fade;
@@ -133,7 +134,6 @@ public class SceneManager : MonoBehaviour
         while(thankTxt.typing)
         {yield return null;}
         yield return new WaitForSeconds(2f);
-        thankTxt.ClearText();
         StartCoroutine(endTxt.Typewrite());
         while(endTxt.typing)
         {yield return null;}
