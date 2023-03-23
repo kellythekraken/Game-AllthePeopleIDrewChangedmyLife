@@ -124,6 +124,11 @@ public class WardrobeManager : MonoBehaviour
         WearableItem itemComponent = obj.GetComponent<WearableItem>();
         itemComponent.InitItem(item, isNew,item.section);
         itemComponent.gifter = gifterName;
+        if(isNew)
+        {
+            var targetParent = wardrobeParents.Find(t=>t.sectionName == item.section);
+            targetParent.AddToList(itemComponent);
+        }
         return obj;
     }
     public void UpdateGifterList(string gifterName, bool addItem = true)
