@@ -15,6 +15,7 @@ public class SceneManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextModifier titleText;
     [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
+    [SerializeField] Camera titleCamera;
     internal UnityEvent GamestartEvent;
     void Awake() => Instance = this;
     void Start()
@@ -30,7 +31,6 @@ public class SceneManager : MonoBehaviour
         continueBtn.onClick.AddListener(DeactivateStartMenu);
         restartBtn.onClick.AddListener(ReloadGame);
         quitBtn.onClick.AddListener(QuitGame);
-
         if (GamestartEvent == null)
             GamestartEvent = new UnityEvent();
     }
@@ -60,16 +60,20 @@ public class SceneManager : MonoBehaviour
 
     public void ReloadGame()    //reload the game at main scene
     {
+        continueBtn.interactable = false;
+        restartBtn.interactable = false;
+        blackoutFade.gameObject.SetActive(true);
         StartCoroutine(Reload());
     }
     IEnumerator Reload()
     {
+        var c = blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
+        yield return c;
         var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Main");
         yield return load;
         var start = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main",LoadSceneMode.Additive);
         yield return start;
-        blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         StartFromBeginning();
     }
 #endregion

@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b5540900c942844d980283861a58572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
+  delay: 0.05
 --- !u!1 &933378524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2551,6 +2551,7 @@ MonoBehaviour:
   restartBtn: {fileID: 296843591}
   continueBtn: {fileID: 383922614}
   quitBtn: {fileID: 1748553558}
+  titleCamera: {fileID: 1648429430}
 --- !u!1 &1457584094
 GameObject:
   m_ObjectHideFlags: 0

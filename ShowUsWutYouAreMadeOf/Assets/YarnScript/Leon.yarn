@@ -21,8 +21,8 @@
 <<else>>
     <<camera LeonCam>>
     <<if $NumberOfEncounters > 0>>
-        Leon: Starting to get to know the people here?
-        Leon: We have an event coming in a few days, come again!
+        Leon: Hey, seems like you're getting to know the people here.
+        Leon: We have an event coming in a few days.
         Leon: I'd love to see you here again. 
         <<pose Leon Pour 0>>
         <<silence Leon>>
