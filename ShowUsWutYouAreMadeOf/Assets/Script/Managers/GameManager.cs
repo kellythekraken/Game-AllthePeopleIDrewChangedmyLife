@@ -3,7 +3,7 @@ using UnityEngine;
 using Yarn.Unity;
 using TMPro;
 
-public enum CurrentMode { Nothing, Conversation, Sketching, Changing, StartMenu}
+public enum CurrentMode { Nothing, Conversation, Sketching, Changing, Setting, StartMenu}
 
 public class GameManager : MonoBehaviour
 {
@@ -132,13 +132,13 @@ public class GameManager : MonoBehaviour
     public void StartGameCinematic()
     {
         // start cinematic
-        Debug.Log("cinematic start");
 
         // start the game once cinematic is over
         FadeOut();
         DisplayControlInstruction();
         audioManager.SetSceneParam(1);
         currMode = CurrentMode.Nothing;
+        inputManager.settingsAction.Enable();
         door.indoor = false;
     }
     void OnModeChanged(CurrentMode mode)
@@ -165,6 +165,11 @@ public class GameManager : MonoBehaviour
                 audioManager.SetMuffleParameter(0.5f);
                 return;
             case CurrentMode.Changing:
+                LockCursor(false);
+                inputManager.EnableChatMoveBtn(false);
+                audioManager.SetMuffleParameter(1f);
+                return;
+            case CurrentMode.Setting:
                 LockCursor(false);
                 inputManager.EnableChatMoveBtn(false);
                 audioManager.SetMuffleParameter(1f);
@@ -243,7 +248,6 @@ public class GameManager : MonoBehaviour
 #region WARDROBE 
     public void EnableWardrobeAction(bool enable)
     {
-        Debug.Log("enable action? " + enable);
         wardrobeBtn.gameObject.SetActive(enable);
     }
 #endregion
@@ -276,9 +280,11 @@ public class GameManager : MonoBehaviour
     bool inSetting = false;
     public void ToggleSettingScreen()
     {
+        if(currMode == CurrentMode.Changing) return;
+        Debug.Log("settingsUI screen on!");
         inSetting = !inSetting;
         settingsUI.SetActive(inSetting);
-        if(inSetting) currMode = CurrentMode.Changing;
+        if(inSetting) currMode = CurrentMode.Setting;
         else BackToLastMode();
     }
     void InOptionView(bool inView)

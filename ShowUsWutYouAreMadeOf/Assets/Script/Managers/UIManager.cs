@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button backToStartBtn;
     TextMeshProUGUI itemText, noticeText;
     bool popupOn;
+
+    internal UnityEvent BackToStartEvent;
     
     void Awake() => Instance = this;
     void Start()
     {
+        BackToStartEvent = new UnityEvent();
         itemText = receivedItemWindow.GetComponentInChildren<TextMeshProUGUI>();
         noticeText = noticeWindow.GetComponentInChildren<TextMeshProUGUI>();
         backToStartBtn.onClick.AddListener(BackToStartBtnClicked);
@@ -111,7 +115,6 @@ public class UIManager : MonoBehaviour
     void BackToStartBtnClicked()
     {
         GameManager.Instance.ToggleSettingScreen();
-        SceneManager m = FindObjectOfType<SceneManager>();
-        m.ActivateStartMenu();
+        BackToStartEvent.Invoke();
     }
 }

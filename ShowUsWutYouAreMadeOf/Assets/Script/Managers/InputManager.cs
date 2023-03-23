@@ -17,7 +17,6 @@ public class InputManager : MonoBehaviour
     {
         Instance = this;
     }
-    
     void OnEnable()
     {
         mainAcionMap = playerInput.actions.FindActionMap("Player");
@@ -27,10 +26,9 @@ public class InputManager : MonoBehaviour
         lookAction = mainAcionMap["Look"];
         wardrobeAction = mainAcionMap["Wardrobe"];
         settingsAction = mainAcionMap["Setting"];
-
         gm = GameManager.Instance;
-        settingsAction.performed += SwitchSettingScreen; 
-        wardrobeAction.performed += gm.wardrobeBtn.WardrobeAction;
+        settingsAction.performed += SwitchSettingScreen;
+        wardrobeAction.performed += gm.wardrobeBtn.WardrobeAction; 
         mainAcionMap.Enable();
     }
     void OnDisable()

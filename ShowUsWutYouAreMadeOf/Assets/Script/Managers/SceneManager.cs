@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
 public class SceneManager : MonoBehaviour
@@ -49,6 +48,7 @@ public class SceneManager : MonoBehaviour
         startBtn.gameObject.SetActive(false);
 
         GamestartEvent.Invoke();
+        UIManager.Instance.BackToStartEvent.AddListener(ActivateStartMenu);
         //StartCoroutine(SwitchToMain());
     }
 
@@ -78,6 +78,7 @@ public class SceneManager : MonoBehaviour
     //load the start scene from main game, called by button in setting screen
     public void ActivateStartMenu()
     {
+        Debug.Log("activate start menu");
         StartCoroutine(FadeInStartUI());
         continueBtn.gameObject.SetActive(true);
         restartBtn.gameObject.SetActive(true);
