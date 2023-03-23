@@ -34,7 +34,7 @@ What's wrong?
 <<camera NPC_B>>
 <<pos B Drink>>
 It's just frustrating that I still get hit on by cis men all the time.
-<<pos B Explain .5>>
+<<pos B Explain 0>>
 I'm already dressing myself very androgynous.
 <<pos B Frustrated .5>>
 Isn't it clear that I don't want their attention?
