@@ -23,7 +23,9 @@ tags:
     Rue: Currently I'm pushing for more diversity in gender representation in the game we're developing. 
     Rue: Our team is mostly made up of cis men. That means I have a lot of work to do in terms of direction.
     Rue: I really appreciate your approach. I should talk to more artists like you.
-    Rue: To be sketched? How could I possibly say no?
+    Rue: ...
+    Rue: Oh! To be sketched? 
+    Rue: How could I possibly say no?
     Rue: That's really sweet of you.
     <<camera RueSketch>>
     <<sketch true>>
