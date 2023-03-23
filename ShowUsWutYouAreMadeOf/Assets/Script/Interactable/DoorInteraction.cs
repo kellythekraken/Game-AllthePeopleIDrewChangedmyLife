@@ -37,8 +37,9 @@ public class DoorInteraction : Interactable
         firstEntrance = true;
         //teleport to leon and trigger dialogue
         teleportScript.TeleportToLeon();
-        yield return new WaitForSeconds(.7f);
+        yield return new WaitForSeconds(.6f);
         NPCManager.Instance.FindNPC("Leon").StartInteraction();
+        indoor = true;
     }
     void Teleport()
     {

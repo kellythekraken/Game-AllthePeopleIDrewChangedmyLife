@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     internal QueerNPC currentQueerSubject;
     internal bool sketchbookOpen;
     internal Camera mainCam;
+    private DoorInteraction door;
     private void Awake()
     {
         Instance = this;
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
             audioManager.SetSceneParam(1);
             player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
             currMode = CurrentMode.Nothing;
-            DoorInteraction.Instance.indoor = startIndoor;
+            door.indoor = startIndoor;
             DisplayControlInstruction();
         }
     } 
@@ -101,7 +102,8 @@ public class GameManager : MonoBehaviour
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
 
         wardrobeBtn.Init();
-        //endGameTrigger.interactable = false;
+        endGameTrigger.interactable = false;
+        door = DoorInteraction.Instance;
     }  
     void StartFromTitle()
     {
@@ -125,6 +127,7 @@ public class GameManager : MonoBehaviour
     {
         endGameTrigger.interactable = true;
     }
+
     //called by wardrobe button, when you're done customizing
     public void StartGameCinematic()
     {
@@ -136,7 +139,7 @@ public class GameManager : MonoBehaviour
         DisplayControlInstruction();
         audioManager.SetSceneParam(1);
         currMode = CurrentMode.Nothing;
-        DoorInteraction.Instance.indoor = false;
+        door.indoor = false;
     }
     void OnModeChanged(CurrentMode mode)
     {
@@ -146,6 +149,7 @@ public class GameManager : MonoBehaviour
         {
             case CurrentMode.Nothing:
                 LockCursor(true);
+                if(door.indoor) EnableWardrobeAction(true);
                 inputManager.EnableChatMoveBtn(true);
                 audioManager.SetMuffleParameter(0f);
                 return;
@@ -239,6 +243,7 @@ public class GameManager : MonoBehaviour
 #region WARDROBE 
     public void EnableWardrobeAction(bool enable)
     {
+        Debug.Log("enable action? " + enable);
         wardrobeBtn.gameObject.SetActive(enable);
     }
 #endregion
