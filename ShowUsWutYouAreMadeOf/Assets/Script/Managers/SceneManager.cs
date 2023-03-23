@@ -58,10 +58,6 @@ public class SceneManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartOver() //reload the game at start 
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }
     public void ReloadGame()    //reload the game at main scene
     {
         StartCoroutine(Reload());
@@ -70,6 +66,10 @@ public class SceneManager : MonoBehaviour
     {
         var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Main");
         yield return load;
+        var start = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main",LoadSceneMode.Additive);
+        yield return start;
+        blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
+        yield return new WaitForSeconds(2f);
         StartFromBeginning();
     }
 #endregion
@@ -78,7 +78,7 @@ public class SceneManager : MonoBehaviour
     //load the start scene from main game, called by button in setting screen
     public void ActivateStartMenu()
     {
-        Debug.Log("activate start menu");
+        blackoutFade.ChangeAlphaOverTime(1f,0f,1f);
         StartCoroutine(FadeInStartUI());
         continueBtn.gameObject.SetActive(true);
         restartBtn.gameObject.SetActive(true);
@@ -89,6 +89,7 @@ public class SceneManager : MonoBehaviour
 
     void DeactivateStartMenu()
     {
+        blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
         continueBtn.interactable = false;
         InputManager.Instance.EnableAllInput(true);
         GameManager.Instance.BackToLastMode();
