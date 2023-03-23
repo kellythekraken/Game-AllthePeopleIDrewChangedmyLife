@@ -24,7 +24,7 @@
         Leon: Starting to get to know the people here?
         Leon: We have an event coming in a few days, come again!
         Leon: I'd love to see you here again. 
-        <<pose Leon Pour>>
+        <<pose Leon Pour 0>>
         <<silence Leon>>
     <<elseif visited_count("Leon") == 1>>
         Leon: Still feels a bit intimidating, doesn't it?
@@ -34,7 +34,7 @@
         Leon: Of course, it is always scary to take the first step. 
         Leon: But places like this exist so we could find each other and form a community. 
         Leon: There are people like you, and they are waiting to meet you.
-        <<pose Leon Pour>>
+        <<pose Leon Pour 0>>
         <<silence Leon>>
     <<else>>
         Leon: Xxx is also a good queer bar. I was there last week.
