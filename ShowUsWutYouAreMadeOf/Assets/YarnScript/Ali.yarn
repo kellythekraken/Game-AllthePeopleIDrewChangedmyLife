@@ -118,13 +118,14 @@ title: AliSketch
 ===
 title: AliLastStroke
 ---
-    Ali: Seems like my friends are arriving. I’m going to say hi. 
-    <<pose Ali Sketch>>
-    Ali: Come visit my salon some day, so we can continue this conversation.
-    <<lastdraw>>
-    <<wait .5>>
-    <<set $StrokeCount to 0>>
-    <<sketchfin>>
+Ali: Seems like my friends are arriving. I’m going to say hi. 
+<<pose Ali Sketch>>
+Ali: Come visit my salon some day, so we can continue this conversation.
+<<lastdraw>>
+<<wait .5>>
+<<set $StrokeCount to 0>>
+<<sketchfin>>
+<<enter Rue>>
 ===
 title: AliSketchFin
 ---
