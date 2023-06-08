@@ -70,7 +70,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638117264385273536
+  lastModified: 638218341886130793
   FileSizes:
   - Name: Desktop
     Value: 8193216
@@ -141,7 +141,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638117264385423562
+  lastModified: 638218341886150813
   FileSizes:
   - Name: Desktop
     Value: 1560
@@ -242,7 +242,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638117264386683537
+  lastModified: 638218305018983935
   FileSizes:
   - Name: Desktop
     Value: 656352
@@ -313,7 +313,7 @@ MonoBehaviour:
   - {fileID: 1861587311605156355}
   StringsBanks:
   - {fileID: -6422244205309584632}
-  cacheTime: 638117264386683537
+  cacheTime: 638218341886150813
   cacheVersion: 131601
 --- !u!114 &1042018698708886594
 MonoBehaviour:
@@ -384,7 +384,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638117264385353572
+  lastModified: 638218341886140916
   FileSizes:
   - Name: Desktop
     Value: 1218
