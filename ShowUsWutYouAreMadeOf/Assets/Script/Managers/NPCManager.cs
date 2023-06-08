@@ -44,14 +44,14 @@ public class NPCManager : MonoBehaviour
         QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
         npc.gameObject.SetActive(true);
         activeNPC.Add(npc);
-        NPCToSpawn.Remove(npc);
+        //NPCToSpawn.Remove(npc);
     }
     //command: leave
     public void OffStage(string npcName)
     {
         QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
-        //Destroy(npc.gameObject);
-        completedNPC.Add(npc);
-        activeNPC.Remove(npc);
+        npc.gameObject.SetActive(false);
+        //completedNPC.Add(npc);
+        //activeNPC.Remove(npc);
     }
 }
