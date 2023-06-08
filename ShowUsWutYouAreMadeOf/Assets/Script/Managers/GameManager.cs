@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
             DisplayControlInstruction();
         }
     } 
+
     void GameStartInit()
     {
         dialogueUI.SetActive(true);
@@ -299,6 +300,6 @@ public class GameManager : MonoBehaviour
     }
     void DisplayControlInstruction()
     {
-        UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Mouse to look around.", 4f);
+        UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Move mouse to look around.", 4f);
     }
 }
