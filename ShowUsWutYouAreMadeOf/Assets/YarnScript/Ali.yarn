@@ -141,6 +141,8 @@ Ali: Here, or at my salon!
 <<gift Ali>>
 <<pose Ali Sit>>
 <<camera Player>>
+
+<<enter Rue>>
 ===
 title: Ali_Hair
 ---

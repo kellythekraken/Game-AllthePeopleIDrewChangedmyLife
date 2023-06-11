@@ -8840,8 +8840,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startIndoor: 0
-  startFromTitle: 1
+  startIndoor: 1
+  startFromTitle: 0
   cinematicStart: 0
   pronounTag: {fileID: 1752515339}
   settingsUI: {fileID: 1253938074506939}
@@ -36380,7 +36380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1272038264671929
 GameObject:
   m_ObjectHideFlags: 0

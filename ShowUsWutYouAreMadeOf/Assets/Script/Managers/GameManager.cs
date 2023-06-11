@@ -282,7 +282,6 @@ public class GameManager : MonoBehaviour
     public void ToggleSettingScreen()
     {
         if(currMode == CurrentMode.Changing) return;
-        Debug.Log("settingsUI screen on!");
         inSetting = !inSetting;
         settingsUI.SetActive(inSetting);
         if(inSetting) currMode = CurrentMode.Setting;
