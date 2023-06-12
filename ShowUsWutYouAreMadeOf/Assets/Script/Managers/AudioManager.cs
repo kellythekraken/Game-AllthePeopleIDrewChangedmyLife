@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using Yarn.Unity;
+using System;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance {get;private set;}
     private List<EventInstance> eventList;
     Vector3 playerPosition;
-
+    DialogueRunner dialogueRunner;
     EventInstance ambienceEventInstance;
 
     //start with one music. For the restarted version always randomize music.
@@ -17,11 +19,14 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        dialogueRunner = GameManager.Instance.dialogueRunner;
         eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
         InitAmbience(FMODEvents.Instance.music);
+        dialogueRunner.onNodeStart.AddListener(StartTyping);
+        dialogueRunner.onDialogueComplete.AddListener(StopTyping);
     }
-    
+
     void InitAmbience(EventReference reference)
     {
         ambienceEventInstance = CreateEventInstance(reference);
@@ -67,6 +72,17 @@ public class AudioManager : MonoBehaviour
     {
         RuntimeManager.StudioSystem.setParameterByName("Scene",newValue);
     }
+
+    void StartTyping(string arg0)
+    {
+        Debug.Log("start playing typing sound");
+    }
+
+    void StopTyping()
+    {
+        Debug.Log("stop playing typing sound");
+    }
+
     private void CleanUp()
     {
         foreach(var i in eventList)

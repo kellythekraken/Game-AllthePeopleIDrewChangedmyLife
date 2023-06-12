@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{73908354-8a27-4a30-8ce5-60ddb937f741}">
+		<property name="assetPath">
+			<value>SFX/Typing/Typewriter_3.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.976</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{6cbc9d4b-161b-40c1-91f2-e589dc4ea630}</destination>
+		</relationship>
+	</object>
+</objects>

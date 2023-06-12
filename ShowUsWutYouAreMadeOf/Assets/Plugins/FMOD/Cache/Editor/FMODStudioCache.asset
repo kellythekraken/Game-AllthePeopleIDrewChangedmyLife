@@ -24,34 +24,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &-8725917256421301201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/BGM_2D Jaz
-  m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/BGM_2D Jaz
-  Guid:
-    Data1: 1777958473
-    Data2: 1149462098
-    Data3: 962166702
-    Data4: -1253386630
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -6847417024518792494}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 252912
 --- !u!114 &-8490219144809963439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +192,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/BGM.bank
   Name: BGM
   StudioPath: bank:/BGM
-  lastModified: 638218550507531314
+  lastModified: 638221563339164381
   FileSizes:
   - Name: Desktop
     Value: 7825632
@@ -252,83 +224,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &-7086847397263075799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM_ConsOriginal/Muffle
-  m_EditorClassIdentifier: 
-  Name: Muffle
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3179359666
-    data2: 4174788577
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-6847417024518792494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM_2D Jaz/Muffle
-  m_EditorClassIdentifier: 
-  Name: Muffle
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3179359666
-    data2: 4174788577
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
---- !u!114 &-6699893384158532951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/BGM_2D Cons
-  m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/BGM_2D Cons
-  Guid:
-    Data1: 1979498475
-    Data2: 1083390062
-    Data3: 1503453826
-    Data4: -1764816432
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: 4959084483843468414}
-  - {fileID: -539333676149958525}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 240000
 --- !u!114 &-6422244205309584632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,10 +239,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638218550507855998
+  lastModified: 638221563339364445
   FileSizes:
   - Name: Desktop
-    Value: 1658
+    Value: 1696
   Exists: 1
 --- !u!114 &-6238334655545017982
 MonoBehaviour:
@@ -447,6 +342,110 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
+--- !u!114 &-5294623293275478726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM_2D Jaz/Muffle
+  m_EditorClassIdentifier: 
+  Name: Muffle
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-5252625405213048590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/BGM_2D Cons
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/BGM_2D Cons
+  Guid:
+    Data1: 1979498475
+    Data2: 1083390062
+    Data3: 1503453826
+    Data4: -1764816432
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -3853694984067795113}
+  - {fileID: -5029028830053581820}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 240000
+--- !u!114 &-5029028830053581820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM_2D Cons/Muffle
+  m_EditorClassIdentifier: 
+  Name: Muffle
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
+--- !u!114 &-4649996973356528420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Typing
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Typing
+  Guid:
+    Data1: 638036500
+    Data2: 1218689957
+    Data3: 1122409374
+    Data4: 1756003729
+  Banks:
+  - {fileID: -1911925922095950997}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 5450
 --- !u!114 &-4381613073069547145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +527,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 580
+--- !u!114 &-3853694984067795113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM_2D Cons/Scene
+  m_EditorClassIdentifier: 
+  Name: Scene
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 4141824361
+    data2: 1121452219
+  Type: 1
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &-3352249227421099808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +626,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-2870988721644984146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/BGM_ConsOriginal
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/BGM_ConsOriginal
+  Guid:
+    Data1: -64285949
+    Data2: 1134571268
+    Data3: 990908082
+    Data4: 482930545
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters:
+  - {fileID: 2626048922308229155}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 240000
 --- !u!114 &-2860078716597708101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -650,7 +701,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 580
---- !u!114 &-2287619441503949433
+--- !u!114 &-2530199128379157915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,21 +710,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/Startmenu/Muffle
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/BGM_2D Jaz
   m_EditorClassIdentifier: 
-  Name: Muffle
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3179359666
-    data2: 4174788577
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
+  Path: event:/SceneBackground/BGM_2D Jaz
+  Guid:
+    Data1: 1777958473
+    Data2: 1149462098
+    Data3: 962166702
+    Data4: -1253386630
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -5294623293275478726}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 252912
 --- !u!114 &-2241584035269874880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -716,10 +771,10 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638218305018983935
+  lastModified: 638221563348854377
   FileSizes:
   - Name: Desktop
-    Value: 656352
+    Value: 887712
   Exists: 1
 --- !u!114 &-1825776339239157387
 MonoBehaviour:
@@ -851,30 +906,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 252912
---- !u!114 &-539333676149958525
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM_2D Cons/Muffle
-  m_EditorClassIdentifier: 
-  Name: Muffle
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 3179359666
-    data2: 4174788577
-  Type: 0
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -904,11 +935,12 @@ MonoBehaviour:
   - {fileID: -3088001734079466487}
   - {fileID: -7112038190390967834}
   - {fileID: -2241584035269874880}
-  - {fileID: 1042018698708886594}
-  - {fileID: -8725917256421301201}
-  - {fileID: 6649810789770186023}
-  - {fileID: 2667234312088319473}
-  - {fileID: -6699893384158532951}
+  - {fileID: -2870988721644984146}
+  - {fileID: -2530199128379157915}
+  - {fileID: 8288101720040835357}
+  - {fileID: 3388703449169761735}
+  - {fileID: -5252625405213048590}
+  - {fileID: -4649996973356528420}
   EditorParameters:
   - {fileID: 8474737377721607225}
   - {fileID: 2258559887270222767}
@@ -916,7 +948,7 @@ MonoBehaviour:
   - {fileID: 1861587311605156355}
   StringsBanks:
   - {fileID: -6422244205309584632}
-  cacheTime: 638218550507855998
+  cacheTime: 638221563348854377
   cacheVersion: 131601
 --- !u!114 &224266968279458511
 MonoBehaviour:
@@ -969,6 +1001,30 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &631078239380730111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Startmenu/Muffle
+  m_EditorClassIdentifier: 
+  Name: Muffle
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &1025115395684272207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -993,33 +1049,6 @@ MonoBehaviour:
   IsGlobal: 1
   Labels: []
   Exists: 1
---- !u!114 &1042018698708886594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/Ambience
-  m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/Ambience
-  Guid:
-    Data1: 1822250172
-    Data2: 1333403948
-    Data3: 1097392823
-    Data4: -644748873
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 1
-  Is3D: 1
-  IsOneShot: 0
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 68856
 --- !u!114 &1222605212219907300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1163,7 @@ MonoBehaviour:
   Path: Assets/FMOD/PeopleIDrew/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638218550507743867
+  lastModified: 638221563339264376
   FileSizes:
   - Name: Desktop
     Value: 1376
@@ -1190,7 +1219,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2650
---- !u!114 &2667234312088319473
+--- !u!114 &2626048922308229155
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1199,25 +1228,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/Startmenu
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/BGM_ConsOriginal/Muffle
   m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/Startmenu
-  Guid:
-    Data1: 118175175
-    Data2: 1097342294
-    Data3: -195795312
-    Data4: -1334397526
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 0
-  Parameters:
-  - {fileID: -2287619441503949433}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 34896
+  Name: Muffle
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 3179359666
+    data2: 4174788577
+  Type: 0
+  IsGlobal: 1
+  Labels: []
+  Exists: 1
 --- !u!114 &2683808309767852535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1349,6 +1374,34 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 34896
+--- !u!114 &3388703449169761735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/Startmenu
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/Startmenu
+  Guid:
+    Data1: 118175175
+    Data2: 1097342294
+    Data3: -195795312
+    Data4: -1334397526
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: 631078239380730111}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 34896
 --- !u!114 &4379803469591924177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1405,30 +1458,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 252912
---- !u!114 &4959084483843468414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
-  m_Name: parameter:/BGM_2D Cons/Scene
-  m_EditorClassIdentifier: 
-  Name: Scene
-  StudioPath: 
-  Min: 0
-  Max: 1
-  Default: 0
-  ID:
-    data1: 4141824361
-    data2: 1121452219
-  Type: 1
-  IsGlobal: 1
-  Labels: []
-  Exists: 1
 --- !u!114 &5098702741356286368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1539,34 +1568,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
---- !u!114 &6649810789770186023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SceneBackground/BGM_ConsOriginal
-  m_EditorClassIdentifier: 
-  Path: event:/SceneBackground/BGM_ConsOriginal
-  Guid:
-    Data1: -64285949
-    Data2: 1134571268
-    Data3: 990908082
-    Data4: 482930545
-  Banks:
-  - {fileID: -7371164977206914832}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters:
-  - {fileID: -7086847397263075799}
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 240000
 --- !u!114 &6785004808336179957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1675,6 +1676,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &8288101720040835357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SceneBackground/Ambience
+  m_EditorClassIdentifier: 
+  Path: event:/SceneBackground/Ambience
+  Guid:
+    Data1: 1822250172
+    Data2: 1333403948
+    Data3: 1097392823
+    Data4: -644748873
+  Banks:
+  - {fileID: -7371164977206914832}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 68856
 --- !u!114 &8474737377721607225
 MonoBehaviour:
   m_ObjectHideFlags: 0
