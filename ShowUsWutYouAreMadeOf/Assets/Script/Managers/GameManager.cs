@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     //show customize wardrobe
     void StartBtnClicked()
     {
+        dialogueRunner.StartDialogue("Init");
         wardrobeBtn.PlayerCustomization();
         fadeScreen.gameObject.SetActive(true);
         FadeOut();
@@ -158,12 +159,14 @@ public class GameManager : MonoBehaviour
                 EnableWardrobeAction(false);
                 interactIndicator.DisplayIndicator(false);
                 LockCursor(true);
+                dialogueUI.SetActive(true);
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
                 inputManager.EnableChatMoveBtn(false);
                 StartCoroutine(WaitBeforeSketch());
                 audioManager.SetMuffleParameter(0.5f);
+                sketchbookUI.SetActive(true);
                 return;
             case CurrentMode.Changing:
                 LockCursor(false);
@@ -178,6 +181,8 @@ public class GameManager : MonoBehaviour
             case CurrentMode.StartMenu:
                 LockCursor(false);
                 inputManager.EnableAllInput(false);
+                sketchbookUI.SetActive(false);
+                dialogueUI.SetActive(false);
                 return;
         }
     }
@@ -205,6 +210,7 @@ public class GameManager : MonoBehaviour
         float count;
         variableStorage.TryGetValue("$StrokeCount", out count);
     }
+
     // yarn command 'sketch'
     public void OpenCloseSketchbook(bool open)
     {
@@ -301,4 +307,18 @@ public class GameManager : MonoBehaviour
     {
         UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Move mouse to look around.", 4f);
     }
+    
+    public void ActivateAllCanvas(bool activate)
+    {
+        if(!activate)   //de-activate
+        {
+            sketchbookUI.SetActive(false);
+            dialogueUI.SetActive(false);
+        }
+        else    //activate the one that was temporarily deactivated
+        {
+
+        }
+    }
+
 }

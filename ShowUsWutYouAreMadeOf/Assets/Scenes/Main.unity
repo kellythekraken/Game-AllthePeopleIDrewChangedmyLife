@@ -9458,16 +9458,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 684621786}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 1116004488851913511}
-  - {fileID: 114129317402733967}
-  - {fileID: 1075261789}
-  - {fileID: 1810661640}
-  - {fileID: 1396099055}
-  - {fileID: 2059697159}
-  - {fileID: 1303993121}
-  - {fileID: 1212856317}
-  - {fileID: 1867274962}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: -1668886256
     m_VirtualCamera: {fileID: 1116004488851913511}
@@ -38569,7 +38560,7 @@ MonoBehaviour:
   - {fileID: 4495344655914505407}
   - {fileID: 2071647993902829300}
   startNode: Init
-  startAutomatically: 1
+  startAutomatically: 0
   runSelectedOptionAsLine: 0
   lineProvider: {fileID: 0}
   verboseLogging: 1

@@ -82,6 +82,9 @@ public class SceneManager : MonoBehaviour
     //load the start scene from main game, called by button in setting screen
     public void ActivateStartMenu()
     {
+        //hide all the ui canvas from main scene
+
+        //load start screen
         blackoutFade.ChangeAlphaOverTime(1f,0f,1f);
         StartCoroutine(FadeInStartUI());
         continueBtn.gameObject.SetActive(true);
@@ -93,6 +96,9 @@ public class SceneManager : MonoBehaviour
 
     void DeactivateStartMenu()
     {
+        //unhide all the ui canvas from main scene
+
+        //hide start screen
         blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
         continueBtn.interactable = false;
         InputManager.Instance.EnableAllInput(true);
