@@ -266,13 +266,13 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1;
     }
-    public Coroutine FadeIn()
+    public Coroutine FadeIn(float fadeTime = 1f)
     {
-        return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,1f));
+        return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,fadeTime));
     }
-    public Coroutine FadeOut()
+    public Coroutine FadeOut(float fadeTime = 1f)
     {
-       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(1f,0f,1f));
+       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(1f,0f,fadeTime));
     }
 
     //command:the_end
