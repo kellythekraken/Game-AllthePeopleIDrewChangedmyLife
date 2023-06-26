@@ -79,4 +79,10 @@ public class InputManager : MonoBehaviour
     {
         gm.ToggleSettingScreen();
     }
+
+    //ESC to restart the demo for exhibition build
+    void RestartDemo()
+    {
+        SceneManager.Instance.ReloadGame();
+    }
 }

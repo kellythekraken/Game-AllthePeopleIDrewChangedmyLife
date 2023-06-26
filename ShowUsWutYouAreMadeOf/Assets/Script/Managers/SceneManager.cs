@@ -88,14 +88,12 @@ public class SceneManager : MonoBehaviour
         continueBtn.gameObject.SetActive(true);
         restartBtn.gameObject.SetActive(true);
         continueBtn.interactable = true;
+        restartBtn.interactable = true;
         GameManager.Instance.currMode = CurrentMode.StartMenu;
         ShowStartCanvas(true);
     }
 
-    void DeactivateStartMenu()
-    {
-        StartCoroutine(DeactivateCoroutine());
-    }
+    void DeactivateStartMenu() => StartCoroutine(DeactivateCoroutine());
 
     IEnumerator DeactivateCoroutine()
     {

@@ -4,7 +4,6 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using Yarn.Unity;
-using System;
 
 public class AudioManager : MonoBehaviour
 {
@@ -12,35 +11,25 @@ public class AudioManager : MonoBehaviour
     private List<EventInstance> eventList;
     Vector3 playerPosition;
     DialogueRunner dialogueRunner;
-    EventInstance ambienceEventInstance;
+    EventInstance bgmEventInstance;
 
     //start with one music. For the restarted version always randomize music.
     void Awake() => Instance = this;
-
     void Start()
     {
         dialogueRunner = GameManager.Instance.dialogueRunner;
         eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
-        InitAmbience(FMODEvents.Instance.music);
-        dialogueRunner.onNodeStart.AddListener(StartTyping);
-        dialogueRunner.onDialogueComplete.AddListener(StopTyping);
+        InitBGM(FMODEvents.Instance.music);
+        //dialogueRunner.onNodeStart.AddListener(StartTyping);
+        //dialogueRunner.onDialogueComplete.AddListener(StopTyping);
     }
 
-    void InitAmbience(EventReference reference)
+    void InitBGM(EventReference reference)
     {
-        ambienceEventInstance = CreateEventInstance(reference);
-        //ambienceEventInstance.set3DAttributes();
-        ambienceEventInstance.start();
-    }
-    
-    //wip
-    void StopAmbience(EventReference reference)
-    {
-        //eventList.Find(t=>t.name)
-        ambienceEventInstance = CreateEventInstance(reference);
-        //ambienceEventInstance.set3DAttributes();
-        ambienceEventInstance.start();
+        bgmEventInstance = CreateEventInstance(reference);
+        //bgmEventInstance.set3DAttributes();
+        bgmEventInstance.start();
     }
 
     public void PlayOneShot(EventReference sound) //without distance
@@ -85,8 +74,12 @@ public class AudioManager : MonoBehaviour
 
     private void CleanUp()
     {
+        bgmEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        bgmEventInstance.release();
+
         foreach(var i in eventList)
         {
+            i.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             i.release();
         }
     }
