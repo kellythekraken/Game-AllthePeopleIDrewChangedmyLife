@@ -262,7 +262,7 @@ public class GameManager : MonoBehaviour
     }
     public Coroutine FadeIn()
     {
-       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,1f));
+        return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,1f));
     }
     public Coroutine FadeOut()
     {

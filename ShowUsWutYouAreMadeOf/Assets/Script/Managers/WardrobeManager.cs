@@ -48,8 +48,8 @@ public class WardrobeManager : MonoBehaviour
 
         foreach(Transform i in transform)//get all children transform, that are wardrobe sections
         {
-            var p = i.GetComponent<WardrobeParent>();
-            wardrobeParents.Add(p);
+            var parent = i.GetComponent<WardrobeParent>();
+            wardrobeParents.Add(parent);
 
             wardrobeParentTransforms.Add(i);
             foreach (Transform child in i.transform) Destroy(child.gameObject);
@@ -93,7 +93,7 @@ public class WardrobeManager : MonoBehaviour
         CreateItemBtn(item, true, gifterName);  //would this become a problem? without var = createitembtn
     }
 
-    //take care of mesh/gameobject/ type of wearable item
+    //take care of mesh/gameobject/type of wearable item
     GameObject CreateItemBtn(GiftItem item, bool isNew, string gifterName = null)
     {
         Transform parent = wardrobeParentTransforms.Find(x => x.name == item.section.ToString());
@@ -139,6 +139,7 @@ public class WardrobeManager : MonoBehaviour
         {outfitGifterList.Remove(gifterName);}
     }
 
+    //called before interacting with NPC to change the dialogue if you're wearing special item
     public bool IsWearingGiftedItem(string gifterName)
     {
         return outfitGifterList.Contains(gifterName);
@@ -146,7 +147,7 @@ public class WardrobeManager : MonoBehaviour
 
 #region ItemAppearance
     bool wearingDress = false;
-    WardrobeSection topSection; //to check if wearing anything on the top
+    WardrobeSection topSection; //to check if currently is wearing any top
     void ChangeMesh(WardrobeSection section, Mesh meshToChange)
     {
         Mesh myMesh = section.renderer.sharedMesh;
@@ -157,17 +158,22 @@ public class WardrobeManager : MonoBehaviour
             {
                 wardrobeParents.Find(t=>t.name == "Top").wearingDress = true;
 
-                if(section.sectionName == ItemSection.Dress)   //attempt to take off dress
+                //attempt to take off dress
+                if(section.sectionName == ItemSection.Dress)   
                 {
+                    //if wearing top, change the bottom to default pants
                     wearingDress = false;
                     SelectDefaultButton("Bottom",true);
+
+                    //if not wearing any top, change both top and bottom to default
                     if(topSection.renderer.sharedMesh == null)
                     {
                         topSection.renderer.sharedMesh = topSection.defaultMesh;
                         SelectDefaultButton("Top",true);
                     }
                 }
-                else if(section.sectionName == ItemSection.Top) //attempt to take of top when dress
+                //attempt to take of top when wearing a dress
+                else if(section.sectionName == ItemSection.Top) 
                 {
                     topSection.renderer.sharedMesh = null;
                     return;
@@ -175,21 +181,22 @@ public class WardrobeManager : MonoBehaviour
             }
             section.renderer.sharedMesh = section.defaultMesh;
         }
-        else
+        else    //clicked on item that's not currently wearing
         {
             if(section.sectionName == ItemSection.Dress)
             {   
                 wearingDress = true;
                 SelectDefaultButton("Bottom",false);
             }
-            else if (section.sectionName == ItemSection.Bottom) //put top on if change to trouser
+            else if (section.sectionName == ItemSection.Bottom) 
             {
-                //deselect dress?
+                //deselect dress
                 wearingDress = false;
                 SelectDefaultButton("Dress",false);
                 wardrobeParents.Find(t=>t.name == "Top").wearingDress = false;
-
-                if( topSection.renderer.sharedMesh ==null)
+                
+                //put top on if changing from dress to trouser
+                if( topSection.renderer.sharedMesh ==null) 
                 {
                     topSection.renderer.sharedMesh = topSection.defaultMesh; 
                     SelectDefaultButton("Top",true);
@@ -198,13 +205,14 @@ public class WardrobeManager : MonoBehaviour
             section.renderer.sharedMesh = meshToChange;
         }
     }
+    //select the default item button, and deselect the previous selected button
     void SelectDefaultButton(string sectionName, bool select)
     {
-        var p = wardrobeParents.Find(t=>t.name == sectionName);
-        if(p!=null)
+        var parent = wardrobeParents.Find(t=>t.name == sectionName);
+        if(parent!=null)
         {
-            if(select) p.SetToDefaultItem();
-            else { p.UnselectAllItems();}
+            if(select) parent.SetToDefaultItem();
+            else { parent.UnselectAllItems();}
         }
     }
 

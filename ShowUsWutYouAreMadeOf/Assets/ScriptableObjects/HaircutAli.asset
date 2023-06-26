@@ -48,4 +48,4 @@ MonoBehaviour:
   backgroundDrawing: {fileID: 21300000, guid: 3811905866ec5e846b1027e9ad89090d, type: 3}
   signature: {fileID: 0}
   minimumStrokes: 0
-  maximumStrokes: 1
+  maximumStrokes: 8

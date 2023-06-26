@@ -34,19 +34,21 @@ public class DoorInteraction : Interactable
     }
     IEnumerator FirstEntranceTeleport()
     {
+        gm.FadeIn();
         firstEntrance = true;
         //teleport to leon and trigger dialogue
-        teleportScript.TeleportToLeon();
         yield return new WaitForSeconds(.6f);
+        teleportScript.TeleportToLeon();
         NPCManager.Instance.FindNPC("Leon").StartInteraction();
         indoor = true;
+        gm.FadeOut();
     }
     void Teleport()
     {
         gm.FadeIn();
-        gm.FadeOut();
         teleportScript.Teleport(indoor? outdoorLandingPosition : indoorLandingPosition);
         indoor = !indoor;
+        gm.FadeOut();
 
         StartCoroutine(InteractionCooldown(1f));
         indicator.DisplayIndicator(false);

@@ -27,7 +27,7 @@ public class QueerNPC : Interactable
         if(alreadyGifted)
         {
             bool wearingGiftedItem = WardrobeManager.Instance.IsWearingGiftedItem(queerID.npcName);
-            GameManager.Instance.variableStorage.SetValue("$SpecialDialogue", wearingGiftedItem);
+            gm.variableStorage.SetValue("$SpecialDialogue", wearingGiftedItem);
         }
         base.StartInteraction();
         if(indicator.currentInteract == this)
