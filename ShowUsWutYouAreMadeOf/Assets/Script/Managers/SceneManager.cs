@@ -85,13 +85,18 @@ public class SceneManager : MonoBehaviour
         //load start screen
         blackoutFade.ChangeAlphaOverTime(1f,0f,1f);
         StartCoroutine(FadeInStartUI());
-        continueBtn.gameObject.SetActive(true);
+
         restartBtn.gameObject.SetActive(true);
-        continueBtn.interactable = true;
         restartBtn.interactable = true;
+        if(!GameManager.Instance.demoBuild)
+        {
+            continueBtn.gameObject.SetActive(true);
+            continueBtn.interactable = true;
+        }
         GameManager.Instance.currMode = CurrentMode.StartMenu;
         ShowStartCanvas(true);
     }
+
 
     void DeactivateStartMenu() => StartCoroutine(DeactivateCoroutine());
 
