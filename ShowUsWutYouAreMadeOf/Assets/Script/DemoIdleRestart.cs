@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class DemoIdleRestart : MonoBehaviour
 {
     //if there are no action in one minute, restart the game
-    int maximumIdleTime = 60;
+    [SerializeField] int maximumIdleTime = 60;
     float LastIdleTime;
     GameManager gm;
     SceneManager sceneManager;
