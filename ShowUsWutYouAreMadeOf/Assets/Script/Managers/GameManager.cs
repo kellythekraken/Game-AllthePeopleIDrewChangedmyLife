@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public bool startIndoor;    //determine where you start as 
     public bool startFromTitle; //freeze and allow pointer
     public bool cinematicStart; //trigger leon conversation upon enter the bar for the first time?
+    public bool demoBuild;
 
     [Header("UI")]
     public GameObject pronounTag;
@@ -140,7 +141,8 @@ public class GameManager : MonoBehaviour
         DisplayControlInstruction();
         audioManager.SetSceneParam(1);
         currMode = CurrentMode.Nothing;
-        inputManager.settingsAction.Enable();
+        if(!demoBuild) inputManager.settingsAction.Enable();
+        else { inputManager.quickRestartAction.Enable();}
         door.indoor = false;
     }
     void OnModeChanged(CurrentMode mode)

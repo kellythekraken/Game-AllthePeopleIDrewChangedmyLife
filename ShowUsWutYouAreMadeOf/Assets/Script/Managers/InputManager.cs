@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
     [SerializeField] GameObject continueBtn;
-    internal InputAction continueAction, interactAction, lookAction, wardrobeAction, settingsAction;
+    internal InputAction continueAction, interactAction, lookAction, wardrobeAction, settingsAction, quickRestartAction;
     InputAction moveAction;
     [SerializeField] PlayerInput playerInput;
     InputActionMap mainAcionMap;
@@ -19,28 +19,39 @@ public class InputManager : MonoBehaviour
     }
     void OnEnable()
     {
-        mainAcionMap = playerInput.actions.FindActionMap("Player");
-        continueAction = mainAcionMap["ContinueDialogue"];
+        gm = GameManager.Instance;
+        mainAcionMap = gm.demoBuild? playerInput.actions.FindActionMap("DemoMain") : playerInput.actions.FindActionMap("Player") ;
+
+        continueAction = mainAcionMap["ContinueDialogue"];  
         interactAction = mainAcionMap["Interact"];
         moveAction = mainAcionMap["Move"];
         lookAction = mainAcionMap["Look"];
         wardrobeAction = mainAcionMap["Wardrobe"];
-        settingsAction = mainAcionMap["Setting"];
-        gm = GameManager.Instance;
-        settingsAction.performed += SwitchSettingScreen;
+        if(!gm.demoBuild) 
+        {
+            settingsAction = mainAcionMap["Setting"]; 
+            settingsAction.performed += SwitchSettingScreen;
+        }
+        else
+        {
+            quickRestartAction = playerInput.actions.FindActionMap("DemoKey") ["Restart"];
+            quickRestartAction.performed += RestartDemo;
+        }
         wardrobeAction.performed += gm.wardrobeBtn.WardrobeAction; 
         mainAcionMap.Enable();
     }
     void OnDisable()
     {
-        settingsAction.performed -= SwitchSettingScreen; 
+        if(!gm.demoBuild) settingsAction.performed -= SwitchSettingScreen; 
+        else { quickRestartAction.performed -= RestartDemo; }
+        
         wardrobeAction.performed -= gm.wardrobeBtn.WardrobeAction;
         mainAcionMap.Disable();
     }
     public void EnableAllInput(bool enable)   //when in start screen
     {
         if(enable) mainAcionMap.Enable();
-        else mainAcionMap.Disable();
+        else {mainAcionMap.Disable();}
     }
     public void EnableChatMoveBtn(bool enable)
     {
@@ -81,8 +92,8 @@ public class InputManager : MonoBehaviour
     }
 
     //ESC to restart the demo for exhibition build
-    void RestartDemo()
+    void RestartDemo(InputAction.CallbackContext ctx)
     {
-        SceneManager.Instance.ReloadGame();
+        SceneManager.Instance.ActivateStartMenu();
     }
 }

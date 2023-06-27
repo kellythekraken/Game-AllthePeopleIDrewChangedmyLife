@@ -8843,6 +8843,7 @@ MonoBehaviour:
   startIndoor: 0
   startFromTitle: 1
   cinematicStart: 0
+  demoBuild: 1
   pronounTag: {fileID: 1752515339}
   settingsUI: {fileID: 1253938074506939}
   sketchbookUI: {fileID: 542770381}
@@ -9458,7 +9459,16 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 684621786}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 1116004488851913511}
+  - {fileID: 114129317402733967}
+  - {fileID: 1075261789}
+  - {fileID: 1810661640}
+  - {fileID: 1396099055}
+  - {fileID: 2059697159}
+  - {fileID: 1303993121}
+  - {fileID: 1212856317}
+  - {fileID: 1867274962}
   m_Instructions:
   - m_FullHash: -1668886256
     m_VirtualCamera: {fileID: 1116004488851913511}
@@ -37888,7 +37898,7 @@ MonoBehaviour:
     m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardMouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!143 &3354527797997906180
