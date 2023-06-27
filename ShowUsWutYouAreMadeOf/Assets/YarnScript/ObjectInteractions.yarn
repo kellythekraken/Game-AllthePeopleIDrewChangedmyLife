@@ -5,26 +5,16 @@ Leon: Looks quite nice, right?
 Leon: They're made by local artists.
 <<camera PlayerCam>>
 ===
-title: DoorExit
+title: EndGameTrigger
 ---
-The door leading outside.
 Is it time to leave?
 <<option true>>
 -> yes
     <<option false>>
-    <<jump EndOfDemo>>
+    <<the_end>>
 -> not yet
-    Not too tired yet, could stay for a bit longer.
+    Let's stay for a bit longer.
     <<option false>>
-===
-title: EndOfDemo
----
-<<option false>>
-Thank you for playing the demo!
-Have a great day!
-<<the_end>>
-
-
 
 //DECORs
 ===

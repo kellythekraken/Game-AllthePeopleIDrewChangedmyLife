@@ -1,10 +1,8 @@
-﻿title: AliStart
+﻿title: Ali
 ---
 //maybe have the first interact subject someone also an artist, and you discuss about sketching queer people!
 <<camera AliChat>>
-<<pose Ali SitLook>>
-
-<<if visited_count("AliStart") == 0>>
+<<if visited_count("Ali") == 0>>
     <<set $NumberOfEncounters +=1>>
     <<set $SketchIndex to 0>> //for which body part
     <<set $MaxStrokes to 10>> //how many strokes before call it a day
@@ -13,20 +11,27 @@
     <<set $SpecialDialogueSpoken to false>> 
     
     <<set $AliSmallTalk to 0>>
-
+    <<pose Ali Chat .5>>
     <<wait .5>>
     Ali: Hey!
     Ali: Haven’t seen you around before. I’m Ali. 
     Ali: Saw you sketching earlier. Are you an artist?
-    Ali: Had the luck to be drawn by one queer illustrator a few weeks ago. 
+    <<pose Ali CExplain .7>>    
+    Ali: I was at this art market a few weeks ago. An artist was doing some live portrait drawing.
     Ali: It's intriguing to see yourself on a flat piece of paper, not quite like photos.
+    <<pose Ali CThink .5>>
     Ali: Afterall, I was being carefully watched for a period of time.
     Ali: I thought, so that's how they see me.
     Ali: ...
+    <<pose Ali CSurprised .4>>
     Ali: You would like to sketch me? 
-    Ali: Oh, that would be my honour. 
+    Ali: Wow, what a luck to be asked!
+    <<pose Ali CHair .5>>
+    Ali: Is it my hair that has caught your eyes?
+    Ali: That would be my absolute honour.
     <<sketch true>>
     <<camera AliSketch>>
+    <<pose Ali Sketch .6>>
     <<wait .5>>
     Ali: Once talked to a client who’s a life model. You know, posing for life drawings? It’s quite fascinating. 
     <<startsketch>>
@@ -35,16 +40,21 @@
     <<if $SpecialDialogue == true>>
         <<jump AliSpecial>>
     <<elseif $AliSmallTalk == 0>>
-        Ali: Hey! Thank you for the drawing earlier.
+        <<pose Ali Chat>>
+        Ali: Hey! Thanks for the drawing earlier.
+        <<pose Ali CExplain .7>>
         Ali: We were discussing about the benefit of colorful hair.
         Ali: Once met this person who used her blue hair as a strategy, so people remember her in networking events.
     <<elseif $AliSmallTalk == 1>>
+        <<pose Ali CExplain>>
         Ali: My horoscope? I'm a Sagittarius, does that mean I don't get along with a certain group of people?
     <<elseif $AliSmallTalk == 2>>
+        <<pose Ali Chat>>
         Ali: I showed the picture of your drawing to my friends, they were very impressed too. 
+        <<pose Ali CExplain .7>>
         Ali: It's a way to break the ice, getting to know people a bit.
         Ali: Even flirt a bit, maybe.
-        Ali: Coming from one of their suggestions.
+        Ali: Coming from their suggestions.
         <<silence Ali>>
         //<<leave Ali>>
         //<<enter Toni>>
@@ -59,17 +69,21 @@
 title: AliSpecial
 ---
 <<if visited_count("AliSpecial") == 0>>
-    Ali: Hey! That hairstyle looks good on you!
+    <<pose Ali CThink>>
+    Ali: Hey, that hairstyle looks good on you!
     Ali: It's nice to give a change in style sometimes.
+    <<pose Ali CExplain .6>>
     Ali: It may not work everytime, but I think this hair suits you!
 <<elseif visited_count("AliSpecial") == 1>>
-    Ali: Even outside of queer space, seeing people embracing their queerness with crazy hair always put a smile on my face.
+    <<pose Ali Chat>>
+    Ali: It always put a smile on my face when I see people embracing their queerness with crazy hair.
+    <<pose Ali CExplain .6>>
     Ali: I think lilac might look good on you.
     Ali: We got a hairdye specialist who comes here often. Will give you a shout if I spot them tonight!
 <<else>>
     <<set $SpecialDialogueSpoken to true>>
     <<set $SpecialDialogue to false>>
-    <<jump AliStart>>
+    <<jump Ali>>
 <<endif>>
 
 <<camera Player>>
@@ -77,30 +91,41 @@ title: AliSpecial
 ===
 title: AliSketch
 ---
-<<wait .5>>
 
 <<if $StrokeCount < $MaxStrokes>>
     <<set $StrokeCount +=1>>
 
     <<if $SketchIndex == 0>>
+    <<pose Ali Hair .25>>
     <<jump Ali_Hair>>
     <<elseif $SketchIndex ==1>>
-    <<jump Ali_Head>>
+    <<pose Ali Body .25>>
+    <<jump Ali_Body>>
     <<elseif $SketchIndex ==2>>
+    <<pose Ali Eye .5>>
     <<jump Ali_Eye>>
     <<elseif $SketchIndex ==3>>
+    <<pose Ali Top .5>>
     <<jump Ali_Top>>
     <<elseif $SketchIndex ==4>>
+    <<pose Ali Tattoo .5>>
     <<jump Ali_Tattoo>>
     <<endif>>
 <<else>>
-    Ali: Seems like my friends are arriving. I’m going to say hi. 
-    Ali: I'd love to invite you to my salon one day, to continue this conversation.
-    <<lastdraw>>
-    <<wait .5>>
-    <<set $StrokeCount to 0>>
-    <<sketchfin>>
+    <<pose Ali Laststroke .5>>
+    <<jump AliLastStroke>>
 <<endif>>
+===
+title: AliLastStroke
+---
+Ali: Seems like my friends are arriving. I’m going to say hi. 
+<<pose Ali Sketch>>
+Ali: Come visit my salon some day, so we can continue this conversation.
+<<lastdraw>>
+<<wait .5>>
+<<set $StrokeCount to 0>>
+<<sketchfin>>
+<<enter Rue>>
 ===
 title: AliSketchFin
 ---
@@ -108,30 +133,40 @@ title: AliSketchFin
 <<camera Player>>
 <<set $AliSketched to true>>
 Ali: Oh, I love your choice of colour.
+<<pose Ali CExplain .5>>
 Ali: It's fascinating to see how you see me in this drawing. It make me think of the conversation we had.
 Ali: Feel free to join us anytime tonight! If not, hope I’ll see you again soon. 
+<<pose Ali Chat .5>>
 Ali: Here, or at my salon! 
 <<gift Ali>>
 <<pose Ali Sit>>
 <<camera Player>>
+
+<<enter Rue>>
 ===
 title: Ali_Hair
 ---
+<<wait .5>>
 <<if visited_count("Ali_Hair") == 0>>
-    Ali: My hair? I'm actually trying something new. It got a bit long and I thought I'd just shave off the sides.
+    Ali: My hair? I'm actually trying something new. It got a bit long so I just shaved off the sides.
 <<elseif visited_count("Ali_Hair") == 1>>
     Ali: What's in your mind when you’re drawing your subject?
+    <<pose Ali Think .5>>
     Ali: I work in a salon. Usually I talk to my client when I'm giving haircuts. 
     Ali: Getting to know who they are, why they want that hairstyle…
+    <<pose Ali Explain .6>>
     Ali: Then I have a better understanding of what represents them the best, and how they want to be seen.
 <<elseif visited_count("Ali_Hair") == 2>>
     Ali: The first time I shaved my head I felt so liberated. 
+    <<pose Ali Think .5>>
     Ali: I always wanted to do that but never had the need, or reason to. 
     Ali: Until we had this occassion, where someone dared me to shave it all off.
+    <<pose Ali Handsonchest .5>>
     Ali: I did. And I looked at myself in the mirror. It was someone new, someone different. 
     Ali: Someone hiding inside of me that wanted to be seen for a long time.
 <<elseif visited_count("Ali_Hair") == 3>>
     Ali: There’s a reason why hair is so important for many queer folks.
+    <<pose Ali Explain .6>>
     Ali: It’s very fulfilling to be in a hair space, where queer visibility is fostered to flourish.
     Ali: It's always delightful to see people leave with a look that they relate themselves more than the one they came in with. 
 <<endif>>
@@ -139,50 +174,66 @@ title: Ali_Hair
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
-title: Ali_Head
+title: Ali_Body
 ---
-<<if visited_count("Ali_Head") == 0>>
-    Ali: It's not my first time to be drawn, but it still feels honoring when you asked.
-<<elseif visited_count("Ali_Head") == 1>>
+<<wait .5>>
+<<if visited_count("Ali_Body") == 0>>
+    Ali: People think I must have been one of those cool kids in school. 
+    <<pose Ali Explain .6>>
+    Ali: But back in the days I only wanted to fit in.
+<<elseif visited_count("Ali_Body") == 1>>
     Ali: I don't see myself fitting in the binary anymore. 
-    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself as she/they the most.
+    <<pose Ali Handsonchest .5>>
+    Ali: But I'm comfortable presenting the feminine side of me. So currently I define myself with she/they the most.
     <<pronoun>>
     Ali: It shouldn't be black or white anyways.
-<<elseif visited_count("Ali_Head") == 2>>
+<<elseif visited_count("Ali_Body") == 2>>
     Ali: I felt brave for looking different. 
+    <<pose Ali Handsout .5>>
     Ali: Gender and style expressions. For me it's all a form of rebellion.
+    <<pose Ali Explain .6>>
     Ali: But not only that, I am acting myself this time. For once I could abandon the fear of not fitting in. I was comfortable in my skin.
     Ali: People started to recognizing me as queer. And especially queer people, too.
     Ali: I felt so visible. I never looked back.
-<<elseif visited_count("Ali_Head") == 3>>
+<<elseif visited_count("Ali_Body") == 3>>
     Ali: There's no rulebook of what queerness look like.
+    <<pose Ali Handsout .5>>
     Ali: By defining a queer look, you’re putting yourself into box again!
+    <<pose Ali Explain .6>>
     Ali: Whatever hairstyle, long or short, common or offbeat, if you wear that, then it is a queer style.
 <<endif>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Eye
 ---
+<<wait .5>>
 <<if visited_count("Ali_Eye") == 0>>
     Ali: Studying a person's features closely. Isn’t that quite personal and intimate? 
+    <<pose Ali Sketch .5>>
     Ali: Except unlike haircuts or tattoos, you’re not changing or altering their look. 
 <<elseif visited_count("Ali_Eye") == 1>>
     Ali: How would a non-queer artist approach to drawing someone queer? 
+    <<pose Ali Think .5>>
     Ali: It perhaps has something to do with the gaze. 
     Ali: Male gaze, female gaze, queer gaze... when I'm returning you the gaze, how does that make you feel?
+    <<pose Ali Eye .5>>
     Ali: Am I staring too much?
 <<endif>>
 
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Top
 ---
+<<wait .5>>
 <<if visited_count("Ali_Top") == 0>>
     Ali: Black? I guess it is a dresscode of this city. Unfortunately you couldn't escape that even in queer spaces.
 //    Ali: Community is so important. 
@@ -190,6 +241,7 @@ title: Ali_Top
 //    Ali: It eases that feeling of isolation.
 <<elseif visited_count("Ali_Top") == 1>>
     Ali: On a negative note, I did fall into the trap of altering myself to look more queer. 
+    <<pose Ali Handsonchest .6>>
     Ali: I thought I'm not queer enough for the longest time.
     Ali: But I tell you, looking queer is a scam! 
     Ali: Pretty sure everyone felt that way. 
@@ -198,15 +250,19 @@ title: Ali_Top
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+
+<<pose Ali Sketch .5>>
 ===
 title: Ali_Tattoo
 ---
-    Ali: I got this tattoo on the last day of a travel.
+<<wait .5>>
+    Ali: I got this tattoo on the last day of a trip.
+    <<pose Ali Explain .6>>
     Ali: A bit spontaneous, but one of my favorite artist was visiting, how could I miss that opportunity?
-
 <<if $StrokeCount >= $MaxStrokes>>
     <<jump AliSketch>>
 <<endif>>
+<<pose Ali Sketch .5>>
 ===
 
 

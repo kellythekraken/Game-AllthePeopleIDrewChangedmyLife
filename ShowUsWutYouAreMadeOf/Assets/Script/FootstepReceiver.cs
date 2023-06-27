@@ -14,5 +14,5 @@ public class FootstepReceiver : MonoBehaviour
         stepEvent = FMODEvents.Instance.footStep;
 
     }
-    private void OnFootStep() => aM.PlayOneShot(stepEvent);
+    private void OnFootstep() => aM.PlayOneShot(stepEvent);
 }

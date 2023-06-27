@@ -25,6 +25,11 @@ public class NPCManager : MonoBehaviour
         completedNPC = new List<QueerNPC>();
         NPCToSpawn = new List<QueerNPC>(NPCFullList.ToList());
     }
+
+    public QueerNPC FindNPC(string name)
+    {
+        return System.Array.Find(NPCFullList,t=>t.queerID.npcName == name);
+    }
     //command: enter random
     public void OnStageRandom()
     {
@@ -35,18 +40,19 @@ public class NPCManager : MonoBehaviour
     //command: enter
     public void OnStage(string npcName)
     {
-        Debug.LogWarning(npcName + " enters the scene!");
         QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
-        npc.gameObject.SetActive(true);
+        npc.HideAndDisable(false);
         activeNPC.Add(npc);
-        NPCToSpawn.Remove(npc);
+        //NPCToSpawn.Remove(npc);
     }
+    
     //command: leave
     public void OffStage(string npcName)
     {
-        QueerNPC npc = NPCToSpawn.Find(x => x.queerID.npcName == npcName);
-        Destroy(npc.gameObject);
-        completedNPC.Add(npc);
+        QueerNPC npc = activeNPC.Find(x => x.queerID.npcName == npcName);
+        npc.HideAndDisable(true);
+
         activeNPC.Remove(npc);
+        //completedNPC.Add(npc);
     }
 }

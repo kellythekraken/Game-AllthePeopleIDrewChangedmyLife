@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
+using Yarn.Unity;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance {get;private set;}
     private List<EventInstance> eventList;
     Vector3 playerPosition;
-
-    EventInstance ambienceEventInstance;
+    DialogueRunner dialogueRunner;
+    EventInstance bgmEventInstance;
 
     //start with one music. For the restarted version always randomize music.
     void Awake() => Instance = this;
-
     void Start()
     {
+        dialogueRunner = GameManager.Instance.dialogueRunner;
         eventList = new List<EventInstance>();
         playerPosition = GameManager.Instance.playerObject.transform.position;
-        InitAmbience(FMODEvents.Instance.music);
+        InitBGM(FMODEvents.Instance.music);
+        //dialogueRunner.onNodeStart.AddListener(StartTyping);
+        //dialogueRunner.onDialogueComplete.AddListener(StopTyping);
     }
-    
-    void InitAmbience(EventReference reference)
+
+    void InitBGM(EventReference reference)
     {
-        ambienceEventInstance = CreateEventInstance(reference);
-        //ambienceEventInstance.set3DAttributes();
-        ambienceEventInstance.start();
+        bgmEventInstance = CreateEventInstance(reference);
+        //bgmEventInstance.set3DAttributes();
+        bgmEventInstance.start();
     }
 
     public void PlayOneShot(EventReference sound) //without distance
@@ -54,14 +57,26 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void DoorTriggerMuffleBGM()
+    public void SetSceneParam(float newValue)
     {
-        //if muffle = 1, make it 0, vice versa
-        //RuntimeManager.StudioSystem.setParameterByName(paramName,newValue);
+        RuntimeManager.StudioSystem.setParameterByName("Scene",newValue);
+    }
+
+    void StartTyping(string arg0)
+    {
+        Debug.Log("start playing typing sound");
+    }
+
+    void StopTyping()
+    {
+        Debug.Log("stop playing typing sound");
     }
 
     private void CleanUp()
     {
+        bgmEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        bgmEventInstance.release();
+
         foreach(var i in eventList)
         {
             i.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);

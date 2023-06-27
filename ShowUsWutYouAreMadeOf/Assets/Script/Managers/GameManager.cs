@@ -3,7 +3,7 @@ using UnityEngine;
 using Yarn.Unity;
 using TMPro;
 
-public enum CurrentMode { Nothing, Conversation, Sketching, Changing, StartMenu}
+public enum CurrentMode { Nothing, Conversation, Sketching, Changing, Setting, StartMenu}
 
 public class GameManager : MonoBehaviour
 {
@@ -23,19 +23,25 @@ public class GameManager : MonoBehaviour
     }
     private CurrentMode lastMode;
 
+    [Header("Settings")]
+    public bool startIndoor;    //determine where you start as 
+    public bool startFromTitle; //freeze and allow pointer
+    public bool cinematicStart; //trigger leon conversation upon enter the bar for the first time?
+    public bool demoBuild;
+
     [Header("UI")]
     public GameObject pronounTag;
     public GameObject settingsUI, sketchbookUI, dialogueUI, newItemWindow;
     public DialogueRunner dialogueRunner;
+    public WardrobeButton wardrobeBtn;
     internal InMemoryVariableStorage variableStorage;
+    [SerializeField] CanvasFade fadeScreen;
+    [SerializeField] Interactable endGameTrigger;
 
     [Header("Player")]
     [SerializeField] public GameObject playerObject;   //player visibility
     [SerializeField] public GameObject player;   //the one with important controls and scripts
 
-    [Header("Settings")]
-    public bool startIndoor;    //determine where you start as 
-    internal WardrobeButton wardrobeBtn;
     internal SceneManager sceneManager;
     internal InputManager inputManager;
     internal AudioManager audioManager;
@@ -43,47 +49,102 @@ public class GameManager : MonoBehaviour
     internal SketchingSystem sketchManager;
     internal InteractIndicator interactIndicator;
     internal TextMeshProUGUI pronounText;
-    internal QueerNPC sketchSubject;
+    internal QueerNPC currentQueerSubject;
     internal bool sketchbookOpen;
     internal Camera mainCam;
+    private DoorInteraction door;
     private void Awake()
     {
         Instance = this;
-        dialogueUI.SetActive(true);
         mainCam = Camera.main;
-        inputManager = FindObjectOfType<InputManager>();
-        wardrobeBtn = WardrobeButton.Instance;
-        sketchManager = SketchingSystem.Instance;
         sceneManager = SceneManager.Instance;
         npcManager = NPCManager.Instance;
-        
-
+        sketchManager = sketchbookUI.GetComponent<SketchingSystem>();
     }
-
-    void ShowSketchInstruction()
-    {
-        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
-    }
+    void OnDisable()=> currMode = CurrentMode.StartMenu;
+    
     private void Start()
     {
+        if(startFromTitle) 
+        {
+            GameStartInit();
+            StartFromTitle();
+            sceneManager.GamestartEvent.AddListener(StartBtnClicked);
+        }
+        else 
+        {
+            GameStartInit();
+            fadeScreen.gameObject.SetActive(true);
+            FadeOut();
+            audioManager.SetSceneParam(1);
+            player.GetComponent<PlayerTeleport>().TeleportToStartLocation(startIndoor);
+            currMode = CurrentMode.Nothing;
+            door.indoor = startIndoor;
+            DisplayControlInstruction();
+        }
+    } 
+
+    void GameStartInit()
+    {
+        dialogueUI.SetActive(true);
+        sketchManager.InitSketchbook();
+        inputManager = InputManager.Instance;
         audioManager = AudioManager.Instance;
         interactIndicator = InteractIndicator.Instance;
         variableStorage = dialogueRunner.GetComponent<InMemoryVariableStorage>();
-        currMode = CurrentMode.Nothing;
         pronounText = pronounTag.GetComponentInChildren<TextMeshProUGUI>();
         sketchbookUI.SetActive(false);
         pronounTag.SetActive(false);
         settingsUI.SetActive(false);
-        DisplayControlInstruction();
-
+        
         dialogueRunner.AddCommandHandler<bool>("sketch",OpenCloseSketchbook);
-        //dialogueRunner.AddCommandHandler("gift", GiveItem);
         dialogueRunner.AddCommandHandler("pronoun", DiscoveredPronoun);
         dialogueRunner.AddCommandHandler("startsketch", ShowSketchInstruction);
         dialogueRunner.AddCommandHandler("the_end", TriggerEndGameEvent);
         dialogueRunner.AddCommandHandler<bool>("option", InOptionView);
-    }   
-    void OnDisable()=> currMode = CurrentMode.StartMenu;
+
+        wardrobeBtn.Init();
+        endGameTrigger.interactable = false;
+        door = DoorInteraction.Instance;
+    }  
+    void StartFromTitle()
+    {
+        currMode = CurrentMode.StartMenu;
+        audioManager.SetSceneParam(0);
+        audioManager.SetMuffleParameter(1);
+        player.GetComponent<PlayerTeleport>().TeleportToStartLocation(false);
+        // first show frozen scene, hiding all the character? to save the processing?
+        // force player to start form outdoor
+    }
+
+    //show customize wardrobe
+    void StartBtnClicked()
+    {
+        dialogueRunner.StartDialogue("Init");
+        wardrobeBtn.PlayerCustomization();
+        fadeScreen.gameObject.SetActive(true);
+        FadeOut();
+    }
+
+    public void UnlockEndGame()
+    {
+        endGameTrigger.interactable = true;
+    }
+
+    //called by wardrobe button, when you're done customizing
+    public void StartGameCinematic()
+    {
+        // start cinematic
+
+        // start the game once cinematic is over
+        FadeOut();
+        DisplayControlInstruction();
+        audioManager.SetSceneParam(1);
+        currMode = CurrentMode.Nothing;
+        if(!demoBuild) inputManager.settingsAction.Enable();
+        else { inputManager.quickRestartAction.Enable();}
+        door.indoor = false;
+    }
     void OnModeChanged(CurrentMode mode)
     {
         lastMode = currMode;
@@ -92,7 +153,7 @@ public class GameManager : MonoBehaviour
         {
             case CurrentMode.Nothing:
                 LockCursor(true);
-                if(DoorInteraction.indoor) EnableWardrobeAction(true);
+                if(door.indoor) EnableWardrobeAction(true);
                 inputManager.EnableChatMoveBtn(true);
                 audioManager.SetMuffleParameter(0f);
                 return;
@@ -100,14 +161,21 @@ public class GameManager : MonoBehaviour
                 EnableWardrobeAction(false);
                 interactIndicator.DisplayIndicator(false);
                 LockCursor(true);
+                dialogueUI.SetActive(true);
                 inputManager.EnableChatMoveBtn(false);
                 return;
             case CurrentMode.Sketching:
                 inputManager.EnableChatMoveBtn(false);
                 StartCoroutine(WaitBeforeSketch());
                 audioManager.SetMuffleParameter(0.5f);
+                sketchbookUI.SetActive(true);
                 return;
             case CurrentMode.Changing:
+                LockCursor(false);
+                inputManager.EnableChatMoveBtn(false);
+                audioManager.SetMuffleParameter(1f);
+                return;
+            case CurrentMode.Setting:
                 LockCursor(false);
                 inputManager.EnableChatMoveBtn(false);
                 audioManager.SetMuffleParameter(1f);
@@ -115,7 +183,8 @@ public class GameManager : MonoBehaviour
             case CurrentMode.StartMenu:
                 LockCursor(false);
                 inputManager.EnableAllInput(false);
-                audioManager.SetMuffleParameter(1f);
+                sketchbookUI.SetActive(false);
+                dialogueUI.SetActive(false);
                 return;
         }
     }
@@ -132,20 +201,25 @@ public class GameManager : MonoBehaviour
     {
         return currMode == CurrentMode.Conversation;
     }
-    #region SKETCHING PHASE
+#region SKETCHING PHASE
+    void ShowSketchInstruction()
+    {
+        UIManager.Instance.DisplayInstruction("Select an area on the subject to focus, and pick a color to sketch.", 4f);
+    }
     public void ContinueSketchChat()
     {
-        sketchSubject.StartSketchConversation();
+        currentQueerSubject.StartSketchConversation();
         float count;
         variableStorage.TryGetValue("$StrokeCount", out count);
     }
+
     // yarn command 'sketch'
     public void OpenCloseSketchbook(bool open)
     {
         ShowPlayer(!open);
         if(open) 
         {
-            sketchManager.PrepareToSketch(sketchSubject);
+            sketchManager.PrepareToSketch(currentQueerSubject);
             StartCoroutine(OpenSketchbook());
         }
         else {
@@ -162,13 +236,18 @@ public class GameManager : MonoBehaviour
         sketchbookUI.SetActive(true);
         audioManager.PlayOneShot(FMODEvents.Instance.bookOpen);
     }
+    IEnumerator WaitBeforeSketch(float seconds = .5f)
+    {
+        yield return new WaitForSeconds(seconds);
+        LockCursor(false);
+    }
 #endregion
 
 #region CONVERSATION PHASE
     public void DiscoveredPronoun()
     {
-        sketchSubject.pronounKnown = true;
-        sketchSubject.ChangePronounTag();
+        currentQueerSubject.pronounKnown = true;
+        currentQueerSubject.ChangePronounTag();
     }
     public void ShowPronoun() => pronounTag.SetActive(true);
     public void HidePronoun() => pronounTag.SetActive(false);
@@ -176,7 +255,6 @@ public class GameManager : MonoBehaviour
 #endregion
 
 #region WARDROBE 
-
     public void EnableWardrobeAction(bool enable)
     {
         wardrobeBtn.gameObject.SetActive(enable);
@@ -186,16 +264,23 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
     }
-
     public void UnPause()
     {
         Time.timeScale = 1;
     }
+    public Coroutine FadeIn(float fadeTime = 1f)
+    {
+        return StartCoroutine(fadeScreen.ChangeAlphaOverTime(0f,1f,fadeTime));
+    }
+    public Coroutine FadeOut(float fadeTime = 1f)
+    {
+       return StartCoroutine(fadeScreen.ChangeAlphaOverTime(1f,0f,fadeTime));
+    }
+
     //command:the_end
     public void TriggerEndGameEvent()
     {
-        //show ending screen or start screen
-        sceneManager.StartOver();
+        sceneManager.EndGame();
     }
     public void ShowPlayer(bool show)
     {
@@ -204,9 +289,10 @@ public class GameManager : MonoBehaviour
     bool inSetting = false;
     public void ToggleSettingScreen()
     {
+        if(currMode == CurrentMode.Changing) return;
         inSetting = !inSetting;
         settingsUI.SetActive(inSetting);
-        if(inSetting) currMode = CurrentMode.Changing;
+        if(inSetting) currMode = CurrentMode.Setting;
         else BackToLastMode();
     }
     void InOptionView(bool inView)
@@ -219,13 +305,22 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !lockCursor;
     }
-    IEnumerator WaitBeforeSketch(float seconds = .5f)
-    {
-        yield return new WaitForSeconds(seconds);
-        LockCursor(false);
-    }
     void DisplayControlInstruction()
     {
-        UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Mouse to look around.", 4f);
+        UIManager.Instance.DisplayInstruction("Use WASD/arrow keys to move, \n Move mouse to look around.", 4f);
     }
+    
+    public void ActivateAllCanvas(bool activate)
+    {
+        if(!activate)   //de-activate
+        {
+            sketchbookUI.SetActive(false);
+            dialogueUI.SetActive(false);
+        }
+        else    //activate the one that was temporarily deactivated
+        {
+
+        }
+    }
+
 }

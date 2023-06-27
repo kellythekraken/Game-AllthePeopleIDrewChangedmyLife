@@ -8,20 +8,59 @@ tags:
     <<set $NumberOfEncounters +=1>>
     <<set $RueSmallTalk to 0>>
 
+    //<<playerpose SketchRue>>
     <<wait .5>>
-    Rue: I never get tired of queer bars. 
-    Rue: How's your evening going?
-    <<sketch true>>
+    Rue: I could never get tired of queer bars. They are truly hidden gems of the city.
+    Rue: How is your evening going?
+    Rue: Reportage drawing? Could you elaborate on that?
+    Rue: Oh, it sounds like journalism. Documenting places and people, what a lovely idea. Is this for an art project?
+    Rue: I write for games, and I often find myself in bustling places in seek of inspiration. 
+    Rue: There are many great queer bars around the city, but this place will always hold a special place in my heart. 
+    Rue: I used to be afraid of crowded places while I was still figuring things out.
+    //too fast?
+    Rue: There was a panel discussion on gender identity here, which I decided to attend. That was my first connection to this community. 
+    Rue: It's encouraging to know that there are people like you.
+    Rue: Currently I'm pushing for more diversity in gender representation in the game we're developing. 
+    Rue: Our team is mostly made up of cis men. That means I have a lot of work to do in terms of direction.
+    Rue: I really appreciate your approach. I should talk to more artists like you.
+    Rue: ...
+    Rue: Oh! To be sketched? 
+    Rue: How could I possibly say no?
+    Rue: That's really sweet of you.
     <<camera RueSketch>>
+    <<sketch true>>
     <<wait .5>>
-    Rue: Should I be looking at you, or would that be too intense?
+    Rue: Let me know what you need. Should I look at you, or from a certain angle?
     <<startsketch>>
 <<else>>
-    Rue: another chat
+    <<if $SpecialDialogue == true>>
+        <<jump RueSpecial>>
+    <<else>>
+        Rue: I hope that wasn't too much of a ramble. Thank you for patiently listening through.
+        Rue: There are many great queer bars around the city, let me know if you need any recommendations.
+        <<silence Rue>>
+    <<endif>>
+
     <<camera Player>>
+    <<pose Rue Sit>>
 <<endif>>
 
+===
+title: RueSpecial
+---
+<<if visited_count("RueSpecial") == 0>>
+    Rue: Do you like those dresses?
+    Rue: I love vintage clothes, especially knowing they had a history of stories.
+    Rue: They are all once loved, now passed onto your hand.
+//<<elseif visited_count("RueSpecial") == 1>>
+<<else>>
+    <<set $SpecialDialogueSpoken to true>>
+    <<set $SpecialDialogue to false>>
+    <<jump Rue>>
+<<endif>>
 
+<<camera Player>>
+<<pose Rue Sit>>
 ===
 title: RueSketch
 ---
@@ -38,41 +77,97 @@ title: RueSketch
     <<elseif $SketchIndex ==2>>
     <<jump Rue_Body>>
     <<elseif $SketchIndex ==3>>
+    <<jump Rue_Dress>>    
+    <<elseif $SketchIndex ==4>>
     <<jump Rue_Cardigan>>
     <<endif>>
-
 <<else>>
-    Rue: thank you for the drawing.
+    <<jump RueLastStroke>>
+<<endif>>
+===
+title: RueLastStroke
+---
+    Rue: Oh, are you finished?
+    Rue: Can I have a look?
     <<lastdraw>>
     <<wait .5>>
-    <<set $StrokeCount to 0>>
     <<sketchfin>>
-<<endif>>
 ===
 title: Rue_Hair
 ---
-Rue: Hair placeholder;
-
+<<if visited_count("Rue_Hair") == 0>>
+    Rue: I didn’t introduce myself, did I? You can call me Rue. My pronouns are she/her.
+    <<pronoun>>
+<<elseif visited_count("Rue_Hair") == 1>>
+    Rue: It took me a long time to confront my gender identity. 
+    Rue: It's not a linear journey, especially when you work in a place where most of your colleagues are cis men. 
+    Rue: That was tough, as there were no role models to follow, so I had to step forward and be the first one. 
+<<elseif visited_count("Rue_Hair") == 2>>
+    Rue: Media often has this harmful depiction of trans people. 
+    Rue: They make it seem like being trans is just a mask they put on, instead of being their true selves. 
+    Rue: But not all trans people conform to extreme versions of masculinity or femininity. 
+    Rue: They are just like everyone else, with different kinds of gender expressions,
+    Rue: wanting to be accepted and treated the same as a cis man or woman. 
+    Rue: Sometimes that means dressing or acting in a certain way to be recognized as such.
+<<endif>>
 ===
 title: Rue_Face
 ---
-Rue: Face placeholder;
+<<if visited_count("Rue_Face") == 0>>
+    Rue: Do I have something on my face?
+    Rue: I’m joking, you have to stare at me to draw properly.
+<<elseif visited_count("Rue_Face") == 1>>
+    Rue: It’s often not very safe for people to look visibly trans or to openly express their queer identity.
+    Rue: For those who can't be as open, seeing someone who is can be empowering and meaningful.
+<<elseif visited_count("Rue_Face") == 2>>
+    Rue: After coming out at work, some of my colleagues also came out to me, 
+    Rue: feeling a sense of safety and courage after seeing me be visible about my identity.
+    Rue: I had one cis colleague who nervously asked me a lot of questions. 
+    Rue: Some of those questions could easily be found on Google, but I understood that he may have never met anyone with this experience before.
+    Rue: He was genuinely curious, and I just answered.
+<<elseif visited_count("Rue_Face") == 3>>
+    Rue: Being the only trans woman in a team of cis men, I feel the weight of representation on my shoulder. 
+    Rue: I was once invited to participate in the interview process.
+    Rue: We hired the candidate, and later she told me that she felt more comfortable seeing my presence,
+    Rue: and would may not have accepted the offer otherwise.
+    Rue: I have been participating in the group interview ever since.
+<<endif>>
 ===
 title: Rue_Body
 ---
-Rue: Body placeholder;
+<<if visited_count("Rue_Body") == 0>>
+    Rue: I don't come here as often these days, but I enjoy being surrounded by my people every once in a while.
+<<elseif visited_count("Rue_Body") == 1>>
+    Rue: Sometimes companies want to use you as a token queer employee for diversity.
+    Rue: But here's the thing. If a company hires you because of your sexuality, ethnicity, or gender, why not take advantage of that? 
+    Rue: Use your voice to advocate for your community. 
+    Rue: Remember, your presence can be the most empowering thing for them.
+<<endif>>
+===
+title: Rue_Dress
+---
+<<if visited_count("Rue_Dress") == 0>>
+    Rue: If you would like to experiment with gender expression, maybe you could start from thrifting.
+<<endif>> 
 ===
 title: Rue_Cardigan
 ---
-Rue: Cardigan placeholder;
-
+<<if visited_count("Rue_Cardigan") == 0>>
+    //do i need to specify coming out or is this clear enough?
+    Rue: This cardigan is from my mother.
+    Rue: She was delighted that she wouldn't have to throw away her old clothes anymore.
+<<endif>>
 ===
 title: RueSketchFin
 ---
+<<set $StrokeCount to 0>>
+//<<unpose>>
 <<sketch false>>
 <<camera Player>>
-Rue: Oh, is that me?
-Rue: Thank you for the sketch.
+Rue: Hey, that's me!
+Rue: What a lovely drawing.
+Rue: Very intriguing to see myself portrayed like this.
+Rue: Thank you, it was a great conversation. How inspiring.
 <<gift Rue>>
 <<pose Rue Sit>>
 <<camera Player>>

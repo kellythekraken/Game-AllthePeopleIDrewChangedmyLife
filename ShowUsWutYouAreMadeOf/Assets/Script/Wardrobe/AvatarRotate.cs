@@ -23,6 +23,10 @@ public class AvatarRotate : MonoBehaviour
         _slider.value = _slider.minValue = startingRotation;
         _slider.maxValue = startingRotation + 360;
     }
+    void OnDisable()
+    {
+        rotateTarget.localRotation = Quaternion.identity;
+    }
     void ResetAvatar()
     {
         rotateTarget.LookAt(lookCamera);

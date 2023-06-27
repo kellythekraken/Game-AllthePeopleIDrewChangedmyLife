@@ -20,8 +20,9 @@ public class SketchingSystem : MonoBehaviour
     DrawableArea chosenArea;
     public Button sketchbook;
     //[SerializeField] private Button areaBtnPrefab;
-    [SerializeField] private Button doneBtn;
+    [SerializeField] private Button doneBtn,stopBtn;
     [SerializeField] private Image drawPrefab;
+    [SerializeField] private GameObject crayonButtons;  
     [SerializeField] private List<PointerFollower> crayonPointers;
     [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
     public Color materialHighlightColor;
@@ -33,32 +34,29 @@ public class SketchingSystem : MonoBehaviour
     //List<Sprite> storedSketches;
     GameManager gm;
     Queer copiedQueerID; //instantiated copy of queer SO so delete doesn't affect the actual SO
+    int strokeCount;    //keep track in purpose to show stop btn when you can stop sketching
     bool initialized = false;
-    private void OnEnable()
-    {
-        if(!initialized)
-        {
-            InitList();
-            initialized = true;
-        }
-        ClearChild(drawingParent);
-    }
+    int sketchCount;
+
     void OnDisable()
     {
         ChosenBody = null; chosenColor = null; lastCrayon = null;
         Destroy(copiedQueerID);
         //save the sketch to a storage, then delete the sketches in scene
     }
-
-    void Awake() => Instance = this;
-    void Start()
+    public void InitSketchbook()
     {
+        if(initialized) return;
+        Instance = this;
         gm = GameManager.Instance;
         DisableAllFollower();
         gm.dialogueRunner.AddCommandHandler("lastdraw", LastStroke);
         gm.dialogueRunner.AddCommandHandler("sketchfin", SketchCompleted);
         doneBtn.onClick.AddListener(PlayAfterSketchDialogue);
         doneBtn.gameObject.SetActive(false);
+        stopBtn.onClick.AddListener(StopSketching);
+        InitList();
+        initialized = true;
     }
     
     void InitList()
@@ -80,6 +78,8 @@ public class SketchingSystem : MonoBehaviour
     //start a new sketch
     public void PrepareToSketch(QueerNPC targetNPC)
     {
+        ClearChild(drawingParent);
+
         targetNPC.alreadySketched = true;
         copiedQueerID = Instantiate(targetNPC.queerID);
         
@@ -87,7 +87,7 @@ public class SketchingSystem : MonoBehaviour
         gm.variableStorage.SetValue("$MaxStrokes",copiedQueerID.maximumStrokes);
         
 
-        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true;}
+        foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true; i.Init();}
         availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
         
         //remove empty choices
@@ -103,6 +103,9 @@ public class SketchingSystem : MonoBehaviour
         foreach(Button i in colorChoices) {i.enabled = true; }
         gm.EnableWardrobeAction(false);
         sketchbook.enabled = true;
+        crayonButtons.SetActive(true);
+        stopBtn.gameObject.SetActive(false);
+        strokeCount = 0;
     }
     GameObject lastCrayon = null;
     private void RegisterColorChoice(Button btn) //called by clicking different color
@@ -128,7 +131,6 @@ public class SketchingSystem : MonoBehaviour
         {
             chosenArea = availableChoices.Find(x=> x.objName == chosenBody);
         }
-
     }
     
     //called when sketchbook is clicked
@@ -152,6 +154,11 @@ public class SketchingSystem : MonoBehaviour
         bodyIndex = Array.FindIndex(copiedQueerID.drawableAreas, x=> x.objName == chosenArea.objName);
         gm.variableStorage.SetValue("$SketchIndex",bodyIndex);
         gm.ContinueSketchChat();
+
+        if(copiedQueerID.minimumStrokes != 0)
+        {
+            if(strokeCount >= copiedQueerID.minimumStrokes) stopBtn.gameObject.SetActive(true);
+        }
     }
 
     void MakeADrawing()
@@ -168,6 +175,7 @@ public class SketchingSystem : MonoBehaviour
         //set the color of the drawing
         int currCrayonIndex = crayonPointers.IndexOf(currentCrayonFollower);
         stroke.color = crayonColors[currCrayonIndex];
+        strokeCount++;
 
         //remove the drawing from lists
         chosenArea.targetDrawings.Remove(drawing);
@@ -181,6 +189,10 @@ public class SketchingSystem : MonoBehaviour
         }
     }
 
+    void StopSketching()
+    {
+        gm.dialogueRunner.StartDialogue(copiedQueerID.npcName + "LastStroke");
+    }
     //command: lastdraw
     void LastStroke()
     {
@@ -188,16 +200,21 @@ public class SketchingSystem : MonoBehaviour
         stroke.sprite = copiedQueerID.backgroundDrawing;
         sketchbook.enabled = false;
         AudioManager.Instance.PlayOneShot(FMODEvents.Instance.draw);
+        stopBtn.gameObject.SetActive(false);
     }
     //command: sketchfin
     void SketchCompleted()
     {
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
+        crayonButtons.SetActive(false);
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
         foreach(var i in bodypartLists) { i.enabled = false;}
         foreach(Button i in colorChoices) {i.enabled = false; }        
         availableChoices.Clear();
+
+        sketchCount++;
+        if(sketchCount>=1) gm.UnlockEndGame();
     }
 
     //called by pressing done button

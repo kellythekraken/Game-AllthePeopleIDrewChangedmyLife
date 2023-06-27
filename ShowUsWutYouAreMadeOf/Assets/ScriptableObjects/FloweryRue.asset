@@ -18,25 +18,31 @@ MonoBehaviour:
   items:
   - {fileID: 11400000, guid: ca152a866d44ea44da241ace2f4771fb, type: 2}
   - {fileID: 11400000, guid: 1f4ad48e9d4bdd94bbe8405efa5f94b0, type: 2}
+  - {fileID: 11400000, guid: b511d2b8963193a409b8b8b1169d67a8, type: 2}
+  - {fileID: 11400000, guid: 5a11d7d34f1c49a429771233dc07bf8f, type: 2}
   drawableAreas:
   - objName: Hair
     targetDrawings:
-    - {fileID: 21300000, guid: 943fd48d3c1a6004aa1a93df4b917e4e, type: 3}
     - {fileID: 21300000, guid: 82f3e8b6491cd114ba65553373f68a9b, type: 3}
     - {fileID: 21300000, guid: b617780c5db10724b9feb0a023ea0918, type: 3}
+    - {fileID: 21300000, guid: f700dd424bffcd643a2c54a8912cfbe8, type: 3}
   - objName: Face
     targetDrawings:
-    - {fileID: 21300000, guid: a1b9c192883b43c479851927a5c5f104, type: 3}
     - {fileID: 21300000, guid: 98b0c240c45494341946371c16f30c48, type: 3}
+    - {fileID: 21300000, guid: 84aaa18824b59cb43a29fca6c71bad92, type: 3}
+    - {fileID: 21300000, guid: 0950acdba28b6b24b991adfdab1b1cd9, type: 3}
     - {fileID: 21300000, guid: 851292d86fa8e5946a3df8a9460ec031, type: 3}
-    - {fileID: 21300000, guid: 334b28a376426a54787f11e36ee4ecc9, type: 3}
   - objName: Body
     targetDrawings:
-    - {fileID: 21300000, guid: 1b71fbbe60020ec418b6f748f6e93045, type: 3}
-    - {fileID: 21300000, guid: 283c73a9e5b6ec8418f8f5983b9566d6, type: 3}
     - {fileID: 21300000, guid: fd77272abe9adf84abaf0ae08f01ccd1, type: 3}
+    - {fileID: 21300000, guid: f9a9729c0d505054faf321d97d870ce6, type: 3}
+  - objName: Dress
+    targetDrawings:
+    - {fileID: 21300000, guid: 283c73a9e5b6ec8418f8f5983b9566d6, type: 3}
   - objName: Cardigan
     targetDrawings:
     - {fileID: 21300000, guid: e5c283f2589911d4c8686f148301a386, type: 3}
   backgroundDrawing: {fileID: 21300000, guid: 04b26bf27d4f12a4e9856e57e30fede7, type: 3}
-  maximumStrokes: 6
+  signature: {fileID: 21300000, guid: 0f96bc91a6bdf3c4d99a66451c664f23, type: 3}
+  minimumStrokes: 5
+  maximumStrokes: 10

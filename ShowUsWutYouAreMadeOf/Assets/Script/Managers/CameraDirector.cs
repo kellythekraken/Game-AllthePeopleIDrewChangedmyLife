@@ -7,15 +7,12 @@ public class CameraDirector : MonoBehaviour
     private DialogueRunner dialogueRunner;
     private Animator _animator;
 
-    private void Awake()
-    {
-        dialogueRunner = FindObjectOfType<DialogueRunner>();
-
-        dialogueRunner.AddCommandHandler<string>("camera", SwitchCamera);
-    }
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        dialogueRunner = GameManager.Instance.dialogueRunner;
+        dialogueRunner.AddCommandHandler<string>("camera", SwitchCamera);
+
     }
 
     public void SwitchCamera(string animName)

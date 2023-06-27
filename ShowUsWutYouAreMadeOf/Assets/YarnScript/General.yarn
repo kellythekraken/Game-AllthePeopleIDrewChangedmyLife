@@ -1,5 +1,4 @@
 ﻿title: Init
-position: 22,-25
 ---
 //GENERAL
 <<set $NumberOfEncounters to 0>> //how many people you have met
@@ -10,6 +9,9 @@ position: 22,-25
 <<set $RueIntroduced to false>>
 <<set $ToniIntroduced to false>>
 
-<<enter Leon>>
+<<enter Rue>>
 <<enter Ali>>
+
+<<leave Rue>>
+
 ===

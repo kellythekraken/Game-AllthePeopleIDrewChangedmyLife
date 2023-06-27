@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Yarn.Unity;
+
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -145,17 +147,35 @@ namespace StarterAssets
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
+
+            GameManager.Instance.dialogueRunner.AddCommandHandler<string>("playerpose", Pose);
+            GameManager.Instance.dialogueRunner.AddCommandHandler("unpose", Unpose);
+
         }
         public bool stopMoveUpdate = false;
         private void Update()
         {
+            if(inPose) return;
+
             _hasAnimator = TryGetComponent(out _animator);
 
             JumpAndGravity();
             GroundedCheck();
             Move();
         }
+        
+        bool inPose = false;
+        void Pose(string animName)
+        {
+            Debug.Log("posing "+animName);
+            inPose = true;
+            _animator.CrossFade(animName,12f,0);
+        }        
 
+        void Unpose()
+        {
+            inPose = false;
+        }
         private void LateUpdate()
         {
             CameraRotation();

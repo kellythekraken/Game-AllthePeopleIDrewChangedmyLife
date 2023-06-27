@@ -27,8 +27,8 @@ MonoBehaviour:
   - m_From: Group A
     m_To: Group C
     m_Blend:
-      m_Style: 6
-      m_Time: 0.7
+      m_Style: 0
+      m_Time: 0
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -60,8 +60,8 @@ MonoBehaviour:
   - m_From: Group C
     m_To: Group A
     m_Blend:
-      m_Style: 6
-      m_Time: 0.7
+      m_Style: 0
+      m_Time: 0
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

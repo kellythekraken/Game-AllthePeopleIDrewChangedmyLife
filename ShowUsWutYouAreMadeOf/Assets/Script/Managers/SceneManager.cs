@@ -2,105 +2,175 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class SceneManager : MonoBehaviour
 {
     public static SceneManager Instance;
-    public CanvasFade startCanvasFade;
+    [Header("Canvas")] 
+    [SerializeField] GameObject sceneGroup;
+    [SerializeField] CanvasFade startCanvasFade, endCanvasFade;
+    public CanvasFade blackoutFade, buttonCanvas;
+
+    [Header("UI")]
+    [SerializeField] private TextModifier titleText;
     [SerializeField] private Button startBtn, restartBtn, continueBtn, quitBtn;
-    [SerializeField] private EventSystem eventsystemInStartScene;
-    [SerializeField] private GameObject startSceneObjects;
-    [SerializeField] private Camera startMenuCam;
-    enum CurrentScene {START,MAIN};
-    CurrentScene currScene;
+    [SerializeField] Camera titleCamera;
+    internal UnityEvent GamestartEvent;
     void Awake() => Instance = this;
     void Start()
     {
-        FadeInStart(2f);
-        //startCanvasFade.gameObject.SetActive(true);
+        blackoutFade.gameObject.SetActive(true);
+        StartCoroutine(FadeInStartUI());
+        LoadMainGameUponStart();
+        ShowStartCanvas(true);
         restartBtn.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(false);
-
-        startBtn.onClick.AddListener(LoadMainScene);
+        
+        startBtn.onClick.AddListener(StartFromBeginning);
         continueBtn.onClick.AddListener(DeactivateStartMenu);
         restartBtn.onClick.AddListener(ReloadGame);
         quitBtn.onClick.AddListener(QuitGame);
+        if (GamestartEvent == null)
+            GamestartEvent = new UnityEvent();
     }
 
-    void SetStartCam()
+
+#region Scene Loading
+    public void LoadMainGameUponStart()
     {
-        startMenuCam.transform.position = new Vector3(60,173,-1325);
+        AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main",LoadSceneMode.Additive);
     }
-
-    //start the game from start scene
-    public void LoadMainScene()
+    public void StartFromBeginning()
     {
         startBtn.interactable = false;
-        StartCoroutine(SwitchToMain());
-    }
-    IEnumerator SwitchToMain()  //first time loading main scene
-    {
-        AsyncOperation load = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(1,LoadSceneMode.Additive);
-        yield return load;
-        //UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(0);
-        startSceneObjects.SetActive(false);
-        var eventList = FindObjectsOfType<EventSystem>();
-        foreach(var i in eventList) if(i != eventsystemInStartScene) Destroy(i.gameObject);
+        sceneGroup.SetActive(false);
         startBtn.gameObject.SetActive(false);
+
+        GamestartEvent.Invoke();
+        UIManager.Instance.BackToStartEvent.AddListener(ActivateStartMenu);
+        //StartCoroutine(SwitchToMain());
     }
 
-    void DeactivateStartMenu()
-    {
-        continueBtn.interactable = false;
-        InputManager.Instance.EnableAllInput(true);
-        GameManager.Instance.BackToLastMode();
-        startSceneObjects.SetActive(false);
-    }
-
-    //load the start scene from main game, called by button in setting screen
-    public void ActivateStartMenu()
-    {
-        FadeInStart(1f);
-        continueBtn.gameObject.SetActive(true);
-        restartBtn.gameObject.SetActive(true);
-        continueBtn.interactable = true;
-        GameManager.Instance.currMode = CurrentMode.StartMenu;
-        startSceneObjects.SetActive(true);
-    }
     public void QuitGame()
     {
         Debug.Log("quit game!");
         Application.Quit();
     }
 
-    public void StartOver() //reload the game at start 
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }
     public void ReloadGame()    //reload the game at main scene
     {
+        continueBtn.interactable = false;
+        restartBtn.interactable = false;
+        blackoutFade.gameObject.SetActive(true);
         StartCoroutine(Reload());
     }
     IEnumerator Reload()
     {
-        var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(1);
+        var c = blackoutFade.ChangeAlphaOverTime(0f,1f,1f);
+        yield return c;
+        var load = UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("Main");
         yield return load;
-        LoadMainScene();
+        var start = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("Main",LoadSceneMode.Additive);
+        yield return start;
+        yield return new WaitForSeconds(1f);
+        StartFromBeginning();
+    }
+#endregion
+
+#region Menu/Canvas
+    //load the start scene from main game, called by button in setting screen
+    public void ActivateStartMenu()
+    {
+        //load start screen
+        blackoutFade.ChangeAlphaOverTime(1f,0f,1f);
+        StartCoroutine(FadeInStartUI());
+
+        restartBtn.gameObject.SetActive(true);
+        restartBtn.interactable = true;
+        if(!GameManager.Instance.demoBuild)
+        {
+            continueBtn.gameObject.SetActive(true);
+            continueBtn.interactable = true;
+        }
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
+        ShowStartCanvas(true);
     }
 
-    public void DisplayStartScreen()
+
+    void DeactivateStartMenu() => StartCoroutine(DeactivateCoroutine());
+
+    IEnumerator DeactivateCoroutine()
+    {
+        //fade in
+        GameManager.Instance.FadeIn(1f);
+        //hide start screen
+        yield return new WaitForSeconds(1f);
+        continueBtn.interactable = false;
+        InputManager.Instance.EnableAllInput(true);
+        GameManager.Instance.BackToLastMode();
+        sceneGroup.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        GameManager.Instance.FadeOut(1f);
+    }
+    IEnumerator FadeInStartUI()
+    {
+        titleText.ClearText();
+        buttonCanvas.gameObject.SetActive(false);
+        var fade = FadeInStart(1.5f);
+        yield return fade;
+        StartCoroutine(titleText.Typewrite());
+        while(titleText.typing == true)
+        {yield return null;}
+        buttonCanvas.gameObject.SetActive(true);
+        StartCoroutine(buttonCanvas.ChangeAlphaOverTime(0f,1f,.5f));
+    }
+
+    public void DisplaysceneGroup()
     {
         FadeInStart(2f);
         startCanvasFade.BlockRayCast(true);
-        GameManager.Instance.LockCursor(false);
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
         GameManager.Instance.PauseGame();
     }    
 
+    public void EndGame()
+    {
+        Debug.Log("end game");
+        ShowStartCanvas(false);
+        StartCoroutine(FadeInEndUI());
+    }
+    IEnumerator FadeInEndUI()
+    {
+        var continueBtn = endCanvasFade.transform.Find("Continue").GetComponent<CanvasFade>();
+        continueBtn.gameObject.SetActive(false);
+
+        var fade = FadeInStart(1.5f);
+        yield return fade;
+        TextModifier thankTxt = endCanvasFade.transform.Find("Thank").GetComponent<TextModifier>();
+        TextModifier endTxt = endCanvasFade.transform.Find("End").GetComponent<TextModifier>();
+        StartCoroutine(thankTxt.Typewrite());
+        while(thankTxt.typing)
+        {yield return null;}
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(endTxt.Typewrite());
+        while(endTxt.typing)
+        {yield return null;}
+        yield return new WaitForSeconds(1f);
+        continueBtn.ChangeAlphaOverTime(0f,1f,1f);
+        GameManager.Instance.currMode = CurrentMode.StartMenu;
+    }
+    void ShowStartCanvas(bool start)
+    {
+        sceneGroup.SetActive(true);
+        startCanvasFade.gameObject.SetActive(start);
+        endCanvasFade.gameObject.SetActive(!start);
+    }
     private Coroutine FadeOutStart(float time = 1f) {
-        return StartCoroutine(startCanvasFade.ChangeAlphaOverTime(1f,0f, time));
+        return StartCoroutine(blackoutFade.ChangeAlphaOverTime(0f,1f, time));
     }
     private Coroutine FadeInStart(float time = 1f) {
-        return StartCoroutine(startCanvasFade.ChangeAlphaOverTime(0f,1f, time));
+        return StartCoroutine(blackoutFade.ChangeAlphaOverTime(1f,0f, time));
     }
+#endregion
 }

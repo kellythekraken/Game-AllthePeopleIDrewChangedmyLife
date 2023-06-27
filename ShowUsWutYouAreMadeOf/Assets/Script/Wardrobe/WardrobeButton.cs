@@ -9,32 +9,44 @@ public class WardrobeButton : MonoBehaviour
     //control everything wardrobe outside of the wardrobe canvas
     //also control the popup ui to display received item
 
-    public static WardrobeButton Instance;
+    [Header("Wardrobe Canvas")]
     public GameObject wardrobeUI;   //the entire wardrobe canvas
-    public Button closeBtn;
     public Image newIndicator;
     [SerializeField] private WardrobeManager wardrobeManager;
+    [SerializeField] GameObject changingScreen,customizeScreen; //show customize screen on start
+    [SerializeField] Button closeBtn, customizeFinishBtn;
     [SerializeField] private Transform wardrobeParent;
     [SerializeField] private GameObject itemPrefab;
-    private List<Transform> wardrobeSections;
-    private Button openBtn;
-    bool newItem = false;
+
+    [Header("Pop up UI")]
     [SerializeField] private GameObject itemIconPrefab;
 	[SerializeField] private GridLayoutGroup iconLayoutParent;
 	RectTransform iconLayoutrect;
 	public float iconGridHeight;
 	public int iconGridCellCount = 2;
-    void Awake() => Instance = this;
     InputManager inputManager;
-    private void Start()
+    private List<Transform> wardrobeSections;
+    private Button openBtn;
+    bool newItem = false;
+    GameManager gm;
+    bool init = false;
+
+    //also called by gamemanager if start from main menu
+    public void Init()
     {
+        gm = GameManager.Instance;
+        inputManager = InputManager.Instance;
         newIndicator.enabled = newItem;
         openBtn = GetComponent<Button>();
-        inputManager = InputManager.Instance;
         closeBtn.onClick.AddListener(() => OpenCloseWardrobe());
+        customizeFinishBtn.onClick.AddListener(()=>CustomizeFinished());
         wardrobeManager.WardrobeInit();
         wardrobeUI.SetActive(false);
 
+        //default set customize to false
+        customizeScreen.SetActive(false);
+        changingScreen.SetActive(true);
+        
         //set up the image layout
         iconLayoutrect = iconLayoutParent.GetComponent<RectTransform> ();
         ClearIconGridLayout();
@@ -44,11 +56,34 @@ public class WardrobeButton : MonoBehaviour
         if(inputManager != null) inputManager.wardrobeAction.Enable();
     }
     void OnDisable() => inputManager.wardrobeAction.Disable();
-
     public void WardrobeAction(UnityEngine.InputSystem.InputAction.CallbackContext ctx)
     {
         OpenCloseWardrobe();
     }
+
+#region GameStartCustomization
+    //called by gamemanager
+    public void PlayerCustomization()
+    {
+        //load the wardrobe init!
+        Debug.Log("show player customize screen");
+        customizeScreen.SetActive(true);
+        changingScreen.SetActive(false);
+        wardrobeUI.SetActive(true);
+
+        // you can customize your skin, hair and eye color
+    }
+    //done button is clicked
+    void CustomizeFinished()
+    {
+        gm.FadeIn();
+        gm.StartGameCinematic();
+        wardrobeUI.SetActive(false);
+        customizeScreen.SetActive(false);
+        changingScreen.SetActive(true);
+    }
+#endregion
+
     bool wardrobeOpen = false;
     void OpenCloseWardrobe()
     {
@@ -58,7 +93,7 @@ public class WardrobeButton : MonoBehaviour
         
         if(wardrobeOpen)
         {
-            GameManager.Instance.currMode = CurrentMode.Changing;
+            gm.currMode = CurrentMode.Changing;
             if(newItem)
             {
                 newItem = false;
@@ -66,7 +101,7 @@ public class WardrobeButton : MonoBehaviour
             }
         }
         else{
-            GameManager.Instance.BackToLastMode();
+            gm.BackToLastMode();
         }
     }
     //load a list of gift

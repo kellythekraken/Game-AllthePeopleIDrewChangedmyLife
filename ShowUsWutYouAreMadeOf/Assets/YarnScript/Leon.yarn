@@ -1,17 +1,46 @@
 ﻿title: Leon
 ---
-<<camera LeonCam>>
-<<if  visited_count("Leon") == 0>>
-    Leon: Hey, what can I get you?
-    Leon: It's your first time to the place? 
-    Leon: It tends to get busier later in the evening.
-<<elseif $NumberOfEncounters > 0>>
-    Leon: Starting to get to know the people here?
-    Leon: We have an event coming in a few days, come again!
-    Leon: I'd love to see you here again. 
+<<pose Leon IdleLook>>
+<<if visited_count("Leon") == 0>>
+    <<camera LeonCam>>
+    Hello. What can I get you?
+    Hey, you’re an art student? What kinds of work do you do?
+    I studied fine art back in school, and used to carry my sketchbook around like you.
+    My subject wasn't centred around people, as I was more fascinated by the shapes and colours of landscapes.
+    So, what has possibly brought you to us tonight?
+    You've never been here before? How could that possibly be? 
+    Oh, my apologies, I didn’t realise you’re new to the city!
+    In that case, I’m glad you found your way to us. Hope you could feel at home here. 
+    I’m Leon, you can address me with they/them pronouns.
+    <<pronoun>>
+    Leon: Don’t be intimidated to strike up a chat with anyone here. 
+    Leon: I’m sure they’ll be more than happy to let you sketch them.
+    Leon: Well, good luck! Come back to me if you need a friendly ear.
+    <<camera Player>>
+    <<pose Leon Idle>>
 <<else>>
-    Leon: You say you're an artist? What kinds of work do you make?
-    Leon: We host quite a few art events here. Poetry slam, even knitting club, quite a while ago.
+    <<camera LeonCam>>
+    <<if $NumberOfEncounters > 0>>
+        Leon: Hey, seems like you're getting to know the people here.
+        Leon: We have an event coming in a few days.
+        Leon: I'd love to see you here again. 
+        <<pose Leon Pour 0>>
+        <<silence Leon>>
+    <<elseif visited_count("Leon") == 1>>
+        Leon: Still feels a bit intimidating, doesn't it?
+        Leon: It’s challenging to visit a bar by yourself. But I really hope you get to know some folks here. 
+        Leon: Just like how you approached me.
+        Leon: Perhaps you think it’s easy for me to say.
+        Leon: Of course, it is always scary to take the first step. 
+        Leon: But places like this exist so we could find each other and form a community. 
+        Leon: There are people like you, and they are waiting to meet you.
+        <<pose Leon Pour 0>>
+        <<silence Leon>>
+    <<else>>
+        Leon: Xxx is also a good queer bar. I was there last week.
+        Leon: they’re a very artsy venue, so the vibe might be of interest to you.
+    <<endif>>
+    <<camera Player>>
 <<endif>>
-<<camera Player>>
+//if you have interacted with the scene, for example the poster, you will ask leon about it.
 ===

@@ -7,39 +7,53 @@ using UnityEngine.UI;
 public class WearableItem : MonoBehaviour
 {
     //attached to the wardrobe item buttons. Store the infomation of each item and will respond to user clicking.
-
-    //also as many accessories as possible
+    //UI surface only changes, for function go to wardrobemanager
 
     [SerializeField] private GameObject newIndicator;
-    [SerializeField] private Image selectedIndicator;
-    
+    //[SerializeField] private Image selectedIndicator;
+    WardrobeManager wManager;
+    ItemSection sectionType;    //assigned by wardrobe manager
     Image iconImage;
-    Transform parentWardrobeSection;
+    WardrobeParent parentWardrobeSection;
     bool newItem = true;
-    bool isWearing;
+    internal bool isWearing;
     GiftItem item;
     Button btn;
     internal string gifter; 
 
-    void Start()
+    public void InitItem(GiftItem incomingItem, bool isNew, ItemSection section)
     {
         btn = GetComponent<Button>();
         iconImage = GetComponent<Image>();
-        btn.onClick.AddListener(WearItem);
-    }
-    public void InitItem(GiftItem incomingItem, bool isNew)
-    {
+        btn.onClick.AddListener(WearBtnClicked);
+        wManager = WardrobeManager.Instance;
+
+        sectionType = section;
         item = incomingItem;
-        isWearing = selectedIndicator.enabled = false;
+        isWearing = false;      //=selectedIndicator.enabled = 
         newIndicator.SetActive(true);
-        parentWardrobeSection = transform.parent;
+        parentWardrobeSection = transform.parent.GetComponent<WardrobeParent>();
         if(!isNew) //default item shouldn't have new indicator
         {
             newItem = false; 
             newIndicator.SetActive(false);
         }
     }
-    void WearItem()
+    void WearBtnClicked()//for actual button response
+    {
+        if(isWearing)
+        {
+            //make default light up if you're clicking on the same one 
+            if(sectionType == ItemSection.Accessory) WearItem(false);
+            else 
+            {
+                parentWardrobeSection.SetToDefaultItem();
+                return;
+            }
+        }
+        else { WearItem(true);}
+    }
+    public void WearItem(bool wear)
     {
         if(newItem) 
         {
@@ -47,32 +61,17 @@ public class WearableItem : MonoBehaviour
             newIndicator.SetActive(false);
         }
         //put on/off the item
-        isWearing = !isWearing;
-
+        isWearing = wear;
         //logic to call wardrobemanager 
-        iconImage.color = isWearing? Color.black : Color.white;
+        iconImage.color = wear? Color.black : Color.white;
 
         //make the last wearing item of the same parenthood !ISWEARING and deselected!
-        if(isWearing)
+        if(isWearing && sectionType != ItemSection.Accessory)
         {
-            foreach(Transform i in parentWardrobeSection)
-            {
-                var component = i.GetComponent<WearableItem>();
-                if(i.name != this.name && component.isWearing) 
-                {
-                    component.TakeOffItem();
-                }
-            }
+            parentWardrobeSection.UnSelectPreviousItem(name);
         }
+        
         //selectedIndicator.enabled = isWearing;  
         if(gifter!=null) WardrobeManager.Instance.UpdateGifterList(gifter,isWearing); 
-    }
-
-    void TakeOffItem()
-    {
-        isWearing = false; 
-        iconImage.color = Color.white;
-        if(gifter!=null) WardrobeManager.Instance.UpdateGifterList(gifter,false); 
-        //component.selectedIndicator.enabled = false;
     }
 }
