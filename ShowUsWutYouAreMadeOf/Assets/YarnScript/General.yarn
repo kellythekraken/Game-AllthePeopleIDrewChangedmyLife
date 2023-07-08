@@ -9,9 +9,9 @@
 <<set $RueIntroduced to false>>
 <<set $ToniIntroduced to false>>
 
-<<enter Rue>>
-<<enter Ali>>
+//<<enter Rue>>
+//<<enter Ali>>
 
-<<leave Rue>>
+//<<leave Rue>>
 
 ===

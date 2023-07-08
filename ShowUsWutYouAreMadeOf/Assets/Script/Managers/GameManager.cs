@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
             currMode = CurrentMode.Nothing;
             door.indoor = startIndoor;
             DisplayControlInstruction();
+            dialogueRunner.StartDialogue("Init");
         }
     } 
 
