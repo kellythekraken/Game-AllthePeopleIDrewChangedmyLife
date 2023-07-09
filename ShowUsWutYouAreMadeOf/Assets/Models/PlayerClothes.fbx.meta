@@ -12,6 +12,9 @@ ModelImporter:
   - first:
       74: -3669605207832786221
     second: Player_SitRue
+  - first:
+      74: -8912853670433306790
+    second: Player_Idle.002
   externalObjects: {}
   materials:
     materialImportMode: 2
