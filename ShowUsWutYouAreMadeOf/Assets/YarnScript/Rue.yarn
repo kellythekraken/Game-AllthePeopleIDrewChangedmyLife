@@ -95,6 +95,7 @@ title: RueLastStroke
 ===
 title: Rue_Hair
 ---
+<<pose Rue SHair .5>>
 <<if visited_count("Rue_Hair") == 0>>
     Rue: I didn’t introduce myself, did I? You can call me Rue. My pronouns are she/her.
     <<pronoun>>
@@ -110,9 +111,12 @@ title: Rue_Hair
     Rue: wanting to be accepted and treated the same as a cis man or woman. 
     Rue: Sometimes that means dressing or acting in a certain way to be recognized as such.
 <<endif>>
+
+<<pose Rue Sketch>>
 ===
 title: Rue_Face
 ---
+<<pose Rue SFace .5>>
 <<if visited_count("Rue_Face") == 0>>
     Rue: Do I have something on my face?
     Rue: I’m joking, you have to stare at me to draw properly.
@@ -132,9 +136,11 @@ title: Rue_Face
     Rue: and would may not have accepted the offer otherwise.
     Rue: I have been participating in the group interview ever since.
 <<endif>>
+<<pose Rue Sketch>>
 ===
 title: Rue_Body
 ---
+<<pose Rue SBody .5>>
 <<if visited_count("Rue_Body") == 0>>
     Rue: I don't come here as often these days, but I enjoy being surrounded by my people every once in a while.
 <<elseif visited_count("Rue_Body") == 1>>
@@ -143,20 +149,25 @@ title: Rue_Body
     Rue: Use your voice to advocate for your community. 
     Rue: Remember, your presence can be the most empowering thing for them.
 <<endif>>
+<<pose Rue Sketch>>
 ===
 title: Rue_Dress
 ---
+<<pose Rue SDress .5>>
 <<if visited_count("Rue_Dress") == 0>>
     Rue: If you would like to experiment with gender expression, maybe you could start from thrifting.
 <<endif>> 
+<<pose Rue Sketch>>
 ===
 title: Rue_Cardigan
 ---
+<<pose Rue SCardi .5>>
 <<if visited_count("Rue_Cardigan") == 0>>
     //do i need to specify coming out or is this clear enough?
     Rue: This cardigan is from my mother.
     Rue: She was delighted that she wouldn't have to throw away her old clothes anymore.
 <<endif>>
+<<pose Rue Sketch>>
 ===
 title: RueSketchFin
 ---
