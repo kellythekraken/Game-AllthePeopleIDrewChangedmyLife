@@ -8836,8 +8836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startIndoor: 1
-  startFromTitle: 0
+  startIndoor: 0
+  startFromTitle: 1
   cinematicStart: 0
   demoBuild: 1
   pronounTag: {fileID: 1752515339}
