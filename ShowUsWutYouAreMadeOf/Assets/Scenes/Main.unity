@@ -7582,10 +7582,10 @@ MonoBehaviour:
   - {fileID: 821453140}
   bodyPartMeshes:
   - {fileID: 101622689}
-  - {fileID: 1167345010}
-  - {fileID: 1896124179}
   - {fileID: 1518278115}
   - {fileID: 2143227682}
+  - {fileID: 1896124179}
+  - {fileID: 1167345010}
 --- !u!136 &445242762
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8427,7 +8427,7 @@ MonoBehaviour:
   doneBtn: {fileID: 227686653}
   stopBtn: {fileID: 1899458707}
   drawPrefab: {fileID: 1676624895476019755, guid: 4f2f105fac51e6e41a2330a645ca37b2, type: 3}
-  drawCategoryPrefab: {fileID: 0}
+  drawCategoryPrefab: {fileID: 8389582684046719031, guid: fd8aa44fa52094449b3b33d1d02e84f4, type: 3}
   crayonButtons: {fileID: 1936897602}
   crayonPointers:
   - {fileID: 483467285}
@@ -8836,8 +8836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4420d13c5d442e044b90adc0ca597cb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startIndoor: 0
-  startFromTitle: 1
+  startIndoor: 1
+  startFromTitle: 0
   cinematicStart: 0
   demoBuild: 1
   pronounTag: {fileID: 1752515339}
@@ -36723,8 +36723,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0.00026432544, y: 0.9957172, z: -0.09079217, w: -0.017433243}
-  m_LocalPosition: {x: -10.600018, y: 1.3999925, z: 18.200012}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -12.570001, y: -2.6740003, z: -6.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -36801,9 +36801,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
-  far clip plane: 60
-  field of view: 20
+  near clip plane: 0.001
+  far clip plane: 50
+  field of view: 30
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
