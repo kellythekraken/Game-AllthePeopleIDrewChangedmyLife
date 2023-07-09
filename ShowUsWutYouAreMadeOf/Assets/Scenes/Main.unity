@@ -1862,8 +1862,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.010484888, y: 0.036695242, z: 0.014179253}
-  m_Center: {x: -0.01661891, y: 0.002213683, z: -0.0042626834}
+  m_Size: {x: 0.0099969385, y: 0.036695242, z: 0.014179253}
+  m_Center: {x: -0.016862884, y: 0.002213683, z: -0.0042626834}
 --- !u!65 &192399945
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7576,16 +7576,16 @@ MonoBehaviour:
   queerID: {fileID: 11400000, guid: ccf8f3f2c312d2640aff9f797a86d3fe, type: 2}
   sketchableAreas:
   - {fileID: 2104525076}
-  - {fileID: 821453140}
   - {fileID: 1619750251}
-  - {fileID: 1823892301}
   - {fileID: 1146302174}
+  - {fileID: 1823892301}
+  - {fileID: 821453140}
   bodyPartMeshes:
-  - {fileID: 1518278115}
   - {fileID: 101622689}
-  - {fileID: 2143227682}
-  - {fileID: 1896124179}
   - {fileID: 1167345010}
+  - {fileID: 1896124179}
+  - {fileID: 1518278115}
+  - {fileID: 2143227682}
 --- !u!136 &445242762
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8427,7 +8427,6 @@ MonoBehaviour:
   doneBtn: {fileID: 227686653}
   stopBtn: {fileID: 1899458707}
   drawPrefab: {fileID: 1676624895476019755, guid: 4f2f105fac51e6e41a2330a645ca37b2, type: 3}
-  drawCategoryPrefab: {fileID: 8389582684046719031, guid: fd8aa44fa52094449b3b33d1d02e84f4, type: 3}
   crayonButtons: {fileID: 1936897602}
   crayonPointers:
   - {fileID: 483467285}
@@ -8482,12 +8481,12 @@ MonoBehaviour:
   queerID: {fileID: 11400000, guid: 6827b6f996ad22a4abb3582ddda39cab, type: 2}
   sketchableAreas:
   - {fileID: 930683485}
-  - {fileID: 1769934327}
+  - {fileID: 1688792599}
   - {fileID: 1222520595}
   - {fileID: 1552922505}
   - {fileID: 389024779}
   - {fileID: 1601891281}
-  - {fileID: 1688792599}
+  - {fileID: 1769934327}
   bodyPartMeshes:
   - {fileID: 173745844}
   - {fileID: 761564777}
@@ -12521,8 +12520,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.012088559, y: 0.019173374, z: 0.014179251}
-  m_Center: {x: -0.008463419, y: -0.006547295, z: -0.0042626834}
+  m_Size: {x: 0.01569249, y: 0.019173374, z: 0.014179251}
+  m_Center: {x: -0.014015104, y: -0.0065472955, z: -0.0042626834}
 --- !u!4 &912739930 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4397177792096320014, guid: 7ee8fb1f61b910a4e803ecd84f0a989d, type: 3}
@@ -37960,7 +37959,7 @@ MonoBehaviour:
     m_ActionName: Player/Interact[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardMouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: 
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!143 &3354527797997906180
@@ -37975,12 +37974,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 2
-  m_Radius: 0.45
+  m_Radius: 0.4
   m_SlopeLimit: 30
   m_StepOffset: 0.25
   m_SkinWidth: 0.05
   m_MinMoveDistance: 0
-  m_Center: {x: -0.05, y: 1, z: 0.08}
+  m_Center: {x: 0, y: 1, z: 0.08}
 --- !u!114 &3354527797997906181
 MonoBehaviour:
   m_ObjectHideFlags: 0

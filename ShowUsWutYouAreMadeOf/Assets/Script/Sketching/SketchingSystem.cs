@@ -8,6 +8,7 @@ public class SketchingSystem : MonoBehaviour
 {
     public static SketchingSystem Instance;
     internal UnityEvent BodypartSelectEvent = new UnityEvent();
+
     internal string highlightedBody;
     private string chosenBody;
     internal string ChosenBody
@@ -21,7 +22,6 @@ public class SketchingSystem : MonoBehaviour
     //[SerializeField] private Button areaBtnPrefab;
     [SerializeField] private Button doneBtn,stopBtn;
     [SerializeField] private Image drawPrefab;
-    [SerializeField] private GameObject drawCategoryPrefab;
     [SerializeField] private GameObject crayonButtons;  
     [SerializeField] private List<PointerFollower> crayonPointers;
     [SerializeField] private List<Color> crayonColors;  //stroe the color, access through the index of crayonpointer?
@@ -86,12 +86,6 @@ public class SketchingSystem : MonoBehaviour
         bodypartLists = new List<SketchFocusBodypart>();
         gm.variableStorage.SetValue("$MaxStrokes",copiedQueerID.maximumStrokes);
         
-        //make empty parent for each sketchable area, to create layer hierarchy
-        foreach(var i in targetNPC.bodyPartMeshes)
-        {
-            GameObject categoryParent = Instantiate(drawCategoryPrefab,drawingParent);
-            categoryParent.name = i.name;
-        }
 
         foreach(var i in targetNPC.sketchableAreas) { bodypartLists.Add(i); i.enabled = true; i.Init();}
         availableChoices = new List<DrawableArea>(copiedQueerID.drawableAreas.ToList());
@@ -171,11 +165,8 @@ public class SketchingSystem : MonoBehaviour
     {
         //Debug.Log("drawn with " + chosenArea.objName + " | remaining drawings: " + chosenArea.targetDrawings.Count);
 
-        //use the sketchablearea as the reference to layer? 0= top, 5 = bottom e.g. hair > clothes > body
-        Transform drawingCategoryParent = drawingParent.Find(chosenArea.objName);
-
         //instantiate the corresponding drawing
-        Image stroke = Instantiate(drawPrefab, drawingCategoryParent);
+        Image stroke = Instantiate(drawPrefab, drawingParent);
 
         //go to the next drawing!!! remove the current one
         Sprite drawing = chosenArea.targetDrawings[0]; 
