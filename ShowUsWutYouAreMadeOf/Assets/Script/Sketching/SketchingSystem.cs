@@ -205,6 +205,7 @@ public class SketchingSystem : MonoBehaviour
     //command: lastdraw
     void LastStroke()
     {
+        crayonButtons.SetActive(false);
         Image stroke = Instantiate(drawPrefab, drawingParent); 
         stroke.sprite = copiedQueerID.backgroundDrawing;
         sketchbook.enabled = false;
@@ -215,7 +216,6 @@ public class SketchingSystem : MonoBehaviour
     void SketchCompleted()
     {
         //what about giving the player option to keep drawing until all options exhaust? But there will be no more dialogues.
-        crayonButtons.SetActive(false);
         doneBtn.gameObject.SetActive(true);
         gm.LockCursor(false);
         foreach(var i in bodypartLists) { i.enabled = false;}
