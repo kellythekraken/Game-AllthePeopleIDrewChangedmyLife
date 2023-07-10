@@ -8839,7 +8839,7 @@ MonoBehaviour:
   startIndoor: 0
   startFromTitle: 1
   cinematicStart: 0
-  demoBuild: 1
+  demoBuild: 0
   pronounTag: {fileID: 1752515339}
   settingsUI: {fileID: 1253938074506939}
   sketchbookUI: {fileID: 542770381}
@@ -36723,8 +36723,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243818282187889}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -12.570001, y: -2.6740003, z: -6.54}
+  m_LocalRotation: {x: -0.00026432544, y: 0.9957172, z: -0.09079217, w: -0.017433243}
+  m_LocalPosition: {x: -10.600018, y: 1.3999925, z: 18.200012}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4847470036273939}
@@ -36801,9 +36801,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.001
-  far clip plane: 50
-  field of view: 30
+  near clip plane: 0.2
+  far clip plane: 60
+  field of view: 20
   orthographic: 0
   orthographic size: 10
   m_Depth: 0
@@ -37391,7 +37391,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -3.080017, y: 10.593994}
+  m_AnchoredPosition: {x: -3.0800781, y: 10.593994}
   m_SizeDelta: {x: -360.41, y: -207.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &225445490518397057
